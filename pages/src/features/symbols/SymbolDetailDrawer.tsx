@@ -10,19 +10,24 @@ interface Props {
 
 type SignatureField = { labelKey: string; field: string }
 
-const SIGNATURE_FIELDS: Record<string, SignatureField> = {
-  function: { labelKey: 'symbols.signature.func', field: 'func_sig' },
-  virtualFunction: { labelKey: 'symbols.signature.vfunc', field: 'vfunc_sig' },
-  global: { labelKey: 'symbols.signature.global', field: 'gv_sig' },
-  structMember: { labelKey: 'symbols.signature.structOffset', field: 'offset_sig' },
+const SIGNATURE_FIELDS: Record<string, SignatureField[]> = {
+  function: [{ labelKey: 'symbols.signature.func', field: 'func_sig' }],
+  virtualFunction: [
+    { labelKey: 'symbols.signature.vfunc', field: 'vfunc_sig' },
+    { labelKey: 'symbols.signature.func', field: 'func_sig' },
+  ],
+  global: [{ labelKey: 'symbols.signature.global', field: 'gv_sig' }],
+  structMember: [{ labelKey: 'symbols.signature.structOffset', field: 'offset_sig' }],
 }
 
 function signatureValue(record: GameSymbolRecord): { label: string; value: string } | null {
-  const spec = SIGNATURE_FIELDS[record.kind]
-  if (!spec) return null
-  const raw = record.payload[spec.field]
-  if (typeof raw !== 'string' || raw.length === 0) return null
-  return { label: spec.labelKey, value: raw }
+  const specs = SIGNATURE_FIELDS[record.kind]
+  if (!specs) return null
+  for (const spec of specs) {
+    const raw = record.payload[spec.field]
+    if (typeof raw === 'string' && raw.length > 0) return { label: spec.labelKey, value: raw }
+  }
+  return null
 }
 
 export function SymbolDetailDrawer({ record, onClose }: Props) {
