@@ -162,6 +162,7 @@ class TestReleaseWorkflowGuards(unittest.TestCase):
                 config.write_text(
                     f"modules:\n  - name: server\n    path_windows: game/bin/win64/server.dll\n    skills:\n{skills}",
                     encoding="utf-8",
+                    newline="\n",
                 )
 
             def write_snapshot(*outputs: str) -> None:
