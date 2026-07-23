@@ -49,7 +49,7 @@ export function AppShell() {
             { key: 'runs', label: t('navigation.runs') },
           ]}
         />
-        <Space className="api-summary">
+        <Space className="api-summary" align="center">
           <Badge status={connected ? 'success' : 'default'} />
           <Typography.Text type="secondary" ellipsis title={baseUrl}>
             <ApiOutlined /> {baseUrl}
