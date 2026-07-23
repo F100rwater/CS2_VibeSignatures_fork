@@ -30,9 +30,25 @@ function signatureValue(record: GameSymbolRecord): { label: string; value: strin
   return null
 }
 
+type ExtraField = { labelKey: string; field: string }
+
+const VFUNC_EXTRA_FIELDS: ExtraField[] = [
+  { labelKey: 'symbols.vfuncIndex', field: 'vfunc_index' },
+  { labelKey: 'symbols.vfuncOffset', field: 'vfunc_offset' },
+]
+
+function extraFieldsFor(record: GameSymbolRecord): ExtraField[] {
+  if (record.kind !== 'virtualFunction') return []
+  return VFUNC_EXTRA_FIELDS.filter((spec) => {
+    const raw = record.payload[spec.field]
+    return typeof raw === 'number' || (typeof raw === 'string' && raw.length > 0)
+  })
+}
+
 export function SymbolDetailDrawer({ record, onClose }: Props) {
   const { t } = useTranslation()
   const sig = record ? signatureValue(record) : null
+  const extras = record ? extraFieldsFor(record) : []
   return (
     <Drawer title={t('symbols.detailTitle')} open={Boolean(record)} onClose={onClose} width={720}>
       {record && (
@@ -56,6 +72,11 @@ export function SymbolDetailDrawer({ record, onClose }: Props) {
                 <Typography.Paragraph copyable style={{ margin: 0 }} className="symbol-signature">{sig.value}</Typography.Paragraph>
               </Descriptions.Item>
             )}
+            {extras.map((spec) => (
+              <Descriptions.Item key={spec.field} label={t(spec.labelKey)}>
+                <Typography.Text copyable>{String(record.payload[spec.field])}</Typography.Text>
+              </Descriptions.Item>
+            ))}
           </Descriptions>
           <Typography.Title level={4} className="symbol-payload-title">{t('symbols.payload')}</Typography.Title>
           <pre className="json-block symbol-payload">{JSON.stringify(record.payload, null, 2)}</pre>
