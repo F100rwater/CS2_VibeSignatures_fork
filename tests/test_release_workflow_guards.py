@@ -160,10 +160,7 @@ class TestReleaseWorkflowGuards(unittest.TestCase):
                     for output in outputs
                 )
                 config.write_text(
-                    "modules:\n"
-                    "  - name: server\n"
-                    "    path_windows: game/bin/win64/server.dll\n"
-                    f"    skills:\n{skills}",
+                    f"modules:\n  - name: server\n    path_windows: game/bin/win64/server.dll\n    skills:\n{skills}",
                     encoding="utf-8",
                 )
 

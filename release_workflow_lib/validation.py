@@ -295,7 +295,10 @@ def _invalidate_from_accepted_manifest(
                 return _invalidate_yaml_baseline(bindir, gamever)
             raise
         accepted_contract = accepted_context.contract
-        if manifest.get("analysis_config_path") and manifest["analysis_config_path"] != accepted_history.repository_path:
+        if (
+            manifest.get("analysis_config_path")
+            and manifest["analysis_config_path"] != accepted_history.repository_path
+        ):
             raise ReleaseWorkflowError("accepted manifest analysis config path does not match SOURCE_SHA")
         if manifest.get("analysis_config_sha256") and manifest["analysis_config_sha256"] != accepted_history.sha256:
             raise ReleaseWorkflowError("accepted manifest analysis config hash does not match SOURCE_SHA")
