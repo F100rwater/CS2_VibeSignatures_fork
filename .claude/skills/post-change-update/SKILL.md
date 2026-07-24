@@ -22,11 +22,17 @@ layouts and does not commit; callers must place `/post-change-validation` betwee
 Stop if the phase is missing or invalid. Stop if no non-empty game version can be resolved.
 Set `ANALYSIS_CONFIG="configs/$GAMEVER.yaml"` and stop if it is not a file.
 
+This workflow is single-version scoped: update only the version resolved as `GAMEVER` (the caller-provided
+value, or `CS2VIBE_GAMEVER` from `.env`). Do not rebuild, repack, publish, or otherwise modify snapshots,
+gamedata, configs, or candidate artifacts for any other game version.
+
 ## Safety Rules
 
 - Run from the repository root.
 - Preserve unrelated pre-existing work and never stage or commit changes.
 - Stop on the first failed command and report its command, exit code, and relevant output.
+- Keep every candidate, snapshot, gamedata, and config path constrained to the resolved `GAMEVER`; never fan out
+  to historical or neighboring versions.
 - Never run downstream validation directly from `bin` or fall back to a tracked head snapshot.
 - Never rebuild or reserialize a candidate after downstream validation begins.
 - Never run the after-validation phase without explicit success from `/post-change-validation` for the same
