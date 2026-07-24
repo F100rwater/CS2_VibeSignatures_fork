@@ -12662,6 +12662,9 @@ files:
     func_sig: 55 48 89 E5 41 56 41 55 4C 8D B7 ?? ?? ?? ?? 41 54 49 89 F4
     func_size: '0x6c'
     func_va: '0x2a4f70'
+    vfunc_index: 21
+    vfunc_offset: '0xa8'
+    vtable_name: CNetworkMessages
   networksystem/CNetworkMessages_GetNetworkSerializationContextData.windows.yaml:
     func_name: CNetworkMessages_GetNetworkSerializationContextData
     func_rva: '0xd6390'
