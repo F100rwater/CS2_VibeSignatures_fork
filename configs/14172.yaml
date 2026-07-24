@@ -3221,6 +3221,26 @@ modules:
       - name: find-CSource2Client_vtable
         expected_output:
           - CSource2Client_vtable.{platform}.yaml
+      - name: find-CSource2Client_Connect
+        expected_output:
+          - CSource2Client_Connect.{platform}.yaml
+        expected_input:
+          - CSource2Client_vtable.{platform}.yaml
+      - name: find-CSource2Client_Connect-decompiles
+        expected_output:
+          - g_pEngineClient.{platform}.yaml
+        expected_input:
+          - CSource2Client_Connect.{platform}.yaml
+      - name: find-CBasePlayerController_CheckForLocalPlayer
+        expected_output:
+          - CBasePlayerController_CheckForLocalPlayer.{platform}.yaml
+        expected_input:
+          - g_pEngineClient.{platform}.yaml
+      - name: find-CBasePlayerController_CheckForLocalPlayer-decompiles
+        expected_output:
+          - s_pLocalPlayer.{platform}.yaml
+        expected_input:
+          - CBasePlayerController_CheckForLocalPlayer.{platform}.yaml
       - name: find-CSource2Client_OnDisconnect
         expected_output:
           - CSource2Client_OnDisconnect.{platform}.yaml
@@ -3837,6 +3857,18 @@ modules:
           - IGameSystem::OnClientPreRenderAlt
       - name: CSource2Client_vtable
         category: vtable
+      - name: CSource2Client_Connect
+        category: vfunc
+        alias:
+          - CSource2Client::Connect
+      - name: g_pEngineClient
+        category: gv
+      - name: CBasePlayerController_CheckForLocalPlayer
+        category: func
+        alias:
+          - CBasePlayerController::CheckForLocalPlayer
+      - name: s_pLocalPlayer
+        category: gv
       - name: CSource2Client_OnDisconnect
         category: vfunc
         alias:

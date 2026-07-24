@@ -1,7 +1,7 @@
 analysis_output_contract_version: 1
 config_digest_version: 2
-config_sha256: sha256:1383dab63dbfee628c6525778110b02c7b1c5bb2b96bae4f06ebe533294c9cf6
-file_count: 2942
+config_sha256: sha256:0edba51e09cf17997f31ee0e19ef7c28dce47e0759243cf2b1f66ac33f965f79
+file_count: 2950
 files:
   SDL3/SDL_GetMouse.windows.yaml:
     func_name: SDL_GetMouse
@@ -138,6 +138,18 @@ files:
     func_sig: 40 53 48 83 EC ?? 83 BA ?? ?? ?? ?? ?? 48 8B DA 7D ?? 48 8D 0D ?? ?? ?? ?? FF 15 ?? ?? ?? ?? 48 83 C4 ??
     func_size: '0x85'
     func_va: '0x180b28d30'
+  client/CBasePlayerController_CheckForLocalPlayer.linux.yaml:
+    func_name: CBasePlayerController_CheckForLocalPlayer
+    func_rva: '0x15f0280'
+    func_sig: 55 48 89 E5 41 54 49 89 FC 53 89 F3 48 83 EC ?? 83 FE ??
+    func_size: '0xfd'
+    func_va: '0x15f0280'
+  client/CBasePlayerController_CheckForLocalPlayer.windows.yaml:
+    func_name: CBasePlayerController_CheckForLocalPlayer
+    func_rva: '0x8f0b70'
+    func_sig: 40 55 53 57 41 56 41 57 48 8B EC 48 81 EC ?? ?? ?? ??
+    func_size: '0x26d'
+    func_va: '0x1808f0b70'
   client/CEntityInstance_PreDataUpdate.linux.yaml:
     func_name: CEntityInstance_PreDataUpdate
     vfunc_index: 19
@@ -1346,6 +1358,24 @@ files:
     vtable_size: '0x100'
     vtable_symbol: ??_7CSkeletonInstance@@6B@
     vtable_va: '0x181ae0828'
+  client/CSource2Client_Connect.linux.yaml:
+    func_name: CSource2Client_Connect
+    func_rva: '0x1895490'
+    func_sig: 55 48 89 E5 41 57 41 56 4C 8D BD ?? ?? ?? ?? 41 55 4C 8D AD ?? ?? ?? ?? 41 54 49 89 FC
+    func_size: '0x720'
+    func_va: '0x1895490'
+    vfunc_index: 0
+    vfunc_offset: '0x0'
+    vtable_name: CSource2Client_vtable
+  client/CSource2Client_Connect.windows.yaml:
+    func_name: CSource2Client_Connect
+    func_rva: '0xb086f0'
+    func_sig: 40 53 56 57 48 81 EC ?? ?? ?? ?? 48 8B DA
+    func_size: '0x66c'
+    func_va: '0x180b086f0'
+    vfunc_index: 0
+    vfunc_offset: '0x0'
+    vtable_name: CSource2Client_vtable
   client/CSource2Client_OnDisconnect.linux.yaml:
     func_name: CSource2Client_OnDisconnect
     func_rva: '0x18996e0'
@@ -3265,6 +3295,24 @@ files:
     gv_name: g_pEconItemToolModel
     gv_rva: '0x25c9380'
     gv_va: '0x1825c9380'
+  client/g_pEngineClient.linux.yaml:
+    gv_inst_disp: 3
+    gv_inst_length: 7
+    gv_inst_offset: 0
+    gv_name: g_pEngineClient
+    gv_rva: '0x47f9b38'
+    gv_sig: 48 89 05 ?? ?? ?? ?? 48 85 C0 0F 84 ?? ?? ?? ?? 48 8D 05 ?? ?? ?? ??
+    gv_sig_va: '0x1895543'
+    gv_va: '0x47f9b38'
+  client/g_pEngineClient.windows.yaml:
+    gv_inst_disp: 3
+    gv_inst_length: 7
+    gv_inst_offset: 0
+    gv_name: g_pEngineClient
+    gv_rva: '0x23a07f8'
+    gv_sig: 48 89 05 ?? ?? ?? ?? 48 85 C0 0F 84 ?? ?? ?? ?? 48 8B 05 ?? ?? ?? ??
+    gv_sig_va: '0x180b0878f'
+    gv_va: '0x1823a07f8'
   client/g_pEngineServiceMgr.linux.yaml:
     gv_name: g_pEngineServiceMgr
     gv_rva: '0x48add78'
@@ -4053,6 +4101,24 @@ files:
     gv_name: g_pWorldRendererMgr
     gv_rva: '0x25c9548'
     gv_va: '0x1825c9548'
+  client/s_pLocalPlayer.linux.yaml:
+    gv_inst_disp: 3
+    gv_inst_length: 7
+    gv_inst_offset: 0
+    gv_name: s_pLocalPlayer
+    gv_rva: '0x47cc9b8'
+    gv_sig: 4C 89 25 ?? ?? ?? ?? E8 ?? ?? ?? ?? 48 8B 45 ??
+    gv_sig_va: '0x15f0306'
+    gv_va: '0x47cc9b8'
+  client/s_pLocalPlayer.windows.yaml:
+    gv_inst_disp: 3
+    gv_inst_length: 7
+    gv_inst_offset: 0
+    gv_name: s_pLocalPlayer
+    gv_rva: '0x237fb70'
+    gv_sig: 48 8D 0D ?? ?? ?? ?? 33 F6 4C 89 34 F9
+    gv_sig_va: '0x1808f0bf7'
+    gv_va: '0x18237fb70'
   engine/CDelayedCall2_CServerSideClientBase_ProcessBaselineAckCall_vtable.linux.yaml:
     vtable_class: CDelayedCall2_CServerSideClientBase_ProcessBaselineAckCall
     vtable_entries:
