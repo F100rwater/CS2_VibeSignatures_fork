@@ -1,7 +1,7 @@
 analysis_output_contract_version: 1
 config_digest_version: 2
-config_sha256: sha256:0edba51e09cf17997f31ee0e19ef7c28dce47e0759243cf2b1f66ac33f965f79
-file_count: 2950
+config_sha256: sha256:4fed0a7b1420b7413ba0b01dbab6ca7656876f9eef3688d17debefc7650177da
+file_count: 2954
 files:
   SDL3/SDL_GetMouse.windows.yaml:
     func_name: SDL_GetMouse
@@ -36428,6 +36428,24 @@ files:
     func_sig: 40 55 56 41 54 48 83 EC ?? 41 0F B6 C1
     func_size: '0x28a'
     func_va: '0x180a18d30'
+  server/g_EntitySystem.linux.yaml:
+    gv_inst_disp: 3
+    gv_inst_length: 7
+    gv_inst_offset: 0
+    gv_name: g_EntitySystem
+    gv_rva: '0x2678a68'
+    gv_sig: 48 89 1D ?? ?? ?? ?? 48 89 05 ?? ?? ?? ?? 4D 8B 26
+    gv_sig_va: '0x212f976'
+    gv_va: '0x2678a68'
+  server/g_EntitySystem.windows.yaml:
+    gv_inst_disp: 3
+    gv_inst_length: 7
+    gv_inst_offset: 0
+    gv_name: g_EntitySystem
+    gv_rva: '0x1e3f308'
+    gv_sig: 48 89 1D ?? ?? ?? ?? 48 85 DB 49 0F 44 C7
+    gv_sig_va: '0x181223336'
+    gv_va: '0x181e3f308'
   server/g_GameTraceManager.linux.yaml:
     gv_inst_disp: 3
     gv_inst_length: 7
@@ -36608,6 +36626,24 @@ files:
     gv_name: g_pEngineServiceMgr
     gv_rva: '0x219ece8'
     gv_va: '0x18219ece8'
+  server/g_pEntityList.linux.yaml:
+    gv_inst_disp: 3
+    gv_inst_length: 7
+    gv_inst_offset: 0
+    gv_name: g_pEntityList
+    gv_rva: '0x2678a60'
+    gv_sig: 48 89 05 ?? ?? ?? ?? 4D 8B 26
+    gv_sig_va: '0x212f97d'
+    gv_va: '0x2678a60'
+  server/g_pEntityList.windows.yaml:
+    gv_inst_disp: 3
+    gv_inst_length: 7
+    gv_inst_offset: 0
+    gv_name: g_pEntityList
+    gv_rva: '0x1d9ad08'
+    gv_sig: 48 89 05 ?? ?? ?? ?? 48 85 FF 74 ??
+    gv_sig_va: '0x181223344'
+    gv_va: '0x181d9ad08'
   server/g_pEntitySystem.linux.yaml:
     gv_inst_disp: 3
     gv_inst_length: 7

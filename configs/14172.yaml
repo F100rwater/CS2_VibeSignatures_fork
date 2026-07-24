@@ -6413,6 +6413,8 @@ modules:
         expected_output:
           - INetworkMessages_SetNetworkSerializationContextData.{platform}.yaml
           - IFlattenedSerializers_CreateFieldChangedEventQueue.{platform}.yaml
+          - g_EntitySystem.{platform}.yaml
+          - g_pEntityList.{platform}.yaml
           - CEntitySystem_m_sEntSystemName.{platform}.yaml
           - CEntitySystem_m_eNetworkSerializationMode.{platform}.yaml
           - CEntitySystem_m_Symbols.{platform}.yaml
@@ -9480,6 +9482,10 @@ modules:
       - name: CEntitySystem_CreateEntitySystem
         category: func
       - name: g_pEntitySystem
+        category: gv
+      - name: g_EntitySystem
+        category: gv
+      - name: g_pEntityList
         category: gv
       - name: CEntitySystem_Init
         category: func
