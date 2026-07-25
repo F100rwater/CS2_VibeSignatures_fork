@@ -1,7 +1,7 @@
 analysis_output_contract_version: 1
 config_digest_version: 2
-config_sha256: sha256:4fed0a7b1420b7413ba0b01dbab6ca7656876f9eef3688d17debefc7650177da
-file_count: 2954
+config_sha256: sha256:90c1ea7d3f6f6d589f7121dba18c758dc921e2b6c91378b6a12ca55c8981dc99
+file_count: 2970
 files:
   SDL3/SDL_GetMouse.windows.yaml:
     func_name: SDL_GetMouse
@@ -4921,6 +4921,24 @@ files:
     vfunc_index: 40
     vfunc_offset: '0x140'
     vtable_name: CEngineServer_vtable
+  engine/CEngineServer_GetServerGlobals.linux.yaml:
+    func_name: CEngineServer_GetServerGlobals
+    func_rva: '0x515840'
+    func_sig: 48 8D 05 ?? ?? ?? ?? 55 48 89 E5 48 8B 38 E8 ?? ?? ?? ?? 5D 48 85 C0
+    func_size: '0x20'
+    func_va: '0x515840'
+    vfunc_index: 75
+    vfunc_offset: '0x258'
+    vtable_name: CEngineServer
+  engine/CEngineServer_GetServerGlobals.windows.yaml:
+    func_name: CEngineServer_GetServerGlobals
+    func_rva: '0xa11f0'
+    func_sig: 48 8B 15 ?? ?? ?? ?? 33 C0
+    func_size: '0x17'
+    func_va: '0x1800a11f0'
+    vfunc_index: 75
+    vfunc_offset: '0x258'
+    vtable_name: CEngineServer
   engine/CEngineServer_GetSteamUniverse.linux.yaml:
     func_name: CEngineServer_GetSteamUniverse
     func_rva: '0x516b50'
@@ -4953,6 +4971,22 @@ files:
     func_va: '0x18009fed0'
     vfunc_index: 34
     vfunc_offset: '0x110'
+    vtable_name: CEngineServer
+  engine/CEngineServer_IsLogEnabled.linux.yaml:
+    func_name: CEngineServer_IsLogEnabled
+    func_rva: '0x5155b0'
+    func_size: '0xc'
+    func_va: '0x5155b0'
+    vfunc_index: 55
+    vfunc_offset: '0x1b8'
+    vtable_name: CEngineServer
+  engine/CEngineServer_IsLogEnabled.windows.yaml:
+    func_name: CEngineServer_IsLogEnabled
+    func_rva: '0xa04e0'
+    func_size: '0x8'
+    func_va: '0x1800a04e0'
+    vfunc_index: 55
+    vfunc_offset: '0x1b8'
     vtable_name: CEngineServer
   engine/CEngineServer_IsMapValid.linux.yaml:
     func_name: CEngineServer_IsMapValid
@@ -36094,6 +36128,18 @@ files:
     vfunc_offset: '0xa0'
     vfunc_sig: FF 90 A0 00 00 00 48 8B 0D ?? ?? ?? ?? 48 8D 15 ?? ?? ?? ??
     vtable_name: INetworkMessages
+  server/IVEngineServer2_GetServerGlobals.linux.yaml:
+    func_name: IVEngineServer2_GetServerGlobals
+    vfunc_index: 75
+    vfunc_offset: '0x258'
+    vfunc_sig: FF 90 58 02 00 00 48 85 C0
+    vtable_name: IVEngineServer2
+  server/IVEngineServer2_GetServerGlobals.windows.yaml:
+    func_name: IVEngineServer2_GetServerGlobals
+    vfunc_index: 75
+    vfunc_offset: '0x258'
+    vfunc_sig: FF 90 58 02 00 00 48 85 C0
+    vtable_name: IVEngineServer2
   server/IVEngineServer2_IsDedicatedServer.linux.yaml:
     func_name: IVEngineServer2_IsDedicatedServer
     vfunc_index: 34
@@ -36105,6 +36151,18 @@ files:
     vfunc_index: 34
     vfunc_offset: '0x110'
     vfunc_sig: FF 90 10 01 00 00 BA ?? ?? ?? ??
+    vtable_name: IVEngineServer2
+  server/IVEngineServer2_IsLogEnabled.linux.yaml:
+    func_name: IVEngineServer2_IsLogEnabled
+    vfunc_index: 55
+    vfunc_offset: '0x1b8'
+    vfunc_sig: FF 90 B8 01 00 00 48 8B 1D ?? ?? ?? ??
+    vtable_name: IVEngineServer2
+  server/IVEngineServer2_IsLogEnabled.windows.yaml:
+    func_name: IVEngineServer2_IsLogEnabled
+    vfunc_index: 55
+    vfunc_offset: '0x1b8'
+    vfunc_sig: FF 90 B8 01 00 00 48 8B 35 ?? ?? ?? ??
     vtable_name: IVEngineServer2
   server/IVEngineServer2_ServerCommand.linux.yaml:
     func_name: IVEngineServer2_ServerCommand
@@ -36470,6 +36528,44 @@ files:
     gv_sig: 48 8B 0D ?? ?? ?? ?? 4D 8B C6 88 44 24 ??
     gv_sig_va: '0x180b65c66'
     gv_va: '0x181c4ccd0'
+  server/g_engine.linux.yaml:
+    gv_inst_disp: 3
+    gv_inst_length: 7
+    gv_inst_offset: 0
+    gv_name: g_engine
+    gv_rva: '0x2868848'
+    gv_sig: 48 89 05 ?? ?? ?? ?? 48 85 C0 0F 84 ?? ?? ?? ?? 48 8B 00
+    gv_sig_va: '0x18d26a7'
+    gv_va: '0x2868848'
+  server/g_engine.windows.yaml:
+    gv_inst_disp: 3
+    gv_inst_length: 7
+    gv_inst_offset: 0
+    gv_name: g_engine
+    gv_rva: '0x1fdfc78'
+    gv_sig: 48 89 05 ?? ?? ?? ?? 48 8B C8 48 85 C0
+    gv_sig_va: '0x180d1418a'
+    gv_va: '0x181fdfc78'
+  server/g_networkstringtable.linux.yaml:
+    gv_inst_disp: 3
+    gv_inst_length: 7
+    gv_inst_offset: 0
+    gv_name: g_networkstringtable
+    gv_rva: '0x2868838'
+    gv_sig: 48 89 05 ?? ?? ?? ?? 48 85 C0 0F 84 ?? ?? ?? ?? 48 8D 3D ?? ?? ?? ?? 31 F6 FF D3 48 89 05 ?? ?? ?? ?? 48 85 C0 0F 84 ?? ?? ?? ?? 48 8D 3D ?? ?? ?? ?? 31 F6 FF D3 48 8D 15 ?? ?? ?? ?? 48 89 02 48 85 C0 0F 84 ?? ?? ?? ?? 48 8D 3D ?? ?? ?? ??
+    gv_sig_allow_across_function_boundary: true
+    gv_sig_va: '0x18d2706'
+    gv_va: '0x2868838'
+  server/g_networkstringtable.windows.yaml:
+    gv_inst_disp: 3
+    gv_inst_length: 7
+    gv_inst_offset: 0
+    gv_name: g_networkstringtable
+    gv_rva: '0x1fdfa80'
+    gv_sig: 48 89 05 ?? ?? ?? ?? 48 85 C0 75 ?? 8B 0D ?? ?? ?? ?? BA ?? ?? ?? ?? FF 15 ?? ?? ?? ?? 84 C0 0F 84 ?? ?? ?? ?? 4C 8D 05 ?? ?? ?? ?? E9 ?? ?? ?? ?? 33 D2 48 8D 0D ?? ?? ?? ?? FF D3 48 89 05 ?? ?? ?? ?? 48 85 C0 75 ?? 8B 0D ?? ?? ?? ?? BA ?? ?? ?? ?? FF 15 ?? ?? ?? ?? 84 C0 0F 84 ?? ?? ?? ?? 4C 8D 05 ?? ?? ?? ?? E9 ?? ?? ?? ?? 33 D2 48 8D 0D ?? ?? ?? ?? FF D3 48 89 05 ?? ?? ?? ?? 48 85 C0 75 ?? 8B 0D ?? ?? ?? ?? BA ?? ?? ?? ?? FF 15 ?? ?? ?? ?? 84 C0 0F 84 ?? ?? ?? ?? 4C 8D 05 ?? ?? ?? ?? E9 ?? ?? ?? ?? 33 D2 48 8D 0D ?? ?? ?? ?? FF D3 48 89 05 ?? ?? ?? ?? 48 85 C0 75 ?? 8B 0D ?? ?? ?? ?? BA ?? ?? ?? ?? FF 15 ?? ?? ?? ?? 84 C0 0F 84 ?? ?? ?? ?? 4C 8D 05 ?? ?? ?? ?? E9 ?? ?? ?? ?? 33 D2 48 8D 0D ?? ?? ?? ?? FF D3 48 89 05 ?? ?? ?? ?? 48 85 C0 75 ?? 8B 0D ?? ?? ?? ?? BA ?? ?? ?? ?? FF 15 ?? ?? ?? ?? 84 C0 0F 84 ?? ?? ?? ?? 4C 8D 05 ?? ?? ?? ?? E9 ?? ?? ?? ?? 33 D2 48 8D 0D ?? ?? ?? ?? FF D3 48 89 05 ?? ?? ?? ?? 48 85 C0 75 ?? 8B 0D ?? ?? ?? ?? BA ?? ?? ?? ?? FF 15 ?? ?? ?? ?? 84 C0 0F 84 ?? ?? ?? ?? 4C 8D 05 ?? ?? ?? ?? E9 ?? ?? ?? ?? 33 D2 48 8D 0D ?? ?? ?? ?? FF D3 48 89 05 ?? ?? ?? ?? 48 85 C0 75 ?? 8B 0D ?? ?? ?? ?? BA ?? ?? ?? ?? FF 15 ?? ?? ?? ?? 84 C0 0F 84 ?? ?? ?? ?? 4C 8D 05 ?? ?? ?? ?? E9 ?? ?? ?? ?? 33 D2
+    gv_sig_allow_across_function_boundary: true
+    gv_sig_va: '0x180d14227'
+    gv_va: '0x181fdfa80'
   server/g_pAVI.linux.yaml:
     gv_name: g_pAVI
     gv_rva: '0x28baf70'
@@ -36624,6 +36720,24 @@ files:
     gv_name: g_pEconItemToolModel
     gv_rva: '0x219ea30'
     gv_va: '0x18219ea30'
+  server/g_pEngineServer.linux.yaml:
+    gv_inst_disp: 3
+    gv_inst_length: 7
+    gv_inst_offset: 0
+    gv_name: g_pEngineServer
+    gv_rva: '0x28bad98'
+    gv_sig: 48 8D 05 ?? ?? ?? ?? 48 8D 15 ?? ?? ?? ?? 48 8B 00 48 89 02
+    gv_sig_va: '0x18d26d0'
+    gv_va: '0x28bad98'
+  server/g_pEngineServer.windows.yaml:
+    gv_inst_disp: 3
+    gv_inst_length: 7
+    gv_inst_offset: 0
+    gv_name: g_pEngineServer
+    gv_rva: '0x219ecc8'
+    gv_sig: 48 8B 05 ?? ?? ?? ?? 48 89 05 ?? ?? ?? ?? 48 85 C0
+    gv_sig_va: '0x180d141d7'
+    gv_va: '0x18219ecc8'
   server/g_pEngineServiceMgr.linux.yaml:
     gv_name: g_pEngineServiceMgr
     gv_rva: '0x28bae38'
@@ -36776,8 +36890,8 @@ files:
     gv_inst_offset: 0
     gv_name: g_pGameTypes
     gv_rva: '0x27e4d70'
-    gv_sig: 48 8D 05 ?? ?? ?? ?? 4C 8D A5 ?? ?? ?? ?? 48 8D 95 ?? ?? ?? ??
-    gv_sig_va: '0xb03b50'
+    gv_sig: 48 8D 15 ?? ?? ?? ?? 48 89 02 48 85 C0 0F 84 ?? ?? ?? ?? 48 8D 05 ?? ?? ?? ??
+    gv_sig_va: '0x18d2837'
     gv_va: '0x27e4d70'
   server/g_pGameTypes.windows.yaml:
     gv_inst_disp: 3
@@ -36785,8 +36899,8 @@ files:
     gv_inst_offset: 0
     gv_name: g_pGameTypes
     gv_rva: '0x1f676c8'
-    gv_sig: 48 8B 0D ?? ?? ?? ?? 4C 8D 44 24 ?? 48 8D 15 ?? ?? ?? ?? 48 8B 01 FF 90 ?? ?? ?? ?? 48 8D 15 ?? ?? ?? ??
-    gv_sig_va: '0x1801f02ac'
+    gv_sig: 48 89 05 ?? ?? ?? ?? 48 85 C0 75 ?? 8B 0D ?? ?? ?? ?? BA ?? ?? ?? ?? FF 15 ?? ?? ?? ?? 84 C0 74 ?? 4C 8D 05 ?? ?? ?? ??
+    gv_sig_va: '0x180d14486'
     gv_va: '0x181f676c8'
   server/g_pGameUIService.linux.yaml:
     gv_name: g_pGameUIService
@@ -37304,6 +37418,24 @@ files:
     gv_name: g_pSource2ClientUI
     gv_rva: '0x219ec88'
     gv_va: '0x18219ec88'
+  server/g_pSource2Engine.linux.yaml:
+    gv_inst_disp: 3
+    gv_inst_length: 7
+    gv_inst_offset: 0
+    gv_name: g_pSource2Engine
+    gv_rva: '0x28bae70'
+    gv_sig: 48 8D 15 ?? ?? ?? ?? 48 8B 00 48 89 02
+    gv_sig_va: '0x18d26d7'
+    gv_va: '0x28bae70'
+  server/g_pSource2Engine.windows.yaml:
+    gv_inst_disp: 3
+    gv_inst_length: 7
+    gv_inst_offset: 0
+    gv_name: g_pSource2Engine
+    gv_rva: '0x219ec90'
+    gv_sig: 48 89 05 ?? ?? ?? ?? 48 85 C0 75 ?? 8B 0D ?? ?? ?? ?? BA ?? ?? ?? ?? FF 15 ?? ?? ?? ?? 84 C0 0F 84 ?? ?? ?? ?? 4C 8D 05 ?? ?? ?? ?? E9 ?? ?? ?? ?? 48 8D 0D ?? ?? ?? ??
+    gv_sig_va: '0x180d141de'
+    gv_va: '0x18219ec90'
   server/g_pSource2EngineToClient.linux.yaml:
     gv_name: g_pSource2EngineToClient
     gv_rva: '0x28bada0'

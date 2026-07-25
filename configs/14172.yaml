@@ -2392,6 +2392,14 @@ modules:
         category: vfunc
         alias:
           - CEngineServer::IsDedicatedServer
+      - name: CEngineServer_GetServerGlobals
+        category: vfunc
+        alias:
+          - CEngineServer::GetServerGlobals
+      - name: CEngineServer_IsLogEnabled
+        category: vfunc
+        alias:
+          - CEngineServer::IsLogEnabled
       - name: CEngineServer_ServerCommand
         category: vfunc
         alias:
@@ -5044,6 +5052,16 @@ modules:
           - CSource2Server_Connect.{platform}.yaml
         expected_input:
           - CSource2Server_vtable.{platform}.yaml
+      - name: find-CSource2Server_Connect-decompiles
+        expected_output:
+          - IVEngineServer2_GetServerGlobals.{platform}.yaml
+          - g_engine.{platform}.yaml
+          - g_pEngineServer.{platform}.yaml
+          - g_pSource2Engine.{platform}.yaml
+          - g_networkstringtable.{platform}.yaml
+          - g_pGameTypes.{platform}.yaml
+        expected_input:
+          - CSource2Server_Connect.{platform}.yaml
       - name: find-IAppSystem_Connect
         expected_output:
           - IAppSystem_Connect.{platform}.yaml
@@ -5108,9 +5126,11 @@ modules:
         expected_output:
           - IGameSystem_OnServerPreEntityThink.{platform}.yaml
           - IGameSystem_OnServerPostEntityThink.{platform}.yaml
+          - IVEngineServer2_IsLogEnabled.{platform}.yaml
         expected_input:
           - CSource2Server_GameFrame.{platform}.yaml
           - IGameSystem_vtable.{platform}.yaml
+          - g_engine.{platform}.yaml
       - name: find-CSource2Server_Init-decompiles
         expected_output:
           - CGameEventManager_Init.{platform}.yaml
@@ -6144,7 +6164,6 @@ modules:
           - CDedicatedServerWorkshopManager_SwitchToWorkshopMapGroup.{platform}.yaml
       - name: find-CDedicatedServerWorkshopManager_SwitchToWorkshopMapGroup-decompiles
         expected_output:
-          - g_pGameTypes.{platform}.yaml
           - IGameTypes_CreateWorkshopMapGroup.{platform}.yaml
         expected_input:
           - CDedicatedServerWorkshopManager_SwitchToWorkshopMapGroup.{platform}.yaml
@@ -8103,6 +8122,14 @@ modules:
         category: vfunc
         alias:
           - IVEngineServer2::IsDedicatedServer
+      - name: IVEngineServer2_GetServerGlobals
+        category: vfunc
+        alias:
+          - IVEngineServer2::GetServerGlobals
+      - name: IVEngineServer2_IsLogEnabled
+        category: vfunc
+        alias:
+          - IVEngineServer2::IsLogEnabled
       - name: CSource2Server_Shutdown
         category: vfunc
         alias:
@@ -9277,6 +9304,14 @@ modules:
           - CDedicatedServerWorkshopManager::SwitchToWorkshopMapGroup
       - name: g_pGameTypes
         category: gv
+      - name: g_engine
+        category: gv
+      - name: g_pEngineServer
+        category: gv
+      - name: g_pSource2Engine
+        category: gv
+      - name: g_networkstringtable
+        category: gv
       - name: IGameTypes_CreateWorkshopMapGroup
         category: vfunc
         alias:
@@ -10246,6 +10281,18 @@ modules:
         expected_input:
           - CEngineServer_vtable.{platform}.yaml
           - ../server/IVEngineServer2_IsDedicatedServer.{platform}.yaml
+      - name: find-CEngineServer_GetServerGlobals
+        expected_output:
+          - CEngineServer_GetServerGlobals.{platform}.yaml
+        expected_input:
+          - CEngineServer_vtable.{platform}.yaml
+          - ../server/IVEngineServer2_GetServerGlobals.{platform}.yaml
+      - name: find-CEngineServer_IsLogEnabled
+        expected_output:
+          - CEngineServer_IsLogEnabled.{platform}.yaml
+        expected_input:
+          - CEngineServer_vtable.{platform}.yaml
+          - ../server/IVEngineServer2_IsLogEnabled.{platform}.yaml
       - name: find-CEngineServer_ServerCommand
         expected_output:
           - CEngineServer_ServerCommand.{platform}.yaml

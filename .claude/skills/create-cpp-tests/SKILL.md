@@ -145,11 +145,12 @@ Notes:
 
 Run the repository update and validation skills in this exact order:
 
-1. **ALWAYS** Use SKILL `/post-change-update` with `phase=before-validation` and
-   `gamever=<gamever>` from `.env` -> `CS2VIBE_GAMEVER`.
-2. **ALWAYS** Use SKILL `/post-change-validation` with the same `gamever`.
-3. Only after validation succeeds, **ALWAYS** Use SKILL `/post-change-update` with
-   `phase=after-validation` and the same `gamever`.
+1. **ALWAYS** Use SKILL `/prepare-post-change-candidate` with
+   `gamever=<gamever>` from `.env` -> `CS2VIBE_GAMEVER`. Retain its candidate, candidate session, and gamedata
+   session paths.
+2. **ALWAYS** Use SKILL `/post-change-validation` with the same `gamever`, candidate, and candidate session.
+3. Only after validation succeeds, **ALWAYS** Use SKILL `/publish-post-change-candidate` with the same `gamever`,
+   candidate, candidate session, and gamedata session.
 
 `/post-change-validation` runs `run_cpp_tests.py` and requires real runnable tests. Expected success includes
 compilation plus a clean vtable/record-layout comparison.
@@ -174,9 +175,9 @@ Never use `git add -A` and never enter this step unless all three post-change ga
 
 - [ ] New cpp test follows the platform/RESTRICT preamble and calls a virtual method
 - [ ] `configs/<GAMEVER>.yaml` entry contains the correct symbol, aliases, header, and reference modules
-- [ ] `/post-change-update phase=before-validation` succeeds for the selected game version
+- [ ] `/prepare-post-change-candidate` succeeds for the selected game version
 - [ ] `/post-change-validation` succeeds for the same game version
-- [ ] `/post-change-update phase=after-validation` packs `gamesymbols/<gamever>.yaml`
+- [ ] `/publish-post-change-candidate` publishes `gamesymbols/<gamever>.yaml`
 - [ ] All task-related files are explicitly staged and committed on `dev`
 
 ## Reference: Existing Examples

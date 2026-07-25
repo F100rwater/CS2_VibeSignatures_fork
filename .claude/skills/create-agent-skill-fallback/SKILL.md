@@ -151,10 +151,11 @@ ground-truth-only review.
 
 After the end-to-end fallback test has produced and verified its YAMLs, run these skills in order:
 
-1. **ALWAYS** Use SKILL `/post-change-update` with `phase=before-validation` and the tested `gamever`.
-2. **ALWAYS** Use SKILL `/post-change-validation` with the same `gamever`.
-3. Only after validation succeeds, **ALWAYS** Use SKILL `/post-change-update` with
-   `phase=after-validation` and the same `gamever`.
+1. **ALWAYS** Use SKILL `/prepare-post-change-candidate` with the tested `gamever`. Retain its candidate, candidate
+   session, and gamedata session paths.
+2. **ALWAYS** Use SKILL `/post-change-validation` with the same `gamever`, candidate, and candidate session.
+3. Only after validation succeeds, **ALWAYS** Use SKILL `/publish-post-change-candidate` with the same `gamever`,
+   candidate, candidate session, and gamedata session.
 
 These calls replace direct formatting, gamedata update, C++ validation, and snapshot-pack commands. If any gate
 fails, stop the entire task and do not commit.
@@ -322,9 +323,9 @@ Written beside the binary, one per symbol: `<symbol>.windows.yaml` / `<symbol>.l
 - [ ] Real Agent-Skill-only test passed with `uv run ida_analyze_bin.py -gamever <gamever> -oldgamever none
       -modules=<module> -debug -skip_pp -skill=<skill_name>`; the log proves preprocessing was skipped, the
       Agent Skill actually started, all expected YAMLs were produced, and the summary reports `Failed: 0`.
-- [ ] `/post-change-update phase=before-validation` succeeds for the tested game version.
+- [ ] `/prepare-post-change-candidate` succeeds for the tested game version.
 - [ ] `/post-change-validation` succeeds for the same game version.
-- [ ] `/post-change-update phase=after-validation` packs `gamesymbols/<gamever>.yaml`.
+- [ ] `/publish-post-change-candidate` publishes `gamesymbols/<gamever>.yaml`.
 - [ ] New SKILL.md, gamedata, and snapshot staged explicitly and committed on `dev`; memory pointer recorded.
 
 ## Worked example — `find-CEntitySystem_Init-decompiles`
