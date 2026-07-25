@@ -4722,6 +4722,9 @@ modules:
           - CBaseModelEntity_Script_SetSkin.{platform}.yaml
         expected_input:
           - CBaseModelEntity_GetScriptDescInternal.{platform}.yaml
+      - name: find-ScriptBinding_CBaseModelEntity_SetModel
+        expected_output:
+          - ScriptBinding_CBaseModelEntity_SetModel.{platform}.yaml
       - name: find-CEntityInstance_NetworkUpdateState_thunk
         expected_output:
           - CEntityInstance_NetworkUpdateState_thunk.{platform}.yaml
@@ -7689,6 +7692,10 @@ modules:
         category: func
         alias:
           - CBaseModelEntity::ScriptSetModel
+      - name: ScriptBinding_CBaseModelEntity_SetModel
+        category: func
+        alias:
+          - CS_Script_SetModel
       - name: CBaseModelEntity_ScriptGetRenderAlpha
         category: func
         alias:
