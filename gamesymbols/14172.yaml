@@ -1,7 +1,7 @@
 analysis_output_contract_version: 1
 config_digest_version: 2
-config_sha256: sha256:90c1ea7d3f6f6d589f7121dba18c758dc921e2b6c91378b6a12ca55c8981dc99
-file_count: 2970
+config_sha256: sha256:c59219f1c746af7115fb59fd3e9fc3ff2adaec68251e0760597ddbfc88ae6ed2
+file_count: 2972
 files:
   SDL3/SDL_GetMouse.windows.yaml:
     func_name: SDL_GetMouse
@@ -36296,6 +36296,18 @@ files:
     func_sig: 40 53 48 83 EC ?? 48 8B 1D ?? ?? ?? ?? 48 85 DB 74 ?? 0F 1F 40 ?? 66 66 0F 1F 84 00 ?? ?? 00 00 48 8B 0D ?? ?? ?? ?? 48 8B D3
     func_size: '0x41'
     func_va: '0x1809772f0'
+  server/ScriptBinding_CBaseModelEntity_SetModel.linux.yaml:
+    func_name: ScriptBinding_CBaseModelEntity_SetModel
+    func_rva: '0xb2c780'
+    func_sig: 55 BE ?? ?? ?? ?? 48 89 E5 41 57 41 56 41 55 41 54 53 48 89 FB 48 83 EC ?? 4C 8D 3D 18 89 ?? ??
+    func_size: '0x2bd'
+    func_va: '0xb2c780'
+  server/ScriptBinding_CBaseModelEntity_SetModel.windows.yaml:
+    func_name: ScriptBinding_CBaseModelEntity_SetModel
+    func_rva: '0x25cb70'
+    func_sig: 40 55 56 41 56 48 83 EC ?? 48 8B F1 BA ?? ?? ?? ?? 8B 0D 6D EB B4 ??
+    func_size: '0x2f5'
+    func_va: '0x18025cb70'
   server/ScriptBinding_CSPlayerPawn_DestroyWeapon.linux.yaml:
     func_name: ScriptBinding_CSPlayerPawn_DestroyWeapon
     func_rva: '0xb30730'

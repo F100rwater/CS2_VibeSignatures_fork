@@ -51,62 +51,80 @@ modules:
     symbols:
       - name: SDL_PreInitMouse
         category: func
+        platform: windows
       - name: SDL_QuitMouse
         category: func
+        platform: windows
       - name: SDL_GetMouse
         category: func
+        platform: windows
       - name: SDL_mouse_initialized
         category: gv
+        platform: windows
       - name: SDL_Mouse
         category: struct
       - name: SDL_Mouse_was_touch_mouse_events
         category: structmember
+        platform: windows
         struct: SDL_Mouse
         member: was_touch_mouse_events
       - name: SDL_Mouse_cursor_visible
         category: structmember
+        platform: windows
         struct: SDL_Mouse
         member: cursor_visible
       - name: SDL_MouseWarpEmulationChanged
         category: func
+        platform: windows
       - name: SDL_SetRelativeMouseMode
         category: func
+        platform: windows
       - name: SDL_Mouse_warp_emulation_active
         category: structmember
+        platform: windows
         struct: SDL_Mouse
         member: warp_emulation_active
       - name: SDL_Mouse_relative_mode
         category: structmember
+        platform: windows
         struct: SDL_Mouse
         member: relative_mode
       - name: SDL_Mouse_SetRelativeMouseMode
         category: structmember
+        platform: windows
         struct: SDL_Mouse
         member: SetRelativeMouseMode
       - name: SDL_PerformWarpMouseInWindow
         category: func
+        platform: windows
       - name: SDL_Mouse_focus
         category: structmember
+        platform: windows
         struct: SDL_Mouse
         member: focus
       - name: SDL_Mouse_last_x
         category: structmember
+        platform: windows
         struct: SDL_Mouse
         member: last_x
       - name: SDL_Mouse_last_y
         category: structmember
+        platform: windows
         struct: SDL_Mouse
         member: last_y
       - name: SDL_Mouse_has_position
         category: structmember
+        platform: windows
         struct: SDL_Mouse
         member: has_position
       - name: SDL_Mouse_relative_mode_warp_motion
         category: structmember
+        platform: windows
         struct: SDL_Mouse
         member: relative_mode_warp_motion
       - name: SDL_Mouse_WarpMouse
         category: structmember
+        platform: windows
         struct: SDL_Mouse
         member: WarpMouse
   - name: vphysics2
@@ -414,16 +432,22 @@ modules:
           - CNetworkSystem::SendNetworkStats
       - name: CNetworkMessages_GetNetworkGroupCount
         category: vfunc
+        source_alias:
+          - INetworkMessages_GetNetworkGroupCount
         alias:
           - CNetworkMessages::GetNetworkGroupCount
         shared: true
       - name: CNetworkMessages_GetNetworkGroupName
         category: vfunc
+        source_alias:
+          - INetworkMessages_GetNetworkGroupName
         alias:
           - CNetworkMessages::GetNetworkGroupName
         shared: true
       - name: CNetworkMessages_GetNetworkGroupColor
         category: vfunc
+        source_alias:
+          - INetworkMessages_GetNetworkGroupColor
         alias:
           - CNetworkMessages::GetNetworkGroupColor
         shared: true
@@ -1799,6 +1823,8 @@ modules:
         alias:
           - CServerSideClientBase::ClientPrintf
           - ClientPrintf
+      - name: CNetworkGameServer
+        category: struct
       - name: CNetworkGameServer_ClientList
         category: structmember
         struct: CNetworkGameServer
@@ -1817,6 +1843,7 @@ modules:
         category: vtable
       - name: CNetworkGameServerBase_ServerSimulateInternal
         category: func
+        platform: linux
         alias:
           - CNetworkGameServerBase::ServerSimulateInternal
       - name: CNetworkGameServerBase_ServerSimulate
@@ -1922,6 +1949,7 @@ modules:
           - CNetworkGameServerBase::Shutdown
       - name: CNetworkGameServerBase_ShutdownInternal
         category: func
+        platform: linux
         alias:
           - CNetworkGameServerBase::ShutdownInternal
       - name: CNetworkGameServer_ActivateServer
@@ -2018,6 +2046,7 @@ modules:
           - CNetChan::ParseMessagesDemo
       - name: CNetworkGameClient_ProcessPacketEntitiesInternal
         category: func
+        platform: windows
         alias:
           - CNetworkGameClient::ProcessPacketEntitiesInternal
       - name: CNetworkGameClient_ProcessPacketEntities
@@ -2058,6 +2087,7 @@ modules:
         shared: true
       - name: INetworkClientService_IsConnected
         category: vfunc
+        platform: windows
         alias:
           - INetworkClientService::IsConnected
         shared: true
@@ -2075,6 +2105,7 @@ modules:
           - CNetworkClientService::SplitScreenConnect
       - name: CNetworkClientService_SendNetMessage
         category: vfunc
+        platform: windows
         alias:
           - CNetworkClientService::SendNetMessage
       - name: CNetworkClientService_SendStringCmd
@@ -2099,6 +2130,7 @@ modules:
           - CNetworkClientService::OnStatus
       - name: CNetworkClientService_ServerCmd
         category: vfunc
+        platform: windows
         alias:
           - CNetworkClientService::ServerCmd
       - name: CNetworkClientService_GetDisconnectReason
@@ -2311,6 +2343,7 @@ modules:
         category: func
       - name: GetSteamUniverse
         category: func
+        platform: linux
       - name: CEngineServer_ShowFrameTimeReport
         category: vfunc
         alias:
@@ -2520,10 +2553,12 @@ modules:
           - CLoopTypeBase::AddDependentServices
       - name: CLoopTypeBase_GenerateServiceDependencies
         category: func
+        platform: windows
         alias:
           - CLoopTypeBase::GenerateServiceDependencies
       - name: CLoopTypeBase_GenerateSecondaryDependencies
         category: func
+        platform: windows
         alias:
           - CLoopTypeBase::GenerateSecondaryDependencies
       - name: CLoopTypeBase_LoadDependentServices
@@ -2638,6 +2673,7 @@ modules:
         category: vtable
       - name: CServerSideClientBase_MarkSpawnGroupLoadCompleted
         category: func
+        platform: windows
         alias:
           - CServerSideClientBase::MarkSpawnGroupLoadCompleted
       - name: CServerSideClientBase_ProcessSpawnGroup_LoadCompleted
@@ -2694,6 +2730,7 @@ modules:
         category: vtable
       - name: CNetworkGameClientBase_ServerCmd
         category: vfunc
+        platform: windows
         alias:
           - CNetworkGameClientBase::ServerCmd
       - name: CNetworkGameClientBase_ProcessSetConVar
@@ -3705,6 +3742,7 @@ modules:
           - ILoopMode::AddViewsToSceneSystem
       - name: CLoopModeGame_LoopInitInternal
         category: func
+        platform: linux
         alias:
           - CLoopModeGame::LoopInitInternal
       - name: CLoopModeGame_LoopInit
@@ -4019,12 +4057,14 @@ modules:
           - CSkeletonInstance::PostDataUpdate
       - name: CSkeletonInstance_m_modelState
         category: structmember
+        platform: windows
         struct: CSkeletonInstance
         member: m_modelState
         alias:
           - CSkeletonInstance::m_modelState
       - name: CSkeletonInstance_m_modelState_m_hModel
         category: structmember
+        platform: windows
         struct: CSkeletonInstance
         member: m_modelState.m_hModel
         alias:
@@ -4033,22 +4073,26 @@ modules:
         category: struct
       - name: CModelState_SetupJointState
         category: func
+        platform: windows
         alias:
           - CModelState::SetupJointState
       - name: CModelState_m_nTotalTransformCount
         category: structmember
+        platform: windows
         struct: CModelState
         member: m_nTotalTransformCount
         alias:
           - CModelState::m_nTotalTransformCount
       - name: CModelState_m_nBoneCount
         category: structmember
+        platform: windows
         struct: CModelState
         member: m_nBoneCount
         alias:
           - CModelState::m_nBoneCount
       - name: CModelState_m_nAttachmentCount
         category: structmember
+        platform: windows
         struct: CModelState
         member: m_nAttachmentCount
         alias:
@@ -4057,20 +4101,25 @@ modules:
         category: vtable
       - name: SendViolationReport
         category: func
+        platform: windows
       - name: IVEngineClient2_GetNetworkClient
         category: vfunc
+        platform: windows
         alias:
           - IVEngineClient2::GetNetworkClient
       - name: INetworkClient_GetLocalAddress
         category: vfunc
+        platform: windows
         alias:
           - INetworkClient::GetLocalAddress
       - name: INetworkClientService_IsConnected
         category: vfunc
+        platform: windows
         alias:
           - INetworkClientService::IsConnected
       - name: INetworkClientService_SendNetMessage
         category: vfunc
+        platform: windows
         alias:
           - INetworkClientService::SendNetMessage
       - name: ConnectInterfaces
@@ -4722,6 +4771,9 @@ modules:
           - CBaseModelEntity_Script_SetSkin.{platform}.yaml
         expected_input:
           - CBaseModelEntity_GetScriptDescInternal.{platform}.yaml
+      - name: find-ScriptBinding_CBaseModelEntity_SetModel
+        expected_output:
+          - ScriptBinding_CBaseModelEntity_SetModel.{platform}.yaml
       - name: find-CEntityInstance_NetworkUpdateState_thunk
         expected_output:
           - CEntityInstance_NetworkUpdateState_thunk.{platform}.yaml
@@ -7689,6 +7741,10 @@ modules:
         category: func
         alias:
           - CBaseModelEntity::ScriptSetModel
+      - name: ScriptBinding_CBaseModelEntity_SetModel
+        category: func
+        alias:
+          - CS_Script_SetModel
       - name: CBaseModelEntity_ScriptGetRenderAlpha
         category: func
         alias:
@@ -7982,10 +8038,6 @@ modules:
         category: vfunc
         alias:
           - CCSGameRules::PlayerSpawn
-      - name: CBasePlayerController_Respawn
-        category: vfunc
-        alias:
-          - CBasePlayerController::Respawn
       - name: CCSPlayerController_Respawn
         category: vfunc
         alias:
@@ -8004,10 +8056,12 @@ modules:
           - CCSPlayerPawnBase::OnSetDormant
       - name: CCSPlayerPawnBase_CheckForIdle
         category: vfunc
+        platform: windows
         alias:
           - CCSPlayerPawnBase::CheckForIdle
       - name: CCSPlayerPawnBase_CheckForIdleInternal
         category: func
+        platform: linux
         alias:
           - CCSPlayerPawnBase::CheckForIdleInternal
       - name: CCSPlayerPawn_PostThink
@@ -8176,6 +8230,7 @@ modules:
         category: func
       - name: FireBulletImpactEvent
         category: func
+        platform: linux
       - name: TraceAttack
         category: func
       - name: CTakeDamageInfo_HitGroupInfo
@@ -8361,6 +8416,8 @@ modules:
         category: vfunc
         alias:
           - CBaseEntity::FullEdictChanged
+      - name: CBaseEntity
+        category: struct
       - name: CBaseEntity_m_NetworkTransmitComponent
         category: structmember
         struct: CBaseEntity
@@ -8371,6 +8428,8 @@ modules:
         category: func
         alias:
           - CNetworkTransmitComponent::StateChanged
+      - name: CNetworkTransmitComponent
+        category: struct
       - name: CNetworkTransmitComponent_m_nStateFlags
         category: structmember
         struct: CNetworkTransmitComponent
@@ -8466,6 +8525,8 @@ modules:
           - CEntityKeyValues::Initialized
       - name: CEntitySystem_m_nEntityKeyValuesAllocatorRefCount
         category: structmember
+        struct: CEntitySystem
+        member: m_nEntityKeyValuesAllocatorRefCount
         alias:
           - CEntitySystem::m_nEntityKeyValuesAllocatorRefCount
       - name: CEntitySystem_AddRefKeyValues
@@ -8754,10 +8815,6 @@ modules:
         category: func
         alias:
           - CBaseEntity::Script_TakeDamage
-      - name: CBaseEntity_SetGravityScale
-        category: func
-        alias:
-          - CBaseEntity::SetGravityScale
       - name: CBaseEntity_SetAbsVelocity
         category: func
         alias:
@@ -9003,6 +9060,7 @@ modules:
           - CEntitySystem::AddEntityIOEvent2
       - name: CEntitySystem_AddEntityIOEventBuildStruct
         category: func
+        platform: linux
         alias:
           - CEntitySystem::AddEntityIOEventBuildStruct
       - name: CEntitySystem_AddEntityIOEventToQueue
@@ -9031,6 +9089,8 @@ modules:
         category: vfunc
         alias:
           - CGameEntitySystem::OnAddEntity
+      - name: CGameEntitySystem
+        category: struct
       - name: CGameEntitySystem_m_iNetworkedEntCount
         category: structmember
         struct: CGameEntitySystem
@@ -9528,6 +9588,7 @@ modules:
           - CEntitySystem::Init
       - name: CEntitySystem_ProcessEntityRegistration
         category: func
+        platform: linux
         alias:
           - CEntitySystem::ProcessEntityRegistration
       - name: CEntitySystem_PostCreateEntitySystem
@@ -9540,10 +9601,12 @@ modules:
           - CSource2EntitySystem::StaticInit
       - name: CSpawnGroupEntityFilterRegistrar_RegisterSpawnGroupEntityFilters
         category: func
+        platform: windows
         alias:
           - CSpawnGroupEntityFilterRegistrar::RegisterSpawnGroupEntityFilters
       - name: CGameEntitySystem_m_spawnGroupEntityFilters
         category: structmember
+        platform: windows
         struct: CGameEntitySystem
         member: m_spawnGroupEntityFilters
         alias:
@@ -9556,6 +9619,7 @@ modules:
           - CGameEntitySystem::m_pEntity2Networkables
       - name: CEntity2NetworkClasses_ServerClass_InitEntity2NetworkClasses
         category: func
+        platform: linux
         alias:
           - CEntity2NetworkClasses<ServerClass>::InitEntity2NetworkClasses
       - name: CEntitySystem_m_sEntSystemName
@@ -9631,6 +9695,8 @@ modules:
         shared: true
       - name: CFlattenedSerializers_CreateFieldChangedEventQueue
         category: vfunc
+        source_alias:
+          - IFlattenedSerializers_CreateFieldChangedEventQueue
         alias:
           - CFlattenedSerializers::CreateFieldChangedEventQueue
         shared: true
@@ -9641,10 +9707,6 @@ modules:
         shared: true
       - name: RegisterSchemaTypeOverride_CEntityHandle
         category: func
-      - name: PolymorphicHelper_t__SetPolymorphicPointer
-        category: func
-        alias:
-          - PolymorphicHelper_t::SetPolymorphicPointer
       - name: GetCSceneEntityScriptDesc
         category: func
       - name: CSceneEntity_vtable
@@ -9767,6 +9829,7 @@ modules:
           - CNetworkUtlVectorEmbedded<CSPerRoundStats_t>::NetworkStateChanged_m_perRoundStats
       - name: CUtlVectorEmbeddedNetworkVar_CSPerRoundStats_t_NetworkVar_m_perRoundStats_SetCount
         category: func
+        platform: windows
         alias:
           - CUtlVectorEmbeddedNetworkVar<CSPerRoundStats_t, NetworkVar>::SetCount
       - name: EntityInstanceAddChangeAccessorPath
@@ -9775,6 +9838,7 @@ modules:
         category: func
       - name: CNetworkUtlVectorEmbedded_TryLateResolve_m_vecRenderAttributes
         category: func
+        platform: windows
         alias:
           - CNetworkUtlVectorEmbedded<CRenderAttribute>::TryLateResolve
       - name: INetworkMessages_GetLoggingChannel
@@ -9788,6 +9852,7 @@ modules:
         category: vtable
       - name: CPhysicsEntitySolver_PhysEnableEntityCollisions
         category: vfunc
+        platform: windows
         alias:
           - CPhysicsEntitySolver::PhysEnableEntityCollisions
       - name: PhysEnableEntityCollisions
@@ -9826,6 +9891,7 @@ modules:
           - ILoopMode::AddViewsToSceneSystem
       - name: CLoopModeGame_LoopInitInternal
         category: func
+        platform: linux
         alias:
           - CLoopModeGame::LoopInitInternal
       - name: CLoopModeGame_LoopInit
@@ -9904,6 +9970,7 @@ modules:
           - IGameSystem::LoopPreShutdownAllSystems
       - name: CLoopModeGame_Shutdown
         category: func
+        platform: linux
         alias:
           - CLoopModeGame::Shutdown
       - name: CLoopModeGame_LoopShutdown
