@@ -88,19 +88,22 @@ class TestSymbolStoreArchitecture(unittest.TestCase):
 
     def test_post_change_skills_preserve_candidate_lifecycle(self) -> None:
         skill_root = Path(".claude/skills")
-        update = (skill_root / "post-change-update/SKILL.md").read_text(encoding="utf-8")
+        prepare = (skill_root / "prepare-post-change-candidate/SKILL.md").read_text(encoding="utf-8")
         validation = (skill_root / "post-change-validation/SKILL.md").read_text(encoding="utf-8")
+        publish = (skill_root / "publish-post-change-candidate/SKILL.md").read_text(encoding="utf-8")
 
-        self.assertIn("gamesymbol_candidate.py build", update)
-        self.assertIn('gamedata_candidate.py build -gamever "$GAMEVER"', update)
-        self.assertIn('gamedata_candidate.py publish -session "$GAMEDATA_SESSION"', update)
-        self.assertIn("gamesymbol_candidate.py publish", update)
-        self.assertNotIn("gamesymbol_snapshot.py pack", update)
+        self.assertIn("gamesymbol_candidate.py build", prepare)
+        self.assertIn('gamedata_candidate.py build -gamever "$GAMEVER"', prepare)
+        self.assertNotIn("gamesymbol_candidate.py publish", prepare)
         self.assertIn(
             'run_cpp_tests.py -gamever "$GAMEVER" -configyaml "$ANALYSIS_CONFIG" -snapshot "$CANDIDATE"',
             validation,
         )
         self.assertIn("gamesymbol_candidate.py mark", validation)
+        self.assertIn('gamedata_candidate.py publish -session "$GAMEDATA_SESSION"', publish)
+        self.assertIn("gamesymbol_candidate.py publish", publish)
+        self.assertNotIn("gamesymbol_candidate.py build", publish)
+        self.assertNotIn("gamesymbol_snapshot.py pack", publish)
 
 
 if __name__ == "__main__":

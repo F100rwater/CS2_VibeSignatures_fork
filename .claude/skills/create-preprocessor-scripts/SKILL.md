@@ -469,14 +469,14 @@ This step is mandatory -- do not report completion without running and passing t
 Before committing, run the repository update and validation skills in the exact order below. Every gate is
 mandatory.
 
-### 6a. Format and update gamedata
+### 6a. Prepare the immutable candidate
 
-**ALWAYS** Use SKILL `/post-change-update` with:
+**ALWAYS** Use SKILL `/prepare-post-change-candidate` with:
 
-- `phase=before-validation`
 - `gamever=<gamever>` from `.env` -> `CS2VIBE_GAMEVER`
 
 This replaces direct `format_repo_files.py` and `update_gamedata.py` commands in this workflow.
+Retain the returned candidate path, candidate session path, and gamedata session path for the remaining gates.
 
 ### 6b. Regression tests
 
@@ -495,19 +495,21 @@ proceeding to the final validation gate.
 
 ### 6c. Validate C++ layouts
 
-**ALWAYS** Use SKILL `/post-change-validation` with the same `gamever`.
+**ALWAYS** Use SKILL `/post-change-validation` with the same `gamever` and the exact candidate and candidate session
+returned by `/prepare-post-change-candidate`.
 
 If it fails or cannot run tests, it will report the reason and stop the entire task. Do not fix or retry inside
 this workflow, do not pack the snapshot, and do not commit.
 
-### 6d. Pack the gamesymbol snapshot
+### 6d. Publish the validated candidate
 
-Only after `/post-change-validation` succeeds, **ALWAYS** Use SKILL `/post-change-update` with:
+Only after `/post-change-validation` succeeds, **ALWAYS** Use SKILL `/publish-post-change-candidate` with:
 
-- `phase=after-validation`
 - the same `gamever`
+- the candidate path, candidate session path, and gamedata session path returned by
+  `/prepare-post-change-candidate`
 
-This step is mandatory. A missing or failed `gamesymbol_snapshot.py pack` blocks the commit.
+This step is mandatory. A missing or failed candidate publication blocks the commit.
 
 ---
 
@@ -538,7 +540,7 @@ Include all task-related files changed:
 - The new preprocessor script
 - configs/<GAMEVER>.yaml changes
 - Any reference YAMLs generated (for Patterns C/D/E)
-- Any tracked gamedata updated by `/post-change-update`
+- Any tracked gamedata updated by `/publish-post-change-candidate`
 - `gamesymbols/<gamever>.yaml`
 
 ---
@@ -554,10 +556,10 @@ Before finishing, verify:
 - [ ] configs/<GAMEVER>.yaml `symbols` section has entries for all targets (no duplicates)
 - [ ] Pattern-specific checks pass (see the Checklist section in the chosen pattern reference file)
 - [ ] `uv run ida_analyze_bin.py -debug` passes with 0 failures
-- [ ] `/post-change-update phase=before-validation` succeeds for the selected game version
+- [ ] `/prepare-post-change-candidate` succeeds for the selected game version
 - [ ] Non-MCP unittest command above passes with 0 failures
 - [ ] `/post-change-validation` runs C++ tests and succeeds for the same game version
-- [ ] `/post-change-update phase=after-validation` packs `gamesymbols/<gamever>.yaml`
+- [ ] `/publish-post-change-candidate` publishes `gamesymbols/<gamever>.yaml`
 - [ ] All changes committed to git (on `dev` branch, NOT `main`)
 
 ## Real-World Examples

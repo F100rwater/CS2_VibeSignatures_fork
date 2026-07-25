@@ -267,14 +267,14 @@ the old name for historical context.
 Before committing, run the repository update and validation skills in the exact order below. Every gate is
 mandatory.
 
-### 10a. Format and update gamedata
+### 10a. Prepare the immutable candidate
 
-**ALWAYS** Use SKILL `/post-change-update` with:
+**ALWAYS** Use SKILL `/prepare-post-change-candidate` with:
 
-- `phase=before-validation`
 - `gamever=<gamever>` from `.env` -> `CS2VIBE_GAMEVER`
 
 This replaces direct `format_repo_files.py` and `update_gamedata.py` commands in this workflow.
+Retain the returned candidate path, candidate session path, and gamedata session path for the remaining gates.
 
 ### 10b. Regression tests
 
@@ -293,19 +293,21 @@ proceeding to the final validation gate.
 
 ### 10c. Validate C++ layouts
 
-**ALWAYS** Use SKILL `/post-change-validation` with the same `gamever`.
+**ALWAYS** Use SKILL `/post-change-validation` with the same `gamever` and the exact candidate and candidate session
+returned by `/prepare-post-change-candidate`.
 
 If it fails or cannot run tests, it will report the reason and stop the entire rename task. Do not fix or retry
 inside this workflow, do not pack the snapshot, and do not commit.
 
-### 10d. Pack the gamesymbol snapshot
+### 10d. Publish the validated candidate
 
-Only after `/post-change-validation` succeeds, **ALWAYS** Use SKILL `/post-change-update` with:
+Only after `/post-change-validation` succeeds, **ALWAYS** Use SKILL `/publish-post-change-candidate` with:
 
-- `phase=after-validation`
 - the same `gamever`
+- the candidate path, candidate session path, and gamedata session path returned by
+  `/prepare-post-change-candidate`
 
-This step is mandatory. A missing or failed `gamesymbol_snapshot.py pack` blocks the commit.
+This step is mandatory. A missing or failed candidate publication blocks the commit.
 
 ---
 
@@ -338,10 +340,10 @@ git commit -m "refactor(preprocessor): rename OldName to NewName" -m "Co-Authore
 - [ ] Test files in `tests/` bulk-replaced; vtable class in assertions corrected (if any)
 - [ ] Downstream preprocessor script `.py` and `configs/<GAMEVER>.yaml` entries updated (if any)
 - [ ] Final grep shows zero stale references
-- [ ] `/post-change-update phase=before-validation` succeeds for the selected game version
+- [ ] `/prepare-post-change-candidate` succeeds for the selected game version
 - [ ] Non-MCP unittest command above passes with 0 failures
 - [ ] `/post-change-validation` runs C++ tests and succeeds for the same game version
-- [ ] `/post-change-update phase=after-validation` packs `gamesymbols/<gamever>.yaml`
+- [ ] `/publish-post-change-candidate` publishes `gamesymbols/<gamever>.yaml`
 - [ ] All changes committed to git
 
 ---
