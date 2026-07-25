@@ -3508,6 +3508,29 @@ modules:
           - INetworkClientService_SendNetMessage.{platform}.yaml
         expected_input:
           - SendViolationReport.{platform}.yaml
+      - name: find-ClientAntiTamperTest-windows
+        platform: windows
+        expected_output:
+          - ClientAntiTamperTest.{platform}.yaml
+        expected_input:
+          - SendViolationReport.{platform}.yaml
+      - name: find-C_MultiplayRules_vtable
+        expected_output:
+          - C_MultiplayRules_vtable.{platform}.yaml
+      - name: find-C_GameRules_vtable
+        expected_output:
+          - C_GameRules_vtable.{platform}.yaml
+      - name: find-C_GameRules_ctor
+        expected_output:
+          - C_GameRules_ctor.{platform}.yaml
+        expected_input:
+          - C_GameRules_vtable.{platform}.yaml
+          - C_MultiplayRules_vtable.{platform}.yaml
+      - name: find-C_GameRules_ctor-decompiles
+        expected_output:
+          - g_pGameRules.{platform}.yaml
+        expected_input:
+          - C_GameRules_ctor.{platform}.yaml
       - name: find-ConnectInterfaces
         expected_output:
           - ConnectInterfaces.{platform}.yaml
@@ -4236,6 +4259,19 @@ modules:
         platform: windows
         alias:
           - INetworkClientService::SendNetMessage
+      - name: ClientAntiTamperTest
+        category: func
+        platform: windows
+      - name: C_MultiplayRules_vtable
+        category: vtable
+      - name: C_GameRules_vtable
+        category: vtable
+      - name: C_GameRules_ctor
+        category: func
+        alias:
+          - C_GameRules::C_GameRules
+      - name: g_pGameRules
+        category: gv
       - name: ConnectInterfaces
         category: func
       - name: g_pVApplication
