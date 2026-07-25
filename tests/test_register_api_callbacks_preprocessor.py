@@ -253,11 +253,7 @@ class TestGameStateApiCallbackFinder(unittest.IsolatedAsyncioTestCase):
         module = _import_finder_module()
         config = yaml.safe_load(Path("configs/14172.yaml").read_text(encoding="utf-8"))
         client = next(item for item in config["modules"] if item["name"] == "client")
-        skill = next(
-            item
-            for item in client["skills"]
-            if item["name"] == "find-GameStateAPI_RegisterAPIs-extract-apis"
-        )
+        skill = next(item for item in client["skills"] if item["name"] == "find-GameStateAPI_RegisterAPIs-extract-apis")
 
         self.assertEqual("windows", skill["platform"])
         self.assertEqual(
