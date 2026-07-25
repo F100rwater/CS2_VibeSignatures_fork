@@ -4179,7 +4179,7 @@ async def preprocess_gen_gv_sig_via_mcp(
     gv_access_inst_va=None,
     gv_access_func_va=None,
     min_sig_bytes=8,
-    max_sig_bytes=128,
+    max_sig_bytes=256,
     max_instructions=64,
     max_candidates=32,
     extra_wildcard_offsets=None,
@@ -4608,7 +4608,7 @@ async def preprocess_gen_gv_sig_via_mcp(
 
     if best is None:
         if debug:
-            print(f"    Preprocess: failed to generate a unique gv-access signature for {hex(gv_va_int)}")
+            print(f"    Preprocess: failed to generate a unique gv-access signature for {gv_name}")
         return None
 
     if debug:

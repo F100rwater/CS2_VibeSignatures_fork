@@ -76,12 +76,25 @@ GLOBALVAR_YAML_FIELDS = [
     "gv_inst_disp",
 ]
 
+GLOBALVAR_YAML_FIELDS_BY_NAME = {
+    "g_networkstringtable": [
+        *GLOBALVAR_YAML_FIELDS,
+        "gv_sig_allow_across_function_boundary: true",
+    ],
+}
+
 GENERATE_YAML_DESIRED_FIELDS = [
     (
         "IVEngineServer2_GetServerGlobals",
         ["func_name", "vfunc_sig", "vfunc_offset", "vfunc_index", "vtable_name"],
     ),
-    *[(globalvar_name, GLOBALVAR_YAML_FIELDS) for globalvar_name in TARGET_GLOBALVAR_NAMES],
+    *[
+        (
+            globalvar_name,
+            GLOBALVAR_YAML_FIELDS_BY_NAME.get(globalvar_name, GLOBALVAR_YAML_FIELDS),
+        )
+        for globalvar_name in TARGET_GLOBALVAR_NAMES
+    ],
 ]
 
 
