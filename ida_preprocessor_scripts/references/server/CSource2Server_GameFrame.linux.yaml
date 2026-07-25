@@ -1,0 +1,11 @@
+func_name: CSource2Server_GameFrame
+func_va: '0x18dd320'
+procedure: |-
+  void CSource2Server_GameFrame()
+  {
+    __int64 v19;
+
+    v19 = (*(__int64 (__fastcall **)(__int64))(*(_QWORD *)g_engine + 440LL))(g_engine);
+    // 440 = 0x1B8 = IVEngineServer2_IsLogEnabled
+    g_bIsLogging = v19;
+  }

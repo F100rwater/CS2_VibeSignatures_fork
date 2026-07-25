@@ -1,0 +1,31 @@
+func_name: CSource2Server_Connect
+func_va: '0x180d140d0'
+procedure: |-
+  char __fastcall CSource2Server_Connect(__int64 a1, __int64 (__fastcall *a2)(char *, _QWORD))
+  {
+    __int64 v4;
+    __int64 v5;
+
+    ConnectInterfaces(&a2, 1);
+    ConnectTier2Libraries(&a2, 1);
+    ConnectGameInterfaces(&a2, 1, 1);
+    v4 = a2("Source2EngineToServer001", 0);
+    g_engine = v4;
+    if ( !v4 )
+      return 0;
+    v5 = (*(__int64 (__fastcall **)(__int64))(*(_QWORD *)g_engine + 600LL))(g_engine);
+    // 600 = 0x258 = IVEngineServer2_GetServerGlobals
+    if ( v5 )
+      *(_QWORD *)(v5 + 40) = GlobalVarsWarningFunc;
+    g_pSource2Engine = g_pEngineServer;
+    if ( !g_pEngineServer )
+      return 0;
+    g_networkstringtable = a2("Source2EngineToServerStringTable001", 0);
+    if ( !g_networkstringtable )
+      return 0;
+    AppIsDedicatedServer();
+    g_pGameTypes = a2("GameTypes001", 0);
+    if ( !g_pGameTypes )
+      return 0;
+    return 1;
+  }
