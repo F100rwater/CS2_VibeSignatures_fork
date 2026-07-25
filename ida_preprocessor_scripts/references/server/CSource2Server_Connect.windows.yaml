@@ -294,8 +294,7 @@ procedure: |-
           "ERROR: CSource2Server::Connect - Failed to connect to engine\n");
       return 0;
     }
-    v5 = (*(__int64 (__fastcall **)(__int64))(*(_QWORD *)v4 + 600LL))(v4);// IVEngineServer2_GetServerGlobals
-    // 600 = 0x258 = IVEngineServer2_GetServerGlobals
+    v5 = (*(__int64 (__fastcall **)(__int64))(*(_QWORD *)v4 + 600LL))(v4);// 600 = 0x258 = IVEngineServer2_GetServerGlobals
     if ( v5 )
       *(_QWORD *)(v5 + 40) = GlobalVarsWarningFunc;
     g_pSource2Engine = g_pEngineServer;

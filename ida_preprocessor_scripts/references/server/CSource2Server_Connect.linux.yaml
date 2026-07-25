@@ -19,17 +19,17 @@ disasm_code: |-
   .text:00000000018D2634                 call    ConnectInterfaces
   .text:00000000018D2639                 lea     rdi, [rbp+var_20]
   .text:00000000018D263D                 mov     esi, 1
-  .text:00000000018D2642                 call    sub_21601D0
+  .text:00000000018D2642                 call    ConnectTier2Libraries
   .text:00000000018D2647                 mov     edx, 1
   .text:00000000018D264C                 mov     esi, 1
   .text:00000000018D2651                 add     dword ptr [r12+20h], 1
   .text:00000000018D2657                 lea     rdi, [rbp+var_28]
-  .text:00000000018D265B                 call    sub_1D14920
-  .text:00000000018D2660                 lea     rax, qword_28BDF40
+  .text:00000000018D265B                 call    ConnectGameInterfaces
+  .text:00000000018D2660                 lea     rax, g_pHostUtils
   .text:00000000018D2667                 mov     rdi, [rax]
   .text:00000000018D266A                 mov     rax, [rdi]
   .text:00000000018D266D                 call    qword ptr [rax+58h]
-  .text:00000000018D2670                 lea     rdx, qword_28B3330
+  .text:00000000018D2670                 lea     rdx, g_pEconSchemaSymbolTable
   .text:00000000018D2677                 lea     rdi, aConnecttier123_0; "ConnectTier1/2/3Libraries - Finish"
   .text:00000000018D267E                 mov     [rdx], rax
   .text:00000000018D2681                 xor     eax, eax
@@ -41,17 +41,17 @@ disasm_code: |-
   .text:00000000018D26A0                 xor     esi, esi
   .text:00000000018D26A2                 call    rbx
   .text:00000000018D26A4                 mov     rdi, rax
-  .text:00000000018D26A7                 mov     cs:qword_2868848, rax
+  .text:00000000018D26A7                 mov     cs:g_engine, rax
   .text:00000000018D26AE                 test    rax, rax
   .text:00000000018D26B1                 jz      loc_18D29A0
   .text:00000000018D26B7                 mov     rax, [rax]
   .text:00000000018D26BA                 call    qword ptr [rax+258h]  ; 258h = IVEngineServer2_GetServerGlobals
   .text:00000000018D26C0                 test    rax, rax
   .text:00000000018D26C3                 jz      short loc_18D26D0
-  .text:00000000018D26C5                 lea     rdx, sub_17863F0
+  .text:00000000018D26C5                 lea     rdx, GlobalVarsWarningFunc
   .text:00000000018D26CC                 mov     [rax+28h], rdx
-  .text:00000000018D26D0                 lea     rax, g_pSource2EngineToServer
-  .text:00000000018D26D7                 lea     rdx, qword_28BAE70
+  .text:00000000018D26D0                 lea     rax, g_pEngineServer
+  .text:00000000018D26D7                 lea     rdx, g_pSource2Engine
   .text:00000000018D26DE                 mov     rax, [rax]
   .text:00000000018D26E1                 mov     [rdx], rax
   .text:00000000018D26E4                 test    rax, rax
@@ -62,50 +62,50 @@ disasm_code: |-
   .text:00000000018D26FB                 lea     rdi, aSource2enginet_0; "Source2EngineToServerStringTable001"
   .text:00000000018D2702                 xor     esi, esi
   .text:00000000018D2704                 call    rbx
-  .text:00000000018D2706                 mov     cs:qword_2868838, rax
+  .text:00000000018D2706                 mov     cs:g_networkstringtable, rax
   .text:00000000018D270D                 test    rax, rax
   .text:00000000018D2710                 jz      loc_18D29E0
   .text:00000000018D2716                 lea     rdi, aGamemodelinfo0; "GameModelInfo001"
   .text:00000000018D271D                 xor     esi, esi
   .text:00000000018D271F                 call    rbx
-  .text:00000000018D2721                 mov     cs:qword_2868790, rax
+  .text:00000000018D2721                 mov     cs:g_modelinfo, rax
   .text:00000000018D2728                 test    rax, rax
   .text:00000000018D272B                 jz      loc_18D2A20
   .text:00000000018D2731                 lea     rdi, aSaverestoredat; "SaveRestoreDataVersion001"
   .text:00000000018D2738                 xor     esi, esi
   .text:00000000018D273A                 call    rbx
-  .text:00000000018D273C                 lea     rdx, qword_2844420
+  .text:00000000018D273C                 lea     rdx, g_pSaveRestoreHostDataMgr
   .text:00000000018D2743                 mov     [rdx], rax
   .text:00000000018D2746                 test    rax, rax
   .text:00000000018D2749                 jz      loc_18D2900
   .text:00000000018D274F                 lea     rdi, aVfilesystem017; "VFileSystem017"
   .text:00000000018D2756                 xor     esi, esi
   .text:00000000018D2758                 call    rbx
-  .text:00000000018D275A                 mov     cs:qword_2868840, rax
+  .text:00000000018D275A                 mov     cs:g_filesystem, rax
   .text:00000000018D2761                 test    rax, rax
   .text:00000000018D2764                 jz      loc_18D2AC0
   .text:00000000018D276A                 lea     rdi, aSoundopsystem0; "SoundOpSystem001"
   .text:00000000018D2771                 xor     esi, esi
   .text:00000000018D2773                 call    rbx
-  .text:00000000018D2775                 mov     cs:qword_2868788, rax
+  .text:00000000018D2775                 mov     cs:g_soundopsystem, rax
   .text:00000000018D277C                 test    rax, rax
   .text:00000000018D277F                 jz      loc_18D2B00
   .text:00000000018D2785                 lea     rdi, aScenefilecache; "SceneFileCache002"
   .text:00000000018D278C                 xor     esi, esi
   .text:00000000018D278E                 call    rbx
-  .text:00000000018D2790                 mov     cs:qword_2868780, rax
+  .text:00000000018D2790                 mov     cs:g_scenefilecache, rax
   .text:00000000018D2797                 test    rax, rax
   .text:00000000018D279A                 jz      loc_18D2B40
   .text:00000000018D27A0                 lea     rdi, aInetsupport001; "INETSUPPORT_001"
   .text:00000000018D27A7                 xor     esi, esi
   .text:00000000018D27A9                 call    rbx
-  .text:00000000018D27AB                 mov     cs:qword_2868778, rax
+  .text:00000000018D27AB                 mov     cs:g_netsupport, rax
   .text:00000000018D27B2                 test    rax, rax
   .text:00000000018D27B5                 jz      loc_18D2B80
   .text:00000000018D27BB                 lea     rdi, aGameconfigserv; "GameConfigServerV001"
   .text:00000000018D27C2                 xor     esi, esi
   .text:00000000018D27C4                 call    rbx
-  .text:00000000018D27C6                 lea     rdx, qword_2841E20
+  .text:00000000018D27C6                 lea     rdx, g_pGameConfiguration
   .text:00000000018D27CD                 mov     [rdx], rax
   .text:00000000018D27D0                 test    rax, rax
   .text:00000000018D27D3                 jz      loc_18D2A60
@@ -130,7 +130,7 @@ disasm_code: |-
   .text:00000000018D281B                 lea     rsi, aSource2server0; "Source2Server001"
   .text:00000000018D2822                 mov     rdx, r12
   .text:00000000018D2825                 call    qword ptr [rax]
-  .text:00000000018D2827                 call    sub_2160160
+  .text:00000000018D2827                 call    AppIsDedicatedServer
   .text:00000000018D282C                 lea     rdi, aGametypes001; "GameTypes001"
   .text:00000000018D2833                 xor     esi, esi
   .text:00000000018D2835                 call    rbx
@@ -142,7 +142,7 @@ disasm_code: |-
   .text:00000000018D2851                 mov     rdi, [rax]
   .text:00000000018D2854                 mov     rax, [rdi]
   .text:00000000018D2857                 call    qword ptr [rax+70h]
-  .text:00000000018D285A                 cmp     cs:qword_2868768, 0
+  .text:00000000018D285A                 cmp     cs:g_pGameEventSystem, 0
   .text:00000000018D2862                 mov     cs:qword_2868770, rax
   .text:00000000018D2869                 jz      short loc_18D28E0
   .text:00000000018D286B                 lea     rdi, aFactoriesFinis; "Factories - Finish"
@@ -154,11 +154,11 @@ disasm_code: |-
   .text:00000000018D2885                 lea     rsi, aServer; "server"
   .text:00000000018D288C                 mov     rdi, rax
   .text:00000000018D288F                 call    sub_20FC1A0
-  .text:00000000018D2894                 mov     rdi, cs:qword_2868848
+  .text:00000000018D2894                 mov     rdi, cs:g_engine
   .text:00000000018D289B                 mov     rax, [rdi]
   .text:00000000018D289E                 call    qword ptr [rax+268h]
   .text:00000000018D28A4                 mov     [r12+30h], rbx
-  .text:00000000018D28A9                 mov     cs:qword_2868868, rax
+  .text:00000000018D28A9                 mov     cs:g_pSharedChangeInfo, rax
   .text:00000000018D28B0                 add     rsp, 20h
   .text:00000000018D28B4                 mov     eax, 1
   .text:00000000018D28B9                 pop     rbx
@@ -174,7 +174,7 @@ disasm_code: |-
   .text:00000000018D28E0                 lea     rdi, aGameeventsyste; "GameEventSystemServerV001"
   .text:00000000018D28E7                 xor     esi, esi
   .text:00000000018D28E9                 call    rbx
-  .text:00000000018D28EB                 mov     cs:qword_2868768, rax
+  .text:00000000018D28EB                 mov     cs:g_pGameEventSystem, rax
   .text:00000000018D28F2                 jmp     loc_18D286B
   .text:00000000018D2900                 ; _QWORD
   .text:00000000018D2900                 mov     edi, cs:dword_2868900; _QWORD
@@ -412,10 +412,10 @@ procedure: |-
     v12 = a2;
     v13[0] = a2;
     ConnectInterfaces(v13, 1);
-    sub_21601D0(&v12, 1);
+    ConnectTier2Libraries(&v12, 1);
     ++*(_DWORD *)(a1 + 32);
-    sub_1D14920(&v11, 1, 1);
-    qword_28B3330 = (*(__int64 (__fastcall **)(_QWORD *))(*qword_28BDF40 + 88LL))(qword_28BDF40);
+    ConnectGameInterfaces(&v11, 1, 1);
+    g_pEconSchemaSymbolTable = (*(__int64 (__fastcall **)(_QWORD *))(*g_pHostUtils + 88LL))(g_pHostUtils);
     COM_TimestampedLog("ConnectTier1/2/3Libraries - Finish");
     if ( !g_pVEngineCvar )
     {
@@ -427,7 +427,7 @@ procedure: |-
       return 0;
     }
     v3 = a2((void (__fastcall **)(__cxxabiv1::__class_type_info *__hidden))"Source2EngineToServer001", 0);
-    qword_2868848 = v3;
+    g_engine = v3;
     if ( !v3 )
     {
       if ( (unsigned __int8)LoggingSystem_IsChannelEnabled((unsigned int)dword_2868900, 3) )
@@ -440,12 +440,11 @@ procedure: |-
       }
       return 0;
     }
-    v4 = (*(__int64 (__fastcall **)(__int64))(*(_QWORD *)v3 + 600LL))(v3);
-    // 600 = 0x258 = IVEngineServer2_GetServerGlobals
+    v4 = (*(__int64 (__fastcall **)(__int64))(*(_QWORD *)v3 + 600LL))(v3);// 600 = 0x258 = IVEngineServer2_GetServerGlobals
     if ( v4 )
-      *(_QWORD *)(v4 + 40) = sub_17863F0;
-    qword_28BAE70 = (_QWORD *)g_pSource2EngineToServer;
-    if ( !g_pSource2EngineToServer )
+      *(_QWORD *)(v4 + 40) = GlobalVarsWarningFunc;
+    g_pSource2Engine = (_QWORD *)g_pEngineServer;
+    if ( !g_pEngineServer )
     {
       if ( (unsigned __int8)LoggingSystem_IsChannelEnabled((unsigned int)dword_2868900, 3) )
       {
@@ -455,10 +454,10 @@ procedure: |-
       return 0;
     }
     COM_TimestampedLog("Factories - Start");
-    qword_2868838 = a2(
-                      (void (__fastcall **)(__cxxabiv1::__class_type_info *__hidden))"Source2EngineToServerStringTable001",
-                      0);
-    if ( !qword_2868838 )
+    g_networkstringtable = a2(
+                             (void (__fastcall **)(__cxxabiv1::__class_type_info *__hidden))"Source2EngineToServerStringTable001",
+                             0);
+    if ( !g_networkstringtable )
     {
       if ( (unsigned __int8)LoggingSystem_IsChannelEnabled((unsigned int)dword_2868900, 3) )
       {
@@ -470,8 +469,8 @@ procedure: |-
       }
       return 0;
     }
-    qword_2868790 = a2((void (__fastcall **)(__cxxabiv1::__class_type_info *__hidden))"GameModelInfo001", 0);
-    if ( !qword_2868790 )
+    g_modelinfo = a2((void (__fastcall **)(__cxxabiv1::__class_type_info *__hidden))"GameModelInfo001", 0);
+    if ( !g_modelinfo )
     {
       if ( (unsigned __int8)LoggingSystem_IsChannelEnabled((unsigned int)dword_2868900, 3) )
       {
@@ -483,8 +482,10 @@ procedure: |-
       }
       return 0;
     }
-    qword_2844420 = a2((void (__fastcall **)(__cxxabiv1::__class_type_info *__hidden))"SaveRestoreDataVersion001", 0);
-    if ( !qword_2844420 )
+    g_pSaveRestoreHostDataMgr = a2(
+                                  (void (__fastcall **)(__cxxabiv1::__class_type_info *__hidden))"SaveRestoreDataVersion001",
+                                  0);
+    if ( !g_pSaveRestoreHostDataMgr )
     {
       if ( (unsigned __int8)LoggingSystem_IsChannelEnabled((unsigned int)dword_2868900, 3) )
       {
@@ -496,8 +497,8 @@ procedure: |-
       }
       return 0;
     }
-    qword_2868840 = a2((void (__fastcall **)(__cxxabiv1::__class_type_info *__hidden))"VFileSystem017", 0);
-    if ( !qword_2868840 )
+    g_filesystem = a2((void (__fastcall **)(__cxxabiv1::__class_type_info *__hidden))"VFileSystem017", 0);
+    if ( !g_filesystem )
     {
       if ( (unsigned __int8)LoggingSystem_IsChannelEnabled((unsigned int)dword_2868900, 3) )
       {
@@ -509,8 +510,8 @@ procedure: |-
       }
       return 0;
     }
-    qword_2868788 = a2((void (__fastcall **)(__cxxabiv1::__class_type_info *__hidden))"SoundOpSystem001", 0);
-    if ( !qword_2868788 )
+    g_soundopsystem = a2((void (__fastcall **)(__cxxabiv1::__class_type_info *__hidden))"SoundOpSystem001", 0);
+    if ( !g_soundopsystem )
     {
       if ( (unsigned __int8)LoggingSystem_IsChannelEnabled((unsigned int)dword_2868900, 3) )
       {
@@ -522,8 +523,8 @@ procedure: |-
       }
       return 0;
     }
-    qword_2868780 = a2((void (__fastcall **)(__cxxabiv1::__class_type_info *__hidden))"SceneFileCache002", 0);
-    if ( !qword_2868780 )
+    g_scenefilecache = a2((void (__fastcall **)(__cxxabiv1::__class_type_info *__hidden))"SceneFileCache002", 0);
+    if ( !g_scenefilecache )
     {
       if ( (unsigned __int8)LoggingSystem_IsChannelEnabled((unsigned int)dword_2868900, 3) )
       {
@@ -535,8 +536,8 @@ procedure: |-
       }
       return 0;
     }
-    qword_2868778 = a2((void (__fastcall **)(__cxxabiv1::__class_type_info *__hidden))"INETSUPPORT_001", 0);
-    if ( !qword_2868778 )
+    g_netsupport = a2((void (__fastcall **)(__cxxabiv1::__class_type_info *__hidden))"INETSUPPORT_001", 0);
+    if ( !g_netsupport )
     {
       if ( (unsigned __int8)LoggingSystem_IsChannelEnabled((unsigned int)dword_2868900, 3) )
       {
@@ -548,8 +549,8 @@ procedure: |-
       }
       return 0;
     }
-    qword_2841E20 = a2((void (__fastcall **)(__cxxabiv1::__class_type_info *__hidden))"GameConfigServerV001", 0);
-    if ( !qword_2841E20 )
+    g_pGameConfiguration = a2((void (__fastcall **)(__cxxabiv1::__class_type_info *__hidden))"GameConfigServerV001", 0);
+    if ( !g_pGameConfiguration )
     {
       if ( (unsigned __int8)LoggingSystem_IsChannelEnabled((unsigned int)dword_2868900, 3) )
       {
@@ -581,7 +582,7 @@ procedure: |-
     v7 = v6;
     if ( v6 )
       (**v6)(v6, "Source2Server001", a1);
-    sub_2160160(v7);
+    AppIsDedicatedServer(v7);
     g_pGameTypes = a2((void (__fastcall **)(__cxxabiv1::__class_type_info *__hidden))"GameTypes001", 0);
     if ( !g_pGameTypes )
     {
@@ -596,14 +597,16 @@ procedure: |-
       return 0;
     }
     qword_2868770 = (*(__int64 (__fastcall **)(_QWORD *))(*g_pSerializedEntities + 112LL))(g_pSerializedEntities);
-    if ( !qword_2868768 )
-      qword_2868768 = a2((void (__fastcall **)(__cxxabiv1::__class_type_info *__hidden))"GameEventSystemServerV001", 0);
+    if ( !g_pGameEventSystem )
+      g_pGameEventSystem = a2(
+                             (void (__fastcall **)(__cxxabiv1::__class_type_info *__hidden))"GameEventSystemServerV001",
+                             0);
     COM_TimestampedLog("Factories - Finish");
     sub_2142680(0);
     v8 = sub_213A320();
     sub_20FC1A0(v8, "server");
-    v9 = (*(__int64 (__fastcall **)(__int64))(*(_QWORD *)qword_2868848 + 616LL))(qword_2868848);
+    v9 = (*(__int64 (__fastcall **)(__int64))(*(_QWORD *)g_engine + 616LL))(g_engine);
     *(_QWORD *)(a1 + 48) = a2;
-    qword_2868868 = v9;
+    g_pSharedChangeInfo = v9;
     return 1;
   }
