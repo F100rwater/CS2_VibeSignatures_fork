@@ -3645,6 +3645,116 @@ modules:
         platform: windows
         expected_output:
           - GameStateAPI_RegisterAPIs.{platform}.yaml
+      - name: find-GameStateAPI_RegisterAPIs-extract-apis
+        platform: windows
+        expected_output:
+          - GameStateAPI_IsLatched.{platform}.yaml
+          - GameStateAPI_GetPlayerSlot.{platform}.yaml
+          - GameStateAPI_GetPlayerName.{platform}.yaml
+          - GameStateAPI_GetPlayerXuidStringFromPlayerSlot.{platform}.yaml
+          - GameStateAPI_GetLocalPlayerXuid.{platform}.yaml
+          - GameStateAPI_GetLocalOrInEyePlayerXuid.{platform}.yaml
+          - GameStateAPI_GetHudPlayerXuid.{platform}.yaml
+          - GameStateAPI_GetPlayerTeamName.{platform}.yaml
+          - GameStateAPI_GetPlayerTeamNumber.{platform}.yaml
+          - GameStateAPI_GetCoachingTeamNumber.{platform}.yaml
+          - GameStateAPI_GetAssociatedTeamNumber.{platform}.yaml
+          - GameStateAPI_IsPlayerConnected.{platform}.yaml
+          - GameStateAPI_IsPlayerAlive.{platform}.yaml
+          - GameStateAPI_GetPlayerPing.{platform}.yaml
+          - GameStateAPI_GetPlayerKills.{platform}.yaml
+          - GameStateAPI_GetPlayerRoundKills.{platform}.yaml
+          - GameStateAPI_GetPlayerAssists.{platform}.yaml
+          - GameStateAPI_GetPlayerDeaths.{platform}.yaml
+          - GameStateAPI_GetPlayerMVPs.{platform}.yaml
+          - GameStateAPI_GetPlayerMoney.{platform}.yaml
+          - GameStateAPI_GetPlayerScore.{platform}.yaml
+          - GameStateAPI_GetPlayerClanTag.{platform}.yaml
+          - GameStateAPI_GetPlayerActiveCoinRank.{platform}.yaml
+          - GameStateAPI_GetPlayerCompetitiveRankType.{platform}.yaml
+          - GameStateAPI_GetPlayerCompetitiveRanking.{platform}.yaml
+          - GameStateAPI_GetPlayerCompetitiveWins.{platform}.yaml
+          - GameStateAPI_GetPlayerPremierRankStatsObject.{platform}.yaml
+          - GameStateAPI_GetPlayerDisplayFlairItem.{platform}.yaml
+          - GameStateAPI_GetPlayerStatus.{platform}.yaml
+          - GameStateAPI_IsFakePlayer.{platform}.yaml
+          - GameStateAPI_GetPlayerActiveWeaponItemId.{platform}.yaml
+          - GameStateAPI_IsXuidValid.{platform}.yaml
+          - GameStateAPI_GetPlayerVoiceVolume.{platform}.yaml
+          - GameStateAPI_SetPlayerVoiceVolume.{platform}.yaml
+          - GameStateAPI_GetMapsInMapGroup.{platform}.yaml
+          - GameStateAPI_GetMapDisplayNameToken.{platform}.yaml
+          - GameStateAPI_GetMapsInCurrentMapGroup.{platform}.yaml
+          - GameStateAPI_GetPlayerLifetime.{platform}.yaml
+          - GameStateAPI_GetPlayerColor.{platform}.yaml
+          - GameStateAPI_GetPlayerXpLevel.{platform}.yaml
+          - GameStateAPI_GetPlayerXpTrailLevel.{platform}.yaml
+          - GameStateAPI_GetPlayerCommendsLeader.{platform}.yaml
+          - GameStateAPI_GetPlayerCommendsTeacher.{platform}.yaml
+          - GameStateAPI_GetPlayerCommendsFriendly.{platform}.yaml
+          - GameStateAPI_HasCommunicationAbuseMute.{platform}.yaml
+          - GameStateAPI_HasCommunicationBan.{platform}.yaml
+          - GameStateAPI_ShouldShowHudElements.{platform}.yaml
+          - GameStateAPI_IsQueuedMatchmaking.{platform}.yaml
+          - GameStateAPI_GetKickTargets.{platform}.yaml
+          - GameStateAPI_GetPlayerCharacterItemID.{platform}.yaml
+          - GameStateAPI_GetCharacterDefaultCheerByXuid.{platform}.yaml
+          - GameStateAPI_GetCharacterDefaultDefeatByXuid.{platform}.yaml
+          - GameStateAPI_ArePlayersEnemies.{platform}.yaml
+          - GameStateAPI_GetCSGOGameUIStateName.{platform}.yaml
+          - GameStateAPI_IsLocalPlayerPlayingMatch.{platform}.yaml
+          - GameStateAPI_IsConnectedOrConnectingToServer.{platform}.yaml
+          - GameStateAPI_AreTeamsPlayingSwitchedSides.{platform}.yaml
+          - GameStateAPI_AreTeamsPlayingSwitchedSidesInRound.{platform}.yaml
+          - GameStateAPI_IsReportCategoryEnabledForSelectedPlayer.{platform}.yaml
+          - GameStateAPI_SubmitPlayerReport.{platform}.yaml
+          - GameStateAPI_SubmitServerReport.{platform}.yaml
+          - GameStateAPI_QueryServersForCommendation.{platform}.yaml
+          - GameStateAPI_GetCommendationTokensAvailable.{platform}.yaml
+          - GameStateAPI_GetMyCommendationsJSOForUser.{platform}.yaml
+          - GameStateAPI_SubmitCommendation.{platform}.yaml
+          - GameStateAPI_IsSelectedPlayerMuted.{platform}.yaml
+          - GameStateAPI_ToggleMute.{platform}.yaml
+          - GameStateAPI_GetCrosshairCode.{platform}.yaml
+          - GameStateAPI_IsDemoOrHltv.{platform}.yaml
+          - GameStateAPI_IsOverwatch.{platform}.yaml
+          - GameStateAPI_IsLocalPlayerWatchingOwnDemo.{platform}.yaml
+          - GameStateAPI_IsLocalPlayerHLTV.{platform}.yaml
+          - GameStateAPI_IsHLTVAutodirectorOn.{platform}.yaml
+          - GameStateAPI_SetCasterIsCameraman.{platform}.yaml
+          - GameStateAPI_SetCasterIsHeard.{platform}.yaml
+          - GameStateAPI_SetCasterControlsXray.{platform}.yaml
+          - GameStateAPI_SetCasterControlsUI.{platform}.yaml
+          - GameStateAPI_GetServerName.{platform}.yaml
+          - GameStateAPI_GetMapName.{platform}.yaml
+          - GameStateAPI_GetTournamentEventStage.{platform}.yaml
+          - GameStateAPI_GetGameModeInternalName.{platform}.yaml
+          - GameStateAPI_GetGameModeImagePath.{platform}.yaml
+          - GameStateAPI_GetGameModeName.{platform}.yaml
+          - GameStateAPI_GetViewerCount.{platform}.yaml
+          - GameStateAPI_GetMapBSPName.{platform}.yaml
+          - GameStateAPI_IsQueuedMatchmakingMode_Team.{platform}.yaml
+          - GameStateAPI_HasHalfTime.{platform}.yaml
+          - GameStateAPI_GetPlayerModel.{platform}.yaml
+          - GameStateAPI_GetAllPlayersMatchDataJSO.{platform}.yaml
+          - GameStateAPI_GetPlayerDataJSO.{platform}.yaml
+          - GameStateAPI_GetTimeDataJSO.{platform}.yaml
+          - GameStateAPI_GetScoreDataJSO.{platform}.yaml
+          - GameStateAPI_GetPlayerStatsJSO.{platform}.yaml
+          - GameStateAPI_GetMatchInfoJSO.{platform}.yaml
+          - GameStateAPI_GetMatchEndWinDataJSO.{platform}.yaml
+          - GameStateAPI_GetAccoladeLocalizationString.{platform}.yaml
+          - GameStateAPI_GetTeamClanName.{platform}.yaml
+          - GameStateAPI_GetTeamLogoImagePath.{platform}.yaml
+          - GameStateAPI_GetTeamFlagImagePath.{platform}.yaml
+          - GameStateAPI_GetTeamTotalPlayerCount.{platform}.yaml
+          - GameStateAPI_GetTeamLivingPlayerCount.{platform}.yaml
+          - GameStateAPI_GetTeamNextRoundLossBonus.{platform}.yaml
+          - GameStateAPI_GetActiveQuestID.{platform}.yaml
+          - GameStateAPI_GetAnnotationsViewingLevel.{platform}.yaml
+          - GameStateAPI_BIsLocalServerHost.{platform}.yaml
+        expected_input:
+          - GameStateAPI_RegisterAPIs.{platform}.yaml
     symbols:
       - name: CLoopModeGame_RegisterEventMapInternal
         category: func
@@ -4375,6 +4485,426 @@ modules:
         platform: windows
         alias:
           - GameStateAPI::RegisterAPIs
+      - name: GameStateAPI_IsLatched
+        category: func
+        platform: windows
+        alias: [GameStateAPI::IsLatched]
+      - name: GameStateAPI_GetPlayerSlot
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetPlayerSlot]
+      - name: GameStateAPI_GetPlayerName
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetPlayerName]
+      - name: GameStateAPI_GetPlayerXuidStringFromPlayerSlot
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetPlayerXuidStringFromPlayerSlot]
+      - name: GameStateAPI_GetLocalPlayerXuid
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetLocalPlayerXuid]
+      - name: GameStateAPI_GetLocalOrInEyePlayerXuid
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetLocalOrInEyePlayerXuid]
+      - name: GameStateAPI_GetHudPlayerXuid
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetHudPlayerXuid]
+      - name: GameStateAPI_GetPlayerTeamName
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetPlayerTeamName]
+      - name: GameStateAPI_GetPlayerTeamNumber
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetPlayerTeamNumber]
+      - name: GameStateAPI_GetCoachingTeamNumber
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetCoachingTeamNumber]
+      - name: GameStateAPI_GetAssociatedTeamNumber
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetAssociatedTeamNumber]
+      - name: GameStateAPI_IsPlayerConnected
+        category: func
+        platform: windows
+        alias: [GameStateAPI::IsPlayerConnected]
+      - name: GameStateAPI_IsPlayerAlive
+        category: func
+        platform: windows
+        alias: [GameStateAPI::IsPlayerAlive]
+      - name: GameStateAPI_GetPlayerPing
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetPlayerPing]
+      - name: GameStateAPI_GetPlayerKills
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetPlayerKills]
+      - name: GameStateAPI_GetPlayerRoundKills
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetPlayerRoundKills]
+      - name: GameStateAPI_GetPlayerAssists
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetPlayerAssists]
+      - name: GameStateAPI_GetPlayerDeaths
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetPlayerDeaths]
+      - name: GameStateAPI_GetPlayerMVPs
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetPlayerMVPs]
+      - name: GameStateAPI_GetPlayerMoney
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetPlayerMoney]
+      - name: GameStateAPI_GetPlayerScore
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetPlayerScore]
+      - name: GameStateAPI_GetPlayerClanTag
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetPlayerClanTag]
+      - name: GameStateAPI_GetPlayerActiveCoinRank
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetPlayerActiveCoinRank]
+      - name: GameStateAPI_GetPlayerCompetitiveRankType
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetPlayerCompetitiveRankType]
+      - name: GameStateAPI_GetPlayerCompetitiveRanking
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetPlayerCompetitiveRanking]
+      - name: GameStateAPI_GetPlayerCompetitiveWins
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetPlayerCompetitiveWins]
+      - name: GameStateAPI_GetPlayerPremierRankStatsObject
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetPlayerPremierRankStatsObject]
+      - name: GameStateAPI_GetPlayerDisplayFlairItem
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetPlayerDisplayFlairItem]
+      - name: GameStateAPI_GetPlayerStatus
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetPlayerStatus]
+      - name: GameStateAPI_IsFakePlayer
+        category: func
+        platform: windows
+        alias: [GameStateAPI::IsFakePlayer]
+      - name: GameStateAPI_GetPlayerActiveWeaponItemId
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetPlayerActiveWeaponItemId]
+      - name: GameStateAPI_IsXuidValid
+        category: func
+        platform: windows
+        alias: [GameStateAPI::IsXuidValid]
+      - name: GameStateAPI_GetPlayerVoiceVolume
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetPlayerVoiceVolume]
+      - name: GameStateAPI_SetPlayerVoiceVolume
+        category: func
+        platform: windows
+        alias: [GameStateAPI::SetPlayerVoiceVolume]
+      - name: GameStateAPI_GetMapsInMapGroup
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetMapsInMapGroup]
+      - name: GameStateAPI_GetMapDisplayNameToken
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetMapDisplayNameToken]
+      - name: GameStateAPI_GetMapsInCurrentMapGroup
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetMapsInCurrentMapGroup]
+      - name: GameStateAPI_GetPlayerLifetime
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetPlayerLifetime]
+      - name: GameStateAPI_GetPlayerColor
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetPlayerColor]
+      - name: GameStateAPI_GetPlayerXpLevel
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetPlayerXpLevel]
+      - name: GameStateAPI_GetPlayerXpTrailLevel
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetPlayerXpTrailLevel]
+      - name: GameStateAPI_GetPlayerCommendsLeader
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetPlayerCommendsLeader]
+      - name: GameStateAPI_GetPlayerCommendsTeacher
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetPlayerCommendsTeacher]
+      - name: GameStateAPI_GetPlayerCommendsFriendly
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetPlayerCommendsFriendly]
+      - name: GameStateAPI_HasCommunicationAbuseMute
+        category: func
+        platform: windows
+        alias: [GameStateAPI::HasCommunicationAbuseMute]
+      - name: GameStateAPI_HasCommunicationBan
+        category: func
+        platform: windows
+        alias: [GameStateAPI::HasCommunicationBan]
+      - name: GameStateAPI_ShouldShowHudElements
+        category: func
+        platform: windows
+        alias: [GameStateAPI::ShouldShowHudElements]
+      - name: GameStateAPI_IsQueuedMatchmaking
+        category: func
+        platform: windows
+        alias: [GameStateAPI::IsQueuedMatchmaking]
+      - name: GameStateAPI_GetKickTargets
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetKickTargets]
+      - name: GameStateAPI_GetPlayerCharacterItemID
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetPlayerCharacterItemID]
+      - name: GameStateAPI_GetCharacterDefaultCheerByXuid
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetCharacterDefaultCheerByXuid]
+      - name: GameStateAPI_GetCharacterDefaultDefeatByXuid
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetCharacterDefaultDefeatByXuid]
+      - name: GameStateAPI_ArePlayersEnemies
+        category: func
+        platform: windows
+        alias: [GameStateAPI::ArePlayersEnemies]
+      - name: GameStateAPI_GetCSGOGameUIStateName
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetCSGOGameUIStateName]
+      - name: GameStateAPI_IsLocalPlayerPlayingMatch
+        category: func
+        platform: windows
+        alias: [GameStateAPI::IsLocalPlayerPlayingMatch]
+      - name: GameStateAPI_IsConnectedOrConnectingToServer
+        category: func
+        platform: windows
+        alias: [GameStateAPI::IsConnectedOrConnectingToServer]
+      - name: GameStateAPI_AreTeamsPlayingSwitchedSides
+        category: func
+        platform: windows
+        alias: [GameStateAPI::AreTeamsPlayingSwitchedSides]
+      - name: GameStateAPI_AreTeamsPlayingSwitchedSidesInRound
+        category: func
+        platform: windows
+        alias: [GameStateAPI::AreTeamsPlayingSwitchedSidesInRound]
+      - name: GameStateAPI_IsReportCategoryEnabledForSelectedPlayer
+        category: func
+        platform: windows
+        alias: [GameStateAPI::IsReportCategoryEnabledForSelectedPlayer]
+      - name: GameStateAPI_SubmitPlayerReport
+        category: func
+        platform: windows
+        alias: [GameStateAPI::SubmitPlayerReport]
+      - name: GameStateAPI_SubmitServerReport
+        category: func
+        platform: windows
+        alias: [GameStateAPI::SubmitServerReport]
+      - name: GameStateAPI_QueryServersForCommendation
+        category: func
+        platform: windows
+        alias: [GameStateAPI::QueryServersForCommendation]
+      - name: GameStateAPI_GetCommendationTokensAvailable
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetCommendationTokensAvailable]
+      - name: GameStateAPI_GetMyCommendationsJSOForUser
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetMyCommendationsJSOForUser]
+      - name: GameStateAPI_SubmitCommendation
+        category: func
+        platform: windows
+        alias: [GameStateAPI::SubmitCommendation]
+      - name: GameStateAPI_IsSelectedPlayerMuted
+        category: func
+        platform: windows
+        alias: [GameStateAPI::IsSelectedPlayerMuted]
+      - name: GameStateAPI_ToggleMute
+        category: func
+        platform: windows
+        alias: [GameStateAPI::ToggleMute]
+      - name: GameStateAPI_GetCrosshairCode
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetCrosshairCode]
+      - name: GameStateAPI_IsDemoOrHltv
+        category: func
+        platform: windows
+        alias: [GameStateAPI::IsDemoOrHltv]
+      - name: GameStateAPI_IsOverwatch
+        category: func
+        platform: windows
+        alias: [GameStateAPI::IsOverwatch]
+      - name: GameStateAPI_IsLocalPlayerWatchingOwnDemo
+        category: func
+        platform: windows
+        alias: [GameStateAPI::IsLocalPlayerWatchingOwnDemo]
+      - name: GameStateAPI_IsLocalPlayerHLTV
+        category: func
+        platform: windows
+        alias: [GameStateAPI::IsLocalPlayerHLTV]
+      - name: GameStateAPI_IsHLTVAutodirectorOn
+        category: func
+        platform: windows
+        alias: [GameStateAPI::IsHLTVAutodirectorOn]
+      - name: GameStateAPI_SetCasterIsCameraman
+        category: func
+        platform: windows
+        alias: [GameStateAPI::SetCasterIsCameraman]
+      - name: GameStateAPI_SetCasterIsHeard
+        category: func
+        platform: windows
+        alias: [GameStateAPI::SetCasterIsHeard]
+      - name: GameStateAPI_SetCasterControlsXray
+        category: func
+        platform: windows
+        alias: [GameStateAPI::SetCasterControlsXray]
+      - name: GameStateAPI_SetCasterControlsUI
+        category: func
+        platform: windows
+        alias: [GameStateAPI::SetCasterControlsUI]
+      - name: GameStateAPI_GetServerName
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetServerName]
+      - name: GameStateAPI_GetMapName
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetMapName]
+      - name: GameStateAPI_GetTournamentEventStage
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetTournamentEventStage]
+      - name: GameStateAPI_GetGameModeInternalName
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetGameModeInternalName]
+      - name: GameStateAPI_GetGameModeImagePath
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetGameModeImagePath]
+      - name: GameStateAPI_GetGameModeName
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetGameModeName]
+      - name: GameStateAPI_GetViewerCount
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetViewerCount]
+      - name: GameStateAPI_GetMapBSPName
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetMapBSPName]
+      - name: GameStateAPI_IsQueuedMatchmakingMode_Team
+        category: func
+        platform: windows
+        alias: [GameStateAPI::IsQueuedMatchmakingMode_Team]
+      - name: GameStateAPI_HasHalfTime
+        category: func
+        platform: windows
+        alias: [GameStateAPI::HasHalfTime]
+      - name: GameStateAPI_GetPlayerModel
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetPlayerModel]
+      - name: GameStateAPI_GetAllPlayersMatchDataJSO
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetAllPlayersMatchDataJSO]
+      - name: GameStateAPI_GetPlayerDataJSO
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetPlayerDataJSO]
+      - name: GameStateAPI_GetTimeDataJSO
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetTimeDataJSO]
+      - name: GameStateAPI_GetScoreDataJSO
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetScoreDataJSO]
+      - name: GameStateAPI_GetPlayerStatsJSO
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetPlayerStatsJSO]
+      - name: GameStateAPI_GetMatchInfoJSO
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetMatchInfoJSO]
+      - name: GameStateAPI_GetMatchEndWinDataJSO
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetMatchEndWinDataJSO]
+      - name: GameStateAPI_GetAccoladeLocalizationString
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetAccoladeLocalizationString]
+      - name: GameStateAPI_GetTeamClanName
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetTeamClanName]
+      - name: GameStateAPI_GetTeamLogoImagePath
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetTeamLogoImagePath]
+      - name: GameStateAPI_GetTeamFlagImagePath
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetTeamFlagImagePath]
+      - name: GameStateAPI_GetTeamTotalPlayerCount
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetTeamTotalPlayerCount]
+      - name: GameStateAPI_GetTeamLivingPlayerCount
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetTeamLivingPlayerCount]
+      - name: GameStateAPI_GetTeamNextRoundLossBonus
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetTeamNextRoundLossBonus]
+      - name: GameStateAPI_GetActiveQuestID
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetActiveQuestID]
+      - name: GameStateAPI_GetAnnotationsViewingLevel
+        category: func
+        platform: windows
+        alias: [GameStateAPI::GetAnnotationsViewingLevel]
+      - name: GameStateAPI_BIsLocalServerHost
+        category: func
+        platform: windows
+        alias: [GameStateAPI::BIsLocalServerHost]
   - name: server
     path_windows: game/csgo/bin/win64/server.dll
     path_linux: game/csgo/bin/linuxsteamrt64/libserver.so

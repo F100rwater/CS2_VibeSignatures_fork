@@ -1,7 +1,7 @@
 analysis_output_contract_version: 1
 config_digest_version: 2
-config_sha256: sha256:c17029a8e823be59fe31f7d0c1fa9a6c9db136de2c879542a2c9eed0ecb44340
-file_count: 2973
+config_sha256: sha256:17b8090e1a1c44071b99d8337651303cb3f16db7c013fb3597ac92616f6a9cf7
+file_count: 3078
 files:
   SDL3/SDL_GetMouse.windows.yaml:
     func_name: SDL_GetMouse
@@ -2263,12 +2263,747 @@ files:
     func_sig: 41 57 48 83 EC ?? 8B 05 ?? ?? ?? ?? 4C 8B F9
     func_size: '0x1bc'
     func_va: '0x1818612e0'
+  client/GameStateAPI_ArePlayersEnemies.windows.yaml:
+    func_name: GameStateAPI_ArePlayersEnemies
+    func_rva: '0xef0220'
+    func_sig: 48 89 5C 24 ?? 48 89 6C 24 ?? 48 89 74 24 ?? 48 89 7C 24 ?? 41 54 41 56 41 57 48 83 EC ?? 4C 8B F1
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x14c'
+    func_va: '0x180ef0220'
+  client/GameStateAPI_AreTeamsPlayingSwitchedSides.windows.yaml:
+    func_name: GameStateAPI_AreTeamsPlayingSwitchedSides
+    func_rva: '0xef0370'
+    func_sig: 48 8B 0D ?? ?? ?? ?? 48 85 C9 75 ?? 32 C0 C3 E9 ?? ?? ?? ?? CC CC CC CC CC CC CC CC CC CC CC CC 48 8B 0D ?? ?? ?? ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x14'
+    func_va: '0x180ef0370'
+  client/GameStateAPI_AreTeamsPlayingSwitchedSidesInRound.windows.yaml:
+    func_name: GameStateAPI_AreTeamsPlayingSwitchedSidesInRound
+    func_rva: '0xef0390'
+    func_sig: 48 8B 0D ?? ?? ?? ?? 48 85 C9 75 ?? 32 C0 C3 E9 ?? ?? ?? ?? CC CC CC CC CC CC CC CC CC CC CC CC 48 83 EC ?? 48 8B 0D ?? ?? ?? ?? 48 8B 01
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x14'
+    func_va: '0x180ef0390'
+  client/GameStateAPI_BIsLocalServerHost.windows.yaml:
+    func_name: GameStateAPI_BIsLocalServerHost
+    func_rva: '0xef0490'
+    func_sig: 48 83 EC ?? 48 8B 0D ?? ?? ?? ?? 48 8B 01 FF 90 ?? ?? ?? ?? 84 C0 74 ?? 48 8B 0D ?? ?? ?? ?? 48 8B 01 FF 90 ?? ?? ?? ?? 83 F8 ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x5a'
+    func_va: '0x180ef0490'
+  client/GameStateAPI_GetAccoladeLocalizationString.windows.yaml:
+    func_name: GameStateAPI_GetAccoladeLocalizationString
+    func_rva: '0xf01830'
+    func_sig: FF CA 83 FA ?? 0F 87 ?? ?? ?? ?? 48 63 C2 48 8D 15 ?? ?? ?? ?? 8B 8C 82 ?? ?? ?? ?? 48 03 CA FF E1 48 8D 05 ?? ?? ?? ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x179'
+    func_va: '0x180f01830'
+  client/GameStateAPI_GetActiveQuestID.windows.yaml:
+    func_name: GameStateAPI_GetActiveQuestID
+    func_rva: '0xf01a60'
+    func_sig: 40 53 48 83 EC ?? 33 C9 E8 ?? ?? ?? ?? 48 8B D8 48 85 C0 74 ?? 48 8B C8
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x44'
+    func_va: '0x180f01a60'
+  client/GameStateAPI_GetAllPlayersMatchDataJSO.windows.yaml:
+    func_name: GameStateAPI_GetAllPlayersMatchDataJSO
+    func_rva: '0xf02240'
+    func_sig: 40 53 48 83 EC ?? 48 8B 1A 4C 8D 05 ?? ?? ?? ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x4b'
+    func_va: '0x180f02240'
+  client/GameStateAPI_GetAnnotationsViewingLevel.windows.yaml:
+    func_name: GameStateAPI_GetAnnotationsViewingLevel
+    func_rva: '0xf024a0'
+    func_sig: 48 83 EC ?? E8 ?? ?? ?? ?? 48 85 C0 0F 84 ?? ?? ?? ?? BA ?? ?? ?? ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0xb6'
+    func_va: '0x180f024a0'
+  client/GameStateAPI_GetAssociatedTeamNumber.windows.yaml:
+    func_name: GameStateAPI_GetAssociatedTeamNumber
+    func_rva: '0xf02710'
+    func_sig: 48 89 5C 24 ?? 48 89 74 24 ?? 57 48 83 EC ?? 48 8B CA FF 15 ?? ?? ?? ?? 48 8B 1D ?? ?? ?? ?? 33 C9 48 8B F0 33 FF 8B 5B ?? 0F 1F 80 ?? ?? ?? ?? 3B CB 74 ?? 8B CF E8 ?? ?? ?? ?? 48 85 C0 74 ?? 8B 88 ?? ?? ?? ?? C1 E9 ?? F6 C1 ?? 74 ?? 48 63 C7 EB ?? 48 8B C8 E8 ?? ?? ?? ?? 48 3B C6 74 ?? 8D 4F ?? 8B F9 EB ?? BF ?? ?? ?? ?? 8B CF E8 ?? ?? ?? ?? 48 85 C0 74 ?? 48 8B C8 48 8B 5C 24 ?? 48 8B 74 24 ?? 48 83 C4 ?? 5F E9 ?? ?? ?? ?? 48 8B 5C 24 ?? 48 8B 74 24 ?? 48 83 C4 ?? 5F C3 CC 48 83 EC ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x9f'
+    func_va: '0x180f02710'
+  client/GameStateAPI_GetCSGOGameUIStateName.windows.yaml:
+    func_name: GameStateAPI_GetCSGOGameUIStateName
+    func_rva: '0xf028d0'
+    func_sig: 48 83 EC ?? E8 ?? ?? ?? ?? 48 8B C8 E8 ?? ?? ?? ?? 83 F8 ?? 77 ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x6a'
+    func_va: '0x180f028d0'
+  client/GameStateAPI_GetCharacterDefaultCheerByXuid.windows.yaml:
+    func_name: GameStateAPI_GetCharacterDefaultCheerByXuid
+    func_rva: '0xf04540'
+    func_sig: 48 89 5C 24 ?? 48 89 74 24 ?? 57 48 83 EC ?? 48 8B CA FF 15 10 49 ?? ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0xef'
+    func_va: '0x180f04540'
+  client/GameStateAPI_GetCharacterDefaultDefeatByXuid.windows.yaml:
+    func_name: GameStateAPI_GetCharacterDefaultDefeatByXuid
+    func_rva: '0xf046e0'
+    func_sig: 48 89 5C 24 ?? 48 89 74 24 ?? 57 48 83 EC ?? 48 8B CA FF 15 70 47 ?? ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0xef'
+    func_va: '0x180f046e0'
+  client/GameStateAPI_GetCoachingTeamNumber.windows.yaml:
+    func_name: GameStateAPI_GetCoachingTeamNumber
+    func_rva: '0xf051e0'
+    func_sig: 48 89 5C 24 ?? 48 89 74 24 ?? 57 48 83 EC ?? 48 8B CA FF 15 ?? ?? ?? ?? 48 8B 1D ?? ?? ?? ?? 33 C9 48 8B F0 33 FF 8B 5B ?? 0F 1F 80 ?? ?? ?? ?? 3B CB 74 ?? 8B CF E8 ?? ?? ?? ?? 48 85 C0 74 ?? 8B 88 ?? ?? ?? ?? C1 E9 ?? F6 C1 ?? 74 ?? 48 63 C7 EB ?? 48 8B C8 E8 ?? ?? ?? ?? 48 3B C6 74 ?? 8D 4F ?? 8B F9 EB ?? BF ?? ?? ?? ?? 8B CF E8 ?? ?? ?? ?? 48 85 C0 74 ?? 48 8B C8 48 8B 5C 24 ?? 48 8B 74 24 ?? 48 83 C4 ?? 5F E9 ?? ?? ?? ?? 48 8B 5C 24 ?? 48 8B 74 24 ?? 48 83 C4 ?? 5F C3 CC 8B 05 ?? ?? ?? ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x9f'
+    func_va: '0x180f051e0'
+  client/GameStateAPI_GetCommendationTokensAvailable.windows.yaml:
+    func_name: GameStateAPI_GetCommendationTokensAvailable
+    func_rva: '0xf05280'
+    func_sig: 8B 05 ?? ?? ?? ?? C3 CC CC CC CC CC CC CC CC CC 48 89 5C 24 ?? 57 48 83 EC ?? 65 48 8B 04 25 ?? ?? ?? ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x7'
+    func_va: '0x180f05280'
+  client/GameStateAPI_GetCrosshairCode.windows.yaml:
+    func_name: GameStateAPI_GetCrosshairCode
+    func_rva: '0xf058c0'
+    func_sig: 48 89 5C 24 ?? 48 89 74 24 ?? 57 48 83 EC ?? 48 8B CA FF 15 ?? ?? ?? ?? 48 8B 1D ?? ?? ?? ?? 33 C9 48 8B F0 33 FF 8B 5B ?? 0F 1F 80 ?? ?? ?? ?? 3B CB 74 ?? 8B CF E8 ?? ?? ?? ?? 48 85 C0 74 ?? 8B 88 ?? ?? ?? ?? C1 E9 ?? F6 C1 ?? 74 ?? 48 63 C7 EB ?? 48 8B C8 E8 ?? ?? ?? ?? 48 3B C6 74 ?? 8D 4F ?? 8B F9 EB ?? BF ?? ?? ?? ?? 8B CF E8 ?? ?? ?? ?? 48 85 C0 75 ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0xa6'
+    func_va: '0x180f058c0'
+  client/GameStateAPI_GetGameModeImagePath.windows.yaml:
+    func_name: GameStateAPI_GetGameModeImagePath
+    func_rva: '0xf0af90'
+    func_sig: 40 53 48 83 EC ?? 48 8B 0D ?? ?? ?? ?? 48 8B 01 FF 90 ?? ?? ?? ?? 8B 15 ?? ?? ?? ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x14a'
+    func_va: '0x180f0af90'
+  client/GameStateAPI_GetGameModeInternalName.windows.yaml:
+    func_name: GameStateAPI_GetGameModeInternalName
+    func_rva: '0xf0b0e0'
+    func_sig: 48 83 EC ?? 33 C9 E8 ?? ?? ?? ?? 48 85 C0 74 ?? 48 8B C8
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x4f'
+    func_va: '0x180f0b0e0'
+  client/GameStateAPI_GetGameModeName.windows.yaml:
+    func_name: GameStateAPI_GetGameModeName
+    func_rva: '0xf0b130'
+    func_sig: 48 83 EC ?? 48 8B 0D ?? ?? ?? ?? 48 8B 01 FF 90 ?? ?? ?? ?? 48 85 C0 74 ?? 48 8B 0D ?? ?? ?? ?? 48 8B 11
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x4f'
+    func_va: '0x180f0b130'
+  client/GameStateAPI_GetHudPlayerXuid.windows.yaml:
+    func_name: GameStateAPI_GetHudPlayerXuid
+    func_rva: '0xf0bd70'
+    func_sig: 40 53 48 83 EC ?? 8B 15 F4 F0 ?? ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0xf2'
+    func_va: '0x180f0bd70'
+  client/GameStateAPI_GetKickTargets.windows.yaml:
+    func_name: GameStateAPI_GetKickTargets
+    func_rva: '0xf11ce0'
+    func_sig: 40 55 53 56 57 41 54 41 56 41 57 48 8D 6C 24 ?? 48 81 EC ?? ?? ?? ?? 48 8B 32
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x372'
+    func_va: '0x180f11ce0'
+  client/GameStateAPI_GetLocalOrInEyePlayerXuid.windows.yaml:
+    func_name: GameStateAPI_GetLocalOrInEyePlayerXuid
+    func_rva: '0xf126e0'
+    func_sig: 40 53 48 83 EC ?? 8B 15 84 87 ?? ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0xf2'
+    func_va: '0x180f126e0'
+  client/GameStateAPI_GetLocalPlayerXuid.windows.yaml:
+    func_name: GameStateAPI_GetLocalPlayerXuid
+    func_rva: '0xf127e0'
+    func_sig: 48 89 5C 24 ?? 57 48 83 EC ?? 8B 15 ?? ?? ?? ?? 48 8B D9 65 48 8B 04 25 ?? ?? ?? ?? B9 ?? ?? ?? ?? 48 8B 04 D0 8B 04 01 39 05 ?? ?? ?? ?? 0F 8F ?? ?? ?? ?? E8 ?? ?? ?? ?? 48 8B 8B ?? ?? ?? ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x15e'
+    func_va: '0x180f127e0'
+  client/GameStateAPI_GetMapBSPName.windows.yaml:
+    func_name: GameStateAPI_GetMapBSPName
+    func_rva: '0xf13490'
+    func_sig: 48 8B 0D ?? ?? ?? ?? 48 8B 01 48 FF A0 ?? ?? ?? ?? CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC 48 89 5C 24 ?? 57
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x11'
+    func_va: '0x180f13490'
+  client/GameStateAPI_GetMapDisplayNameToken.windows.yaml:
+    func_name: GameStateAPI_GetMapDisplayNameToken
+    func_rva: '0xf156b0'
+    func_sig: 40 53 48 83 EC ?? 48 83 3D ?? ?? ?? ?? ?? 48 8B DA 74 ?? 48 89 7C 24 ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x44'
+    func_va: '0x180f156b0'
+  client/GameStateAPI_GetMapName.windows.yaml:
+    func_name: GameStateAPI_GetMapName
+    func_rva: '0xf15c40'
+    func_sig: 48 83 EC ?? 48 8B 0D ?? ?? ?? ?? 48 8B 01 FF 90 ?? ?? ?? ?? 48 8B C8 48 83 C4 ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x20'
+    func_va: '0x180f15c40'
+  client/GameStateAPI_GetMapsInCurrentMapGroup.windows.yaml:
+    func_name: GameStateAPI_GetMapsInCurrentMapGroup
+    func_rva: '0xf15d70'
+    func_sig: 33 D2 E9 ?? ?? ?? ?? CC CC CC CC CC CC CC CC CC 40 53 55
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x7'
+    func_va: '0x180f15d70'
+  client/GameStateAPI_GetMapsInMapGroup.windows.yaml:
+    func_name: GameStateAPI_GetMapsInMapGroup
+    func_rva: '0xf15d80'
+    func_sig: 40 53 55 48 83 EC ?? 48 8B 0D ?? ?? ?? ?? 48 8B C2
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x216'
+    func_va: '0x180f15d80'
+  client/GameStateAPI_GetMatchEndWinDataJSO.windows.yaml:
+    func_name: GameStateAPI_GetMatchEndWinDataJSO
+    func_rva: '0xf161f0'
+    func_sig: 48 8B C4 48 89 48 ?? 41 57 48 81 EC ?? ?? ?? ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x3af'
+    func_va: '0x180f161f0'
+  client/GameStateAPI_GetMatchInfoJSO.windows.yaml:
+    func_name: GameStateAPI_GetMatchInfoJSO
+    func_rva: '0xf165a0'
+    func_sig: 48 89 54 24 ?? 55 53 56 57 41 54 41 55 41 56 41 57 48 8D 6C 24 ?? 48 81 EC ?? ?? ?? ?? 48 8B 02
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x978'
+    func_va: '0x180f165a0'
+  client/GameStateAPI_GetMyCommendationsJSOForUser.windows.yaml:
+    func_name: GameStateAPI_GetMyCommendationsJSOForUser
+    func_rva: '0xf19080'
+    func_sig: 48 89 5C 24 ?? 55 41 54 41 56 48 8B EC
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x481'
+    func_va: '0x180f19080'
+  client/GameStateAPI_GetPlayerActiveCoinRank.windows.yaml:
+    func_name: GameStateAPI_GetPlayerActiveCoinRank
+    func_rva: '0xf1acb0'
+    func_sig: 48 89 5C 24 ?? 48 89 74 24 ?? 57 48 83 EC ?? 48 8B CA FF 15 ?? ?? ?? ?? 48 8B 1D ?? ?? ?? ?? 33 C9 48 8B F0 33 FF 8B 5B ?? 0F 1F 80 ?? ?? ?? ?? 3B CB 74 ?? 8B CF E8 ?? ?? ?? ?? 48 85 C0 74 ?? 8B 88 ?? ?? ?? ?? C1 E9 ?? F6 C1 ?? 74 ?? 48 63 C7 EB ?? 48 8B C8 E8 ?? ?? ?? ?? 48 3B C6 74 ?? 8D 4F ?? 8B F9 EB ?? BF ?? ?? ?? ?? 8B CF E8 ?? ?? ?? ?? 48 85 C0 74 ?? 48 8B C8 E8 ?? ?? ?? ?? BA ?? ?? ?? ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0xb1'
+    func_va: '0x180f1acb0'
+  client/GameStateAPI_GetPlayerActiveWeaponItemId.windows.yaml:
+    func_name: GameStateAPI_GetPlayerActiveWeaponItemId
+    func_rva: '0xf1ad70'
+    func_sig: 40 53 48 83 EC ?? E8 ?? ?? ?? ?? 48 85 C0
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x10b'
+    func_va: '0x180f1ad70'
+  client/GameStateAPI_GetPlayerAssists.windows.yaml:
+    func_name: GameStateAPI_GetPlayerAssists
+    func_rva: '0xf1ae80'
+    func_sig: 48 89 5C 24 ?? 48 89 74 24 ?? 57 48 83 EC ?? 48 8B CA FF 15 ?? ?? ?? ?? 48 8B 1D ?? ?? ?? ?? 33 C9 48 8B F0 33 FF 8B 5B ?? 0F 1F 80 ?? ?? ?? ?? 3B CB 74 ?? 8B CF E8 ?? ?? ?? ?? 48 85 C0 74 ?? 8B 88 ?? ?? ?? ?? C1 E9 ?? F6 C1 ?? 74 ?? 48 63 C7 EB ?? 48 8B C8 E8 ?? ?? ?? ?? 48 3B C6 74 ?? 8D 4F ?? 8B F9 EB ?? BF ?? ?? ?? ?? 8B CF E8 ?? ?? ?? ?? 48 85 C0 74 ?? 48 8B 88 ?? ?? ?? ?? 48 8B 5C 24 ?? 48 8B 74 24 ?? 48 83 C4 ?? 5F E9 ?? ?? ?? ?? 48 8B 5C 24 ?? B8 ?? ?? ?? ?? 48 8B 74 24 ?? 48 83 C4 ?? 5F C3 CC CC CC CC CC CC CC CC 48 89 5C 24 ?? 48 89 6C 24 ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0xa8'
+    func_va: '0x180f1ae80'
+  client/GameStateAPI_GetPlayerCharacterItemID.windows.yaml:
+    func_name: GameStateAPI_GetPlayerCharacterItemID
+    func_rva: '0xf1b050'
+    func_sig: 48 89 5C 24 ?? 56 48 83 EC ?? 48 8B DA E8 ?? ?? ?? ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x1af'
+    func_va: '0x180f1b050'
+  client/GameStateAPI_GetPlayerClanTag.windows.yaml:
+    func_name: GameStateAPI_GetPlayerClanTag
+    func_rva: '0xf1b200'
+    func_sig: 48 89 5C 24 ?? 48 89 74 24 ?? 57 48 83 EC ?? 48 8B CA FF 15 ?? ?? ?? ?? 48 8B 1D ?? ?? ?? ?? 33 C9 48 8B F0 33 FF 8B 5B ?? 0F 1F 80 ?? ?? ?? ?? 3B CB 74 ?? 8B CF E8 ?? ?? ?? ?? 48 85 C0 74 ?? 8B 88 ?? ?? ?? ?? C1 E9 ?? F6 C1 ?? 74 ?? 48 63 C7 EB ?? 48 8B C8 E8 ?? ?? ?? ?? 48 3B C6 74 ?? 8D 4F ?? 8B F9 EB ?? BF ?? ?? ?? ?? 8B CF E8 ?? ?? ?? ?? 48 85 C0 74 ?? 48 8B C8 48 8B 5C 24 ?? 48 8B 74 24 ?? 48 83 C4 ?? 5F E9 ?? ?? ?? ?? 48 8B 5C 24 ?? 48 8D 05 ?? ?? ?? ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0xa6'
+    func_va: '0x180f1b200'
+  client/GameStateAPI_GetPlayerColor.windows.yaml:
+    func_name: GameStateAPI_GetPlayerColor
+    func_rva: '0xf1b2b0'
+    func_sig: 48 89 5C 24 ?? 55 48 83 EC ?? 48 8B DA 48 85 D2
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x1a3'
+    func_va: '0x180f1b2b0'
+  client/GameStateAPI_GetPlayerCommendsFriendly.windows.yaml:
+    func_name: GameStateAPI_GetPlayerCommendsFriendly
+    func_rva: '0xf1b460'
+    func_sig: 48 89 5C 24 ?? 48 89 6C 24 ?? 48 89 74 24 ?? 57 48 83 EC ?? 48 8B CA FF 15 ?? ?? ?? ?? 48 8B 1D ?? ?? ?? ?? 33 F6 48 8B E8 8B CE 8B FE 8B 5B ?? 3B CB 74 ?? 8B CF E8 ?? ?? ?? ?? 48 85 C0 74 ?? 8B 88 ?? ?? ?? ?? C1 E9 ?? F6 C1 ?? 74 ?? 48 63 C7 EB ?? 48 8B C8 E8 ?? ?? ?? ?? EB ?? 48 8B C6 48 3B C5 74 ?? 8D 4F ?? 8B F9 EB ?? BF ?? ?? ?? ?? 8B CF E8 ?? ?? ?? ?? 33 C9 48 8B D8 E8 ?? ?? ?? ?? 48 85 DB 74 ?? 48 85 C0 74 ?? 40 38 35 ?? 53 48 01
+    func_sig_allow_across_function_boundary: true
+    func_size: '0xd1'
+    func_va: '0x180f1b460'
+  client/GameStateAPI_GetPlayerCommendsLeader.windows.yaml:
+    func_name: GameStateAPI_GetPlayerCommendsLeader
+    func_rva: '0xf1b540'
+    func_sig: 48 89 5C 24 ?? 48 89 6C 24 ?? 48 89 74 24 ?? 57 48 83 EC ?? 48 8B CA FF 15 ?? ?? ?? ?? 48 8B 1D ?? ?? ?? ?? 33 F6 48 8B E8 8B CE 8B FE 8B 5B ?? 3B CB 74 ?? 8B CF E8 ?? ?? ?? ?? 48 85 C0 74 ?? 8B 88 ?? ?? ?? ?? C1 E9 ?? F6 C1 ?? 74 ?? 48 63 C7 EB ?? 48 8B C8 E8 ?? ?? ?? ?? EB ?? 48 8B C6 48 3B C5 74 ?? 8D 4F ?? 8B F9 EB ?? BF ?? ?? ?? ?? 8B CF E8 ?? ?? ?? ?? 33 C9 48 8B D8 E8 ?? ?? ?? ?? 48 85 DB 74 ?? 48 85 C0 74 ?? 40 38 35 ?? 52 48 01
+    func_sig_allow_across_function_boundary: true
+    func_size: '0xd1'
+    func_va: '0x180f1b540'
+  client/GameStateAPI_GetPlayerCommendsTeacher.windows.yaml:
+    func_name: GameStateAPI_GetPlayerCommendsTeacher
+    func_rva: '0xf1b620'
+    func_sig: 48 89 5C 24 ?? 48 89 6C 24 ?? 48 89 74 24 ?? 57 48 83 EC ?? 48 8B CA FF 15 ?? ?? ?? ?? 48 8B 1D ?? ?? ?? ?? 33 F6 48 8B E8 8B CE 8B FE 8B 5B ?? 3B CB 74 ?? 8B CF E8 ?? ?? ?? ?? 48 85 C0 74 ?? 8B 88 ?? ?? ?? ?? C1 E9 ?? F6 C1 ?? 74 ?? 48 63 C7 EB ?? 48 8B C8 E8 ?? ?? ?? ?? EB ?? 48 8B C6 48 3B C5 74 ?? 8D 4F ?? 8B F9 EB ?? BF ?? ?? ?? ?? 8B CF E8 ?? ?? ?? ?? 33 C9 48 8B D8 E8 ?? ?? ?? ?? 48 85 DB 74 ?? 48 85 C0 74 ?? 40 38 35 ?? 51 48 01
+    func_sig_allow_across_function_boundary: true
+    func_size: '0xd1'
+    func_va: '0x180f1b620'
+  client/GameStateAPI_GetPlayerCompetitiveRankType.windows.yaml:
+    func_name: GameStateAPI_GetPlayerCompetitiveRankType
+    func_rva: '0xf1b700'
+    func_sig: 48 89 5C 24 ?? 48 89 74 24 ?? 57 48 83 EC ?? 48 8B CA FF 15 ?? ?? ?? ?? 48 8B 1D ?? ?? ?? ?? 33 C9 48 8B F0 33 FF 8B 5B ?? 0F 1F 80 ?? ?? ?? ?? 3B CB 74 ?? 8B CF E8 ?? ?? ?? ?? 48 85 C0 74 ?? 8B 88 ?? ?? ?? ?? C1 E9 ?? F6 C1 ?? 74 ?? 48 63 C7 EB ?? 48 8B C8 E8 ?? ?? ?? ?? 48 3B C6 74 ?? 8D 4F ?? 8B F9 EB ?? BF ?? ?? ?? ?? 8B CF E8 ?? ?? ?? ?? 48 85 C0 74 ?? 48 8B C8 E8 ?? ?? ?? ?? 8B C8
+    func_sig_allow_across_function_boundary: true
+    func_size: '0xad'
+    func_va: '0x180f1b700'
+  client/GameStateAPI_GetPlayerCompetitiveRanking.windows.yaml:
+    func_name: GameStateAPI_GetPlayerCompetitiveRanking
+    func_rva: '0xf1b7b0'
+    func_sig: 48 89 5C 24 ?? 48 89 6C 24 ?? 48 89 74 24 ?? 57 41 56 41 57 48 83 EC ?? 4C 8B F9 48 8B EA
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x27f'
+    func_va: '0x180f1b7b0'
+  client/GameStateAPI_GetPlayerCompetitiveWins.windows.yaml:
+    func_name: GameStateAPI_GetPlayerCompetitiveWins
+    func_rva: '0xf1ba30'
+    func_sig: 48 89 5C 24 ?? 48 89 74 24 ?? 57 48 83 EC ?? 48 8B CA FF 15 20 D4 ?? ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0xa4'
+    func_va: '0x180f1ba30'
+  client/GameStateAPI_GetPlayerDataJSO.windows.yaml:
+    func_name: GameStateAPI_GetPlayerDataJSO
+    func_rva: '0xf1bce0'
+    func_sig: 40 55 53 56 57 41 54 41 55 41 56 41 57 48 8D AC 24 ?? ?? ?? ?? 48 81 EC ?? ?? ?? ?? 48 8B 02
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x40f'
+    func_va: '0x180f1bce0'
+  client/GameStateAPI_GetPlayerDeaths.windows.yaml:
+    func_name: GameStateAPI_GetPlayerDeaths
+    func_rva: '0xf1c0f0'
+    func_sig: 48 89 5C 24 ?? 48 89 74 24 ?? 57 48 83 EC ?? 48 8B CA FF 15 ?? ?? ?? ?? 48 8B 1D ?? ?? ?? ?? 33 C9 48 8B F0 33 FF 8B 5B ?? 0F 1F 80 ?? ?? ?? ?? 3B CB 74 ?? 8B CF E8 ?? ?? ?? ?? 48 85 C0 74 ?? 8B 88 ?? ?? ?? ?? C1 E9 ?? F6 C1 ?? 74 ?? 48 63 C7 EB ?? 48 8B C8 E8 ?? ?? ?? ?? 48 3B C6 74 ?? 8D 4F ?? 8B F9 EB ?? BF ?? ?? ?? ?? 8B CF E8 ?? ?? ?? ?? 48 85 C0 74 ?? 48 8B 88 ?? ?? ?? ?? 48 8B 5C 24 ?? 48 8B 74 24 ?? 48 83 C4 ?? 5F E9 ?? ?? ?? ?? 48 8B 5C 24 ?? B8 ?? ?? ?? ?? 48 8B 74 24 ?? 48 83 C4 ?? 5F C3 CC CC CC CC CC CC CC CC 48 83 EC ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0xa8'
+    func_va: '0x180f1c0f0'
+  client/GameStateAPI_GetPlayerDisplayFlairItem.windows.yaml:
+    func_name: GameStateAPI_GetPlayerDisplayFlairItem
+    func_rva: '0xf1c1a0'
+    func_sig: 48 83 EC ?? 48 8B CA E8 ?? ?? ?? ?? 48 C7 44 24 ?? ?? ?? ?? ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0xd7'
+    func_va: '0x180f1c1a0'
+  client/GameStateAPI_GetPlayerKills.windows.yaml:
+    func_name: GameStateAPI_GetPlayerKills
+    func_rva: '0xf1c280'
+    func_sig: 48 89 5C 24 ?? 48 89 74 24 ?? 57 48 83 EC ?? 48 8B CA FF 15 ?? ?? ?? ?? 48 8B 1D ?? ?? ?? ?? 33 C9 48 8B F0 33 FF 8B 5B ?? 0F 1F 80 ?? ?? ?? ?? 3B CB 74 ?? 8B CF E8 ?? ?? ?? ?? 48 85 C0 74 ?? 8B 88 ?? ?? ?? ?? C1 E9 ?? F6 C1 ?? 74 ?? 48 63 C7 EB ?? 48 8B C8 E8 ?? ?? ?? ?? 48 3B C6 74 ?? 8D 4F ?? 8B F9 EB ?? BF ?? ?? ?? ?? 8B CF E8 ?? ?? ?? ?? 48 85 C0 74 ?? 48 8B 88 ?? ?? ?? ?? 48 8B 5C 24 ?? 48 8B 74 24 ?? 48 83 C4 ?? 5F E9 ?? ?? ?? ?? 48 8B 5C 24 ?? B8 ?? ?? ?? ?? 48 8B 74 24 ?? 48 83 C4 ?? 5F C3 CC CC CC CC CC CC CC CC 40 53
+    func_sig_allow_across_function_boundary: true
+    func_size: '0xa8'
+    func_va: '0x180f1c280'
+  client/GameStateAPI_GetPlayerLifetime.windows.yaml:
+    func_name: GameStateAPI_GetPlayerLifetime
+    func_rva: '0xf1c330'
+    func_sig: 40 53 48 83 EC ?? 48 8B 0D ?? ?? ?? ?? 48 8B DA E8 ?? ?? ?? ?? 84 C0
+    func_sig_allow_across_function_boundary: true
+    func_size: '0xb1'
+    func_va: '0x180f1c330'
+  client/GameStateAPI_GetPlayerMVPs.windows.yaml:
+    func_name: GameStateAPI_GetPlayerMVPs
+    func_rva: '0xf1c3f0'
+    func_sig: 48 89 5C 24 ?? 48 89 74 24 ?? 57 48 83 EC ?? 48 8B CA FF 15 60 CA ?? ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0xa4'
+    func_va: '0x180f1c3f0'
+  client/GameStateAPI_GetPlayerModel.windows.yaml:
+    func_name: GameStateAPI_GetPlayerModel
+    func_rva: '0xf1c4a0'
+    func_sig: 48 89 5C 24 ?? 48 89 74 24 ?? 57 48 83 EC ?? 48 8B CA FF 15 ?? ?? ?? ?? 48 8B 1D ?? ?? ?? ?? 33 C9 48 8B F0 33 FF 8B 5B ?? 0F 1F 80 ?? ?? ?? ?? 3B CB 74 ?? 8B CF E8 ?? ?? ?? ?? 48 85 C0 74 ?? 8B 88 ?? ?? ?? ?? C1 E9 ?? F6 C1 ?? 74 ?? 48 63 C7 EB ?? 48 8B C8 E8 ?? ?? ?? ?? 48 3B C6 74 ?? 8D 4F ?? 8B F9 EB ?? BF ?? ?? ?? ?? 8B CF E8 ?? ?? ?? ?? 48 8B D8 48 85 C0 74 ?? 48 8B C8 E8 ?? ?? ?? ?? 48 85 C0 48 0F 45 D8 48 8B CB E8 ?? ?? ?? ?? 0F B7 D8 E8 ?? ?? ?? ?? 8B D3 45 33 C0 48 8B C8 E8 ?? ?? ?? ?? 48 8B D8
+    func_sig_allow_across_function_boundary: true
+    func_size: '0xed'
+    func_va: '0x180f1c4a0'
+  client/GameStateAPI_GetPlayerMoney.windows.yaml:
+    func_name: GameStateAPI_GetPlayerMoney
+    func_rva: '0xf1c690'
+    func_sig: 48 89 5C 24 ?? 55 48 83 EC ?? 48 8B DA 48 8B E9 E8 ?? ?? ?? ?? 48 8B C8 E8 ?? ?? ?? ?? 83 F8 ?? 0F 84 ?? ?? ?? ?? 48 83 3D ?? ?? ?? ?? ?? 0F 84 ?? ?? ?? ?? 48 89 74 24 ?? 48 8B CB 48 89 7C 24 ?? FF 15 ?? ?? ?? ?? 48 8B 3D ?? ?? ?? ?? 33 C9
+    func_sig_allow_across_function_boundary: true
+    func_size: '0xc3'
+    func_va: '0x180f1c690'
+  client/GameStateAPI_GetPlayerName.windows.yaml:
+    func_name: GameStateAPI_GetPlayerName
+    func_rva: '0xf1c760'
+    func_sig: 48 89 5C 24 ?? 48 89 6C 24 ?? 48 89 74 24 ?? 57 48 83 EC ?? 48 8B E9 48 8B CA
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x14b'
+    func_va: '0x180f1c760'
+  client/GameStateAPI_GetPlayerPing.windows.yaml:
+    func_name: GameStateAPI_GetPlayerPing
+    func_rva: '0xf1cbf0'
+    func_sig: 48 89 5C 24 ?? 48 89 74 24 ?? 57 48 83 EC ?? 48 8B CA FF 15 ?? ?? ?? ?? 48 8B 1D ?? ?? ?? ?? 33 C9 48 8B F0 33 FF 8B 5B ?? 0F 1F 80 ?? ?? ?? ?? 3B CB 74 ?? 8B CF E8 ?? ?? ?? ?? 48 85 C0 74 ?? 8B 88 ?? ?? ?? ?? C1 E9 ?? F6 C1 ?? 74 ?? 48 63 C7 EB ?? 48 8B C8 E8 ?? ?? ?? ?? 48 3B C6 74 ?? 8D 4F ?? 8B F9 EB ?? BF ?? ?? ?? ?? 8B CF E8 ?? ?? ?? ?? 48 85 C0 74 ?? 48 8B C8 48 8B 5C 24 ?? 48 8B 74 24 ?? 48 83 C4 ?? 5F E9 ?? ?? ?? ?? 48 8B 5C 24 ?? B8 ?? ?? ?? ?? 48 8B 74 24 ?? 48 83 C4 ?? 5F C3 CC CC CC CC CC CC CC CC CC CC CC CC 48 89 5C 24 ?? 48 89 6C 24 ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0xa4'
+    func_va: '0x180f1cbf0'
+  client/GameStateAPI_GetPlayerPremierRankStatsObject.windows.yaml:
+    func_name: GameStateAPI_GetPlayerPremierRankStatsObject
+    func_rva: '0xf1cca0'
+    func_sig: 48 89 5C 24 ?? 48 89 6C 24 ?? 48 89 74 24 ?? 57 48 83 EC ?? 48 8B 3A 48 8B DA
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x1df'
+    func_va: '0x180f1cca0'
+  client/GameStateAPI_GetPlayerRoundKills.windows.yaml:
+    func_name: GameStateAPI_GetPlayerRoundKills
+    func_rva: '0xf1ce80'
+    func_sig: 48 89 5C 24 ?? 48 89 74 24 ?? 57 48 83 EC ?? 48 8B CA FF 15 ?? ?? ?? ?? 48 8B 1D ?? ?? ?? ?? 33 C9 48 8B F0 33 FF 8B 5B ?? 0F 1F 80 ?? ?? ?? ?? 3B CB 74 ?? 8B CF E8 ?? ?? ?? ?? 48 85 C0 74 ?? 8B 88 ?? ?? ?? ?? C1 E9 ?? F6 C1 ?? 74 ?? 48 63 C7 EB ?? 48 8B C8 E8 ?? ?? ?? ?? 48 3B C6 74 ?? 8D 4F ?? 8B F9 EB ?? BF ?? ?? ?? ?? 8B CF E8 ?? ?? ?? ?? 48 85 C0 74 ?? 48 8B 88 ?? ?? ?? ?? 48 8B 5C 24 ?? 48 8B 74 24 ?? 48 83 C4 ?? 5F E9 ?? ?? ?? ?? 48 8B 5C 24 ?? B8 ?? ?? ?? ?? 48 8B 74 24 ?? 48 83 C4 ?? 5F C3 CC CC CC CC CC CC CC CC 48 89 5C 24 ?? 48 89 74 24 ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0xa8'
+    func_va: '0x180f1ce80'
+  client/GameStateAPI_GetPlayerScore.windows.yaml:
+    func_name: GameStateAPI_GetPlayerScore
+    func_rva: '0xf1cf30'
+    func_sig: 48 89 5C 24 ?? 48 89 74 24 ?? 57 48 83 EC ?? 48 8B CA FF 15 ?? ?? ?? ?? 48 8B 1D ?? ?? ?? ?? 33 C9 48 8B F0 33 FF 8B 5B ?? 0F 1F 80 ?? ?? ?? ?? 3B CB 74 ?? 8B CF E8 ?? ?? ?? ?? 48 85 C0 74 ?? 8B 88 ?? ?? ?? ?? C1 E9 ?? F6 C1 ?? 74 ?? 48 63 C7 EB ?? 48 8B C8 E8 ?? ?? ?? ?? 48 3B C6 74 ?? 8D 4F ?? 8B F9 EB ?? BF ?? ?? ?? ?? 8B CF E8 ?? ?? ?? ?? 48 85 C0 74 ?? 8B 80 ?? ?? ?? ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0xa3'
+    func_va: '0x180f1cf30'
+  client/GameStateAPI_GetPlayerSlot.windows.yaml:
+    func_name: GameStateAPI_GetPlayerSlot
+    func_rva: '0xf1cfe0'
+    func_sig: 48 89 5C 24 ?? 48 89 6C 24 ?? 48 89 74 24 ?? 57 48 83 EC ?? 49 8B C8
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x8a'
+    func_va: '0x180f1cfe0'
+  client/GameStateAPI_GetPlayerStatsJSO.windows.yaml:
+    func_name: GameStateAPI_GetPlayerStatsJSO
+    func_rva: '0xf1d1a0'
+    func_sig: 40 55 53 56 57 41 54 41 55 41 56 41 57 48 8D 6C 24 ?? 48 81 EC ?? ?? ?? ?? 4C 8B E9
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x13f3'
+    func_va: '0x180f1d1a0'
+  client/GameStateAPI_GetPlayerStatus.windows.yaml:
+    func_name: GameStateAPI_GetPlayerStatus
+    func_rva: '0xf1e7b0'
+    func_sig: 48 89 5C 24 ?? 48 89 6C 24 ?? 48 89 74 24 ?? 57 41 54 41 55 41 56 41 57 48 83 EC ?? 4C 8B E2
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x490'
+    func_va: '0x180f1e7b0'
+  client/GameStateAPI_GetPlayerTeamName.windows.yaml:
+    func_name: GameStateAPI_GetPlayerTeamName
+    func_rva: '0xf1ec70'
+    func_sig: 48 89 5C 24 ?? 48 89 6C 24 ?? 48 89 74 24 ?? 57 48 83 EC ?? 48 8B CA 48 8B EA
+    func_sig_allow_across_function_boundary: true
+    func_size: '0xed'
+    func_va: '0x180f1ec70'
+  client/GameStateAPI_GetPlayerTeamNumber.windows.yaml:
+    func_name: GameStateAPI_GetPlayerTeamNumber
+    func_rva: '0xf1ed60'
+    func_sig: 48 89 5C 24 ?? 48 89 74 24 ?? 57 48 83 EC ?? 48 8B CA FF 15 ?? ?? ?? ?? 48 8B 1D ?? ?? ?? ?? 33 C9 48 8B F0 33 FF 8B 5B ?? 0F 1F 80 ?? ?? ?? ?? 3B CB 74 ?? 8B CF E8 ?? ?? ?? ?? 48 85 C0 74 ?? 8B 88 ?? ?? ?? ?? C1 E9 ?? F6 C1 ?? 74 ?? 48 63 C7 EB ?? 48 8B C8 E8 ?? ?? ?? ?? 48 3B C6 74 ?? 8D 4F ?? 8B F9 EB ?? BF ?? ?? ?? ?? 8B CF E8 ?? ?? ?? ?? 48 85 C0 74 ?? 0F B6 80 ?? 03 00 00
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x9f'
+    func_va: '0x180f1ed60'
+  client/GameStateAPI_GetPlayerVoiceVolume.windows.yaml:
+    func_name: GameStateAPI_GetPlayerVoiceVolume
+    func_rva: '0xf1ee00'
+    func_sig: 40 53 48 83 EC ?? 48 8B 05 ?? ?? ?? ?? 48 8B 08 48 8B 99 ?? ?? ?? ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x47'
+    func_va: '0x180f1ee00'
+  client/GameStateAPI_GetPlayerXpLevel.windows.yaml:
+    func_name: GameStateAPI_GetPlayerXpLevel
+    func_rva: '0xf1ee50'
+    func_sig: 48 89 5C 24 ?? 48 89 74 24 ?? 57 48 83 EC ?? 48 8B CA FF 15 ?? ?? ?? ?? 48 8B 1D ?? ?? ?? ?? 33 C9 48 8B F0 33 FF 8B 5B ?? 0F 1F 80 ?? ?? ?? ?? 3B CB 74 ?? 8B CF E8 ?? ?? ?? ?? 48 85 C0 74 ?? 8B 88 ?? ?? ?? ?? C1 E9 ?? F6 C1 ?? 74 ?? 48 63 C7 EB ?? 48 8B C8 E8 ?? ?? ?? ?? 48 3B C6 74 ?? 8D 4F ?? 8B F9 EB ?? BF ?? ?? ?? ?? 8B CF E8 ?? ?? ?? ?? 48 85 C0 74 ?? 48 8B C8 E8 ?? ?? ?? ?? 48 8B C8 48 8B 5C 24 ?? 48 8B 74 24 ?? 48 83 C4 ?? 5F E9 ?? ?? ?? ?? 48 8B 5C 24 ?? B8 ?? ?? ?? ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0xac'
+    func_va: '0x180f1ee50'
+  client/GameStateAPI_GetPlayerXpTrailLevel.windows.yaml:
+    func_name: GameStateAPI_GetPlayerXpTrailLevel
+    func_rva: '0xf1ef00'
+    func_sig: 48 89 5C 24 ?? 48 89 74 24 ?? 57 48 83 EC ?? 48 8B CA FF 15 ?? ?? ?? ?? 48 8B 1D ?? ?? ?? ?? 33 C9 48 8B F0 33 FF 8B 5B ?? 0F 1F 80 ?? ?? ?? ?? 3B CB 74 ?? 8B CF E8 ?? ?? ?? ?? 48 85 C0 74 ?? 8B 88 ?? ?? ?? ?? C1 E9 ?? F6 C1 ?? 74 ?? 48 63 C7 EB ?? 48 8B C8 E8 ?? ?? ?? ?? 48 3B C6 74 ?? 8D 4F ?? 8B F9 EB ?? BF ?? ?? ?? ?? 8B CF E8 ?? ?? ?? ?? 48 85 C0 74 ?? 48 8B C8 E8 ?? ?? ?? ?? 48 8B C8 48 8B 5C 24 ?? 48 8B 74 24 ?? 48 83 C4 ?? 5F E9 ?? ?? ?? ?? 48 8B 5C 24 ?? 48 8B 74 24 ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0xa7'
+    func_va: '0x180f1ef00'
+  client/GameStateAPI_GetPlayerXuidStringFromPlayerSlot.windows.yaml:
+    func_name: GameStateAPI_GetPlayerXuidStringFromPlayerSlot
+    func_rva: '0xf1f000'
+    func_sig: 40 53 48 83 EC ?? 48 63 DA 8B CB
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x5a'
+    func_va: '0x180f1f000'
+  client/GameStateAPI_GetScoreDataJSO.windows.yaml:
+    func_name: GameStateAPI_GetScoreDataJSO
+    func_rva: '0xf23390'
+    func_sig: 48 8B C4 48 89 50 ?? 48 89 48 ?? 55 41 55 41 56 48 8D A8 ?? ?? ?? ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0xa3b'
+    func_va: '0x180f23390'
+  client/GameStateAPI_GetServerName.windows.yaml:
+    func_name: GameStateAPI_GetServerName
+    func_rva: '0xf240d0'
+    func_sig: 40 53 48 83 EC ?? 48 8B D9 48 8B 0D ?? ?? ?? ?? 48 85 C9 74 ?? E8 ?? ?? ?? ?? 48 85 C0
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x77'
+    func_va: '0x180f240d0'
+  client/GameStateAPI_GetTeamClanName.windows.yaml:
+    func_name: GameStateAPI_GetTeamClanName
+    func_rva: '0xf269e0'
+    func_sig: 40 53 48 83 EC ?? 48 8B D9 48 8B CA E8 ?? ?? ?? ?? 48 85 C0 74 ?? 0F B6 88 ?? 03 00 00
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x9f'
+    func_va: '0x180f269e0'
+  client/GameStateAPI_GetTeamFlagImagePath.windows.yaml:
+    func_name: GameStateAPI_GetTeamFlagImagePath
+    func_rva: '0xf26ea0'
+    func_sig: 48 83 EC ?? 48 8B CA E8 ?? ?? ?? ?? 48 85 C0
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x29'
+    func_va: '0x180f26ea0'
+  client/GameStateAPI_GetTeamLivingPlayerCount.windows.yaml:
+    func_name: GameStateAPI_GetTeamLivingPlayerCount
+    func_rva: '0xf26fd0'
+    func_sig: 40 53 48 83 EC ?? 48 8B D9 48 85 D2 74 ?? 48 8B CA E8 ?? ?? ?? ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x3a'
+    func_va: '0x180f26fd0'
+  client/GameStateAPI_GetTeamLogoImagePath.windows.yaml:
+    func_name: GameStateAPI_GetTeamLogoImagePath
+    func_rva: '0xf27010'
+    func_sig: 40 53 48 83 EC ?? 48 8B CA E8 ?? ?? ?? ?? 48 8B D8
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x117'
+    func_va: '0x180f27010'
+  client/GameStateAPI_GetTeamNextRoundLossBonus.windows.yaml:
+    func_name: GameStateAPI_GetTeamNextRoundLossBonus
+    func_rva: '0xf27130'
+    func_sig: 40 53 48 83 EC ?? 48 8B DA 48 85 D2 74 ?? 48 8B 0D ?? ?? ?? ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x8d'
+    func_va: '0x180f27130'
+  client/GameStateAPI_GetTeamTotalPlayerCount.windows.yaml:
+    func_name: GameStateAPI_GetTeamTotalPlayerCount
+    func_rva: '0xf27460'
+    func_sig: 48 83 EC ?? 48 83 3D ?? ?? ?? ?? ?? 74 ?? 48 85 D2
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x36'
+    func_va: '0x180f27460'
+  client/GameStateAPI_GetTimeDataJSO.windows.yaml:
+    func_name: GameStateAPI_GetTimeDataJSO
+    func_rva: '0xf274f0'
+    func_sig: 48 89 54 24 ?? 55 53 41 55 48 8D 6C 24 ?? 48 81 EC ?? ?? ?? ?? 48 83 3D ?? ?? ?? ?? ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x123c'
+    func_va: '0x180f274f0'
+  client/GameStateAPI_GetTournamentEventStage.windows.yaml:
+    func_name: GameStateAPI_GetTournamentEventStage
+    func_rva: '0xf28850'
+    func_sig: 48 83 EC ?? 48 8B 0D ?? ?? ?? ?? 48 85 C9 74 ?? E8 ?? ?? ?? ?? 48 85 C0 74 ?? 80 38 ?? 74 ?? 48 8B 0D ?? ?? ?? ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x55'
+    func_va: '0x180f28850'
+  client/GameStateAPI_GetViewerCount.windows.yaml:
+    func_name: GameStateAPI_GetViewerCount
+    func_rva: '0xf29860'
+    func_sig: 33 C0 C3 CC CC CC CC CC CC CC CC CC CC CC CC CC 40 57 48 83 EC ?? 48 8B 05 ?? ?? ?? ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x3'
+    func_va: '0x180f29860'
+  client/GameStateAPI_HasCommunicationAbuseMute.windows.yaml:
+    func_name: GameStateAPI_HasCommunicationAbuseMute
+    func_rva: '0xf2a420'
+    func_sig: 48 89 5C 24 ?? 48 89 74 24 ?? 57 48 83 EC ?? 48 8B CA FF 15 ?? ?? ?? ?? 48 8B 1D ?? ?? ?? ?? 33 C9 48 8B F0 33 FF 8B 5B ?? 0F 1F 80 ?? ?? ?? ?? 3B CB 74 ?? 8B CF E8 ?? ?? ?? ?? 48 85 C0 74 ?? 8B 88 ?? ?? ?? ?? C1 E9 ?? F6 C1 ?? 74 ?? 48 63 C7 EB ?? 48 8B C8 E8 ?? ?? ?? ?? 48 3B C6 74 ?? 8D 4F ?? 8B F9 EB ?? BF ?? ?? ?? ?? 8B CF E8 ?? ?? ?? ?? 48 8B D8 48 85 C0 74 ?? 48 8B C8 E8 ?? ?? ?? ?? 84 C0
+    func_sig_allow_across_function_boundary: true
+    func_size: '0xd3'
+    func_va: '0x180f2a420'
+  client/GameStateAPI_HasCommunicationBan.windows.yaml:
+    func_name: GameStateAPI_HasCommunicationBan
+    func_rva: '0xf2a500'
+    func_sig: 48 89 5C 24 ?? 48 89 74 24 ?? 57 48 83 EC ?? 48 8B CA FF 15 ?? ?? ?? ?? 48 8B 1D ?? ?? ?? ?? 33 C9 48 8B F0 33 FF 8B 5B ?? 0F 1F 80 ?? ?? ?? ?? 3B CB 74 ?? 8B CF E8 ?? ?? ?? ?? 48 85 C0 74 ?? 8B 88 ?? ?? ?? ?? C1 E9 ?? F6 C1 ?? 74 ?? 48 63 C7 EB ?? 48 8B C8 E8 ?? ?? ?? ?? 48 3B C6 74 ?? 8D 4F ?? 8B F9 EB ?? BF ?? ?? ?? ?? 8B CF E8 ?? ?? ?? ?? 48 85 C0 74 ?? 48 8B C8 E8 ?? ?? ?? ?? 83 E0 ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0xa3'
+    func_va: '0x180f2a500'
+  client/GameStateAPI_HasHalfTime.windows.yaml:
+    func_name: GameStateAPI_HasHalfTime
+    func_rva: '0xf2a670'
+    func_sig: 48 8B 0D ?? ?? ?? ?? E9 ?? ?? ?? ?? CC CC CC CC 48 83 EC ?? 8B 44 24 ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0xc'
+    func_va: '0x180f2a670'
+  client/GameStateAPI_IsConnectedOrConnectingToServer.windows.yaml:
+    func_name: GameStateAPI_IsConnectedOrConnectingToServer
+    func_rva: '0xf3b460'
+    func_sig: 48 83 EC ?? 48 8B 0D ?? ?? ?? ?? 48 8B 01 FF 90 ?? ?? ?? ?? 84 C0 75 ?? 48 8B 0D ?? ?? ?? ?? 48 8B 01 FF 90 ?? ?? ?? ?? 84 C0 75 ?? 48 8B 0D ?? ?? ?? ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x80'
+    func_va: '0x180f3b460'
+  client/GameStateAPI_IsDemoOrHltv.windows.yaml:
+    func_name: GameStateAPI_IsDemoOrHltv
+    func_rva: '0xf3bb40'
+    func_sig: 48 83 EC ?? 48 8B 0D ?? ?? ?? ?? 48 8B 01 FF 90 ?? ?? ?? ?? 84 C0 75 ?? 38 05 ?? 4C 46 01
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x2c'
+    func_va: '0x180f3bb40'
+  client/GameStateAPI_IsFakePlayer.windows.yaml:
+    func_name: GameStateAPI_IsFakePlayer
+    func_rva: '0xf3bcc0'
+    func_sig: 48 89 5C 24 ?? 55 48 83 EC ?? 48 8B DA 48 8B E9 E8 ?? ?? ?? ?? 48 8B C8 E8 ?? ?? ?? ?? 83 F8 ?? 0F 84 ?? ?? ?? ?? 48 83 3D ?? ?? ?? ?? ?? 0F 84 ?? ?? ?? ?? 48 89 74 24 ?? 48 8B CB 48 89 7C 24 ?? FF 15 ?? ?? ?? ?? 48 8B 3D ?? ?? ?? ?? 33 DB
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x130'
+    func_va: '0x180f3bcc0'
+  client/GameStateAPI_IsHLTVAutodirectorOn.windows.yaml:
+    func_name: GameStateAPI_IsHLTVAutodirectorOn
+    func_rva: '0xf3c130'
+    func_sig: 48 83 EC ?? 80 3D ?? 46 46 01 ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x2c'
+    func_va: '0x180f3c130'
+  client/GameStateAPI_IsLatched.windows.yaml:
+    func_name: GameStateAPI_IsLatched
+    func_rva: '0xf3c400'
+    func_sig: 0F B6 81 ?? 02 00 00 C3 CC CC CC CC CC CC CC CC 48 83 EC ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x8'
+    func_va: '0x180f3c400'
+  client/GameStateAPI_IsLocalPlayerHLTV.windows.yaml:
+    func_name: GameStateAPI_IsLocalPlayerHLTV
+    func_rva: '0xf3c4b0'
+    func_sig: 48 83 EC ?? 33 C9 E8 ?? ?? ?? ?? 48 85 C0 74 ?? 80 B8 ?? 07 00 00 ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x3b'
+    func_va: '0x180f3c4b0'
+  client/GameStateAPI_IsLocalPlayerPlayingMatch.windows.yaml:
+    func_name: GameStateAPI_IsLocalPlayerPlayingMatch
+    func_rva: '0xf3c510'
+    func_sig: 48 83 EC ?? 48 8B 0D ?? ?? ?? ?? 48 8B 01 FF 90 ?? ?? ?? ?? 84 C0 74 ?? 48 8B 0D ?? ?? ?? ?? 48 8B 01 FF 90 ?? ?? ?? ?? 84 C0
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x56'
+    func_va: '0x180f3c510'
+  client/GameStateAPI_IsLocalPlayerWatchingOwnDemo.windows.yaml:
+    func_name: GameStateAPI_IsLocalPlayerWatchingOwnDemo
+    func_rva: '0xf3c570'
+    func_sig: 48 89 5C 24 ?? 48 89 6C 24 ?? 48 89 74 24 ?? 57 48 83 EC ?? 48 8B 0D ?? ?? ?? ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x103'
+    func_va: '0x180f3c570'
+  client/GameStateAPI_IsOverwatch.windows.yaml:
+    func_name: GameStateAPI_IsOverwatch
+    func_rva: '0xf3c7a0'
+    func_sig: 48 83 EC ?? E8 ?? ?? ?? ?? 0F B6 40 ?? 48 83 C4 ?? C3 CC CC CC CC CC CC CC CC CC CC CC CC CC CC 48 89 5C 24 ?? 57
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x12'
+    func_va: '0x180f3c7a0'
+  client/GameStateAPI_IsPlayerAlive.windows.yaml:
+    func_name: GameStateAPI_IsPlayerAlive
+    func_rva: '0xf3c850'
+    func_sig: 48 89 5C 24 ?? 48 89 74 24 ?? 57 48 83 EC ?? 48 8B CA FF 15 ?? ?? ?? ?? 48 8B 1D ?? ?? ?? ?? 33 C9 48 8B F0 33 FF 8B 5B ?? 0F 1F 80 ?? ?? ?? ?? 3B CB 74 ?? 8B CF E8 ?? ?? ?? ?? 48 85 C0 74 ?? 8B 88 ?? ?? ?? ?? C1 E9 ?? F6 C1 ?? 74 ?? 48 63 C7 EB ?? 48 8B C8 E8 ?? ?? ?? ?? 48 3B C6 74 ?? 8D 4F ?? 8B F9 EB ?? BF ?? ?? ?? ?? 8B CF E8 ?? ?? ?? ?? 48 8B C8
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x9c'
+    func_va: '0x180f3c850'
+  client/GameStateAPI_IsPlayerConnected.windows.yaml:
+    func_name: GameStateAPI_IsPlayerConnected
+    func_rva: '0xf3c8f0'
+    func_sig: 48 89 5C 24 ?? 48 89 74 24 ?? 57 48 83 EC ?? 48 8B CA FF 15 ?? ?? ?? ?? 48 8B 1D ?? ?? ?? ?? 33 C9 48 8B F0 33 FF 8B 5B ?? 0F 1F 80 ?? ?? ?? ?? 3B CB 74 ?? 8B CF E8 ?? ?? ?? ?? 48 85 C0 74 ?? 8B 88 ?? ?? ?? ?? C1 E9 ?? F6 C1 ?? 74 ?? 48 63 C7 EB ?? 48 8B C8 E8 ?? ?? ?? ?? 48 3B C6 74 ?? 8D 4F ?? 8B F9 EB ?? BF ?? ?? ?? ?? 8B CF E8 ?? ?? ?? ?? 48 85 C0 74 ?? 8B 88 ?? ?? ?? ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0xc8'
+    func_va: '0x180f3c8f0'
+  client/GameStateAPI_IsQueuedMatchmaking.windows.yaml:
+    func_name: GameStateAPI_IsQueuedMatchmaking
+    func_rva: '0xf3ca60'
+    func_sig: 48 83 EC ?? 48 8B 0D ?? ?? ?? ?? 48 85 C9 74 ?? E8 ?? ?? ?? ?? 84 C0 74 ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x27'
+    func_va: '0x180f3ca60'
+  client/GameStateAPI_IsQueuedMatchmakingMode_Team.windows.yaml:
+    func_name: GameStateAPI_IsQueuedMatchmakingMode_Team
+    func_rva: '0xf3ca90'
+    func_sig: 48 83 EC ?? 48 8B 0D ?? ?? ?? ?? 48 85 C9 74 ?? E8 ?? ?? ?? ?? A8 ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x27'
+    func_va: '0x180f3ca90'
+  client/GameStateAPI_IsReportCategoryEnabledForSelectedPlayer.windows.yaml:
+    func_name: GameStateAPI_IsReportCategoryEnabledForSelectedPlayer
+    func_rva: '0xf3ccd0'
+    func_sig: 48 89 5C 24 ?? 48 89 6C 24 ?? 48 89 74 24 ?? 57 48 83 EC ?? 48 8B CA 49 8B E8
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x178'
+    func_va: '0x180f3ccd0'
+  client/GameStateAPI_IsSelectedPlayerMuted.windows.yaml:
+    func_name: GameStateAPI_IsSelectedPlayerMuted
+    func_rva: '0xf3cff0'
+    func_sig: 40 53 48 83 EC ?? 48 8B 0D ?? ?? ?? ?? 48 8B DA 48 8B 01 FF 90 ?? ?? ?? ?? 84 C0 0F 84 ?? ?? ?? ?? 48 83 3D ?? ?? ?? ?? ?? 75 ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0xdb'
+    func_va: '0x180f3cff0'
+  client/GameStateAPI_IsXuidValid.windows.yaml:
+    func_name: GameStateAPI_IsXuidValid
+    func_rva: '0xf3d6b0'
+    func_sig: 40 53 48 83 EC ?? 48 8B DA E8 ?? ?? ?? ?? 48 8B C8 E8 ?? ?? ?? ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x41'
+    func_va: '0x180f3d6b0'
+  client/GameStateAPI_QueryServersForCommendation.windows.yaml:
+    func_name: GameStateAPI_QueryServersForCommendation
+    func_rva: '0xf51580'
+    func_sig: 48 89 5C 24 ?? 48 89 74 24 ?? 48 89 7C 24 ?? 4C 89 74 24 ?? 55 48 8D 6C 24 ?? 48 81 EC ?? ?? ?? ?? 48 8B CA
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x2f3'
+    func_va: '0x180f51580'
   client/GameStateAPI_RegisterAPIs.windows.yaml:
     func_name: GameStateAPI_RegisterAPIs
     func_rva: '0xf3eaa0'
     func_sig: 48 89 5C 24 ?? 55 48 8B EC 48 83 EC 40 48 8D 05 4C D9 FF FF
     func_size: '0x13c7'
     func_va: '0x180f3eaa0'
+  client/GameStateAPI_SetCasterControlsUI.windows.yaml:
+    func_name: GameStateAPI_SetCasterControlsUI
+    func_rva: '0xf5ac80'
+    func_sig: 48 89 5C 24 ?? 57 48 83 EC ?? 8B DA 48 8D 4C 24 ?? 48 8D 15 ?? ?? ?? ?? 41 B8 ?? ?? ?? ?? E8 ?? ?? ?? ?? 44 8B C3 48 8D 4C 24 ?? BA ?? ?? ?? ?? E8 ?? ?? ?? ?? 33 C9 E8 ?? ?? ?? ?? 48 8B F8 48 85 C0 74 ?? 48 89 74 24 ?? E8 ?? ?? ?? ?? 48 8B 0D ?? ?? ?? ?? 48 8B F0 48 8D 05 ?? ?? ?? ?? 85 DB 48 8B 11 4C 8B 82 ?? ?? ?? ?? 48 8D 15 ?? ?? ?? ?? 48 0F 44 D0 41 FF D0 48 8D 54 24 ?? 48 8B CF 48 8B D8 E8 ?? ?? ?? ?? 8B 4C 24 ?? 8D 51 ?? 83 F9 ?? 75 ?? BA ?? ?? ?? ?? 4C 8B C3 48 8B CE E8 ?? ?? ?? ?? 48 8B 74 24 ?? 48 8D 4C 24 ?? E8 ?? ?? ?? ?? 48 8B 5C 24 ?? 48 83 C4 ?? 5F C3 CC 48 89 5C 24 ?? 57 48 83 EC ?? 8B DA 48 8D 4C 24 ?? 48 8D 15 ?? ?? ?? ?? 41 B8 ?? ?? ?? ?? E8 ?? ?? ?? ?? 44 8B C3
+    func_sig_allow_across_function_boundary: true
+    func_size: '0xbf'
+    func_va: '0x180f5ac80'
+  client/GameStateAPI_SetCasterControlsXray.windows.yaml:
+    func_name: GameStateAPI_SetCasterControlsXray
+    func_rva: '0xf5ad40'
+    func_sig: 48 89 5C 24 ?? 57 48 83 EC ?? 8B DA 48 8D 4C 24 ?? 48 8D 15 ?? ?? ?? ?? 41 B8 ?? ?? ?? ?? E8 ?? ?? ?? ?? 44 8B C3 48 8D 4C 24 ?? BA ?? ?? ?? ?? E8 ?? ?? ?? ?? 33 C9 E8 ?? ?? ?? ?? 48 8B F8 48 85 C0 74 ?? 48 89 74 24 ?? E8 ?? ?? ?? ?? 48 8B 0D ?? ?? ?? ?? 48 8B F0 48 8D 05 ?? ?? ?? ?? 85 DB 48 8B 11 4C 8B 82 ?? ?? ?? ?? 48 8D 15 ?? ?? ?? ?? 48 0F 44 D0 41 FF D0 48 8D 54 24 ?? 48 8B CF 48 8B D8 E8 ?? ?? ?? ?? 8B 4C 24 ?? 8D 51 ?? 83 F9 ?? 75 ?? BA ?? ?? ?? ?? 4C 8B C3 48 8B CE E8 ?? ?? ?? ?? 48 8B 74 24 ?? 48 8D 4C 24 ?? E8 ?? ?? ?? ?? 48 8B 5C 24 ?? 48 83 C4 ?? 5F C3 CC 48 89 5C 24 ?? 57 48 83 EC ?? 8B DA 48 8D 4C 24 ?? 48 8D 15 ?? ?? ?? ?? 41 B8 ?? ?? ?? ?? E8 ?? ?? ?? ?? 85 DB
+    func_sig_allow_across_function_boundary: true
+    func_size: '0xbf'
+    func_va: '0x180f5ad40'
+  client/GameStateAPI_SetCasterIsCameraman.windows.yaml:
+    func_name: GameStateAPI_SetCasterIsCameraman
+    func_rva: '0xf5ae00'
+    func_sig: 48 89 5C 24 ?? 57 48 83 EC ?? 8B DA 48 8D 4C 24 ?? 48 8D 15 ?? ?? ?? ?? 41 B8 ?? ?? ?? ?? E8 ?? ?? ?? ?? 85 DB
+    func_sig_allow_across_function_boundary: true
+    func_size: '0xd5'
+    func_va: '0x180f5ae00'
+  client/GameStateAPI_SetCasterIsHeard.windows.yaml:
+    func_name: GameStateAPI_SetCasterIsHeard
+    func_rva: '0xf5aee0'
+    func_sig: 48 89 5C 24 ?? 57 48 83 EC ?? 8B DA 48 8D 4C 24 ?? 48 8D 15 ?? ?? ?? ?? 41 B8 ?? ?? ?? ?? E8 ?? ?? ?? ?? 44 8B C3 48 8D 4C 24 ?? BA ?? ?? ?? ?? E8 ?? ?? ?? ?? 33 C9 E8 ?? ?? ?? ?? 48 8B F8 48 85 C0 74 ?? 48 89 74 24 ?? E8 ?? ?? ?? ?? 48 8B 0D ?? ?? ?? ?? 48 8B F0 48 8D 05 ?? ?? ?? ?? 85 DB 48 8B 11 4C 8B 82 ?? ?? ?? ?? 48 8D 15 ?? ?? ?? ?? 48 0F 44 D0 41 FF D0 48 8D 54 24 ?? 48 8B CF 48 8B D8 E8 ?? ?? ?? ?? 8B 4C 24 ?? 8D 51 ?? 83 F9 ?? 75 ?? BA ?? ?? ?? ?? 4C 8B C3 48 8B CE E8 ?? ?? ?? ?? 48 8B 74 24 ?? 48 8D 4C 24 ?? E8 ?? ?? ?? ?? 48 8B 5C 24 ?? 48 83 C4 ?? 5F C3 CC 48 89 5C 24 ?? 48 89 6C 24 ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0xbf'
+    func_va: '0x180f5aee0'
+  client/GameStateAPI_SetPlayerVoiceVolume.windows.yaml:
+    func_name: GameStateAPI_SetPlayerVoiceVolume
+    func_rva: '0xf5c3a0'
+    func_sig: 40 53 48 83 EC ?? 48 8B 05 ?? ?? ?? ?? 0F 29 74 24 ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x48'
+    func_va: '0x180f5c3a0'
+  client/GameStateAPI_ShouldShowHudElements.windows.yaml:
+    func_name: GameStateAPI_ShouldShowHudElements
+    func_rva: '0xf5d170'
+    func_sig: 48 83 EC ?? BA ?? ?? ?? ?? 48 8D 0D ?? ?? ?? ?? E8 ?? ?? ?? ?? 48 85 C0 75 ?? 48 8B 05 ?? ?? ?? ?? 48 8B 40 ?? 80 38 ?? 74 ?? BA ?? ?? ?? ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x5e'
+    func_va: '0x180f5d170'
+  client/GameStateAPI_SubmitCommendation.windows.yaml:
+    func_name: GameStateAPI_SubmitCommendation
+    func_rva: '0xf62800'
+    func_sig: 48 89 74 24 ?? 55 57 41 56 48 8D 6C 24 ?? 48 81 EC ?? ?? ?? ?? 48 8B CA
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x432'
+    func_va: '0x180f62800'
+  client/GameStateAPI_SubmitPlayerReport.windows.yaml:
+    func_name: GameStateAPI_SubmitPlayerReport
+    func_rva: '0xf62c40'
+    func_sig: 48 89 5C 24 ?? 56 48 83 EC ?? 48 8B CA
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x29d'
+    func_va: '0x180f62c40'
+  client/GameStateAPI_SubmitServerReport.windows.yaml:
+    func_name: GameStateAPI_SubmitServerReport
+    func_rva: '0xf62ee0'
+    func_sig: 48 89 5C 24 ?? 57 48 83 EC ?? 48 8B FA 48 8D 4C 24 ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x138'
+    func_va: '0x180f62ee0'
+  client/GameStateAPI_ToggleMute.windows.yaml:
+    func_name: GameStateAPI_ToggleMute
+    func_rva: '0xf65120'
+    func_sig: 41 56 41 57 48 83 EC ?? 48 8B CA
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x238'
+    func_va: '0x180f65120'
   client/IEngineServiceMgr_GetActiveLoopClientServerMode.linux.yaml:
     func_name: IEngineServiceMgr_GetActiveLoopClientServerMode
     vfunc_index: 31
