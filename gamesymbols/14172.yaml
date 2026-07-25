@@ -1,7 +1,7 @@
 analysis_output_contract_version: 1
 config_digest_version: 2
-config_sha256: sha256:c59219f1c746af7115fb59fd3e9fc3ff2adaec68251e0760597ddbfc88ae6ed2
-file_count: 2972
+config_sha256: sha256:c17029a8e823be59fe31f7d0c1fa9a6c9db136de2c879542a2c9eed0ecb44340
+file_count: 2973
 files:
   SDL3/SDL_GetMouse.windows.yaml:
     func_name: SDL_GetMouse
@@ -2263,6 +2263,12 @@ files:
     func_sig: 41 57 48 83 EC ?? 8B 05 ?? ?? ?? ?? 4C 8B F9
     func_size: '0x1bc'
     func_va: '0x1818612e0'
+  client/GameStateAPI_RegisterAPIs.windows.yaml:
+    func_name: GameStateAPI_RegisterAPIs
+    func_rva: '0xf3eaa0'
+    func_sig: 48 89 5C 24 ?? 55 48 8B EC 48 83 EC 40 48 8D 05 4C D9 FF FF
+    func_size: '0x13c7'
+    func_va: '0x180f3eaa0'
   client/IEngineServiceMgr_GetActiveLoopClientServerMode.linux.yaml:
     func_name: IEngineServiceMgr_GetActiveLoopClientServerMode
     vfunc_index: 31

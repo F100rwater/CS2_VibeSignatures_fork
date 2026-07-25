@@ -3641,6 +3641,10 @@ modules:
           - CNetworkSerializerBindingBuildFilter_GetFieldPriority.{platform}.yaml
         expected_input:
           - CNetworkSerializerBindingBuildFilter_vtable.{platform}.yaml
+      - name: find-GameStateAPI_RegisterAPIs  # xref_strings "Is gamestate data currently latched and not updating (e.g. end-of-match)" + "FULLMATCH:IsLatched"
+        platform: windows
+        expected_output:
+          - GameStateAPI_RegisterAPIs.{platform}.yaml
     symbols:
       - name: CLoopModeGame_RegisterEventMapInternal
         category: func
@@ -4366,6 +4370,11 @@ modules:
         category: vfunc
         alias:
           - CNetworkSerializerBindingBuildFilter::GetFieldPriority
+      - name: GameStateAPI_RegisterAPIs
+        category: func
+        platform: windows
+        alias:
+          - GameStateAPI::RegisterAPIs
   - name: server
     path_windows: game/csgo/bin/win64/server.dll
     path_linux: game/csgo/bin/linuxsteamrt64/libserver.so
