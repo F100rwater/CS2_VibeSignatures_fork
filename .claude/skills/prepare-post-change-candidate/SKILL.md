@@ -3,7 +3,6 @@ name: prepare-post-change-candidate
 description: |
   Format tracked repository files and build immutable symbol and gamedata candidates for one game version.
   Use after analysis outputs, configs, generators, or C++ tests change and before `/post-change-validation`.
-disable-model-invocation: true
 ---
 
 # Prepare Post-Change Candidate

@@ -3,7 +3,6 @@ name: publish-post-change-candidate
 description: |
   Publish the same immutable symbol and gamedata candidates that passed `/post-change-validation`.
   Use only after successful C++ validation for the exact game version, candidate, and session being published.
-disable-model-invocation: true
 ---
 
 # Publish Post-Change Candidate

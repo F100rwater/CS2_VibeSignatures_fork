@@ -4,7 +4,6 @@ description: |
   Run the repository's C++ post-change validation gate against an immutable candidate snapshot before publication.
   Use after `/prepare-post-change-candidate` and before `/publish-post-change-candidate`.
   Any failed, skipped, or non-runnable validation stops the calling task and must be reported to the user.
-disable-model-invocation: true
 ---
 
 # Post-Change Validation
