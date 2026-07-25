@@ -5,16 +5,12 @@ SUPPORTED_CATEGORIES = frozenset({*ARTIFACT_CATEGORIES, "struct"})
 SUPPORTED_PLATFORMS = ("windows", "linux")
 
 PATCH_COMPAT_ALIASES = {
-    "CCSPlayer_MovementServices_FullWalkMove_SpeedClamp": (
-        "ServerMovementUnlock",
-    ),
+    "CCSPlayer_MovementServices_FullWalkMove_SpeedClamp": ("ServerMovementUnlock",),
     "CCSPlayer_MovementServices_CheckJumpButton_WaterPatch": (
         "CheckJumpButtonWater",
         "FixWaterFloorJump",
     ),
-    "CCSBotManager_AddBot_BotNavIgnore": (
-        "BotNavIgnore",
-    ),
+    "CCSBotManager_AddBot_BotNavIgnore": ("BotNavIgnore",),
 }
 
 

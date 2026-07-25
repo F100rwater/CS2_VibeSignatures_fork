@@ -106,20 +106,28 @@ def _validate_symbols(modules, errors) -> list[tuple[str, dict]]:
             platform = symbol.get("platform")
             if platform is not None and platform not in SUPPORTED_PLATFORMS:
                 errors.append(f"{module_name}.{symbol_name}.platform: unsupported platform {platform!r}")
-            _validate_alias_field(errors, module_name=module_name, symbol_name=symbol_name, symbol=symbol, field="alias")
+            _validate_alias_field(
+                errors, module_name=module_name, symbol_name=symbol_name, symbol=symbol, field="alias"
+            )
             _validate_alias_field(
                 errors, module_name=module_name, symbol_name=symbol_name, symbol=symbol, field="source_alias"
             )
             if category == "struct":
                 if "source_alias" in symbol:
-                    errors.append(f"{module_name}.{symbol_name}.source_alias: metadata-only structs cannot load artifacts")
+                    errors.append(
+                        f"{module_name}.{symbol_name}.source_alias: metadata-only structs cannot load artifacts"
+                    )
             elif category == "structmember":
                 for field in ("struct", "member"):
                     value = symbol.get(field)
                     if not isinstance(value, str) or not value.strip():
                         errors.append(f"{module_name}.{symbol_name}.{field}: expected a non-empty string")
                 struct_name = symbol.get("struct")
-                if isinstance(struct_name, str) and struct_name.strip() and struct_name not in struct_names[module_name]:
+                if (
+                    isinstance(struct_name, str)
+                    and struct_name.strip()
+                    and struct_name not in struct_names[module_name]
+                ):
                     errors.append(
                         f"{module_name}.{symbol_name}.struct: {struct_name!r} is not a declared struct in this module"
                     )
