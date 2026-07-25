@@ -18,10 +18,6 @@ FUNC_XREFS = [
         "exclude_strings": [],
         "exclude_gvs": [],
         "exclude_signatures": [],
-        "reference_yaml_paths": [
-            "references/server/CEntitySystem_CreateEntitySystem.{platform}.yaml",
-            "references/client/CEntitySystem_CreateEntitySystem.{platform}.yaml",
-        ],
     },
 ]
 
