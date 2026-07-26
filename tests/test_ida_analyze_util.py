@@ -629,6 +629,61 @@ class TestVtableAliasSupport(unittest.IsolatedAsyncioTestCase):
         )
         mock_write_vtable_yaml.assert_called_once()
 
+    async def test_preprocess_common_skill_uses_canonical_vtable_symbol(self) -> None:
+        fake_vtable_data = {
+            "vtable_class": "CEngineSoundServices",
+            "vtable_symbol": "off_18054C4B0",
+            "vtable_va": "0x18054c4b0",
+            "vtable_rva": "0x54c4b0",
+            "vtable_size": "0x180",
+            "vtable_numvfunc": 48,
+            "vtable_entries": {0: "0x1800fe710"},
+        }
+
+        with (
+            patch.object(
+                ida_analyze_util,
+                "preprocess_vtable_via_mcp",
+                AsyncMock(return_value=fake_vtable_data),
+            ),
+            patch.object(
+                ida_analyze_util,
+                "write_vtable_yaml",
+            ) as mock_write_vtable_yaml,
+        ):
+            result = await ida_analyze_util.preprocess_common_skill(
+                session="session",
+                expected_outputs=["/tmp/CEngineSoundServices_vtable.windows.yaml"],
+                vtable_class_names=["CEngineSoundServices"],
+                canonical_vtable_symbols={
+                    "CEngineSoundServices": "CEngineSoundServices_vtable",
+                },
+                platform="windows",
+                image_base=0x180000000,
+                generate_yaml_desired_fields=[
+                    (
+                        "CEngineSoundServices",
+                        [
+                            "vtable_class",
+                            "vtable_symbol",
+                            "vtable_va",
+                            "vtable_rva",
+                            "vtable_size",
+                            "vtable_numvfunc",
+                            "vtable_entries",
+                        ],
+                    )
+                ],
+                debug=True,
+            )
+
+        self.assertTrue(result)
+        written_payload = mock_write_vtable_yaml.call_args.args[1]
+        self.assertEqual(
+            "CEngineSoundServices_vtable",
+            written_payload["vtable_symbol"],
+        )
+
     async def test_preprocess_func_sig_uses_aliases_when_generating_missing_vtable_yaml(self) -> None:
         alias_map = {
             "CGameSystemReallocatingFactory_CSpawnGroupMgrGameSystem": [

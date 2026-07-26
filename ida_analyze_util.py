@@ -7620,6 +7620,7 @@ async def preprocess_common_skill(
     llm_config=None,
     mangled_class_names=None,
     debug=False,
+    canonical_vtable_symbols=None,
 ):
     """Reusable preprocess_skill implementation for func/vfunc, gv, patch, struct-member, vtable, inherit-vfunc, func-xref, and vtable-relation targets.
 
@@ -7634,6 +7635,8 @@ async def preprocess_common_skill(
     - ``mangled_class_names``: optional mapping from canonical vtable class
       names to explicit mangled symbol aliases. These aliases are tried before
       auto-derived vtable symbols and RTTI fallback.
+    - ``canonical_vtable_symbols``: optional mapping from vtable class names to
+      deterministic symbols emitted in generated YAML.
     - ``inherit_vfuncs``: inherited virtual function targets resolved by
       base-class vfunc_index + vtable lookup via
       ``preprocess_index_based_vfunc_via_mcp``.  Each element is a tuple of
@@ -7684,6 +7687,8 @@ async def preprocess_common_skill(
         vtable_class_names: List of class names for vtable lookup, or None.
         mangled_class_names: Mapping from canonical vtable class name to
             explicit mangled aliases for vtable lookup (may be empty/None).
+        canonical_vtable_symbols: Mapping from vtable class name to the
+            deterministic symbol emitted in generated YAML (may be empty/None).
         inherit_vfuncs: List of inherited vfunc specs (may be empty/None).
         func_xrefs: List of dict specs for unified xref-based function lookup
             (may be empty/None). Supported keys are func_name,
@@ -7715,6 +7720,7 @@ async def preprocess_common_skill(
     func_xrefs = func_xrefs or []
     func_vtable_relations = func_vtable_relations or []
     llm_decompile_specs = llm_decompile_specs or []
+    canonical_vtable_symbols = canonical_vtable_symbols or {}
     normalized_mangled_class_names = _normalize_mangled_class_names(
         mangled_class_names,
         debug=debug,
@@ -7924,6 +7930,11 @@ async def preprocess_common_skill(
         )
         if vtable_data is None:
             return False
+
+        canonical_vtable_symbol = canonical_vtable_symbols.get(vtable_class)
+        if canonical_vtable_symbol:
+            vtable_data = dict(vtable_data)
+            vtable_data["vtable_symbol"] = canonical_vtable_symbol
 
         payload = _assemble_symbol_payload(
             vtable_class,
