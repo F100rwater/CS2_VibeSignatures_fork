@@ -1,6 +1,6 @@
 analysis_output_contract_version: 1
 config_digest_version: 2
-config_sha256: sha256:283425c5da9b1c4c5bf6344283990c36c904c9000a69249a5b87bcac77e289f7
+config_sha256: sha256:463f28f98242d9dcdaac16bf99cfb4976711ed7ca43f00f8f04fadd5567c89ee
 file_count: 3104
 files:
   SDL3/SDL_GetMouse.windows.yaml:
@@ -4173,11 +4173,6 @@ files:
     vfunc_index: 1
     vfunc_offset: '0x8'
     vtable_name: INetworkClient
-  client/IVEngineClient2_GetNetworkClient.windows.yaml:
-    func_name: IVEngineClient2_GetNetworkClient
-    vfunc_index: 41
-    vfunc_offset: '0x148'
-    vtable_name: IVEngineClient2
   client/IVEngineClient2_ExecuteClientCmd.linux.yaml:
     func_name: IVEngineClient2_ExecuteClientCmd
     vfunc_index: 50
@@ -4189,6 +4184,11 @@ files:
     vfunc_index: 50
     vfunc_offset: '0x190'
     vfunc_sig: FF 90 90 01 00 00 48 8B 9C 24 ?? ?? ?? ?? 48 8B AC 24 ?? ?? ?? ??
+    vtable_name: IVEngineClient2
+  client/IVEngineClient2_GetNetworkClient.windows.yaml:
+    func_name: IVEngineClient2_GetNetworkClient
+    vfunc_index: 41
+    vfunc_offset: '0x148'
     vtable_name: IVEngineClient2
   client/RegisterEventListener_Abstract.linux.yaml:
     func_name: RegisterEventListener_Abstract
