@@ -3433,9 +3433,9 @@ modules:
       - name: find-CMapAnNodeManager_FireGameEvent
         expected_output:
           - CMapAnNodeManager_FireGameEvent.{platform}.yaml
-      - name: find-IVEngineClient2_SendStringCmd
+      - name: find-IVEngineClient2_ExecuteClientCmd
         expected_output:
-          - IVEngineClient2_SendStringCmd.{platform}.yaml
+          - IVEngineClient2_ExecuteClientCmd.{platform}.yaml
         expected_input:
           - CMapAnNodeManager_FireGameEvent.{platform}.yaml
       - name: find-CGameEventManager_FireEventClientSide
@@ -4194,10 +4194,10 @@ modules:
         category: func
         alias:
           - CMapAnNodeManager::FireGameEvent
-      - name: IVEngineClient2_SendStringCmd
+      - name: IVEngineClient2_ExecuteClientCmd
         category: vfunc
         alias:
-          - IVEngineClient2::SendStringCmd
+          - IVEngineClient2::ExecuteClientCmd
       - name: IGameEventManager2_UnserializeEvent
         category: vfunc
         alias:
@@ -10975,7 +10975,7 @@ modules:
           - CEngineClient_ExecuteClientCmd.{platform}.yaml
         expected_input:
           - CEngineClient_vtable.{platform}.yaml
-          - ../client/IVEngineClient2_SendStringCmd.{platform}.yaml
+          - ../client/IVEngineClient2_ExecuteClientCmd.{platform}.yaml
       - name: find-INetworkGameClient_SendStringCmd
         expected_output:
           - INetworkGameClient_SendStringCmd.{platform}.yaml

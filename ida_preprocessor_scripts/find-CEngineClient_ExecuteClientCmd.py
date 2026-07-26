@@ -12,7 +12,7 @@ INHERIT_VFUNCS = [
     (
         "CEngineClient_ExecuteClientCmd",
         "CEngineClient",
-        "../client/IVEngineClient2_SendStringCmd",
+        "../client/IVEngineClient2_ExecuteClientCmd",
         True,
     ),
 ]

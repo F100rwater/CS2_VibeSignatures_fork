@@ -147,24 +147,38 @@ Do not report the fallback as complete unless this end-to-end Agent-Skill-only t
 environment is unavailable, report the validation as blocked rather than substituting a preprocessor run or a
 ground-truth-only review.
 
-### Step 6 — Stage Changes and Create the Pull Request
+### Step 6 — Commit Changes to `dev`
 
 After the end-to-end fallback test has produced and verified its YAMLs, record the required one-line memory pointer
-per the repo workflow. Review `git status --short`, then explicitly stage the new fallback skill and that memory
-update; never use `git add -A`:
+per the repo workflow. Ensure the delivery branch is `dev`; never commit directly to `main`. If the local `dev`
+branch exists, switch to it. Otherwise, switch to `main` first and create `dev` from `main`:
+
+```bash
+if git show-ref --verify --quiet refs/heads/dev; then
+  git switch dev
+else
+  git switch main
+  git switch -c dev
+fi
+```
+
+If any branch switch fails, stop and report the error. Review `git status --short`, then explicitly stage the new
+fallback skill and that memory update; never use `git add -A`:
 
 ```bash
 git add -- .claude/skills/find-XXXX/SKILL.md <memory-pointer-path>
+git diff --cached --name-only
 ```
 
-Then **ALWAYS** Use SKILL `/create-pr` with:
+Stop if the staged-path list contains anything unrelated to this task. Commit only the staged task changes using
+the repository commit format:
 
-- `gamever=<tested-gamever>`
-- the GitHub issue number when the task came from an issue
-- the unittest and Agent-Skill-only commands/results for the PR validation summary
+```bash
+git commit -m "feat(skills): add find-XXXX fallback" -m "Co-Authored-By: Codex"
+```
 
-`/create-pr` owns the repository post-change gates, generated-output staging, branch, commit, push, and PR. If it
-fails, stop and report the failure; do not retry or reproduce those delivery steps here.
+Do not call `/create-pr`, push the branch, or open a pull request unless the user separately requests it. Finish by
+reporting the commit hash, tested game version, unittest result, and Agent-Skill-only result.
 
 ---
 
@@ -318,8 +332,9 @@ Written beside the binary, one per symbol: `<symbol>.windows.yaml` / `<symbol>.l
 - [ ] Real Agent-Skill-only test passed with `uv run ida_analyze_bin.py -gamever <gamever> -oldgamever none
       -modules=<module> -debug -skip_pp -skill=<skill_name>`; the log proves preprocessing was skipped, the
       Agent Skill actually started, all expected YAMLs were produced, and the summary reports `Failed: 0`.
-- [ ] New SKILL.md and memory pointer are explicitly staged.
-- [ ] `/create-pr` completes the post-change gates and opens a PR from the staged changes.
+- [ ] The current branch is `dev` (created from `main` when it did not already exist).
+- [ ] New SKILL.md and memory pointer are explicitly staged and committed.
+- [ ] `/create-pr` was not called; no push or PR was performed without a separate user request.
 
 ## Worked example — `find-CEntitySystem_Init-decompiles`
 

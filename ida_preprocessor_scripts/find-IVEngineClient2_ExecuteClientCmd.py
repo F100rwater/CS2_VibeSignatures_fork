@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
-"""Preprocess script for find-IVEngineClient2_SendStringCmd skill."""
+"""Preprocess script for find-IVEngineClient2_ExecuteClientCmd skill."""
 
 from ida_analyze_util import preprocess_common_skill
 
 TARGET_FUNCTION_NAMES = [
-    "IVEngineClient2_SendStringCmd",
+    "IVEngineClient2_ExecuteClientCmd",
 ]
 
 LLM_DECOMPILE = [
     {
-        "symbol_name": "IVEngineClient2_SendStringCmd",
+        "symbol_name": "IVEngineClient2_ExecuteClientCmd",
         "prompt_path": "prompt/call_llm_decompile.md",
         "reference_yaml_paths": [
             "references/client/CMapAnNodeManager_FireGameEvent.{platform}.yaml",
@@ -23,12 +23,12 @@ LLM_DECOMPILE = [
 
 FUNC_VTABLE_RELATIONS = [
     # IVEngineClient2 is abstract; this relation supplies vtable metadata only.
-    ("IVEngineClient2_SendStringCmd", "IVEngineClient2"),
+    ("IVEngineClient2_ExecuteClientCmd", "IVEngineClient2"),
 ]
 
 GENERATE_YAML_DESIRED_FIELDS = [
     (
-        "IVEngineClient2_SendStringCmd",
+        "IVEngineClient2_ExecuteClientCmd",
         [
             "func_name",
             "vfunc_sig",
@@ -51,7 +51,7 @@ async def preprocess_skill(
     llm_config=None,
     debug=False,
 ):
-    """Resolve the IVEngineClient2 SendStringCmd slot from FireGameEvent."""
+    """Resolve the IVEngineClient2 ExecuteClientCmd slot from FireGameEvent."""
     return await preprocess_common_skill(
         session=session,
         expected_outputs=expected_outputs,
