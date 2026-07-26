@@ -92,7 +92,7 @@ If DepotDownloader needs authentication, add the same `-username`, `-password`, 
 ### 2. Find and generate signatures for all symbols declared in `configs/<GAMEVER>.yaml`
 
  ```bash
- uv run ida_analyze_bin.py -gamever 14156 [-oldgamever=14155] [-configyaml=path/to/custom.yaml] [-modules=server] [-skill=find-CBaseEntity_vtable] [-platform=windows] [-agent=claude/codex/opencode/"claude.cmd"/"codex.cmd"/"opencode.cmd"] [-maxretry=3] [-vcall_finder=g_pNetworkMessages|*] [-llm_model=gpt-4o] [-llm_apikey=your-key] [-llm_baseurl=https://api.example.com/v1] [-llm_temperature=0.2] [-llm_effort=medium] [-llm_fake_as=codex] [-rename] [-debug]
+ uv run ida_analyze_bin.py -gamever 14156 [-oldgamever=14155] [-configyaml=path/to/custom.yaml] [-modules=server] [-skill=find-CBaseEntity_vtable] [-platform=windows] [-agent=claude/codex/opencode/"claude.cmd"/"codex.cmd"/"opencode.cmd"] [-maxretry=3] [-vcall_finder=g_pNetworkMessages] [-llm_model=gpt-4o] [-llm_apikey=your-key] [-llm_baseurl=https://api.example.com/v1] [-llm_temperature=0.2] [-llm_effort=medium] [-llm_fake_as=codex] [-rename] [-debug]
  ```
 
 * Shared LLM CLI parameters:
@@ -142,7 +142,9 @@ If DepotDownloader needs authentication, add the same `-username`, `-password`, 
 
 #### vcall_finder related
 
-* `-vcall_finder=g_pNetworkMessages` filters by an object declared in the module-level `vcall_finder` config; `-vcall_finder=*` processes every object declared in `configs/<GAMEVER>.yaml`.
+* `-vcall_finder=g_pNetworkMessages` explicitly selects one or more comma-separated object names. It requires an explicit `-modules=...`; every selected object is processed for every selected module, and `*` is not supported.
+
+* `vcall_finder` objects are not registered in `configs/<GAMEVER>.yaml`. If an object is absent from every selected module/platform, the command fails instead of aggregating stale detail files.
 
 * When `-vcall_finder` is enabled, the script exports full disassembly and pseudocode for each referencing function into `vcall_finder/{gamever}/{object_name}/{module}/{platform}/`, then runs LLM aggregation after all module/platform IDA work finishes; if a detail YAML already has a top-level `found_vcall`, that function skips the LLM call and reuses the cached result directly.
 

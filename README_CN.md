@@ -95,7 +95,7 @@ uv run bump_download.py -config download.yaml -depotdir cs2_depot -dry-run
 ### 2. 为 `configs/<GAMEVER>.yaml` 的符号生成对应 signatures
 
  ```bash
- uv run ida_analyze_bin.py -gamever=14146 [-oldgamever=14145] [-configyaml=path/to/custom.yaml] [-modules=server] [-platform=windows] [-agent=claude/codex/opencode/"claude.cmd"/"codex.cmd"/"opencode.cmd"] [-maxretry=3] [-vcall_finder=g_pNetworkMessages|*] [-llm_model=gpt-4o] [-llm_apikey=your-key] [-llm_baseurl=https://api.example.com/v1] [-llm_temperature=0.2] [-llm_effort=medium] [-llm_fake_as=codex] [-debug]
+ uv run ida_analyze_bin.py -gamever=14146 [-oldgamever=14145] [-configyaml=path/to/custom.yaml] [-modules=server] [-platform=windows] [-agent=claude/codex/opencode/"claude.cmd"/"codex.cmd"/"opencode.cmd"] [-maxretry=3] [-vcall_finder=g_pNetworkMessages] [-llm_model=gpt-4o] [-llm_apikey=your-key] [-llm_baseurl=https://api.example.com/v1] [-llm_temperature=0.2] [-llm_effort=medium] [-llm_fake_as=codex] [-debug]
  ```
 
 * 在真正运行 Agent SKILL(s) 前，会先通过 mcp call 直接使用 `bin/{previous_gamever}/{module}/{symbol}.{platform}.yaml` 中的旧 signature 查找当前版本游戏二进制中的符号。不会消耗 token。
@@ -139,7 +139,9 @@ uv run bump_download.py -config download.yaml -depotdir cs2_depot -dry-run
 
 #### vcall_finder 相关
 
-* `-vcall_finder=g_pNetworkMessages` 会在模块级 `vcall_finder` 配置中筛选同名对象；`-vcall_finder=*` 会处理 `configs/<GAMEVER>.yaml` 中声明的全部对象。
+* `-vcall_finder=g_pNetworkMessages` 显式选择一个或多个以逗号分隔的对象名。使用时必须显式传入 `-modules=...`；每个对象都会在每个选定模块中处理，并且不再支持 `*`。
+
+* `vcall_finder` 对象不再注册到 `configs/<GAMEVER>.yaml`。若对象在所有选定模块/平台中均不存在，命令会失败，不会聚合旧的 detail 文件。
 
 * 当启用 `-vcall_finder` 时，脚本会在每个模块/平台完成 IDA 任务后导出对象引用函数的完整反汇编与伪代码到 `vcall_finder/{gamever}/{object_name}/{module}/{platform}/`，并在全部模块/平台结束后执行 LLM 聚合；若某个 detail YAML 已存在顶层 `found_vcall`，则会跳过该次 LLM 调用，直接复用缓存结果。
 
