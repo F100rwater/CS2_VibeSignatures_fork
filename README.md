@@ -274,13 +274,14 @@ exit `0` means trusted, exit `3` reports a machine-readable untrusted reason, an
 errors remain hard failures. `migrate` explicitly upgrades a validated schema-1 snapshot without changing its `files`
 payload; it never runs implicitly during restore or verify.
 
-Pull requests that can affect analysis output must commit the matching `gamesymbols/<GAMEVER>.yaml` update. PR CI
-uses a trusted base snapshot for restore and targeted invalidation. A missing base snapshot bootstraps from clean YAML;
-an untrusted base snapshot emits a warning and takes the same clean full-rebuild path without restoring any baseline
-payload. The workflow then strict-packs an actual candidate and compares it with the PR head snapshot. Head snapshots,
-actual candidates, release promotion, and republish remain strict: none use the baseline warning fallback. The head
-snapshot is expected-only; both downstream consumers use the actual candidate, and the ordinary PR workflow never
-publishes or rewrites tracked bytes.
+Pull requests that can affect analysis or gamedata generator output must commit matching
+`gamesymbols/<GAMEVER>.yaml` and `gamedata/<GAMEVER>/` outputs when their bytes change. PR CI uses a trusted base
+snapshot for restore and targeted invalidation. A missing base snapshot bootstraps from clean YAML; an untrusted base
+snapshot emits a warning and takes the same clean full-rebuild path without restoring any baseline payload. The
+workflow then strict-packs an actual symbol candidate, compares it with the PR head snapshot, builds guarded gamedata
+from that actual candidate, and compares its inventory with raw gamedata blobs from the explicit PR head Git revision.
+Head outputs are expected-only; downstream validation uses the actual candidate transaction. The ordinary PR workflow
+never repairs, stages, commits, publishes, or rewrites missing tracked outputs.
 
 ### Currently supported gamedata
 
