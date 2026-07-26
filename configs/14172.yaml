@@ -2470,11 +2470,11 @@ modules:
         category: vfunc
         alias:
           - CEngineClient::ExecuteClientCmd
-      - name: CInputService_ProcessCommand
+      - name: CInputService_ProcessCommandBuffer
         category: func
         platform: windows
         alias:
-          - CInputService::ProcessCommand
+          - CInputService::ProcessCommandBuffer
       - name: CInputService_ProcessCommandBuffers
         category: func
         platform: windows
@@ -10992,16 +10992,16 @@ modules:
     path_windows: game/bin/win64/engine2.dll
     path_linux: game/bin/linuxsteamrt64/libengine2.so
     skills:
-      - name: find-CInputService_ProcessCommand
+      - name: find-CInputService_ProcessCommandBuffer
         platform: windows
         expected_output:
-          - CInputService_ProcessCommand.{platform}.yaml
+          - CInputService_ProcessCommandBuffer.{platform}.yaml
       - name: find-CInputService_ProcessCommandBuffers
         platform: windows
         expected_output:
           - CInputService_ProcessCommandBuffers.{platform}.yaml
         expected_input:
-          - CInputService_ProcessCommand.{platform}.yaml
+          - CInputService_ProcessCommandBuffer.{platform}.yaml
       - name: find-CInputService_HandleAnalogValueChange
         platform: windows
         expected_output:
@@ -11016,7 +11016,7 @@ modules:
           - CEngineClient_ClientCmd_Unrestricted.{platform}.yaml
         expected_input:
           - CEngineClient_vtable.{platform}.yaml
-          - CInputService_ProcessCommand.{platform}.yaml
+          - CInputService_ProcessCommandBuffer.{platform}.yaml
           - CInputService_ProcessCommandBuffers.{platform}.yaml
           - CInputService_HandleAnalogValueChange.{platform}.yaml
           - CInputService_HandleInputEvent.{platform}.yaml

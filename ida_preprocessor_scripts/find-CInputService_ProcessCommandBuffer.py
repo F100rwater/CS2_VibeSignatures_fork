@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
-"""Preprocess script for find-CInputService_ProcessCommand skill."""
+"""Preprocess script for find-CInputService_ProcessCommandBuffer skill."""
 
 from ida_analyze_util import preprocess_common_skill
 
 
 TARGET_FUNCTION_NAMES = [
-    "CInputService_ProcessCommand",
+    "CInputService_ProcessCommandBuffer",
 ]
 
 FUNC_XREFS = [
     {
-        "func_name": "CInputService_ProcessCommand",
+        "func_name": "CInputService_ProcessCommandBuffer",
         "xref_strings": [
             "Cannot execute concommand '%s', missing required FCVAR flag",
         ],
@@ -26,7 +26,7 @@ FUNC_XREFS = [
 
 GENERATE_YAML_DESIRED_FIELDS = [
     (
-        "CInputService_ProcessCommand",
+        "CInputService_ProcessCommandBuffer",
         [
             "func_name",
             "func_sig",
@@ -48,7 +48,7 @@ async def preprocess_skill(
     image_base,
     debug=False,
 ):
-    """Reuse previous gamever func_sig to locate CInputService::ProcessCommand."""
+    """Reuse previous gamever func_sig to locate CInputService::ProcessCommandBuffer."""
     return await preprocess_common_skill(
         session=session,
         expected_outputs=expected_outputs,
