@@ -665,7 +665,7 @@ files:
     vtable_numvfunc: 5
     vtable_rva: '0x1ad4558'
     vtable_size: '0x28'
-    vtable_symbol: off_181AD4558
+    vtable_symbol: CLoopModeFactory_CLoopModeGame_vtable
     vtable_va: '0x181ad4558'
   client/CLoopModeGame_AddViewsToSceneSystem.linux.yaml:
     func_name: CLoopModeGame_AddViewsToSceneSystem
@@ -1990,7 +1990,7 @@ files:
     vtable_numvfunc: 66
     vtable_rva: '0x42eda50'
     vtable_size: '0x210'
-    vtable_symbol: off_42EDA50
+    vtable_symbol: CSpawnGroupMgrGameSystem_vtable2
     vtable_va: '0x42eda50'
   client/CSpawnGroupMgrGameSystem_vtable2.windows.yaml:
     vtable_class: CSpawnGroupMgrGameSystem
@@ -5809,7 +5809,7 @@ files:
     vtable_numvfunc: 185
     vtable_rva: '0x538258'
     vtable_size: '0x5c8'
-    vtable_symbol: off_180538258
+    vtable_symbol: CEngineClient_vtable
     vtable_va: '0x180538258'
   engine/CEngineGameUI_Shutdown.linux.yaml:
     func_name: CEngineGameUI_Shutdown
@@ -6528,7 +6528,7 @@ files:
     vtable_numvfunc: 122
     vtable_rva: '0x53f128'
     vtable_size: '0x3d0'
-    vtable_symbol: off_18053F128
+    vtable_symbol: CEngineServer_vtable
     vtable_va: '0x18053f128'
   engine/CEngineServiceMgr_DeactivateLoop.windows.yaml:
     func_name: CEngineServiceMgr_DeactivateLoop
@@ -7860,7 +7860,7 @@ files:
     vtable_numvfunc: 1
     vtable_rva: '0x99da40'
     vtable_size: '0x8'
-    vtable_symbol: off_99DA40
+    vtable_symbol: CLoopTypeClientServerService_vtable2
     vtable_va: '0x99da40'
   engine/CLoopTypeClientServerService_vtable2.windows.yaml:
     vtable_class: CLoopTypeClientServerService
@@ -8151,7 +8151,7 @@ files:
     vtable_numvfunc: 23
     vtable_rva: '0x5828b0'
     vtable_size: '0xb8'
-    vtable_symbol: off_1805828B0
+    vtable_symbol: CLoopTypeSimpleService_vtable
     vtable_va: '0x1805828b0'
   engine/CLoopTypeSimple_FrameUpdate.linux.yaml:
     func_name: CLoopTypeSimple_FrameUpdate
@@ -8424,7 +8424,7 @@ files:
     vtable_numvfunc: 22
     vtable_rva: '0x54cfe0'
     vtable_size: '0xb0'
-    vtable_symbol: off_18054CFE0
+    vtable_symbol: CNetSupportImpl_vtable
     vtable_va: '0x18054cfe0'
   engine/CNetworkClientService_AddClientPrerequisites.linux.yaml:
     func_name: CNetworkClientService_AddClientPrerequisites
@@ -12014,7 +12014,7 @@ files:
     vtable_numvfunc: 43
     vtable_rva: '0x578ca8'
     vtable_size: '0x158'
-    vtable_symbol: off_180578CA8
+    vtable_symbol: CSplitScreenService_vtable
     vtable_va: '0x180578ca8'
   engine/ConnectInterfaces.linux.yaml:
     func_name: ConnectInterfaces
@@ -13685,7 +13685,7 @@ files:
     vtable_numvfunc: 45
     vtable_rva: '0x22a7c0'
     vtable_size: '0x168'
-    vtable_symbol: off_18022A7C0
+    vtable_symbol: CFlattenedSerializers_vtable
     vtable_va: '0x18022a7c0'
   networksystem/CNetChan_ParseMessagesDemo.linux.yaml:
     func_name: CNetChan_ParseMessagesDemo
@@ -23414,7 +23414,7 @@ files:
     vtable_numvfunc: 4
     vtable_rva: '0x17ade38'
     vtable_size: '0x20'
-    vtable_symbol: off_1817ADE38
+    vtable_symbol: CEntFireOutputAutoCompletionFunctor_vtable
     vtable_va: '0x1817ade38'
   server/CEntity2NetworkClasses_ServerClass_InitEntity2NetworkClasses.linux.yaml:
     func_name: CEntity2NetworkClasses_ServerClass_InitEntity2NetworkClasses
@@ -23570,7 +23570,7 @@ files:
     vtable_numvfunc: 6
     vtable_rva: '0x15e1a00'
     vtable_size: '0x30'
-    vtable_symbol: off_1815E1A00
+    vtable_symbol: CEntityComponentHelperT_CBodyComponent_vtable
     vtable_va: '0x1815e1a00'
   server/CEntityComponentHelperT_Free.linux.yaml:
     func_name: CEntityComponentHelperT_Free
@@ -24587,7 +24587,7 @@ files:
     vtable_numvfunc: 9
     vtable_rva: '0x1793550'
     vtable_size: '0x48'
-    vtable_symbol: off_181793550
+    vtable_symbol: CEntitySaveRestoreBlockHandler_vtable
     vtable_va: '0x181793550'
   server/CEntitySpawner_CPlayerSprayDecal_Spawn.linux.yaml:
     func_name: CEntitySpawner_CPlayerSprayDecal_Spawn
@@ -29278,7 +29278,7 @@ files:
     vtable_numvfunc: 5
     vtable_rva: '0x179ce08'
     vtable_size: '0x28'
-    vtable_symbol: off_18179CE08
+    vtable_symbol: CLoopModeFactory_CLoopModeGame_vtable
     vtable_va: '0x18179ce08'
   server/CLoopModeGame_AddViewsToSceneSystem.linux.yaml:
     func_name: CLoopModeGame_AddViewsToSceneSystem
@@ -33593,7 +33593,7 @@ files:
     vtable_numvfunc: 12
     vtable_rva: '0x1794470'
     vtable_size: '0x60'
-    vtable_symbol: off_181794470
+    vtable_symbol: CSaveRestoreBlockSet_vtable
     vtable_va: '0x181794470'
   server/CSceneEntity_GetScriptDesc.linux.yaml:
     func_name: CSceneEntity_GetScriptDesc
@@ -34706,7 +34706,7 @@ files:
     vtable_numvfunc: 44
     vtable_rva: '0x17dd4a0'
     vtable_size: '0x160'
-    vtable_symbol: off_1817DD4A0
+    vtable_symbol: CSource2GameClients_vtable
     vtable_va: '0x1817dd4a0'
   server/CSource2GameEntities_CheckTransmit.linux.yaml:
     func_name: CSource2GameEntities_CheckTransmit
@@ -34779,7 +34779,7 @@ files:
     vtable_numvfunc: 18
     vtable_rva: '0x17dcb88'
     vtable_size: '0x90'
-    vtable_symbol: off_1817DCB88
+    vtable_symbol: CSource2GameEntities_vtable
     vtable_va: '0x1817dcb88'
   server/CSource2Server_ApplyGameSettings.linux.yaml:
     func_name: CSource2Server_ApplyGameSettings
@@ -35316,7 +35316,7 @@ files:
     vtable_numvfunc: 99
     vtable_rva: '0x17dc1b8'
     vtable_size: '0x318'
-    vtable_symbol: off_1817DC1B8
+    vtable_symbol: CSource2Server_vtable
     vtable_va: '0x1817dc1b8'
   server/CSource2Server_vtable2.linux.yaml:
     vtable_class: CSource2Server
@@ -35325,7 +35325,7 @@ files:
     vtable_numvfunc: 1
     vtable_rva: '0x24c96a0'
     vtable_size: '0x8'
-    vtable_symbol: off_24C96A0
+    vtable_symbol: CSource2Server_vtable2
     vtable_va: '0x24c96a0'
   server/CSource2Server_vtable2.windows.yaml:
     vtable_class: CSource2Server
@@ -35334,7 +35334,7 @@ files:
     vtable_numvfunc: 1
     vtable_rva: '0x17dc4d8'
     vtable_size: '0x8'
-    vtable_symbol: off_1817DC4D8
+    vtable_symbol: CSource2Server_vtable2
     vtable_va: '0x1817dc4d8'
   server/CSpawnGroupEntityFilterRegistrar_RegisterSpawnGroupEntityFilters.windows.yaml:
     func_name: CSpawnGroupEntityFilterRegistrar_RegisterSpawnGroupEntityFilters
@@ -35751,7 +35751,7 @@ files:
     vtable_numvfunc: 66
     vtable_rva: '0x23c9978'
     vtable_size: '0x210'
-    vtable_symbol: off_23C9978
+    vtable_symbol: CSpawnGroupMgrGameSystem_vtable2
     vtable_va: '0x23c9978'
   server/CSpawnGroupMgrGameSystem_vtable2.windows.yaml:
     vtable_class: CSpawnGroupMgrGameSystem
