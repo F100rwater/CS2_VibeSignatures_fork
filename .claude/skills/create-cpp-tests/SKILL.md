@@ -141,44 +141,28 @@ Notes:
 - `reference_modules` comments should document the YAML file naming pattern
 - If no `alias_symbols`, the reference YAML files use the `symbol` name directly
 
-### Step 6: Run post-change gates
+### Step 6: Stage Changes and Create the Pull Request
 
-Run the repository update and validation skills in this exact order:
-
-1. **ALWAYS** Use SKILL `/prepare-post-change-candidate` with
-   `gamever=<gamever>` from `.env` -> `CS2VIBE_GAMEVER`. Retain its candidate, candidate session, and gamedata
-   session paths.
-2. **ALWAYS** Use SKILL `/post-change-validation` with the same `gamever`, candidate, and candidate session.
-3. Only after validation succeeds, **ALWAYS** Use SKILL `/publish-post-change-candidate` with the same `gamever`,
-   candidate, candidate session, and gamedata session.
-
-`/post-change-validation` runs `run_cpp_tests.py` and requires real runnable tests. Expected success includes
-compilation plus a clean vtable/record-layout comparison.
-
-If validation reports a compile, configuration, layout, or environment failure, **STOP the entire task** and
-report its reason. Do not edit the test, retry validation, pack the snapshot, or commit during that task.
-
-### Step 7: Commit
-
-Never commit directly to `main`; switch to or create `dev` first. Review `git status --short`, then explicitly
-stage only the new test, its config entry, changed tracked gamedata, and the snapshot:
+Review `git status --short`, then explicitly stage only the new test and its config entry:
 
 ```bash
-git add cpp_tests/{interface_lowercase}.cpp configs/<GAMEVER>.yaml
-git add <changed-dist-gamedata-files> gamesymbols/<gamever>.yaml
-git commit -m "test(cpp-tests): add {InterfaceName} layout validation" -m "Co-Authored-By: Codex (GPT-5.x)"
+git add -- cpp_tests/{interface_lowercase}.cpp configs/<GAMEVER>.yaml
 ```
 
-Never use `git add -A` and never enter this step unless all three post-change gate calls succeeded.
+Never use `git add -A`. Then **ALWAYS** Use SKILL `/create-pr` with `gamever=<gamever>` and the GitHub issue number
+when the task came from an issue.
+
+`/create-pr` runs the real C++ compile/layout validation against the immutable candidate, publishes the validated
+outputs, creates the commit on a `dev*` branch, pushes it, and opens the PR. If it reports a compile,
+configuration, layout, environment, publication, or Git failure, stop the entire task and report that reason; do
+not retry or bypass the gate in this skill.
 
 ## Checklist
 
 - [ ] New cpp test follows the platform/RESTRICT preamble and calls a virtual method
 - [ ] `configs/<GAMEVER>.yaml` entry contains the correct symbol, aliases, header, and reference modules
-- [ ] `/prepare-post-change-candidate` succeeds for the selected game version
-- [ ] `/post-change-validation` succeeds for the same game version
-- [ ] `/publish-post-change-candidate` publishes `gamesymbols/<gamever>.yaml`
-- [ ] All task-related files are explicitly staged and committed on `dev`
+- [ ] Only the new test and config entry are explicitly staged
+- [ ] `/create-pr` completes validation/publication and opens a PR from the staged changes
 
 ## Reference: Existing Examples
 

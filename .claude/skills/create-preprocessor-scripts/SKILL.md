@@ -464,21 +464,7 @@ This step is mandatory -- do not report completion without running and passing t
 
 ---
 
-## Step 6: Run Post-Change Gates
-
-Before committing, run the repository update and validation skills in the exact order below. Every gate is
-mandatory.
-
-### 6a. Prepare the immutable candidate
-
-**ALWAYS** Use SKILL `/prepare-post-change-candidate` with:
-
-- `gamever=<gamever>` from `.env` -> `CS2VIBE_GAMEVER`
-
-This replaces direct `format_repo_files.py` and `update_gamedata.py` commands in this workflow.
-Retain the returned candidate path, candidate session path, and gamedata session path for the remaining gates.
-
-### 6b. Regression tests
+## Step 6: Run Regression Tests
 
 Run the non-MCP unittest suite:
 
@@ -490,58 +476,35 @@ This intentionally excludes the IDA MCP adapter and smoke modules (`test_ida_mcp
 `test_smoke_ida_mcp_2`) to keep preprocessor work fast. Run those modules separately when changing
 MCP routing or lifecycle code.
 
-**Keep 0 selected unittest failures before committing.** If any test fails, investigate and fix it before
-proceeding to the final validation gate.
-
-### 6c. Validate C++ layouts
-
-**ALWAYS** Use SKILL `/post-change-validation` with the same `gamever` and the exact candidate and candidate session
-returned by `/prepare-post-change-candidate`.
-
-If it fails or cannot run tests, it will report the reason and stop the entire task. Do not fix or retry inside
-this workflow, do not pack the snapshot, and do not commit.
-
-### 6d. Publish the validated candidate
-
-Only after `/post-change-validation` succeeds, **ALWAYS** Use SKILL `/publish-post-change-candidate` with:
-
-- the same `gamever`
-- the candidate path, candidate session path, and gamedata session path returned by
-  `/prepare-post-change-candidate`
-
-This step is mandatory. A missing or failed candidate publication blocks the commit.
+**Keep 0 selected unittest failures before delivery.** If any test fails, investigate and fix it before staging
+the task changes.
 
 ---
 
-## Step 7: Commit Changes
+## Step 7: Stage Changes and Create the Pull Request
 
-After validation passes, commit all changes to git.
-
-**IMPORTANT -- Never commit directly to the `main` branch.** If the current branch is `main`, create and switch to a `dev` branch first:
-
-```bash
-# Check current branch
-git branch --show-current
-
-# If on main, switch to dev (create it if it doesn't exist)
-git checkout dev 2>/dev/null || git checkout -b dev
-```
-
-Review `git status --short`, explicitly stage only task-related files, and include tracked gamedata and snapshot
-changes produced by the post-change gates. Never use `git add -A`:
+Review `git status --short`, then explicitly stage only the task-related source/config/reference files. Never use
+`git add -A` or stage `bin/` output YAMLs:
 
 ```bash
-git add ida_preprocessor_scripts/find-{SKILL_NAME}.py configs/<GAMEVER>.yaml
-git add <generated-reference-yamls> <changed-dist-gamedata-files> gamesymbols/<gamever>.yaml
-git commit -m "feat(preprocessor): add find-{SKILL_NAME}" -m "Co-Authored-By: Codex (GPT-5.x)"
+git add -- ida_preprocessor_scripts/find-{SKILL_NAME}.py configs/<GAMEVER>.yaml
+git add -- <generated-reference-yamls>
 ```
 
-Include all task-related files changed:
+Include every task-related implementation file changed:
 - The new preprocessor script
 - configs/<GAMEVER>.yaml changes
 - Any reference YAMLs generated (for Patterns C/D/E)
-- Any tracked gamedata updated by `/publish-post-change-candidate`
-- `gamesymbols/<gamever>.yaml`
+
+Then **ALWAYS** Use SKILL `/create-pr` with:
+
+- `gamever=<gamever>`
+- the GitHub issue number when the task came from an issue
+- the successful `ida_analyze_bin.py` and non-MCP unittest results for the PR validation summary
+
+`/create-pr` owns formatting, candidate preparation, C++ validation, candidate publication, generated-output
+staging, branch creation, commit, push, and PR creation. If it fails, stop and report its error; do not perform any
+of those delivery steps directly in this skill.
 
 ---
 
@@ -556,11 +519,9 @@ Before finishing, verify:
 - [ ] configs/<GAMEVER>.yaml `symbols` section has entries for all targets (no duplicates)
 - [ ] Pattern-specific checks pass (see the Checklist section in the chosen pattern reference file)
 - [ ] `uv run ida_analyze_bin.py -debug` passes with 0 failures
-- [ ] `/prepare-post-change-candidate` succeeds for the selected game version
 - [ ] Non-MCP unittest command above passes with 0 failures
-- [ ] `/post-change-validation` runs C++ tests and succeeds for the same game version
-- [ ] `/publish-post-change-candidate` publishes `gamesymbols/<gamever>.yaml`
-- [ ] All changes committed to git (on `dev` branch, NOT `main`)
+- [ ] Only task-related source/config/reference files are explicitly staged
+- [ ] `/create-pr` completes the post-change gates and opens a PR from the staged changes
 
 ## Real-World Examples
 
