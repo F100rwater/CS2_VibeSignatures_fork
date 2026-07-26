@@ -101,14 +101,22 @@ class TestSymbolStoreArchitecture(unittest.TestCase):
 
         self.assertIn("gamesymbol_candidate.py build", prepare)
         self.assertIn('gamedata_candidate.py build -gamever "$GAMEVER"', prepare)
+        self.assertIn('-snapshot "$CANDIDATE"', prepare)
+        self.assertIn('-session "$GAMEDATA_SESSION"', prepare)
         self.assertNotIn("gamesymbol_candidate.py publish", prepare)
         self.assertIn(
             'run_cpp_tests.py -gamever "$GAMEVER" -configyaml "$ANALYSIS_CONFIG" -snapshot "$CANDIDATE"',
             validation,
         )
-        self.assertIn("gamesymbol_candidate.py mark", validation)
+        self.assertIn(
+            'gamesymbol_candidate.py mark -candidate "$CANDIDATE" -session "$CANDIDATE_SESSION" -step cpp_tests',
+            validation,
+        )
         self.assertIn('gamedata_candidate.py publish -session "$GAMEDATA_SESSION"', publish)
-        self.assertIn("gamesymbol_candidate.py publish", publish)
+        self.assertIn(
+            'gamesymbol_candidate.py publish -candidate "$CANDIDATE" -session "$CANDIDATE_SESSION"',
+            publish,
+        )
         self.assertNotIn("gamesymbol_candidate.py build", publish)
         self.assertNotIn("gamesymbol_snapshot.py pack", publish)
 
