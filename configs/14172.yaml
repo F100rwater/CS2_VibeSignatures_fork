@@ -141,8 +141,101 @@ modules:
   - name: scenesystem
     path_windows: game/bin/win64/scenesystem.dll
     path_linux: game/bin/linuxsteamrt64/libscenesystem.so
-    skills: []
-    symbols: []
+    skills:
+      - name: find-SC_DumpWorld_CommandHandler
+        expected_output:
+          - SC_DumpWorld_CommandHandler.{platform}.yaml
+        platform: windows
+      - name: find-SC_DumpWorld_CommandHandler-decompiles
+        expected_output:
+          - ISceneSystem_GetWorldsInfo.{platform}.yaml
+          - ISceneWorld_GetObjectsInfo.{platform}.yaml
+          - ISceneWorld_GetWorldName.{platform}.yaml
+          - ISceneSystem_GetObjectBounds.{platform}.yaml
+          - ISceneSystem_GetObjectClassName.{platform}.yaml
+          - CSceneObject_pDesc.{platform}.yaml
+          - CSceneObject_nFlags.{platform}.yaml
+          - CSceneObject_fOriginX.{platform}.yaml
+          - CSceneObject_fOriginY.{platform}.yaml
+          - CSceneObject_fOriginZ.{platform}.yaml
+          - CSceneObject_nClassIndex.{platform}.yaml
+        expected_input:
+          - SC_DumpWorld_CommandHandler.{platform}.yaml
+        platform: windows
+    symbols:
+      - name: SC_DumpWorld_CommandHandler
+        category: func
+        platform: windows
+      - name: ISceneSystem_GetWorldsInfo
+        category: vfunc
+        platform: windows
+        alias:
+          - ISceneSystem::GetWorldsInfo
+      - name: ISceneWorld_GetObjectsInfo
+        category: vfunc
+        platform: windows
+        alias:
+          - ISceneWorld::GetObjectsInfo
+      - name: ISceneWorld_GetWorldName
+        category: vfunc
+        platform: windows
+        alias:
+          - ISceneWorld::GetWorldName
+      - name: ISceneSystem_GetObjectBounds
+        category: vfunc
+        platform: windows
+        alias:
+          - ISceneSystem::GetObjectBounds
+      - name: ISceneSystem_GetObjectClassName
+        category: vfunc
+        platform: windows
+        alias:
+          - ISceneSystem::GetObjectClassName
+      - name: CSceneObject
+        category: struct
+        platform: windows
+      - name: CSceneObject_pDesc
+        category: structmember
+        platform: windows
+        struct: CSceneObject
+        member: pDesc
+        alias:
+          - CSceneObject::pDesc
+      - name: CSceneObject_nFlags
+        category: structmember
+        platform: windows
+        struct: CSceneObject
+        member: nFlags
+        alias:
+          - CSceneObject::nFlags
+      - name: CSceneObject_fOriginX
+        category: structmember
+        platform: windows
+        struct: CSceneObject
+        member: fOriginX
+        alias:
+          - CSceneObject::fOriginX
+      - name: CSceneObject_fOriginY
+        category: structmember
+        platform: windows
+        struct: CSceneObject
+        member: fOriginY
+        alias:
+          - CSceneObject::fOriginY
+      - name: CSceneObject_fOriginZ
+        category: structmember
+        platform: windows
+        struct: CSceneObject
+        member: fOriginZ
+        alias:
+          - CSceneObject::fOriginZ
+      - name: CSceneObject_nClassIndex
+        category: structmember
+        platform: windows
+        struct: CSceneObject
+        member: nClassIndex
+        alias:
+          - CSceneObject::nClassIndex
   - name: networksystem
     path_windows: game/bin/win64/networksystem.dll
     path_linux: game/bin/linuxsteamrt64/libnetworksystem.so

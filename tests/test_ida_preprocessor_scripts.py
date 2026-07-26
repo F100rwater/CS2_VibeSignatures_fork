@@ -46,6 +46,8 @@ CNETWORK_SERVER_SERVICE_INIT_SCRIPT_PATH = Path("ida_preprocessor_scripts/find-C
 CLOOPMODE_FACTORY_GAME_INIT_SCRIPT_PATH = Path("ida_preprocessor_scripts/find-CLoopModeFactory_CLoopModeGame_Init.py")
 PROCESS_MOVEMENT_SCRIPT_PATH = Path("ida_preprocessor_scripts/find-CCSPlayer_MovementServices_ProcessMovement.py")
 BOT_ADD_COMMAND_HANDLER_SCRIPT_PATH = Path("ida_preprocessor_scripts/find-BotAdd_CommandHandler.py")
+SC_DUMP_WORLD_COMMAND_HANDLER_SCRIPT_PATH = Path("ida_preprocessor_scripts/find-SC_DumpWorld_CommandHandler.py")
+SC_DUMP_WORLD_DECOMPILES_SCRIPT_PATH = Path("ida_preprocessor_scripts/find-SC_DumpWorld_CommandHandler-decompiles.py")
 SHOW_HUD_HINT_SCRIPT_PATH = Path("ida_preprocessor_scripts/find-ShowHudHint.py")
 CBASEFILTER_INPUTTESTACTIVATOR_SCRIPT_PATH = Path("ida_preprocessor_scripts/find-CBaseFilter_InputTestActivator.py")
 ILOOPMODE_HANDLEINPUTEVENT_SCRIPT_PATH = Path("ida_preprocessor_scripts/find-ILoopMode_HandleInputEvent.py")
@@ -661,6 +663,176 @@ class TestFindBotAddCommandHandler(unittest.IsolatedAsyncioTestCase):
             rename_to="BotAdd_CommandHandler",
             search_window_before_call=96,
             search_window_after_xref=96,
+            debug=True,
+        )
+
+
+class TestFindSCDumpWorldCommandHandler(unittest.IsolatedAsyncioTestCase):
+    async def test_preprocess_skill_forwards_registerconcommand_contract(self) -> None:
+        module = _load_module(
+            SC_DUMP_WORLD_COMMAND_HANDLER_SCRIPT_PATH,
+            "find_SC_DumpWorld_CommandHandler",
+        )
+        mock_preprocess_registerconcommand_skill = AsyncMock(return_value=True)
+        expected_generate_yaml_desired_fields = [
+            (
+                "SC_DumpWorld_CommandHandler",
+                [
+                    "func_name",
+                    "func_sig",
+                    "func_va",
+                    "func_rva",
+                    "func_size",
+                ],
+            )
+        ]
+
+        with patch.object(
+            module,
+            "preprocess_registerconcommand_skill",
+            mock_preprocess_registerconcommand_skill,
+        ):
+            result = await module.preprocess_skill(
+                session="session",
+                skill_name="skill",
+                expected_outputs=["out.yaml"],
+                old_yaml_map={"k": "v"},
+                new_binary_dir="bin_dir",
+                platform="windows",
+                image_base=0x180000000,
+                debug=True,
+            )
+
+        self.assertTrue(result)
+        mock_preprocess_registerconcommand_skill.assert_awaited_once_with(
+            session="session",
+            expected_outputs=["out.yaml"],
+            new_binary_dir="bin_dir",
+            platform="windows",
+            image_base=0x180000000,
+            target_name="SC_DumpWorld_CommandHandler",
+            generate_yaml_desired_fields=expected_generate_yaml_desired_fields,
+            command_name="sc_dumpworld",
+            help_string=("Dump a list of the objects in a sceneworld (Usage: sc_dumpworld <world_index>)"),
+            rename_to="SC_DumpWorld_CommandHandler",
+            search_window_before_call=96,
+            search_window_after_xref=96,
+            debug=True,
+        )
+
+
+class TestFindSCDumpWorldCommandHandlerDecompiles(unittest.IsolatedAsyncioTestCase):
+    async def test_preprocess_skill_forwards_llm_targets(self) -> None:
+        module = _load_module(
+            SC_DUMP_WORLD_DECOMPILES_SCRIPT_PATH,
+            "find_SC_DumpWorld_CommandHandler_decompiles",
+        )
+        mock_preprocess_common_skill = AsyncMock(return_value=True)
+        expected_func_names = [
+            "ISceneSystem_GetWorldsInfo",
+            "ISceneWorld_GetObjectsInfo",
+            "ISceneWorld_GetWorldName",
+            "ISceneSystem_GetObjectBounds",
+            "ISceneSystem_GetObjectClassName",
+        ]
+        expected_struct_member_names = [
+            "CSceneObject_pDesc",
+            "CSceneObject_nFlags",
+            "CSceneObject_fOriginX",
+            "CSceneObject_fOriginY",
+            "CSceneObject_fOriginZ",
+            "CSceneObject_nClassIndex",
+        ]
+        expected_func_vtable_relations = [
+            ("ISceneSystem_GetWorldsInfo", "ISceneSystem"),
+            ("ISceneWorld_GetObjectsInfo", "ISceneWorld"),
+            ("ISceneWorld_GetWorldName", "ISceneWorld"),
+            ("ISceneSystem_GetObjectBounds", "ISceneSystem"),
+            ("ISceneSystem_GetObjectClassName", "ISceneSystem"),
+        ]
+        expected_llm_decompile_specs = [
+            {
+                "symbol_name": symbol_name,
+                "prompt_path": "prompt/call_llm_decompile.md",
+                "reference_yaml_paths": [
+                    "references/scenesystem/SC_DumpWorld_CommandHandler.{platform}.yaml",
+                ],
+                "expected_result_sections": [section],
+                "dependency_policy": {
+                    "SC_DumpWorld_CommandHandler.{platform}.yaml": "required",
+                },
+            }
+            for symbol_name, section in [
+                *[(name, "found_vcall") for name in expected_func_names],
+                *[(name, "found_struct_offset") for name in expected_struct_member_names],
+            ]
+        ]
+        expected_generate_yaml_desired_fields = [
+            *[
+                (
+                    name,
+                    [
+                        "func_name",
+                        "vfunc_sig",
+                        "vfunc_offset",
+                        "vfunc_index",
+                        "vtable_name",
+                    ],
+                )
+                for name in expected_func_names
+            ],
+            *[
+                (
+                    name,
+                    [
+                        "struct_name",
+                        "member_name",
+                        "offset",
+                        "size",
+                        "offset_sig",
+                        "offset_sig_disp",
+                    ],
+                )
+                for name in expected_struct_member_names
+            ],
+        ]
+        llm_config = {
+            "model": "gpt-4.1-mini",
+            "api_key": "test-api-key",
+            "base_url": "https://example.invalid/v1",
+        }
+
+        with patch.object(
+            module,
+            "preprocess_common_skill",
+            mock_preprocess_common_skill,
+        ):
+            result = await module.preprocess_skill(
+                session="session",
+                skill_name="skill",
+                expected_outputs=["out.yaml"],
+                old_yaml_map={"k": "v"},
+                new_binary_dir="bin_dir",
+                platform="windows",
+                image_base=0x180000000,
+                llm_config=llm_config,
+                debug=True,
+            )
+
+        self.assertTrue(result)
+        mock_preprocess_common_skill.assert_awaited_once_with(
+            session="session",
+            expected_outputs=["out.yaml"],
+            old_yaml_map={"k": "v"},
+            new_binary_dir="bin_dir",
+            platform="windows",
+            image_base=0x180000000,
+            func_names=expected_func_names,
+            struct_member_names=expected_struct_member_names,
+            func_vtable_relations=expected_func_vtable_relations,
+            llm_decompile_specs=expected_llm_decompile_specs,
+            llm_config=llm_config,
+            generate_yaml_desired_fields=expected_generate_yaml_desired_fields,
             debug=True,
         )
 

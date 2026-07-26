@@ -1,7 +1,7 @@
 analysis_output_contract_version: 1
 config_digest_version: 2
-config_sha256: sha256:c5cd7338e3e3b00f1d91c08f0129c3e86e80a62865dd275f01392c7a844ff514
-file_count: 3087
+config_sha256: sha256:c4744fcd57031c15a6c03564486724e5f0771c878790a69068adf8c69f4b6526
+file_count: 3099
 files:
   SDL3/SDL_GetMouse.windows.yaml:
     func_name: SDL_GetMouse
@@ -14346,6 +14346,84 @@ files:
     gv_sig: 8B 0D ?? ?? ?? ?? BA ?? ?? ?? ?? FF 15 ?? ?? ?? ?? 84 C0 74 ?? 48 8B 4E ?? 48 85 C9 74 ?? 48 8B 01 FF 10 EB ?? 48 8D 05 ?? ?? ?? ?? 8B 0D ?? ?? ?? ?? 4C 8D 05 ?? ?? ?? ?? 44 89 7C 24 ??
     gv_sig_va: '0x1800bb2fb'
     gv_va: '0x180296028'
+  scenesystem/CSceneObject_fOriginX.windows.yaml:
+    member_name: fOriginX
+    offset: '0x3c'
+    offset_sig: F3 44 0F 10 46 ?? F3 0F 10 7E ?? 48 8B 01
+    offset_sig_disp: 0
+    size: 4
+    struct_name: CSceneObject
+  scenesystem/CSceneObject_fOriginY.windows.yaml:
+    member_name: fOriginY
+    offset: '0x4c'
+    offset_sig: F3 0F 10 7E ?? 48 8B 01
+    offset_sig_disp: 0
+    size: 4
+    struct_name: CSceneObject
+  scenesystem/CSceneObject_fOriginZ.windows.yaml:
+    member_name: fOriginZ
+    offset: '0x5c'
+    offset_sig: F3 0F 10 76 ?? FF 90 ?? ?? ?? ??
+    offset_sig_disp: 0
+    size: 4
+    struct_name: CSceneObject
+  scenesystem/CSceneObject_nClassIndex.windows.yaml:
+    member_name: nClassIndex
+    offset: '0x9b'
+    offset_sig: 0F B6 96 ?? 00 00 00 41 B9 ?? ?? ?? ?? F3 44 0F 10 46 ??
+    offset_sig_disp: 0
+    size: 1
+    struct_name: CSceneObject
+  scenesystem/CSceneObject_nFlags.windows.yaml:
+    member_name: nFlags
+    offset: '0x80'
+    offset_sig: 4C 8B BE ?? ?? ?? ?? FF 90 ?? ?? ?? ??
+    offset_sig_disp: 0
+    size: 8
+    struct_name: CSceneObject
+  scenesystem/CSceneObject_pDesc.windows.yaml:
+    member_name: pDesc
+    offset: '0x18'
+    offset_sig: 4C 8B 76 ?? 4C 8B BE ?? ?? ?? ??
+    offset_sig_disp: 0
+    size: 8
+    struct_name: CSceneObject
+  scenesystem/ISceneSystem_GetObjectBounds.windows.yaml:
+    func_name: ISceneSystem_GetObjectBounds
+    vfunc_index: 30
+    vfunc_offset: '0xf0'
+    vfunc_sig: FF 90 F0 00 00 00 48 8B 0D ?? ?? ?? ?? 4C 8D 45 ??
+    vtable_name: ISceneSystem
+  scenesystem/ISceneSystem_GetObjectClassName.windows.yaml:
+    func_name: ISceneSystem_GetObjectClassName
+    vfunc_index: 99
+    vfunc_offset: '0x318'
+    vfunc_sig: FF 90 18 03 00 00 8B 0D ?? ?? ?? ??
+    vtable_name: ISceneSystem
+  scenesystem/ISceneSystem_GetWorldsInfo.windows.yaml:
+    func_name: ISceneSystem_GetWorldsInfo
+    vfunc_index: 96
+    vfunc_offset: '0x300'
+    vfunc_sig: FF 90 00 03 00 00 83 BB ?? ?? ?? ?? ?? 0F 85 ?? ?? ?? ?? 48 8B 83 ?? ?? ?? ?? 48 89 BC 24 ?? ?? ?? ??
+    vtable_name: ISceneSystem
+  scenesystem/ISceneWorld_GetObjectsInfo.windows.yaml:
+    func_name: ISceneWorld_GetObjectsInfo
+    vfunc_index: 7
+    vfunc_offset: '0x38'
+    vfunc_sig: 41 FF 50 38 8B 0D ?? ?? ?? ??
+    vtable_name: ISceneWorld
+  scenesystem/ISceneWorld_GetWorldName.windows.yaml:
+    func_name: ISceneWorld_GetWorldName
+    vfunc_index: 10
+    vfunc_offset: '0x50'
+    vfunc_sig: FF 50 50 8B 0D ?? ?? ?? ??
+    vtable_name: ISceneWorld
+  scenesystem/SC_DumpWorld_CommandHandler.windows.yaml:
+    func_name: SC_DumpWorld_CommandHandler
+    func_rva: '0xf9e00'
+    func_sig: 48 8B C4 55 48 8D A8 ?? ?? ?? ?? 48 81 EC ?? ?? ?? ?? 48 8B 0D ?? ?? ?? ?? 48 89 58 ?? 48 8B DA 4C 89 60 ??
+    func_size: '0x35a'
+    func_va: '0x1800f9e00'
   server/BotAdd_CommandHandler.linux.yaml:
     func_name: BotAdd_CommandHandler
     func_rva: '0xbf2200'
