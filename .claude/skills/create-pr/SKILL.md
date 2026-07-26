@@ -1,10 +1,11 @@
 ---
 name: create-pr
+when_to_use: when user request to create a PR
 description: |
   Deliver already-staged repository changes through the full post-change candidate lifecycle and open a GitHub
   pull request. Use after implementation-specific tests pass and all task-related source/config/reference changes
   are explicitly staged. Prepares, validates, and publishes the immutable candidate; refreshes only the original
-  staged paths plus current-version generated outputs; commits on a dev branch; pushes; and creates the PR. Should be triggered when user request to create a PR.
+  staged paths plus current-version generated outputs; commits on a dev branch; pushes; and creates the PR.
 ---
 
 # Create Pull Request

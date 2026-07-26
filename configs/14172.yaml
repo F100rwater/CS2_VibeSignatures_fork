@@ -1192,8 +1192,47 @@ modules:
           - INetworkMessages_FindNetworkGroup.{platform}.yaml
         expected_input:
           - CNetworkGameClient_RecordEntityBandwidth.{platform}.yaml
+      - name: find-InitSteam
+        expected_output:
+          - InitSteam.{platform}.yaml
+      - name: find-InitSteam-decompiles
+        expected_output:
+          - g_nSteamAppId.{platform}.yaml
+          - g_nBreakpadAppId.{platform}.yaml
+        expected_input:
+          - InitSteam.{platform}.yaml
+      - name: find-CRenderingWorldSession_FindOrCreateWorldSession
+        platform: windows
+        expected_output:
+          - CRenderingWorldSession_FindOrCreateWorldSession.{platform}.yaml
+      - name: find-CRenderingWorldSession_GetEntityLumpForTemplate
+        platform: windows
+        expected_output:
+          - CRenderingWorldSession_GetEntityLumpForTemplate.{platform}.yaml
       - name: find-CEngineClient_vtable
         expected_output:
+          - CEngineClient_vtable.{platform}.yaml
+      - name: find-CEngineClient_GetEntityLumpForTemplate
+        platform: windows
+        expected_output:
+          - CEngineClient_GetEntityLumpForTemplate.{platform}.yaml
+        expected_input:
+          - CRenderingWorldSession_GetEntityLumpForTemplate.{platform}.yaml
+          - CEngineClient_vtable.{platform}.yaml
+      - name: find-CEngineClient_FindOrCreateWorldSession
+        platform: windows
+        expected_output:
+          - CEngineClient_FindOrCreateWorldSession.{platform}.yaml
+        expected_input:
+          - CRenderingWorldSession_FindOrCreateWorldSession.{platform}.yaml
+          - CRenderingWorldSession_GetEntityLumpForTemplate.{platform}.yaml
+          - CEngineClient_vtable.{platform}.yaml
+      - name: find-CEngineClient_GetStatsAppID
+        platform: windows
+        expected_output:
+          - CEngineClient_GetStatsAppID.{platform}.yaml
+        expected_input:
+          - g_nBreakpadAppId.{platform}.yaml
           - CEngineClient_vtable.{platform}.yaml
       - name: find-CEngineClient_DumpNetStats
         expected_output:
@@ -2400,8 +2439,39 @@ modules:
         alias:
           - INetworkMessages::SetIsForServer
         shared: true
+      - name: InitSteam
+        category: func
+      - name: g_nSteamAppId
+        category: gv
+      - name: g_nBreakpadAppId
+        category: gv
+      - name: CRenderingWorldSession_FindOrCreateWorldSession
+        category: func
+        platform: windows
+        alias:
+          - CRenderingWorldSession::FindOrCreateWorldSession
+      - name: CRenderingWorldSession_GetEntityLumpForTemplate
+        category: func
+        platform: windows
+        alias:
+          - CRenderingWorldSession::GetEntityLumpForTemplate
       - name: CEngineClient_vtable
         category: vtable
+      - name: CEngineClient_GetEntityLumpForTemplate
+        category: vfunc
+        platform: windows
+        alias:
+          - CEngineClient::GetEntityLumpForTemplate
+      - name: CEngineClient_FindOrCreateWorldSession
+        category: vfunc
+        platform: windows
+        alias:
+          - CEngineClient::FindOrCreateWorldSession
+      - name: CEngineClient_GetStatsAppID
+        category: vfunc
+        platform: windows
+        alias:
+          - CEngineClient::GetStatsAppID
       - name: CEngineClient_DumpNetStats
         category: vfunc
         alias:
