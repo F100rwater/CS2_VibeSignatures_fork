@@ -1,7 +1,7 @@
 analysis_output_contract_version: 1
 config_digest_version: 2
-config_sha256: sha256:c4744fcd57031c15a6c03564486724e5f0771c878790a69068adf8c69f4b6526
-file_count: 3099
+config_sha256: sha256:283425c5da9b1c4c5bf6344283990c36c904c9000a69249a5b87bcac77e289f7
+file_count: 3104
 files:
   SDL3/SDL_GetMouse.windows.yaml:
     func_name: SDL_GetMouse
@@ -5354,6 +5354,15 @@ files:
     vtable_size: '0xa8'
     vtable_symbol: ??_7CDemoRecorder@@6B@
     vtable_va: '0x18052dce0'
+  engine/CEngineClient_ClientCmd_Unrestricted.windows.yaml:
+    func_name: CEngineClient_ClientCmd_Unrestricted
+    func_rva: '0x75450'
+    func_sig: 48 8B C4 48 89 58 ?? 48 89 68 ?? 48 89 70 ?? 57 41 56 41 57 48 81 EC ?? ?? ?? ?? 0F 29 70 ?? 41 0F B6 E9
+    func_size: '0x18d'
+    func_va: '0x180075450'
+    vfunc_index: 51
+    vfunc_offset: '0x198'
+    vtable_name: CEngineClient_vtable
   engine/CEngineClient_DumpNetStats.linux.yaml:
     func_name: CEngineClient_DumpNetStats
     func_rva: '0x4e5a00'
@@ -5372,8 +5381,8 @@ files:
     vfunc_index: 184
     vfunc_offset: '0x5c0'
     vtable_name: CEngineClient_vtable
-  engine/CEngineClient_SendStringCmd.linux.yaml:
-    func_name: CEngineClient_SendStringCmd
+  engine/CEngineClient_ExecuteClientCmd.linux.yaml:
+    func_name: CEngineClient_ExecuteClientCmd
     func_rva: '0x4e5230'
     func_sig: 48 8D 05 F1 2A 4F ??
     func_size: '0x13'
@@ -5381,8 +5390,8 @@ files:
     vfunc_index: 101
     vfunc_offset: '0x328'
     vtable_name: CEngineClient
-  engine/CEngineClient_SendStringCmd.windows.yaml:
-    func_name: CEngineClient_SendStringCmd
+  engine/CEngineClient_ExecuteClientCmd.windows.yaml:
+    func_name: CEngineClient_ExecuteClientCmd
     func_rva: '0x75420'
     func_sig: 48 8B 0D ?? ?? ?? ?? 48 85 C9 74 ?? 48 8B 01 83 FA ??
     func_size: '0x24'
@@ -7364,6 +7373,30 @@ files:
     func_sig: 48 89 5C 24 ?? 55 56 57 41 54 41 55 41 56 41 57 48 8D AC 24 ?? ?? ?? ?? 48 81 EC ?? ?? ?? ?? 48 8D 05 ?? ?? ?? ??
     func_size: '0xa87'
     func_va: '0x180129190'
+  engine/CInputService_HandleAnalogValueChange.windows.yaml:
+    func_name: CInputService_HandleAnalogValueChange
+    func_rva: '0x1c0120'
+    func_sig: 48 8B C4 48 89 58 ?? 56 57 41 57
+    func_size: '0x249'
+    func_va: '0x1801c0120'
+  engine/CInputService_HandleInputEvent.windows.yaml:
+    func_name: CInputService_HandleInputEvent
+    func_rva: '0x1c0370'
+    func_sig: 48 89 4C 24 ?? 53 55 56 57 41 55 41 56 41 57
+    func_size: '0x584'
+    func_va: '0x1801c0370'
+  engine/CInputService_ProcessCommand.windows.yaml:
+    func_name: CInputService_ProcessCommand
+    func_rva: '0x1c41b0'
+    func_sig: 48 89 5C 24 ?? 44 89 44 24 ?? 89 54 24 ?? 55 56 57 41 54 41 55 41 56 41 57 48 8B EC
+    func_size: '0x502'
+    func_va: '0x1801c41b0'
+  engine/CInputService_ProcessCommandBuffers.windows.yaml:
+    func_name: CInputService_ProcessCommandBuffers
+    func_rva: '0x1c3d10'
+    func_sig: 89 54 24 ?? 48 89 4C 24 ?? 53 55 56 57 41 54 41 55 41 56 41 57 48 83 EC ?? 45 33 F6
+    func_size: '0x492'
+    func_va: '0x1801c3d10'
   engine/CL_NET_PrintSummary_CommandHandler.linux.yaml:
     func_name: CL_NET_PrintSummary_CommandHandler
     func_rva: '0x4e4e00'

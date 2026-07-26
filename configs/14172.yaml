@@ -2406,10 +2406,35 @@ modules:
         category: vfunc
         alias:
           - CEngineClient::DumpNetStats
-      - name: CEngineClient_SendStringCmd
+      - name: CEngineClient_ExecuteClientCmd
         category: vfunc
         alias:
-          - CEngineClient::SendStringCmd
+          - CEngineClient::ExecuteClientCmd
+      - name: CInputService_ProcessCommand
+        category: func
+        platform: windows
+        alias:
+          - CInputService::ProcessCommand
+      - name: CInputService_ProcessCommandBuffers
+        category: func
+        platform: windows
+        alias:
+          - CInputService::ProcessCommandBuffers
+      - name: CInputService_HandleAnalogValueChange
+        category: func
+        platform: windows
+        alias:
+          - CInputService::HandleAnalogValueChange
+      - name: CInputService_HandleInputEvent
+        category: func
+        platform: windows
+        alias:
+          - CInputService::HandleInputEvent
+      - name: CEngineClient_ClientCmd_Unrestricted
+        category: vfunc
+        platform: windows
+        alias:
+          - CEngineClient::ClientCmd_Unrestricted
       - name: INetworkGameClient_SendStringCmd
         category: vfunc
         alias:
@@ -10917,9 +10942,37 @@ modules:
     path_windows: game/bin/win64/engine2.dll
     path_linux: game/bin/linuxsteamrt64/libengine2.so
     skills:
-      - name: find-CEngineClient_SendStringCmd
+      - name: find-CInputService_ProcessCommand
+        platform: windows
         expected_output:
-          - CEngineClient_SendStringCmd.{platform}.yaml
+          - CInputService_ProcessCommand.{platform}.yaml
+      - name: find-CInputService_ProcessCommandBuffers
+        platform: windows
+        expected_output:
+          - CInputService_ProcessCommandBuffers.{platform}.yaml
+        expected_input:
+          - CInputService_ProcessCommand.{platform}.yaml
+      - name: find-CInputService_HandleAnalogValueChange
+        platform: windows
+        expected_output:
+          - CInputService_HandleAnalogValueChange.{platform}.yaml
+      - name: find-CInputService_HandleInputEvent
+        platform: windows
+        expected_output:
+          - CInputService_HandleInputEvent.{platform}.yaml
+      - name: find-CEngineClient_ClientCmd_Unrestricted
+        platform: windows
+        expected_output:
+          - CEngineClient_ClientCmd_Unrestricted.{platform}.yaml
+        expected_input:
+          - CEngineClient_vtable.{platform}.yaml
+          - CInputService_ProcessCommand.{platform}.yaml
+          - CInputService_ProcessCommandBuffers.{platform}.yaml
+          - CInputService_HandleAnalogValueChange.{platform}.yaml
+          - CInputService_HandleInputEvent.{platform}.yaml
+      - name: find-CEngineClient_ExecuteClientCmd
+        expected_output:
+          - CEngineClient_ExecuteClientCmd.{platform}.yaml
         expected_input:
           - CEngineClient_vtable.{platform}.yaml
           - ../client/IVEngineClient2_SendStringCmd.{platform}.yaml
@@ -10927,7 +10980,7 @@ modules:
         expected_output:
           - INetworkGameClient_SendStringCmd.{platform}.yaml
         expected_input:
-          - CEngineClient_SendStringCmd.{platform}.yaml
+          - CEngineClient_ExecuteClientCmd.{platform}.yaml
       - name: find-CNetworkClientService_SendNetMessage
         platform: windows
         expected_output:
