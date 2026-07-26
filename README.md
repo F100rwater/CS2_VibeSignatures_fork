@@ -16,7 +16,7 @@ Currently, all signatures/offsets from **CounterStrikeSharp** and **CS2Fixes** c
 
 2. [depotdownloader](https://github.com/steamre/depotdownloader) (`depotdownloader.exe` must be available in PATH)
 
-3. claude / codex
+3. claude / codex / opencode
 
 4. IDA Pro 9.0+
 
@@ -24,7 +24,7 @@ Currently, all signatures/offsets from **CounterStrikeSharp** and **CS2Fixes** c
 
 6. [idalib](https://docs.hex-rays.com/user-guide/idalib) (mandatory for `ida_analyze_bin.py`)
 
-7. Clang-LLVM (mandatory for `run_cpp_tests.py`, `clang.exe` must be available in PATH)
+7. Clang-LLVM (clang must be in PATH)
 
 ## Formatting
 

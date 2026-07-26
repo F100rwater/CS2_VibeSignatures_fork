@@ -481,14 +481,27 @@ the task changes.
 
 ---
 
-## Step 7: Stage Changes and Create the Pull Request
+## Step 7: Commit Changes to `dev`
 
-Review `git status --short`, then explicitly stage only the task-related source/config/reference files. Never use
-`git add -A` or stage `bin/` output YAMLs:
+After validation passes, ensure the delivery branch is `dev`. Never commit directly to `main`. If the local `dev`
+branch exists, switch to it. Otherwise, switch to `main` first and create `dev` from `main`:
+
+```bash
+if git show-ref --verify --quiet refs/heads/dev; then
+  git switch dev
+else
+  git switch main
+  git switch -c dev
+fi
+```
+
+If any branch switch fails, stop and report the error. Review `git status --short`, then explicitly stage only the
+task-related source/config/reference files. Never use `git add -A` or stage `bin/` output YAMLs:
 
 ```bash
 git add -- ida_preprocessor_scripts/find-{SKILL_NAME}.py configs/<GAMEVER>.yaml
 git add -- <generated-reference-yamls>
+git diff --cached --name-only
 ```
 
 Include every task-related implementation file changed:
@@ -496,15 +509,15 @@ Include every task-related implementation file changed:
 - configs/<GAMEVER>.yaml changes
 - Any reference YAMLs generated (for Patterns C/D/E)
 
-Then **ALWAYS** Use SKILL `/create-pr` with:
+Stop if the staged-path list contains anything unrelated to this task. Commit only the staged task changes using
+the repository commit format:
 
-- `gamever=<gamever>`
-- the GitHub issue number when the task came from an issue
-- the successful `ida_analyze_bin.py` and non-MCP unittest results for the PR validation summary
+```bash
+git commit -m "feat(preprocessor): add find-{SKILL_NAME}" -m "Co-Authored-By: Codex"
+```
 
-`/create-pr` owns formatting, candidate preparation, C++ validation, candidate publication, generated-output
-staging, branch creation, commit, push, and PR creation. If it fails, stop and report its error; do not perform any
-of those delivery steps directly in this skill.
+Do not call `/create-pr`, push the branch, or open a pull request unless the user separately requests it. Finish by
+reporting the commit hash, game version, and successful `ida_analyze_bin.py` and non-MCP unittest results.
 
 ---
 
@@ -520,8 +533,9 @@ Before finishing, verify:
 - [ ] Pattern-specific checks pass (see the Checklist section in the chosen pattern reference file)
 - [ ] `uv run ida_analyze_bin.py -debug` passes with 0 failures
 - [ ] Non-MCP unittest command above passes with 0 failures
-- [ ] Only task-related source/config/reference files are explicitly staged
-- [ ] `/create-pr` completes the post-change gates and opens a PR from the staged changes
+- [ ] The current branch is `dev` (created from `main` when it did not already exist)
+- [ ] Only task-related source/config/reference files are explicitly staged and committed
+- [ ] `/create-pr` was not called; no push or PR was performed without a separate user request
 
 ## Real-World Examples
 

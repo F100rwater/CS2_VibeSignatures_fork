@@ -141,28 +141,45 @@ Notes:
 - `reference_modules` comments should document the YAML file naming pattern
 - If no `alias_symbols`, the reference YAML files use the `symbol` name directly
 
-### Step 6: Stage Changes and Create the Pull Request
+### Step 6: Commit Changes to `dev`
 
-Review `git status --short`, then explicitly stage only the new test and its config entry:
+After validation passes, ensure the delivery branch is `dev`. Never commit directly to `main`. If the local `dev`
+branch exists, switch to it. Otherwise, switch to `main` first and create `dev` from `main`:
+
+```bash
+if git show-ref --verify --quiet refs/heads/dev; then
+  git switch dev
+else
+  git switch main
+  git switch -c dev
+fi
+```
+
+If any branch switch fails, stop and report the error. Review `git status --short`, then explicitly stage only the
+new test and its config entry:
 
 ```bash
 git add -- cpp_tests/{interface_lowercase}.cpp configs/<GAMEVER>.yaml
+git diff --cached --name-only
 ```
 
-Never use `git add -A`. Then **ALWAYS** Use SKILL `/create-pr` with `gamever=<gamever>` and the GitHub issue number
-when the task came from an issue.
+Never use `git add -A`. Stop if the staged-path list contains anything unrelated to this task. Commit only the
+staged task changes using the repository commit format:
 
-`/create-pr` runs the real C++ compile/layout validation against the immutable candidate, publishes the validated
-outputs, creates the commit on a `dev*` branch, pushes it, and opens the PR. If it reports a compile,
-configuration, layout, environment, publication, or Git failure, stop the entire task and report that reason; do
-not retry or bypass the gate in this skill.
+```bash
+git commit -m "test(cpp-tests): add {InterfaceName} vtable validation" -m "Co-Authored-By: Codex"
+```
+
+Do not call `/create-pr`, push the branch, or open a pull request unless the user separately requests it. Finish by
+reporting the commit hash and the validation results.
 
 ## Checklist
 
 - [ ] New cpp test follows the platform/RESTRICT preamble and calls a virtual method
 - [ ] `configs/<GAMEVER>.yaml` entry contains the correct symbol, aliases, header, and reference modules
-- [ ] Only the new test and config entry are explicitly staged
-- [ ] `/create-pr` completes validation/publication and opens a PR from the staged changes
+- [ ] The current branch is `dev` (created from `main` when it did not already exist)
+- [ ] Only the new test and config entry are explicitly staged and committed
+- [ ] `/create-pr` was not called; no push or PR was performed without a separate user request
 
 ## Reference: Existing Examples
 
