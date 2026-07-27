@@ -904,6 +904,8 @@ def _build_inherited_vfunc_name(
     fallback_name,
 ):
     func_name = fallback_name
+    if _is_vtable_artifact_stem(inherit_vtable_class):
+        return func_name
     base_artifact_stem = Path(str(base_vfunc_name)).name
     if base_vtable_name and base_artifact_stem.startswith(base_vtable_name + "_"):
         method_suffix = base_artifact_stem[len(base_vtable_name) + 1 :]

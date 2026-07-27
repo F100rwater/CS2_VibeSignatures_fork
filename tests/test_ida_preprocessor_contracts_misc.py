@@ -400,7 +400,7 @@ class TestCanonicalVtablePreprocessors(unittest.IsolatedAsyncioTestCase):
                         mock_preprocess_common_skill.await_args.kwargs["canonical_vtable_symbols"],
                     )
 
-    async def test_ordinal_vtable_finders_forward_canonical_symbols(self) -> None:
+    async def test_ordinal_vtable_finders_only_override_linux_symbols(self) -> None:
         for output_stem in (
             "CSpawnGroupMgrGameSystem_vtable2",
             "CLoopTypeClientServerService_vtable2",
@@ -434,7 +434,7 @@ class TestCanonicalVtablePreprocessors(unittest.IsolatedAsyncioTestCase):
 
                     self.assertTrue(result)
                     self.assertEqual(
-                        output_stem,
+                        output_stem if platform == "linux" else None,
                         mock_preprocess_ordinal_vtable.await_args.kwargs["canonical_vtable_symbol"],
                     )
 

@@ -74,6 +74,17 @@ def _write_yaml(path: Path, payload: dict[str, object]) -> None:
 
 
 class TestPreprocessIndexBasedVfuncViaMcp(unittest.IsolatedAsyncioTestCase):
+    def test_inherited_vfunc_name_preserves_target_for_vtable_artifact(self) -> None:
+        self.assertEqual(
+            "CLoopModeFactory_CLoopModeGame_Shutdown",
+            ida_analyze_util._build_inherited_vfunc_name(
+                base_vfunc_name="../engine/ILoopModeFactory_Shutdown",
+                base_vtable_name="ILoopModeFactory",
+                inherit_vtable_class="CLoopModeFactory_CLoopModeGame_vtable",
+                fallback_name="CLoopModeFactory_CLoopModeGame_Shutdown",
+            ),
+        )
+
     async def test_preprocess_common_skill_emits_slot_only_inherited_vfunc(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             module_dir = Path(temp_dir) / "bin" / "14141" / "server"
@@ -1241,6 +1252,7 @@ class TestVtableArtifactStemSupport(unittest.IsolatedAsyncioTestCase):
 
         self.assertIsNotNone(result)
         assert result is not None
+        self.assertEqual("CDerived_Touch", result["func_name"])
         self.assertEqual("CDerived_vtable2", result["vtable_name"])
         self.assertEqual(35, result["vfunc_index"])
         self.assertEqual("0x118", result["vfunc_offset"])
