@@ -6210,7 +6210,7 @@ files:
   engine/CEngineServer_ServerCommand.windows.yaml:
     func_name: CEngineServer_ServerCommand
     func_rva: '0xa05f0'
-    func_sig: 48 8B 0D 31 88 5E ??
+    func_sig: 48 8B 0D 51 88 5E ??
     func_size: '0x1c'
     func_va: '0x1800a05f0'
     vfunc_index: 45
@@ -24405,7 +24405,7 @@ files:
   server/CEntitySaveRestoreBlockHandler_PostRestore.windows.yaml:
     func_name: CEntitySaveRestoreBlockHandler_PostRestore
     func_rva: '0xb53bd0'
-    func_sig: 48 8B 0D 99 A8 46 ??
+    func_sig: 48 8B 0D 29 A3 46 ??
     func_size: '0xe'
     func_va: '0x180b53bd0'
     vfunc_index: 8
