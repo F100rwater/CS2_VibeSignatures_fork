@@ -4,7 +4,9 @@
 
 ## vtable 示例
 
-以 `CCSPlayerPawn` 为例，让 Claude Code 创建 vtable preprocessor：
+以 `CCSPlayerPawn` 为例，让Claude Code通过调用SKILL来自动创建vtable-finder预处理脚本并更新config。
+
+* opencode也可以自动识别.claude/skills下的SKILL.md，但是codex需要你自行创建.claude/skills <==> .codex/skills的符号链接才能识别仓库内的已有SKILL。
 
 ```text
 /create-preprocessor-scripts Create "find-CCSPlayerPawn_vtable" in server.
@@ -122,4 +124,6 @@ jbe     loc_XXXXXXXX
 
 ### 2. 创建 preprocessor 并更新配置
 
-按照 [`.claude/skills/create-preprocessor-scripts/SKILL.md`](../../.claude/skills/create-preprocessor-scripts/SKILL.md) 创建 preprocessor，并更新指定的 `configs/<GAMEVER>.yaml`。
+```text
+/create-preprocessor-scripts Create "find-CCSPlayer_MovementServices_FullWalkMove" in server with SKILL.md support. the SKILL.md should follow what we did via ida-pro-mcp.
+```

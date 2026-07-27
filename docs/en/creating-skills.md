@@ -4,7 +4,9 @@
 
 ## Vtable example
 
-For `CCSPlayerPawn`, ask Claude Code to create the vtable preprocessor:
+For `CCSPlayerPawn`, ask Claude Code to create the vtable-finder preprocessor script && update config via SKILL:
+
+* OpenCode can also automatically discover `SKILL.md` files under `.claude/skills`, but Codex requires you to create a `.claude/skills` <==> `.codex/skills` symbolic link manually before it can discover existing skills in the repository.
 
 ```text
 /create-preprocessor-scripts Create "find-CCSPlayerPawn_vtable" in server.
@@ -122,4 +124,6 @@ Determine the patch bytes from the instruction encoding:
 
 ### 2. Create the preprocessor and update the config
 
-Follow [`.claude/skills/create-preprocessor-scripts/SKILL.md`](../../.claude/skills/create-preprocessor-scripts/SKILL.md) to create the preprocessor and update the requested `configs/<GAMEVER>.yaml`.
+```text
+/create-preprocessor-scripts Create "find-CCSPlayer_MovementServices_FullWalkMove" in server with SKILL.md support. the SKILL.md should follow what we did via ida-pro-mcp.
+```
