@@ -2640,6 +2640,10 @@ modules:
         category: vfunc
         alias:
           - CEngineClient::ExecuteClientCmd
+      - name: CEngineClient_IsPlayingDemo
+        category: vfunc
+        alias:
+          - CEngineClient::IsPlayingDemo
       - name: CInputService_ProcessCommandBuffer
         category: func
         platform: windows
@@ -3659,6 +3663,14 @@ modules:
       - name: find-CMapAnNodeManager_FireGameEvent
         expected_output:
           - CMapAnNodeManager_FireGameEvent.{platform}.yaml
+      - name: find-C_ServerVoiceHandler_OnServerVoiceData
+        expected_output:
+          - C_ServerVoiceHandler_OnServerVoiceData.{platform}.yaml
+      - name: find-C_ServerVoiceHandler_OnServerVoiceData-decompiles
+        expected_output:
+          - IVEngineClient2_IsPlayingDemo.{platform}.yaml
+        expected_input:
+          - C_ServerVoiceHandler_OnServerVoiceData.{platform}.yaml
       - name: find-IVEngineClient2_ExecuteClientCmd
         expected_output:
           - IVEngineClient2_ExecuteClientCmd.{platform}.yaml
@@ -4420,6 +4432,14 @@ modules:
         category: func
         alias:
           - CMapAnNodeManager::FireGameEvent
+      - name: C_ServerVoiceHandler_OnServerVoiceData
+        category: func
+        alias:
+          - C_ServerVoiceHandler::OnServerVoiceData
+      - name: IVEngineClient2_IsPlayingDemo
+        category: vfunc
+        alias:
+          - IVEngineClient2::IsPlayingDemo
       - name: IVEngineClient2_ExecuteClientCmd
         category: vfunc
         alias:
@@ -11196,6 +11216,12 @@ modules:
         expected_input:
           - CEngineClient_vtable.{platform}.yaml
           - ../client/IVEngineClient2_ExecuteClientCmd.{platform}.yaml
+      - name: find-CEngineClient_IsPlayingDemo
+        expected_output:
+          - CEngineClient_IsPlayingDemo.{platform}.yaml
+        expected_input:
+          - CEngineClient_vtable.{platform}.yaml
+          - ../client/IVEngineClient2_IsPlayingDemo.{platform}.yaml
       - name: find-INetworkGameClient_SendStringCmd
         expected_output:
           - INetworkGameClient_SendStringCmd.{platform}.yaml
