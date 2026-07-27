@@ -34,7 +34,6 @@ Output:
 """
 
 import argparse
-import hashlib
 import inspect
 import json
 import os
@@ -43,6 +42,8 @@ import socket
 import subprocess
 import sys
 import time
+
+from binary_hashing import hash_file
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -683,14 +684,7 @@ def _hash_file(path):
     if cached:
         return cached
 
-    md5_hash = hashlib.md5()
-    sha256_hash = hashlib.sha256()
-    with open(absolute_path, "rb") as f:
-        for chunk in iter(lambda: f.read(1024 * 1024), b""):
-            md5_hash.update(chunk)
-            sha256_hash.update(chunk)
-
-    hashes = {"md5": md5_hash.hexdigest(), "sha256": sha256_hash.hexdigest()}
+    hashes = hash_file(absolute_path)
     _BINARY_HASH_CACHE[cache_key] = hashes
     return hashes
 
