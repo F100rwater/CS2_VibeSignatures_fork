@@ -10,7 +10,7 @@
 4. IDA Pro 9.0+
 5. [ida-pro-mcp](https://github.com/mrexodia/ida-pro-mcp)
 6. [idalib](https://docs.hex-rays.com/user-guide/idalib), required by `ida_analyze_bin.py`
-7. Clang/LLVM, with `clang` available in `PATH` for `run_cpp_tests.py`
+7. Clang/LLVM, with `clang` available in `PATH`. [llvm-msvc](https://github.com/backengineering/llvm-msvc) is recommended.
 
 Install the Python dependencies after cloning the repository:
 

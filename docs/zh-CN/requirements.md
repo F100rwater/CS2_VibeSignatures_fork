@@ -9,9 +9,8 @@
 3. 一个受支持的 Agent CLI：Claude Code、Codex 或 OpenCode
 4. IDA Pro 9.0+
 5. [ida-pro-mcp](https://github.com/mrexodia/ida-pro-mcp)
-6. [idalib](https://docs.hex-rays.com/user-guide/idalib)，`ida_analyze_bin.py` 的必需项
-7. Clang/LLVM；运行 `run_cpp_tests.py` 时必须确保 `clang` 位于 `PATH` 中
-
+6. [idalib](https://docs.hex-rays.com/user-guide/idalib)
+7. Clang/LLVM，并确保 `clang` 位于 `PATH` 中。推荐安装 [llvm-msvc](https://github.com/backengineering/llvm-msvc)
 克隆仓库后安装 Python 依赖：
 
 ```bash
