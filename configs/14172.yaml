@@ -986,12 +986,6 @@ modules:
         expected_input:
           - CNetworkClientService_vtable.{platform}.yaml
           - INetworkClientService_IsConnected.{platform}.yaml
-      - name: find-CNetworkClientService_IsPutInServer
-        expected_output:
-          - CNetworkClientService_IsPutInServer.{platform}.yaml
-        expected_input:
-          - CNetworkClientService_vtable.{platform}.yaml
-          - INetworkClientService_IsPutInServer.{platform}.yaml
       - name: find-CNetworkClientService_ClockDriftAdjustFrameTime
         expected_output:
           - CNetworkClientService_ClockDriftAdjustFrameTime.{platform}.yaml
@@ -1757,20 +1751,6 @@ modules:
       - name: find-CInputService_ProcessCommand
         expected_output:
           - CInputService_ProcessCommand.{platform}.yaml
-      # Linux emits the FCVAR_CLIENTCMD_CAN_EXECUTE gate that Windows inlines into
-      # ProcessConVar/ProcessCommand as a shared out-of-line helper, so the
-      # INetworkClientService::IsPutInServer vcall only exists there on Linux.
-      - name: find-CInputService_IsClientOnlyCommandAllowed-linux
-        platform: linux
-        expected_output:
-          - CInputService_IsClientOnlyCommandAllowed.{platform}.yaml
-      - name: find-CInputService_ProcessConVar-decompiles
-        expected_output:
-          - INetworkClientService_IsPutInServer.{platform}.yaml
-        expected_input_windows:
-          - CInputService_ProcessConVar.{platform}.yaml
-        expected_input_linux:
-          - CInputService_IsClientOnlyCommandAllowed.{platform}.yaml
       - name: find-CSplitScreenService_vtable
         expected_output:
           - CSplitScreenService_vtable.{platform}.yaml
@@ -11336,6 +11316,31 @@ modules:
           - g_pNavGameTest.{platform}.yaml
         expected_input:
           - g_pInterfaceGlobals.{platform}.yaml
+      # Linux emits the FCVAR_CLIENTCMD_CAN_EXECUTE gate that Windows inlines into
+      # ProcessConVar/ProcessCommand as a shared out-of-line helper, so the
+      # INetworkClientService::IsPutInServer vcall only exists there on Linux.
+      # Keep this in the late engine pass because its global-variable anchors are
+      # produced by find-g_pInterfaceGlobals_ppGlobal immediately above.
+      - name: find-CInputService_IsClientOnlyCommandAllowed-linux
+        platform: linux
+        expected_output:
+          - CInputService_IsClientOnlyCommandAllowed.{platform}.yaml
+        expected_input:
+          - g_pNetworkClientService.{platform}.yaml
+          - g_pNetworkServerService.{platform}.yaml
+      - name: find-CInputService_ProcessConVar-decompiles
+        expected_output:
+          - INetworkClientService_IsPutInServer.{platform}.yaml
+        expected_input_windows:
+          - CInputService_ProcessConVar.{platform}.yaml
+        expected_input_linux:
+          - CInputService_IsClientOnlyCommandAllowed.{platform}.yaml
+      - name: find-CNetworkClientService_IsPutInServer
+        expected_output:
+          - CNetworkClientService_IsPutInServer.{platform}.yaml
+        expected_input:
+          - CNetworkClientService_vtable.{platform}.yaml
+          - INetworkClientService_IsPutInServer.{platform}.yaml
       # Resolve the CNetworkGameServer override from the base vfunc's inherited slot.
       - name: find-CNetworkGameServer_GetPlayerNetworkIDString
         expected_output:
