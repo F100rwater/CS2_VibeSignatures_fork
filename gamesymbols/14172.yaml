@@ -73,8 +73,8 @@ binaries:
       path: game/bin/win64/vphysics2.dll
       sha256: 8bb3c48086c6e053300d2db6a019a56d2d1dfdb231c3556ff0dd7e77bc170995
 config_digest_version: 2
-config_sha256: sha256:9e5a85b69afa06b0b603ac7d9c4c8af54fc040597c1b7c4dc39057f50722da64
-file_count: 3147
+config_sha256: sha256:93f4170f86434b1757379485c6b9c2c1478270b2bceed716de72619bd18ac4bb
+file_count: 3153
 files:
   SDL3/SDL_GetMouse.windows.yaml:
     func_name: SDL_GetMouse
@@ -2543,6 +2543,18 @@ files:
     vtable_size: '0x248'
     vtable_symbol: ??_7C_MultiplayRules@@6B@
     vtable_va: '0x181a51550'
+  client/C_ServerVoiceHandler_OnServerVoiceData.linux.yaml:
+    func_name: C_ServerVoiceHandler_OnServerVoiceData
+    func_rva: '0x1863980'
+    func_sig: 55 48 89 E5 41 57 41 56 41 55 41 54 53 48 89 F3 48 81 EC ?? ?? ?? ?? 8B 46 ?? 48 89 BD ?? ?? ?? ??
+    func_size: '0x369'
+    func_va: '0x1863980'
+  client/C_ServerVoiceHandler_OnServerVoiceData.windows.yaml:
+    func_name: C_ServerVoiceHandler_OnServerVoiceData
+    func_rva: '0xaec370'
+    func_sig: 48 89 4C 24 ?? 53 55 56 57 41 54 41 55 41 57 48 81 EC ?? ?? ?? ??
+    func_size: '0x425'
+    func_va: '0x180aec370'
   client/ClientAntiTamperTest.windows.yaml:
     func_name: ClientAntiTamperTest
     func_rva: '0x1322c80'
@@ -4263,6 +4275,18 @@ files:
     vfunc_index: 41
     vfunc_offset: '0x148'
     vtable_name: IVEngineClient2
+  client/IVEngineClient2_IsPlayingDemo.linux.yaml:
+    func_name: IVEngineClient2_IsPlayingDemo
+    vfunc_index: 42
+    vfunc_offset: '0x150'
+    vfunc_sig: FF 90 50 01 00 00 84 C0 0F 85 ?? ?? ?? ?? E8 ?? ?? ?? ??
+    vtable_name: IVEngineClient2
+  client/IVEngineClient2_IsPlayingDemo.windows.yaml:
+    func_name: IVEngineClient2_IsPlayingDemo
+    vfunc_index: 42
+    vfunc_offset: '0x150'
+    vfunc_sig: FF 90 50 01 00 00 84 C0 74 ?? 83 FD ??
+    vtable_name: IVEngineClient2
   client/RegisterEventListener_Abstract.linux.yaml:
     func_name: RegisterEventListener_Abstract
     func_rva: '0x1664b60'
@@ -5674,6 +5698,22 @@ files:
     vfunc_index: 15
     vfunc_offset: '0x78'
     vtable_name: CEngineClient_vtable
+  engine/CEngineClient_IsPlayingDemo.linux.yaml:
+    func_name: CEngineClient_IsPlayingDemo
+    func_rva: '0x4e68c0'
+    func_size: '0x40'
+    func_va: '0x4e68c0'
+    vfunc_index: 42
+    vfunc_offset: '0x150'
+    vtable_name: CEngineClient
+  engine/CEngineClient_IsPlayingDemo.windows.yaml:
+    func_name: CEngineClient_IsPlayingDemo
+    func_rva: '0x75c60'
+    func_size: '0x1b'
+    func_va: '0x180075c60'
+    vfunc_index: 42
+    vfunc_offset: '0x150'
+    vtable_name: CEngineClient
   engine/CEngineClient_vtable.linux.yaml:
     vtable_class: CEngineClient
     vtable_entries:
@@ -39959,5 +39999,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14172'
-last_publish_time: '2026-07-27T09:59:31Z'
+last_publish_time: '2026-07-27T10:53:00Z'
 schema_version: 4
