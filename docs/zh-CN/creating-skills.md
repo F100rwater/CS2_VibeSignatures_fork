@@ -1,5 +1,7 @@
 [返回中文 README](../../README_CN.md) | [English](../en/creating-skills.md)
 
+创建好符号分析 skill 后，可参阅[通过 PR 贡献](conributing-via-pr.md)，了解如何使用 `SKILL: create-pr` 共享它。
+
 # 创建符号分析 skill
 
 ## vtable 示例

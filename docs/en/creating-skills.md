@@ -1,5 +1,7 @@
 [Back to README](../../README.md) | [中文](../zh-CN/creating-skills.md)
 
+Once a symbol-analysis skill is ready to share, see [Contributing via PR](conributing-via-pr.md) for the `SKILL: create-pr` workflow.
+
 # Creating symbol-analysis skills
 
 ## Vtable example
