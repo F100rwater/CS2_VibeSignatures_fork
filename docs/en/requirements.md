@@ -18,6 +18,20 @@ Install the Python dependencies after cloning the repository:
 uv sync
 ```
 
+## Initialize the latest game binaries
+
+For a new checkout, use `SKILL: init-gamebin` to initialize the binaries for the latest game version listed in
+`download.yaml` before running symbol analysis. Ask the agent explicitly:
+
+```text
+Use SKILL: init-gamebin to initialize the latest game version's binaries.
+```
+
+The skill resolves `latest` from the repository's version list, downloads or merges the matching binaries without
+overwriting existing files, and then delegates symbol YAML restoration to `restore-from-snapshot`. If no game version
+is specified, the skill lists the available entries and asks you to choose one; do not guess a version or substitute an
+unlisted version.
+
 ## Troubleshooting
 
 ### `error: could not create 'ida.egg-info': access denied`

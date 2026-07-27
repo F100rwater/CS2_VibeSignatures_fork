@@ -11,11 +11,25 @@
 5. [ida-pro-mcp](https://github.com/mrexodia/ida-pro-mcp)
 6. [idalib](https://docs.hex-rays.com/user-guide/idalib)
 7. Clang/LLVM，并确保 `clang` 位于 `PATH` 中。推荐安装 [llvm-msvc](https://github.com/backengineering/llvm-msvc)
+
 克隆仓库后安装 Python 依赖：
 
 ```bash
 uv sync
 ```
+
+## 初始化最新游戏版本的 binaries
+
+对于新检出的仓库，在运行符号分析前请使用 `SKILL: init-gamebin` 初始化 `download.yaml` 中最新游戏版本的
+binaries。请明确这样请求 agent：
+
+```text
+Use SKILL: init-gamebin to initialize the latest game version's binaries.
+```
+
+该 skill 会从仓库版本列表解析 `latest`，下载或合并对应的 binaries 且不会覆盖已有文件，然后委托
+`restore-from-snapshot` 恢复 symbol YAML。如果没有指定游戏版本，skill 会先列出可用版本并要求选择；不要猜测
+版本，也不要使用 `download.yaml` 中未列出的版本。
 
 ## 故障排查
 
