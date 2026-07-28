@@ -2685,10 +2685,6 @@ modules:
         category: vfunc
         alias:
           - CEngineServer::ClientPrintf
-      - name: CEngineServer_UnloadSpawnGroup
-        category: vfunc
-        alias:
-          - CEngineServer::UnloadSpawnGroup
       - name: CEngineServer_GetFrameTimeAmnesty
         category: vfunc
         alias:
@@ -7748,6 +7744,13 @@ modules:
           - CLoopModeGame_vtable.{platform}.yaml
         expected_input_linux:
           - CLoopModeGame_LoopInitInternal.{platform}.yaml
+      - name: find-CEngineServer_UnloadSpawnGroup
+        expected_output:
+          - CEngineServer_UnloadSpawnGroup.{platform}.yaml
+        expected_input_windows:
+          - CLoopModeGame_LoopInit.{platform}.yaml
+        expected_input_linux:
+          - CLoopModeGame_LoopInitInternal.{platform}.yaml
       - name: find-ILoopMode_LoopInit
         expected_output:
           - ILoopMode_LoopInit.{platform}.yaml
@@ -10313,6 +10316,10 @@ modules:
         category: vfunc
         alias:
           - IGameTypes::CreateWorkshopMapGroup
+      - name: CEngineServer_UnloadSpawnGroup
+        category: vfunc
+        alias:
+          - CEngineServer::UnloadSpawnGroup
       - name: CSpawnGroupMgrGameSystem_GetSpawnGroups
         category: func
         alias:
@@ -11313,12 +11320,6 @@ modules:
         expected_input:
           - ../server/IAppSystem_Connect.{platform}.yaml
           - CNetSupportImpl_vtable.{platform}.yaml
-      - name: find-CEngineServer_UnloadSpawnGroup
-        expected_output:
-          - CEngineServer_UnloadSpawnGroup.{platform}.yaml
-        expected_input:
-          - CEngineServer_vtable.{platform}.yaml
-          - ../server/CLoopModeGame_LoopInit.{platform}.yaml
       - name: find-CEngineServer_IsDedicatedServer
         expected_output:
           - CEngineServer_IsDedicatedServer.{platform}.yaml
