@@ -73,8 +73,8 @@ binaries:
       path: game/bin/win64/vphysics2.dll
       sha256: 8bb3c48086c6e053300d2db6a019a56d2d1dfdb231c3556ff0dd7e77bc170995
 config_digest_version: 2
-config_sha256: sha256:8b0a61d24775a516a7185ce252a923818101f1c41b8b32c3f09c0900a1b944f8
-file_count: 3162
+config_sha256: sha256:0e843a49128d7b788844e0e1acb233e4a40423f9f7f269df7349070565b0cb3c
+file_count: 3163
 files:
   SDL3/SDL_GetMouse.windows.yaml:
     func_name: SDL_GetMouse
@@ -9698,6 +9698,12 @@ files:
     vfunc_index: 13
     vfunc_offset: '0x68'
     vtable_name: CNetworkGameClient
+  engine/CNetworkGameClient_GetClientNetworkable.windows.yaml:
+    func_name: CNetworkGameClient_GetClientNetworkable
+    func_rva: '0x46650'
+    func_sig: 48 89 5C 24 ?? 48 89 6C 24 ?? 48 89 74 24 ?? 57 41 54 41 55 41 56 41 57 48 83 EC ?? 48 8B F9 41 0F B6 F1
+    func_size: '0x15f'
+    func_va: '0x180046650'
   engine/CNetworkGameClient_OnPreserveEntity.windows.yaml:
     func_name: CNetworkGameClient_OnPreserveEntity
     func_rva: '0x470c0'
@@ -40076,5 +40082,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14172'
-last_publish_time: '2026-07-28T12:41:38Z'
+last_publish_time: '2026-07-28T12:51:51Z'
 schema_version: 4

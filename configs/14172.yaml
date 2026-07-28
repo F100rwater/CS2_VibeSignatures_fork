@@ -1257,6 +1257,12 @@ modules:
           - CNetworkGameClient_OnPreserveEntity.{platform}.yaml
         expected_input:
           - CNetworkGameClient_vtable.{platform}.yaml
+      - name: find-CNetworkGameClient_OnPreserveEntity-decompiles
+        platform: windows
+        expected_output:
+          - CNetworkGameClient_GetClientNetworkable.{platform}.yaml
+        expected_input:
+          - CNetworkGameClient_OnPreserveEntity.{platform}.yaml
       - name: find-CNetworkGameClient_CopyNewEntity
         platform: windows
         expected_output:
@@ -2384,6 +2390,11 @@ modules:
         platform: windows
         alias:
           - CNetworkGameClient::OnPreserveEntity
+      - name: CNetworkGameClient_GetClientNetworkable
+        category: func
+        platform: windows
+        alias:
+          - CNetworkGameClient::GetClientNetworkable
       - name: CNetworkGameClient_CopyNewEntity
         category: vfunc
         platform: windows
