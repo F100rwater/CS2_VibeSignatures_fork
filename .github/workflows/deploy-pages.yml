@@ -30,7 +30,7 @@ jobs:
           persist-credentials: false
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
           cache: 'npm'
           cache-dependency-path: pages/package-lock.json
       - name: Install Pages dependencies
@@ -67,7 +67,7 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
       - name: Download current Pages build
         uses: actions/download-artifact@v4
         with:
@@ -147,7 +147,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
       - name: Download game-symbol verification manifest
         uses: actions/download-artifact@v4
         with:
