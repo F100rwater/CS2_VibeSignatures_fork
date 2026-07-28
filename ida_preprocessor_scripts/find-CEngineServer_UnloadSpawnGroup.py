@@ -83,9 +83,7 @@ async def preprocess_skill(
 ):
     """Reuse previous gamever vfunc_sig to locate target; fallback to LLM_DECOMPILE of the platform's LoopInit predecessor."""
     _ = skill_name
-    llm_decompile_specs = (
-        LLM_DECOMPILE_LINUX if platform == "linux" else LLM_DECOMPILE_WINDOWS
-    )
+    llm_decompile_specs = LLM_DECOMPILE_LINUX if platform == "linux" else LLM_DECOMPILE_WINDOWS
     return await preprocess_common_skill(
         session=session,
         expected_outputs=expected_outputs,
