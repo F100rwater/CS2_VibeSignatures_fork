@@ -2685,6 +2685,10 @@ modules:
         category: vfunc
         alias:
           - CEngineServer::ClientPrintf
+      - name: CEngineServer_UnloadSpawnGroup
+        category: vfunc
+        alias:
+          - CEngineServer::UnloadSpawnGroup
       - name: CEngineServer_GetFrameTimeAmnesty
         category: vfunc
         alias:
@@ -11309,6 +11313,12 @@ modules:
         expected_input:
           - ../server/IAppSystem_Connect.{platform}.yaml
           - CNetSupportImpl_vtable.{platform}.yaml
+      - name: find-CEngineServer_UnloadSpawnGroup
+        expected_output:
+          - CEngineServer_UnloadSpawnGroup.{platform}.yaml
+        expected_input:
+          - CEngineServer_vtable.{platform}.yaml
+          - ../server/CLoopModeGame_LoopInit.{platform}.yaml
       - name: find-CEngineServer_IsDedicatedServer
         expected_output:
           - CEngineServer_IsDedicatedServer.{platform}.yaml
