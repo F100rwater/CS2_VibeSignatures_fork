@@ -25,10 +25,10 @@ jobs:
       run:
         working-directory: pages
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           persist-credentials: false
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: '24'
           cache: 'npm'
@@ -44,7 +44,7 @@ jobs:
       - name: Verify current game-symbol bytes
         run: npm run verify:gamesymbols
       - name: Upload current Pages build
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: pages-current-build
           path: pages/dist
@@ -62,14 +62,14 @@ jobs:
       run:
         working-directory: pages
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: '24'
       - name: Download current Pages build
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5
         with:
           name: pages-current-build
           path: pages/dist
@@ -124,7 +124,7 @@ jobs:
             --write-manifest "$verification_root/manifest.json"
           cp verifyGameSymbolAssets.mjs "$verification_root/verifyGameSymbolAssets.mjs"
       - name: Upload game-symbol verification manifest
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: pages-gamesymbol-verification
           path: ${{ runner.temp }}/pages-verification
@@ -145,16 +145,16 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: '24'
       - name: Download game-symbol verification manifest
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5
         with:
           name: pages-gamesymbol-verification
           path: ${{ runner.temp }}/pages-verification
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
       - name: Verify deployed CDN game-symbol bytes
         env:
           PAGE_URL: ${{ steps.deployment.outputs.page_url }}
