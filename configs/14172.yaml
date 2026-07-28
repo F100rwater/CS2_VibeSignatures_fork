@@ -1239,6 +1239,55 @@ modules:
       - name: find-CNetworkGameClient_vtable
         expected_output:
           - CNetworkGameClient_vtable.{platform}.yaml
+      - name: find-CNetworkGameClient_SetSignonState
+        platform: windows
+        expected_output:
+          - CNetworkGameClient_SetSignonState.{platform}.yaml
+        expected_input:
+          - CNetworkGameClient_vtable.{platform}.yaml
+      - name: find-CNetworkGameClient_ProcessReadPacketEntitiesWorkItems
+        platform: windows
+        expected_output:
+          - CNetworkGameClient_ProcessReadPacketEntitiesWorkItems.{platform}.yaml
+        expected_input:
+          - CNetworkGameClient_vtable.{platform}.yaml
+      - name: find-CNetworkGameClient_OnPreserveEntity
+        platform: windows
+        expected_output:
+          - CNetworkGameClient_OnPreserveEntity.{platform}.yaml
+        expected_input:
+          - CNetworkGameClient_vtable.{platform}.yaml
+      - name: find-CNetworkGameClient_OnPreserveEntity-decompiles
+        platform: windows
+        expected_output:
+          - CNetworkGameClient_GetClientNetworkable.{platform}.yaml
+        expected_input:
+          - CNetworkGameClient_OnPreserveEntity.{platform}.yaml
+      - name: find-CNetworkGameClient_CopyNewEntity
+        platform: windows
+        expected_output:
+          - CNetworkGameClient_CopyNewEntity.{platform}.yaml
+        expected_input:
+          - CNetworkGameClient_vtable.{platform}.yaml
+      - name: find-CNetworkGameClient_CopyExistingEntity
+        platform: windows
+        expected_output:
+          - CNetworkGameClient_CopyExistingEntity.{platform}.yaml
+        expected_input:
+          - CNetworkGameClient_vtable.{platform}.yaml
+      - name: find-CNetworkGameClient_OnReceivedUncompressedPacket
+        platform: windows
+        expected_output:
+          - CNetworkGameClient_OnReceivedUncompressedPacket.{platform}.yaml
+        expected_input:
+          - CNetworkGameClient_ProcessPacketEntities.{platform}.yaml
+          - CNetworkGameClient_vtable.{platform}.yaml
+      - name: find-CNetworkGameClient_Clear
+        platform: windows
+        expected_output:
+          - CNetworkGameClient_Clear.{platform}.yaml
+        expected_input:
+          - CNetworkGameClient_vtable.{platform}.yaml
       - name: find-CNetworkGameClient_DisconnectGame
         expected_output:
           - CNetworkGameClient_DisconnectGame.{platform}.yaml
@@ -2326,6 +2375,46 @@ modules:
           - CMsgSource2NetworkFlowQuality::PrintStats
       - name: CNetworkGameClient_vtable
         category: vtable
+      - name: CNetworkGameClient_SetSignonState
+        category: vfunc
+        platform: windows
+        alias:
+          - CNetworkGameClient::SetSignonState
+      - name: CNetworkGameClient_ProcessReadPacketEntitiesWorkItems
+        category: vfunc
+        platform: windows
+        alias:
+          - CNetworkGameClient::ProcessReadPacketEntitiesWorkItems
+      - name: CNetworkGameClient_OnPreserveEntity
+        category: vfunc
+        platform: windows
+        alias:
+          - CNetworkGameClient::OnPreserveEntity
+      - name: CNetworkGameClient_GetClientNetworkable
+        category: func
+        platform: windows
+        alias:
+          - CNetworkGameClient::GetClientNetworkable
+      - name: CNetworkGameClient_CopyNewEntity
+        category: vfunc
+        platform: windows
+        alias:
+          - CNetworkGameClient::CopyNewEntity
+      - name: CNetworkGameClient_CopyExistingEntity
+        category: vfunc
+        platform: windows
+        alias:
+          - CNetworkGameClient::CopyExistingEntity
+      - name: CNetworkGameClient_OnReceivedUncompressedPacket
+        category: vfunc
+        platform: windows
+        alias:
+          - CNetworkGameClient::OnReceivedUncompressedPacket
+      - name: CNetworkGameClient_Clear
+        category: vfunc
+        platform: windows
+        alias:
+          - CNetworkGameClient::Clear
       - name: CNetworkGameClient_DisconnectGame
         category: vfunc
         alias:
