@@ -73,8 +73,8 @@ binaries:
       path: game/bin/win64/vphysics2.dll
       sha256: 8bb3c48086c6e053300d2db6a019a56d2d1dfdb231c3556ff0dd7e77bc170995
 config_digest_version: 2
-config_sha256: sha256:fc6b143a0bf200c3e04de64e37515f75aca5ee7881526132b439a71df2c08396
-file_count: 3155
+config_sha256: sha256:8b0a61d24775a516a7185ce252a923818101f1c41b8b32c3f09c0900a1b944f8
+file_count: 3162
 files:
   SDL3/SDL_GetMouse.windows.yaml:
     func_name: SDL_GetMouse
@@ -9653,6 +9653,33 @@ files:
     vtable_size: '0x478'
     vtable_symbol: ??_7CNetworkGameClientBase@@6B@
     vtable_va: '0x18053a950'
+  engine/CNetworkGameClient_Clear.windows.yaml:
+    func_name: CNetworkGameClient_Clear
+    func_rva: '0x61450'
+    func_sig: 48 89 5C 24 ?? 48 89 74 24 ?? 48 89 7C 24 ?? 41 56 48 83 EC ?? 0F B6 DA
+    func_size: '0x1a9'
+    func_va: '0x180061450'
+    vfunc_index: 130
+    vfunc_offset: '0x410'
+    vtable_name: CNetworkGameClient_vtable
+  engine/CNetworkGameClient_CopyExistingEntity.windows.yaml:
+    func_name: CNetworkGameClient_CopyExistingEntity
+    func_rva: '0x46da0'
+    func_sig: 48 8B C4 55 57 41 54 41 56
+    func_size: '0x311'
+    func_va: '0x180046da0'
+    vfunc_index: 140
+    vfunc_offset: '0x460'
+    vtable_name: CNetworkGameClient_vtable
+  engine/CNetworkGameClient_CopyNewEntity.windows.yaml:
+    func_name: CNetworkGameClient_CopyNewEntity
+    func_rva: '0x468b0'
+    func_sig: 48 89 5C 24 ?? 44 89 4C 24 ?? 48 89 4C 24 ?? 55 56 57 41 54 41 55 41 56 41 57 48 8D 6C 24 ??
+    func_size: '0x4e1'
+    func_va: '0x1800468b0'
+    vfunc_index: 139
+    vfunc_offset: '0x458'
+    vtable_name: CNetworkGameClient_vtable
   engine/CNetworkGameClient_DisconnectGame.linux.yaml:
     func_name: CNetworkGameClient_DisconnectGame
     func_rva: '0x4e3900'
@@ -9671,6 +9698,24 @@ files:
     vfunc_index: 13
     vfunc_offset: '0x68'
     vtable_name: CNetworkGameClient
+  engine/CNetworkGameClient_OnPreserveEntity.windows.yaml:
+    func_name: CNetworkGameClient_OnPreserveEntity
+    func_rva: '0x470c0'
+    func_sig: 48 89 5C 24 ?? 56 48 81 EC ?? ?? ?? ?? 48 8B DA
+    func_size: '0x1a0'
+    func_va: '0x1800470c0'
+    vfunc_index: 138
+    vfunc_offset: '0x450'
+    vtable_name: CNetworkGameClient_vtable
+  engine/CNetworkGameClient_OnReceivedUncompressedPacket.windows.yaml:
+    func_name: CNetworkGameClient_OnReceivedUncompressedPacket
+    func_rva: '0x6aa70'
+    func_sig: 40 53 48 83 EC ?? 48 8B D9 BA ?? ?? ?? ?? 8B 0D ?? ?? ?? ?? FF 15 ?? ?? ?? ?? 84 C0 74 ?? 8B 0D ?? ?? ?? ?? 4C 8D 05 ?? ?? ?? ?? BA ?? ?? ?? ?? FF 15 ?? ?? ?? ?? 48 8B 0D ?? ?? ?? ?? 48 85 C9 74 ?? 48 8B 01 33 D2 89 54 24 ?? 41 B8 ?? ?? ?? ?? 48 89 54 24 ?? 45 33 C9 BA ?? ?? ?? ?? FF 90 ?? ?? ?? ?? 48 8B 0D ?? ?? ?? ?? 48 8B 01 FF 50 ?? 84 C0 74 ?? C7 83 ?? ?? ?? ?? ?? ?? ?? ?? 48 8B 0D ?? ?? ?? ??
+    func_size: '0x95'
+    func_va: '0x18006aa70'
+    vfunc_index: 141
+    vfunc_offset: '0x468'
+    vtable_name: CNetworkGameClient_vtable
   engine/CNetworkGameClient_PrintNetStats.linux.yaml:
     func_name: CNetworkGameClient_PrintNetStats
     func_rva: '0x4e4c20'
@@ -9701,6 +9746,15 @@ files:
     func_sig: 40 55 56 41 56 41 57 48 8D AC 24 ?? ?? ?? ??
     func_size: '0xaef'
     func_va: '0x180047cb0'
+  engine/CNetworkGameClient_ProcessReadPacketEntitiesWorkItems.windows.yaml:
+    func_name: CNetworkGameClient_ProcessReadPacketEntitiesWorkItems
+    func_rva: '0x464b0'
+    func_sig: 48 89 5C 24 ?? 48 89 6C 24 ?? 56 57 41 57 48 83 EC ?? 48 8D 05 ?? ?? ?? ??
+    func_size: '0x19d'
+    func_va: '0x1800464b0'
+    vfunc_index: 137
+    vfunc_offset: '0x448'
+    vtable_name: CNetworkGameClient_vtable
   engine/CNetworkGameClient_RecordEntityBandwidth.linux.yaml:
     func_name: CNetworkGameClient_RecordEntityBandwidth
     func_rva: '0x498c40'
@@ -9737,6 +9791,15 @@ files:
     func_sig: 40 55 57 41 57 48 8D 6C 24 ?? 48 81 EC ?? ?? ?? ?? 4C 8B F9
     func_size: '0x7a6'
     func_va: '0x1800648c0'
+  engine/CNetworkGameClient_SetSignonState.windows.yaml:
+    func_name: CNetworkGameClient_SetSignonState
+    func_rva: '0x60740'
+    func_sig: 44 89 44 24 ?? 89 54 24 ?? 55 53
+    func_size: '0x7e8'
+    func_va: '0x180060740'
+    vfunc_index: 132
+    vfunc_offset: '0x420'
+    vtable_name: CNetworkGameClient_vtable
   engine/CNetworkGameClient_vtable.linux.yaml:
     vtable_class: CNetworkGameClient
     vtable_entries:
@@ -40013,5 +40076,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14172'
-last_publish_time: '2026-07-28T08:22:09Z'
+last_publish_time: '2026-07-28T12:41:38Z'
 schema_version: 4
