@@ -19872,11 +19872,15 @@ files:
   server/CCSBotManager_AddBot_BotNavIgnore.linux.yaml:
     patch_bytes: E9 12 00 00 00 90
     patch_name: CCSBotManager_AddBot_BotNavIgnore
+    patch_rva: '0xbf1531'
     patch_sig: 0F 84 B9 00 00 00 44 0F B6 B8 ?? 01 00 00
+    patch_va: '0xbf1531'
   server/CCSBotManager_AddBot_BotNavIgnore.windows.yaml:
     patch_bytes: E9 2C 00 00 00 90
     patch_name: CCSBotManager_AddBot_BotNavIgnore
+    patch_rva: '0x2a70fa'
     patch_sig: 0F 84 5E 04 00 00 80 B8 ?? 01 00 00 ??
+    patch_va: '0x1802a70fa'
   server/CCSBotManager_BotPlaceCommand.linux.yaml:
     func_name: CCSBotManager_BotPlaceCommand
     func_rva: '0xc08030'
@@ -23180,11 +23184,15 @@ files:
   server/CCSPlayer_MovementServices_CheckJumpButton_WaterPatch.linux.yaml:
     patch_bytes: 41 C7 45 40 00 00 11 43
     patch_name: CCSPlayer_MovementServices_CheckJumpButton_WaterPatch
+    patch_rva: '0x15530f0'
     patch_sig: 41 C7 45 40 00 00 C8 42
+    patch_va: '0x15530f0'
   server/CCSPlayer_MovementServices_CheckJumpButton_WaterPatch.windows.yaml:
     patch_bytes: C7 46 40 00 00 11 43
     patch_name: CCSPlayer_MovementServices_CheckJumpButton_WaterPatch
+    patch_rva: '0xa5845c'
     patch_sig: C7 46 40 00 00 C8 42
+    patch_va: '0x180a5845c'
   server/CCSPlayer_MovementServices_CheckMovingGround.linux.yaml:
     func_name: CCSPlayer_MovementServices_CheckMovingGround
     func_rva: '0x1553880'
@@ -40117,5 +40125,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14173'
-last_publish_time: '2026-07-29T13:40:11Z'
+last_publish_time: '2026-07-29T15:16:07Z'
 schema_version: 4
