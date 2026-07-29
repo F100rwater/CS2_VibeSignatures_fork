@@ -73,8 +73,8 @@ binaries:
       path: game/bin/win64/vphysics2.dll
       sha256: 6f5aa8c32e30d5369579f0e18bf97ec72e2076d3c06906efbfcc77f0c4111b80
 config_digest_version: 2
-config_sha256: sha256:d515f6fce90e468930aa82d7d8f003ce7d775ccf657098f71ba16852d942339e
-file_count: 3169
+config_sha256: sha256:ae2149ab6edd368bbb21989bc14f66e437fdae9122a6733130a258b0ec4940a6
+file_count: 3170
 files:
   SDL3/SDL_GetMouse.windows.yaml:
     func_name: SDL_GetMouse
@@ -4288,6 +4288,12 @@ files:
     vfunc_offset: '0x150'
     vfunc_sig: FF 90 50 01 00 00 84 C0 74 ?? 83 FD ??
     vtable_name: IVEngineClient2
+  client/OnServerVoiceData_IsPlayingDemo_Callee.windows.yaml:
+    patch_name: OnServerVoiceData_IsPlayingDemo_Callee
+    patch_rva: '0xaec45d'
+    patch_sig: FF 90 50 01 00 00 84 C0 74 ?? 83 FD ??
+    patch_sig_disp: 0
+    patch_va: '0x180aec45d'
   client/RegisterEventListener_Abstract.linux.yaml:
     func_name: RegisterEventListener_Abstract
     func_rva: '0x16646e0'
@@ -40125,5 +40131,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14173'
-last_publish_time: '2026-07-29T15:16:07Z'
+last_publish_time: '2026-07-29T16:15:11Z'
 schema_version: 4
