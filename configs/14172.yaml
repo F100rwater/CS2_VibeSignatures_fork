@@ -2764,6 +2764,10 @@ modules:
           - INetworkGameClient::SendStringCmd
       - name: CEngineServer_vtable
         category: vtable
+      - name: CEngineServer_MakeSpawnGroupActive
+        category: vfunc
+        alias:
+          - CEngineServer::MakeSpawnGroupActive
       - name: CMapListService_vtable
         category: vtable
       - name: CEngineServer_DumpNetStats
@@ -7360,9 +7364,9 @@ modules:
           - CSpawnGroupMgrGameSystem_SetActiveSpawnGroup.{platform}.yaml
         expected_input:
           - CSpawnGroupMgrGameSystem_vtable.{platform}.yaml
-      - name: find-CEngineServer_MakeSpawnGroupActive
+      - name: find-CSpawnGroupMgrGameSystem_SetActiveSpawnGroup-decompiles
         expected_output:
-          - CEngineServer_MakeSpawnGroupActive.{platform}.yaml
+          - IVEngineServer2_MakeSpawnGroupActive.{platform}.yaml
         expected_input:
           - CSpawnGroupMgrGameSystem_SetActiveSpawnGroup.{platform}.yaml
       - name: find-CSpawnGroupMgrGameSystem_UnloadSpawnGroup
@@ -10414,10 +10418,10 @@ modules:
         category: vfunc
         alias:
           - CEngineServer::UnloadSpawnGroup
-      - name: CEngineServer_MakeSpawnGroupActive
+      - name: IVEngineServer2_MakeSpawnGroupActive
         category: vfunc
         alias:
-          - CEngineServer::MakeSpawnGroupActive
+          - IVEngineServer2::MakeSpawnGroupActive
       - name: CSpawnGroupMgrGameSystem_GetSpawnGroups
         category: func
         alias:
@@ -11442,6 +11446,12 @@ modules:
         expected_input:
           - CEngineServer_vtable.{platform}.yaml
           - ../server/IVEngineServer2_ServerCommand.{platform}.yaml
+      - name: find-CEngineServer_MakeSpawnGroupActive
+        expected_output:
+          - CEngineServer_MakeSpawnGroupActive.{platform}.yaml
+        expected_input:
+          - CEngineServer_vtable.{platform}.yaml
+          - ../server/IVEngineServer2_MakeSpawnGroupActive.{platform}.yaml
       - name: find-ConnectInterfaces
         expected_output:
           - ConnectInterfaces.{platform}.yaml

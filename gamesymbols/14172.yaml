@@ -73,8 +73,8 @@ binaries:
       path: game/bin/win64/vphysics2.dll
       sha256: 8bb3c48086c6e053300d2db6a019a56d2d1dfdb231c3556ff0dd7e77bc170995
 config_digest_version: 2
-config_sha256: sha256:dd5c1c3903bc718e3625075647d51dba2af36bb2d2538603d8acfd5134aaaf34
-file_count: 3165
+config_sha256: sha256:981483d8272f4c39e9c66f0b3e76b4846b6ed6d07e8bfa656538822fe162ec22
+file_count: 3167
 files:
   SDL3/SDL_GetMouse.windows.yaml:
     func_name: SDL_GetMouse
@@ -6469,6 +6469,24 @@ files:
     vfunc_index: 54
     vfunc_offset: '0x1b0'
     vtable_name: CEngineServer_vtable
+  engine/CEngineServer_MakeSpawnGroupActive.linux.yaml:
+    func_name: CEngineServer_MakeSpawnGroupActive
+    func_rva: '0x5158a0'
+    func_sig: 55 48 89 E5 53 89 F3 48 83 EC ?? 48 8D 05 FE 22 ?? ??
+    func_size: '0x3e'
+    func_va: '0x5158a0'
+    vfunc_index: 64
+    vfunc_offset: '0x200'
+    vtable_name: CEngineServer
+  engine/CEngineServer_MakeSpawnGroupActive.windows.yaml:
+    func_name: CEngineServer_MakeSpawnGroupActive
+    func_rva: '0xa0180'
+    func_sig: 48 8B 0D C9 D8 86 ??
+    func_size: '0x17'
+    func_va: '0x1800a0180'
+    vfunc_index: 64
+    vfunc_offset: '0x200'
+    vtable_name: CEngineServer
   engine/CEngineServer_PrecacheGeneric.linux.yaml:
     func_name: CEngineServer_PrecacheGeneric
     func_rva: '0x5168c0'
@@ -23731,18 +23749,6 @@ files:
     func_sig: 48 8B C4 55 53 48 8D A8 ?? ?? ?? ?? 48 81 EC ?? ?? ?? ?? 83 B9 ?? ?? ?? ?? ??
     func_size: '0x688'
     func_va: '0x1801eff20'
-  server/CEngineServer_MakeSpawnGroupActive.linux.yaml:
-    func_name: CEngineServer_MakeSpawnGroupActive
-    vfunc_index: 64
-    vfunc_offset: '0x200'
-    vfunc_sig: FF 90 00 02 00 00 89 5D ??
-    vtable_name: CEngineServer
-  server/CEngineServer_MakeSpawnGroupActive.windows.yaml:
-    func_name: CEngineServer_MakeSpawnGroupActive
-    vfunc_index: 64
-    vfunc_offset: '0x200'
-    vfunc_sig: 4C 8B 82 00 02 00 00
-    vtable_name: CEngineServer
   server/CEngineServer_UnloadSpawnGroup.linux.yaml:
     func_name: CEngineServer_UnloadSpawnGroup
     vfunc_index: 60
@@ -38094,6 +38100,18 @@ files:
     vfunc_offset: '0x1b8'
     vfunc_sig: FF 90 B8 01 00 00 48 8B 35 ?? ?? ?? ??
     vtable_name: IVEngineServer2
+  server/IVEngineServer2_MakeSpawnGroupActive.linux.yaml:
+    func_name: IVEngineServer2_MakeSpawnGroupActive
+    vfunc_index: 64
+    vfunc_offset: '0x200'
+    vfunc_sig: FF 90 00 02 00 00 89 5D ??
+    vtable_name: IVEngineServer2
+  server/IVEngineServer2_MakeSpawnGroupActive.windows.yaml:
+    func_name: IVEngineServer2_MakeSpawnGroupActive
+    vfunc_index: 64
+    vfunc_offset: '0x200'
+    vfunc_sig: 4C 8B 82 00 02 00 00
+    vtable_name: IVEngineServer2
   server/IVEngineServer2_ServerCommand.linux.yaml:
     func_name: IVEngineServer2_ServerCommand
     vfunc_index: 45
@@ -40094,5 +40112,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14172'
-last_publish_time: '2026-07-29T02:09:58Z'
+last_publish_time: '2026-07-29T07:09:39Z'
 schema_version: 4
