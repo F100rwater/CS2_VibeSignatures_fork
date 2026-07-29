@@ -119,6 +119,7 @@ def _delete_paths(contract, paths: frozenset[str]) -> int:
             deleted += 1
     return deleted
 
+
 def _load_head_context(snapshot_path, config_path, game_version, bindir, base: SnapshotContext) -> SnapshotContext:
     try:
         return load_snapshot_context(snapshot_path, config_path, game_version, bindir)

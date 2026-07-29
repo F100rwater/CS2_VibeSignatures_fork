@@ -35,6 +35,7 @@ class TestGitChangeCollection(unittest.TestCase):
         with patch("gamesymbol_snapshot_lib.pr_cli.load_snapshot_context", side_effect=failure):
             with self.assertRaisesRegex(SnapshotMismatchError, "not canonical"):
                 _load_head_context("head.yaml", "head-config.yaml", "14172", "bin", base)
+
     def test_parse_name_status_preserves_status_rename_sides_and_spaces(self) -> None:
 
         raw = (
