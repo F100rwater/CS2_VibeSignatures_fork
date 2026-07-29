@@ -73,8 +73,8 @@ binaries:
       path: game/bin/win64/vphysics2.dll
       sha256: 8bb3c48086c6e053300d2db6a019a56d2d1dfdb231c3556ff0dd7e77bc170995
 config_digest_version: 2
-config_sha256: sha256:0e843a49128d7b788844e0e1acb233e4a40423f9f7f269df7349070565b0cb3c
-file_count: 3163
+config_sha256: sha256:dd5c1c3903bc718e3625075647d51dba2af36bb2d2538603d8acfd5134aaaf34
+file_count: 3165
 files:
   SDL3/SDL_GetMouse.windows.yaml:
     func_name: SDL_GetMouse
@@ -23731,6 +23731,18 @@ files:
     func_sig: 48 8B C4 55 53 48 8D A8 ?? ?? ?? ?? 48 81 EC ?? ?? ?? ?? 83 B9 ?? ?? ?? ?? ??
     func_size: '0x688'
     func_va: '0x1801eff20'
+  server/CEngineServer_MakeSpawnGroupActive.linux.yaml:
+    func_name: CEngineServer_MakeSpawnGroupActive
+    vfunc_index: 64
+    vfunc_offset: '0x200'
+    vfunc_sig: FF 90 00 02 00 00 89 5D ??
+    vtable_name: CEngineServer
+  server/CEngineServer_MakeSpawnGroupActive.windows.yaml:
+    func_name: CEngineServer_MakeSpawnGroupActive
+    vfunc_index: 64
+    vfunc_offset: '0x200'
+    vfunc_sig: 4C 8B 82 00 02 00 00
+    vtable_name: CEngineServer
   server/CEngineServer_UnloadSpawnGroup.linux.yaml:
     func_name: CEngineServer_UnloadSpawnGroup
     vfunc_index: 60
@@ -40082,5 +40094,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14172'
-last_publish_time: '2026-07-28T13:41:03Z'
+last_publish_time: '2026-07-29T02:09:58Z'
 schema_version: 4
