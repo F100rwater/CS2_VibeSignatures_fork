@@ -30,10 +30,10 @@ def _llm_decompile_spec(symbol_name, expected_result_section):
         "symbol_name": symbol_name,
         "prompt_path": "prompt/call_llm_decompile.md",
         "reference_yaml_paths": [
-            f"references/engine/{SOURCE_YAML_STEM}.{{platform}}.yaml",
+            "references/engine/CNetworkClientService_RegisterEventMapInternal.{platform}.yaml",
         ],
         "dependency_policy": {
-            f"{SOURCE_YAML_STEM}.{{platform}}.yaml": "required",
+            "CNetworkClientService_RegisterEventMapInternal.{platform}.yaml": "required",
         },
         "expected_result_sections": [expected_result_section],
     }
