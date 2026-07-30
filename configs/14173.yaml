@@ -3764,6 +3764,12 @@ modules:
           - IVEngineClient2_IsPlayingDemo.{platform}.yaml
         expected_input:
           - C_ServerVoiceHandler_OnServerVoiceData.{platform}.yaml
+      - name: find-OnServerVoiceData_IsPlayingDemo_Callee
+        platform: windows
+        expected_output:
+          - OnServerVoiceData_IsPlayingDemo_Callee.{platform}.yaml
+        expected_input:
+          - IVEngineClient2_IsPlayingDemo.{platform}.yaml
       - name: find-IVEngineClient2_ExecuteClientCmd
         expected_output:
           - IVEngineClient2_ExecuteClientCmd.{platform}.yaml
@@ -4533,7 +4539,9 @@ modules:
         category: vfunc
         alias:
           - IVEngineClient2::IsPlayingDemo
-          - OnServerVoiceData_IsPlayingDemo_Callee
+      - name: OnServerVoiceData_IsPlayingDemo_Callee
+        category: patch
+        platform: windows
       - name: IVEngineClient2_ExecuteClientCmd
         category: vfunc
         alias:
