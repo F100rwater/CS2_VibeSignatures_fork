@@ -5,46 +5,43 @@ from ida_analyze_util import preprocess_common_skill
 
 SOURCE_YAML_STEM = "CNetworkClientService_RegisterEventMapInternal"
 
-TARGET_FUNCTION_NAMES = [
-    "RegisterEventListener_Abstract",
+CALLBACK_FUNCTION_NAMES = [
     "CNetworkClientService_OnClientAdvanceTick",
-    "CNetworkClientService_OnClientPostAdvanceTick",
+    "CNetworkClientService_OnClientProcessGameInput",
+    "CNetworkClientService_OnClientPollNetworking",
+    "CNetworkClientService_OnClientProcessNetworking",
+    "CNetworkClientService_OnClientSimulate",
+    "CNetworkClientService_OnClientPauseSimulate",
+    "CNetworkClientService_OnClientFrameSimulate",
+    "CNetworkClientService_OnSimpleLoopFrameUpdate",
+    "CNetworkClientService_OnFrameBoundary",
+    "CNetworkClientService_OnServerPostSimulate",
+    "CNetworkClientService_OnServerBeginAsyncPostTickWork",
 ]
 
+TARGET_FUNCTION_NAMES = [
+    "RegisterEventListener_Abstract",
+    *CALLBACK_FUNCTION_NAMES,
+]
+
+
+def _llm_decompile_spec(symbol_name, expected_result_section):
+    return {
+        "symbol_name": symbol_name,
+        "prompt_path": "prompt/call_llm_decompile.md",
+        "reference_yaml_paths": [
+            f"references/engine/{SOURCE_YAML_STEM}.{{platform}}.yaml",
+        ],
+        "dependency_policy": {
+            f"{SOURCE_YAML_STEM}.{{platform}}.yaml": "required",
+        },
+        "expected_result_sections": [expected_result_section],
+    }
+
+
 LLM_DECOMPILE = [
-    {
-        "symbol_name": "RegisterEventListener_Abstract",
-        "prompt_path": "prompt/call_llm_decompile.md",
-        "reference_yaml_paths": [
-            f"references/engine/{SOURCE_YAML_STEM}.{{platform}}.yaml",
-        ],
-        "expected_result_sections": ["found_call"],
-        "dependency_policy": {
-            f"{SOURCE_YAML_STEM}.{{platform}}.yaml": "required",
-        },
-    },
-    {
-        "symbol_name": "CNetworkClientService_OnClientAdvanceTick",
-        "prompt_path": "prompt/call_llm_decompile.md",
-        "reference_yaml_paths": [
-            f"references/engine/{SOURCE_YAML_STEM}.{{platform}}.yaml",
-        ],
-        "expected_result_sections": ["found_funcptr"],
-        "dependency_policy": {
-            f"{SOURCE_YAML_STEM}.{{platform}}.yaml": "required",
-        },
-    },
-    {
-        "symbol_name": "CNetworkClientService_OnClientPostAdvanceTick",
-        "prompt_path": "prompt/call_llm_decompile.md",
-        "reference_yaml_paths": [
-            f"references/engine/{SOURCE_YAML_STEM}.{{platform}}.yaml",
-        ],
-        "expected_result_sections": ["found_funcptr"],
-        "dependency_policy": {
-            f"{SOURCE_YAML_STEM}.{{platform}}.yaml": "required",
-        },
-    },
+    _llm_decompile_spec("RegisterEventListener_Abstract", "found_call"),
+    *[_llm_decompile_spec(callback_name, "found_funcptr") for callback_name in CALLBACK_FUNCTION_NAMES],
 ]
 
 _SIGNED_GENERATE_FIELDS = [
@@ -56,22 +53,7 @@ _SIGNED_GENERATE_FIELDS = [
 ]
 
 GENERATE_YAML_DESIRED_FIELDS = [
-    ("RegisterEventListener_Abstract", _SIGNED_GENERATE_FIELDS),
-    ("CNetworkClientService_OnClientAdvanceTick", _SIGNED_GENERATE_FIELDS),
-    # MSVC ICF folds the empty OnClientPostAdvanceTick callback into
-    # _guard_check_icall_nop, whose two-byte body is shared by many stubs. Allow the
-    # signature generator to extend beyond the function boundary to regain uniqueness.
-    (
-        "CNetworkClientService_OnClientPostAdvanceTick",
-        [
-            "func_name",
-            "func_sig",
-            "func_sig_allow_across_function_boundary: true",
-            "func_va",
-            "func_rva",
-            "func_size",
-        ],
-    ),
+    (function_name, list(_SIGNED_GENERATE_FIELDS)) for function_name in TARGET_FUNCTION_NAMES
 ]
 
 

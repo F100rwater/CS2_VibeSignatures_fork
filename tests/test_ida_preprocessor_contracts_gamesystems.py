@@ -104,21 +104,30 @@ class TestFindCNetworkClientServiceOnEventMapCallbacks(unittest.IsolatedAsyncioT
             [
                 "RegisterEventListener_Abstract",
                 "CNetworkClientService_OnClientAdvanceTick",
-                "CNetworkClientService_OnClientPostAdvanceTick",
+                "CNetworkClientService_OnClientProcessGameInput",
+                "CNetworkClientService_OnClientPollNetworking",
+                "CNetworkClientService_OnClientProcessNetworking",
+                "CNetworkClientService_OnClientSimulate",
+                "CNetworkClientService_OnClientPauseSimulate",
+                "CNetworkClientService_OnClientFrameSimulate",
+                "CNetworkClientService_OnSimpleLoopFrameUpdate",
+                "CNetworkClientService_OnFrameBoundary",
+                "CNetworkClientService_OnServerPostSimulate",
+                "CNetworkClientService_OnServerBeginAsyncPostTickWork",
             ],
             module.TARGET_FUNCTION_NAMES,
         )
         self.assertEqual(
-            [["found_call"], ["found_funcptr"], ["found_funcptr"]],
+            [["found_call"]] + [["found_funcptr"]] * len(module.CALLBACK_FUNCTION_NAMES),
             [spec["expected_result_sections"] for spec in module.LLM_DECOMPILE],
         )
         desired_fields = dict(module.GENERATE_YAML_DESIRED_FIELDS)
-        self.assertIn("func_sig", desired_fields["RegisterEventListener_Abstract"])
-        self.assertIn("func_sig", desired_fields["CNetworkClientService_OnClientAdvanceTick"])
-        self.assertIn("func_sig", desired_fields["CNetworkClientService_OnClientPostAdvanceTick"])
-        self.assertIn(
-            "func_sig_allow_across_function_boundary: true",
-            desired_fields["CNetworkClientService_OnClientPostAdvanceTick"],
+        self.assertEqual(set(module.TARGET_FUNCTION_NAMES), set(desired_fields))
+        for function_name in module.TARGET_FUNCTION_NAMES:
+            self.assertIn("func_sig", desired_fields[function_name])
+        self.assertNotIn(
+            "CNetworkClientService_OnClientPostAdvanceTick",
+            module.TARGET_FUNCTION_NAMES,
         )
         mock_preprocess_common_skill.assert_awaited_once_with(
             session="session",

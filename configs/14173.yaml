@@ -999,7 +999,16 @@ modules:
         expected_output:
           - RegisterEventListener_Abstract.{platform}.yaml
           - CNetworkClientService_OnClientAdvanceTick.{platform}.yaml
-          - CNetworkClientService_OnClientPostAdvanceTick.{platform}.yaml
+          - CNetworkClientService_OnClientProcessGameInput.{platform}.yaml
+          - CNetworkClientService_OnClientPollNetworking.{platform}.yaml
+          - CNetworkClientService_OnClientProcessNetworking.{platform}.yaml
+          - CNetworkClientService_OnClientSimulate.{platform}.yaml
+          - CNetworkClientService_OnClientPauseSimulate.{platform}.yaml
+          - CNetworkClientService_OnClientFrameSimulate.{platform}.yaml
+          - CNetworkClientService_OnSimpleLoopFrameUpdate.{platform}.yaml
+          - CNetworkClientService_OnFrameBoundary.{platform}.yaml
+          - CNetworkClientService_OnServerPostSimulate.{platform}.yaml
+          - CNetworkClientService_OnServerBeginAsyncPostTickWork.{platform}.yaml
         expected_input:
           - CNetworkClientService_RegisterEventMapInternal.{platform}.yaml
       - name: find-CNetworkClientService_ReceivedServerInfo
@@ -2499,11 +2508,56 @@ modules:
         platform: windows
         alias:
           - CNetworkClientService::OnClientAdvanceTick
-      - name: CNetworkClientService_OnClientPostAdvanceTick
+      - name: CNetworkClientService_OnClientProcessGameInput
         category: func
         platform: windows
         alias:
-          - CNetworkClientService::OnClientPostAdvanceTick
+          - CNetworkClientService::OnClientProcessGameInput
+      - name: CNetworkClientService_OnClientPollNetworking
+        category: func
+        platform: windows
+        alias:
+          - CNetworkClientService::OnClientPollNetworking
+      - name: CNetworkClientService_OnClientProcessNetworking
+        category: func
+        platform: windows
+        alias:
+          - CNetworkClientService::OnClientProcessNetworking
+      - name: CNetworkClientService_OnClientSimulate
+        category: func
+        platform: windows
+        alias:
+          - CNetworkClientService::OnClientSimulate
+      - name: CNetworkClientService_OnClientPauseSimulate
+        category: func
+        platform: windows
+        alias:
+          - CNetworkClientService::OnClientPauseSimulate
+      - name: CNetworkClientService_OnClientFrameSimulate
+        category: func
+        platform: windows
+        alias:
+          - CNetworkClientService::OnClientFrameSimulate
+      - name: CNetworkClientService_OnSimpleLoopFrameUpdate
+        category: func
+        platform: windows
+        alias:
+          - CNetworkClientService::OnSimpleLoopFrameUpdate
+      - name: CNetworkClientService_OnFrameBoundary
+        category: func
+        platform: windows
+        alias:
+          - CNetworkClientService::OnFrameBoundary
+      - name: CNetworkClientService_OnServerPostSimulate
+        category: func
+        platform: windows
+        alias:
+          - CNetworkClientService::OnServerPostSimulate
+      - name: CNetworkClientService_OnServerBeginAsyncPostTickWork
+        category: func
+        platform: windows
+        alias:
+          - CNetworkClientService::OnServerBeginAsyncPostTickWork
       - name: CNetworkClientService_ReceivedServerInfo
         category: vfunc
         alias:

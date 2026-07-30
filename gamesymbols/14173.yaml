@@ -73,8 +73,8 @@ binaries:
       path: game/bin/win64/vphysics2.dll
       sha256: 6f5aa8c32e30d5369579f0e18bf97ec72e2076d3c06906efbfcc77f0c4111b80
 config_digest_version: 2
-config_sha256: sha256:e31ec3131dc4636070dd287f7e98d867820c20750df1acb8746a26518a50d166
-file_count: 3178
+config_sha256: sha256:e682b6e01ccaec5242e2d51a59295d507da324366159520465a4bad5258d4d2e
+file_count: 3187
 files:
   SDL3/SDL_GetMouse.windows.yaml:
     func_name: SDL_GetMouse
@@ -8956,13 +8956,66 @@ files:
     func_sig: 4C 8B DC 49 89 73 ?? 41 56
     func_size: '0x187'
     func_va: '0x1801d2d10'
-  engine/CNetworkClientService_OnClientPostAdvanceTick.windows.yaml:
-    func_name: CNetworkClientService_OnClientPostAdvanceTick
-    func_rva: '0x245f0'
-    func_sig: C2 ?? ?? CC CC CC CC CC CC CC CC CC CC CC CC CC 40 53 48 83 EC ?? 48 8D 05 ?? ?? ?? ??
-    func_sig_allow_across_function_boundary: true
-    func_size: '0x3'
-    func_va: '0x1800245f0'
+  engine/CNetworkClientService_OnClientFrameSimulate.windows.yaml:
+    func_name: CNetworkClientService_OnClientFrameSimulate
+    func_rva: '0x1d34c0'
+    func_sig: 48 89 5C 24 ?? 48 89 74 24 ?? 57 48 83 EC ?? 48 8B D9 33 F6 48 8B 89 ?? ?? ?? ??
+    func_size: '0x20b'
+    func_va: '0x1801d34c0'
+  engine/CNetworkClientService_OnClientPauseSimulate.windows.yaml:
+    func_name: CNetworkClientService_OnClientPauseSimulate
+    func_rva: '0x1d3200'
+    func_sig: 48 8B 89 ?? ?? ?? ?? 48 85 C9 74 ?? 48 8D 91 ?? ?? ?? ??
+    func_size: '0x19'
+    func_va: '0x1801d3200'
+  engine/CNetworkClientService_OnClientPollNetworking.windows.yaml:
+    func_name: CNetworkClientService_OnClientPollNetworking
+    func_rva: '0x1d2f90'
+    func_sig: 48 89 5C 24 ?? 57 48 83 EC ?? 48 8B FA 48 8B D9 E8 ?? ?? ?? ?? 48 8B 8B ?? ?? ?? ??
+    func_size: '0x34'
+    func_va: '0x1801d2f90'
+  engine/CNetworkClientService_OnClientProcessGameInput.windows.yaml:
+    func_name: CNetworkClientService_OnClientProcessGameInput
+    func_rva: '0x1d2ea0'
+    func_sig: 48 89 5C 24 ?? 57 48 83 EC ?? 48 8B 99 ?? ?? ?? ?? 48 8B FA 48 85 DB
+    func_size: '0xee'
+    func_va: '0x1801d2ea0'
+  engine/CNetworkClientService_OnClientProcessNetworking.windows.yaml:
+    func_name: CNetworkClientService_OnClientProcessNetworking
+    func_rva: '0x1d2fd0'
+    func_sig: 48 8B C4 41 56 48 83 EC ??
+    func_size: '0x1b3'
+    func_va: '0x1801d2fd0'
+  engine/CNetworkClientService_OnClientSimulate.windows.yaml:
+    func_name: CNetworkClientService_OnClientSimulate
+    func_rva: '0x1d3190'
+    func_sig: 40 53 48 83 EC ?? 48 8B 99 ?? ?? ?? ?? 48 85 DB
+    func_size: '0x66'
+    func_va: '0x1801d3190'
+  engine/CNetworkClientService_OnFrameBoundary.windows.yaml:
+    func_name: CNetworkClientService_OnFrameBoundary
+    func_rva: '0x1d3700'
+    func_sig: 40 53 48 83 EC ?? 80 79 ?? ?? 48 8B D9 0F 84 ?? ?? ?? ?? 48 8B 41 ??
+    func_size: '0x15d'
+    func_va: '0x1801d3700'
+  engine/CNetworkClientService_OnServerBeginAsyncPostTickWork.windows.yaml:
+    func_name: CNetworkClientService_OnServerBeginAsyncPostTickWork
+    func_rva: '0x1d3890'
+    func_sig: 48 83 B9 ?? ?? ?? ?? ?? 74 ?? 48 8B 0D ?? ?? ?? ??
+    func_size: '0x21'
+    func_va: '0x1801d3890'
+  engine/CNetworkClientService_OnServerPostSimulate.windows.yaml:
+    func_name: CNetworkClientService_OnServerPostSimulate
+    func_rva: '0x1d3860'
+    func_sig: 48 83 B9 ?? ?? ?? ?? ?? 74 ?? 80 7A ?? ??
+    func_size: '0x27'
+    func_va: '0x1801d3860'
+  engine/CNetworkClientService_OnSimpleLoopFrameUpdate.windows.yaml:
+    func_name: CNetworkClientService_OnSimpleLoopFrameUpdate
+    func_rva: '0x1d3220'
+    func_sig: 48 8B C4 53 48 81 EC ?? ?? ?? ?? 0F 29 70 ??
+    func_size: '0x299'
+    func_va: '0x1801d3220'
   engine/CNetworkClientService_OnStatus.linux.yaml:
     func_name: CNetworkClientService_OnStatus
     func_rva: '0x4295e0'
@@ -40189,5 +40242,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14173'
-last_publish_time: '2026-07-30T06:04:58Z'
+last_publish_time: '2026-07-30T06:29:38Z'
 schema_version: 4
