@@ -73,8 +73,8 @@ binaries:
       path: game/bin/win64/vphysics2.dll
       sha256: 6f5aa8c32e30d5369579f0e18bf97ec72e2076d3c06906efbfcc77f0c4111b80
 config_digest_version: 2
-config_sha256: sha256:d6a8adf1004c67bd1d05edab4c12be496a4be730381321c4bc21590d40280666
-file_count: 3199
+config_sha256: sha256:cdbcd2f0009df537c164acef2a92aec529585dfaf35618294d08408beaa19ce6
+file_count: 3204
 files:
   SDL3/SDL_GetMouse.windows.yaml:
     func_name: SDL_GetMouse
@@ -223,6 +223,23 @@ files:
     func_sig: 40 55 53 57 41 56 41 57 48 8B EC 48 81 EC ?? ?? ?? ??
     func_size: '0x26d'
     func_va: '0x1808f0b70'
+  client/CClientInput_CreateMove.windows.yaml:
+    func_name: CClientInput_CreateMove
+    func_rva: '0xb10270'
+    func_size: '0x109'
+    func_va: '0x180b10270'
+    vfunc_index: 8
+    vfunc_offset: '0x40'
+    vfunc_sig: 48 FF 60 40 CC CC 48 89 5C 24 ?? 48 89 7C 24 ??
+    vfunc_sig_allow_across_function_boundary: true
+    vtable_name: CClientInput
+  client/CClientInput_m_viewangles.windows.yaml:
+    member_name: m_viewangles
+    offset: '0x688'
+    offset_sig: F2 0F 11 86 ?? ?? ?? ?? 89 86 ?? ?? ?? ?? C7 86 ?? ?? ?? ?? ?? ?? ?? ??
+    offset_sig_disp: 0
+    size: 8
+    struct_name: CClientInput
   client/CEntityInstance_PreDataUpdate.linux.yaml:
     func_name: CEntityInstance_PreDataUpdate
     vfunc_index: 19
@@ -1449,6 +1466,14 @@ files:
     vfunc_index: 0
     vfunc_offset: '0x0'
     vtable_name: CSource2Client_vtable
+  client/CSource2Client_CreateMove.windows.yaml:
+    func_name: CSource2Client_CreateMove
+    func_rva: '0xb10380'
+    func_size: '0xe'
+    func_va: '0x180b10380'
+    vfunc_index: 16
+    vfunc_offset: '0x80'
+    vtable_name: CSource2Client
   client/CSource2Client_FrameStageNotify.windows.yaml:
     func_name: CSource2Client_FrameStageNotify
     func_rva: '0xb10ff0'
@@ -9940,6 +9965,15 @@ files:
     vfunc_index: 139
     vfunc_offset: '0x458'
     vtable_name: CNetworkGameClient_vtable
+  engine/CNetworkGameClient_CreateMove.windows.yaml:
+    func_name: CNetworkGameClient_CreateMove
+    func_rva: '0x64500'
+    func_sig: 40 57 48 83 EC ?? 83 B9 ?? ?? ?? ?? ?? 48 8B F9
+    func_size: '0x1e4'
+    func_va: '0x180064500'
+    vfunc_index: 76
+    vfunc_offset: '0x260'
+    vtable_name: CNetworkGameClient
   engine/CNetworkGameClient_DisconnectGame.linux.yaml:
     func_name: CNetworkGameClient_DisconnectGame
     func_rva: '0x4e3900'
@@ -12996,6 +13030,12 @@ files:
     vfunc_offset: '0xf8'
     vfunc_sig: 48 8B 9A F8 00 00 00 E8 ?? ?? ?? ?? 48 8B 0D ?? ?? ?? ?? 0F B6 D0 FF D3 48 8B 0D ?? ?? ?? ?? 4C 8D 05 ?? ?? ?? ?? BA ?? ?? ?? ?? 48 8B 01 FF 10 48 8B 0D ?? ?? ?? ?? 4C 8D 05 ?? ?? ?? ?? BA ?? ?? ?? ?? 48 8B 01 FF 90 ?? ?? ?? ??
     vtable_name: INetworkMessages
+  engine/ISource2Client_CreateMove.windows.yaml:
+    func_name: ISource2Client_CreateMove
+    vfunc_index: 16
+    vfunc_offset: '0x80'
+    vfunc_sig: FF 90 80 00 00 00 48 8B 0D ?? ?? ?? ?? 48 8B 01 FF 50 ?? 84 C0 74 ?? 48 8B 05 ?? ?? ?? ??
+    vtable_name: ISource2Client
   engine/ISource2Client_ProcessGameInput.windows.yaml:
     func_name: ISource2Client_ProcessGameInput
     vfunc_index: 22
@@ -40380,5 +40420,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14173'
-last_publish_time: '2026-07-30T09:14:12Z'
+last_publish_time: '2026-07-30T11:43:23Z'
 schema_version: 4
