@@ -3856,6 +3856,12 @@ modules:
         expected_input:
           - CViewRender_vtable.{platform}.yaml
           - IViewRender_OnRenderStart.{platform}.yaml
+      - name: find-CViewRender_OnRenderStart-decompiles  # by LLM_DECOMPILE CViewRender_OnRenderStart
+        platform: windows
+        expected_input:
+          - CViewRender_OnRenderStart.{platform}.yaml
+        expected_output:
+          - g_ViewMatrix.{platform}.yaml  # gv
       - name: find-CViewRender_Render
         platform: windows
         expected_output:
@@ -4701,6 +4707,9 @@ modules:
         platform: windows
         alias:
           - CViewRender::OnRenderStart
+      - name: g_ViewMatrix
+        category: gv
+        platform: windows
       - name: CViewRender_Render
         category: vfunc
         platform: windows
