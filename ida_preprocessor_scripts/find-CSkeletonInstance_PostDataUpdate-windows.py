@@ -4,7 +4,7 @@
 from ida_analyze_util import preprocess_common_skill
 
 TARGET_FUNCTION_NAMES = [
-    "CModelState_SetupJointState",
+    "CSimulationState_SetupJointState",
 ]
 
 TARGET_STRUCT_MEMBER_NAMES = [
@@ -14,7 +14,7 @@ TARGET_STRUCT_MEMBER_NAMES = [
 
 LLM_DECOMPILE = [
     {
-        "symbol_name": "CModelState_SetupJointState",
+        "symbol_name": "CSimulationState_SetupJointState",
         "prompt_path": "prompt/call_llm_decompile.md",
         "reference_yaml_paths": [
             "references/client/CSkeletonInstance_PostDataUpdate.{platform}.yaml",
@@ -51,7 +51,7 @@ LLM_DECOMPILE = [
 GENERATE_YAML_DESIRED_FIELDS = [
     # (symbol_name, generate_yaml_fields)
     (
-        "CModelState_SetupJointState",
+        "CSimulationState_SetupJointState",
         [
             "func_name",
             "func_sig",

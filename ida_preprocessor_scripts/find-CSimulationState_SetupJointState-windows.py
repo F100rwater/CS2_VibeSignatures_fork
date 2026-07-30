@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Preprocess script for find-CModelState_SetupJointState-windows skill."""
+"""Preprocess script for find-CSimulationState_SetupJointState-windows skill."""
 
 from ida_analyze_util import preprocess_common_skill
 
@@ -16,33 +16,33 @@ LLM_DECOMPILE = [
         "symbol_name": "CModelState_m_nTotalTransformCount",
         "prompt_path": "prompt/call_llm_decompile.md",
         "reference_yaml_paths": [
-            "references/client/CModelState_SetupJointState.{platform}.yaml",
+            "references/client/CSimulationState_SetupJointState.{platform}.yaml",
         ],
         "expected_result_sections": ["found_struct_offset"],
         "dependency_policy": {
-            "CModelState_SetupJointState.{platform}.yaml": "required",
+            "CSimulationState_SetupJointState.{platform}.yaml": "required",
         },
     },
     {
         "symbol_name": "CModelState_m_nBoneCount",
         "prompt_path": "prompt/call_llm_decompile.md",
         "reference_yaml_paths": [
-            "references/client/CModelState_SetupJointState.{platform}.yaml",
+            "references/client/CSimulationState_SetupJointState.{platform}.yaml",
         ],
         "expected_result_sections": ["found_struct_offset"],
         "dependency_policy": {
-            "CModelState_SetupJointState.{platform}.yaml": "required",
+            "CSimulationState_SetupJointState.{platform}.yaml": "required",
         },
     },
     {
         "symbol_name": "CModelState_m_nAttachmentCount",
         "prompt_path": "prompt/call_llm_decompile.md",
         "reference_yaml_paths": [
-            "references/client/CModelState_SetupJointState.{platform}.yaml",
+            "references/client/CSimulationState_SetupJointState.{platform}.yaml",
         ],
         "expected_result_sections": ["found_struct_offset"],
         "dependency_policy": {
-            "CModelState_SetupJointState.{platform}.yaml": "required",
+            "CSimulationState_SetupJointState.{platform}.yaml": "required",
         },
     },
 ]

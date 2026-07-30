@@ -73,7 +73,7 @@ binaries:
       path: game/bin/win64/vphysics2.dll
       sha256: 6f5aa8c32e30d5369579f0e18bf97ec72e2076d3c06906efbfcc77f0c4111b80
 config_digest_version: 2
-config_sha256: sha256:66c12f67f77f120eaab5b38ecb6f444b806202078a1795c2ffb1b5f86a7feccd
+config_sha256: sha256:47ddc5694615adc2ffab438fcaf22190d136d5001a80be45a9c5d7976003709d
 file_count: 3204
 files:
   SDL3/SDL_GetMouse.windows.yaml:
@@ -1154,12 +1154,6 @@ files:
     func_sig: 48 8B C4 48 89 70 ?? 57 48 81 EC ?? ?? ?? ?? 48 83 3D ?? ?? ?? ?? ??
     func_size: '0x370'
     func_va: '0x180bd1da0'
-  client/CModelState_SetupJointState.windows.yaml:
-    func_name: CModelState_SetupJointState
-    func_rva: '0xa59cc0'
-    func_sig: 48 89 5C 24 ?? 48 89 6C 24 ?? 56 57 41 56 48 83 EC ?? 48 8B F1 33 FF
-    func_size: '0x168'
-    func_va: '0x180a59cc0'
   client/CModelState_m_nAttachmentCount.windows.yaml:
     member_name: m_nAttachmentCount
     offset: '0x18'
@@ -1337,6 +1331,12 @@ files:
     vtable_size: '0x100'
     vtable_symbol: ??_7CPrediction@@6B@
     vtable_va: '0x181b0e760'
+  client/CSimulationState_SetupJointState.windows.yaml:
+    func_name: CSimulationState_SetupJointState
+    func_rva: '0xa59cc0'
+    func_sig: 48 89 5C 24 ?? 48 89 6C 24 ?? 56 57 41 56 48 83 EC ?? 48 8B F1 33 FF
+    func_size: '0x168'
+    func_va: '0x180a59cc0'
   client/CSkeletonInstance_PostDataUpdate.linux.yaml:
     func_name: CSkeletonInstance_PostDataUpdate
     func_rva: '0x17cfe30'
@@ -40420,5 +40420,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14173'
-last_publish_time: '2026-07-30T12:30:56Z'
+last_publish_time: '2026-07-30T12:40:23Z'
 schema_version: 4

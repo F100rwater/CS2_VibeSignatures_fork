@@ -1,4 +1,4 @@
-func_name: CModelState_SetupJointState
+func_name: CSimulationState_SetupJointState
 func_va: '0x180a59820'
 disasm_code: |-
   .text:0000000180A59820                 mov     [rsp+arg_8], rbx
@@ -104,7 +104,7 @@ disasm_code: |-
   .text:0000000180A59986                 pop     rsi
   .text:0000000180A59987                 retn
 procedure: |-
-  void *__fastcall CModelState_SetupJointState(__int64 modelState, __int64 hModel)
+  void *__fastcall CSimulationState_SetupJointState(__int64 modelState, __int64 hModel)
   {
     int v3; // edi
     __int64 v4; // rcx
