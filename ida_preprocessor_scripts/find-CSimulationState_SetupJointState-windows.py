@@ -30,6 +30,7 @@ LLM_DECOMPILE = [
             "references/client/CSimulationState_SetupJointState.{platform}.yaml",
         ],
         "expected_result_sections": ["found_struct_offset"],
+        "expected_size": 4,
         "dependency_policy": {
             "CSimulationState_SetupJointState.{platform}.yaml": "required",
         },
