@@ -73,8 +73,8 @@ binaries:
       path: game/bin/win64/vphysics2.dll
       sha256: 6f5aa8c32e30d5369579f0e18bf97ec72e2076d3c06906efbfcc77f0c4111b80
 config_digest_version: 2
-config_sha256: sha256:57f14a5f9553dfcd2ba290a812f4920f2ccdf9bf025ceb352290ae6671831ed8
-file_count: 3173
+config_sha256: sha256:e31ec3131dc4636070dd287f7e98d867820c20750df1acb8746a26518a50d166
+file_count: 3178
 files:
   SDL3/SDL_GetMouse.windows.yaml:
     func_name: SDL_GetMouse
@@ -8950,6 +8950,19 @@ files:
     vfunc_index: 33
     vfunc_offset: '0x108'
     vtable_name: CNetworkClientService
+  engine/CNetworkClientService_OnClientAdvanceTick.windows.yaml:
+    func_name: CNetworkClientService_OnClientAdvanceTick
+    func_rva: '0x1d2d10'
+    func_sig: 4C 8B DC 49 89 73 ?? 41 56
+    func_size: '0x187'
+    func_va: '0x1801d2d10'
+  engine/CNetworkClientService_OnClientPostAdvanceTick.windows.yaml:
+    func_name: CNetworkClientService_OnClientPostAdvanceTick
+    func_rva: '0x245f0'
+    func_sig: C2 ?? ?? CC CC CC CC CC CC CC CC CC CC CC CC CC 40 53 48 83 EC ?? 48 8D 05 ?? ?? ?? ??
+    func_sig_allow_across_function_boundary: true
+    func_size: '0x3'
+    func_va: '0x1800245f0'
   engine/CNetworkClientService_OnStatus.linux.yaml:
     func_name: CNetworkClientService_OnStatus
     func_rva: '0x4295e0'
@@ -9016,6 +9029,21 @@ files:
     vfunc_index: 51
     vfunc_offset: '0x198'
     vtable_name: CNetworkClientService
+  engine/CNetworkClientService_RegisterEventMap.windows.yaml:
+    func_name: CNetworkClientService_RegisterEventMap
+    func_rva: '0x1ce3e0'
+    func_sig: 48 8B C2 48 8B D1 48 8B C8 E9 42 2C 00 00
+    func_size: '0xe'
+    func_va: '0x1801ce3e0'
+    vfunc_index: 19
+    vfunc_offset: '0x98'
+    vtable_name: CNetworkClientService_vtable
+  engine/CNetworkClientService_RegisterEventMapInternal.windows.yaml:
+    func_name: CNetworkClientService_RegisterEventMapInternal
+    func_rva: '0x1d1030'
+    func_sig: 48 8B C4 55 53 56 41 56 48 8B EC 48 83 EC ?? 48 8B F2 4C 8B F1 45 85 C0 0F 85 90 ?? ?? ??
+    func_size: '0xd84'
+    func_va: '0x1801d1030'
   engine/CNetworkClientService_SendNetMessage.windows.yaml:
     func_name: CNetworkClientService_SendNetMessage
     func_rva: '0x1d5b20'
@@ -12823,6 +12851,12 @@ files:
     func_sig: 55 48 89 E5 41 57 41 56 41 55 41 54 53 48 89 F3 48 81 EC ?? ?? ?? ?? 48 89 DF
     func_size: '0x2a5'
     func_va: '0x3f1a60'
+  engine/RegisterEventListener_Abstract.windows.yaml:
+    func_name: RegisterEventListener_Abstract
+    func_rva: '0x13c900'
+    func_sig: 40 55 53 41 54 41 56
+    func_size: '0x256'
+    func_va: '0x18013c900'
   engine/SetFrameTimeAmnesty.linux.yaml:
     func_name: SetFrameTimeAmnesty
     func_rva: '0x37aa70'
@@ -40155,5 +40189,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14173'
-last_publish_time: '2026-07-30T03:34:48Z'
+last_publish_time: '2026-07-30T06:04:58Z'
 schema_version: 4
