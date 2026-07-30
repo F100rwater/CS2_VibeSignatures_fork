@@ -73,8 +73,8 @@ binaries:
       path: game/bin/win64/vphysics2.dll
       sha256: 6f5aa8c32e30d5369579f0e18bf97ec72e2076d3c06906efbfcc77f0c4111b80
 config_digest_version: 2
-config_sha256: sha256:cd7a9c018c9dcfd0f844f66c26ca80dcc54bfb61f01793875c7cf1b8c0860af5
-file_count: 3198
+config_sha256: sha256:d6a8adf1004c67bd1d05edab4c12be496a4be730381321c4bc21590d40280666
+file_count: 3199
 files:
   SDL3/SDL_GetMouse.windows.yaml:
     func_name: SDL_GetMouse
@@ -4468,6 +4468,15 @@ files:
     gv_sig: 48 8D 0D ?? ?? ?? ?? E8 ?? ?? ?? ?? E8 ?? ?? ?? ?? 48 85 C0
     gv_sig_va: '0x180ca37ff'
     gv_va: '0x1823ba790'
+  client/g_ViewMatrix.windows.yaml:
+    gv_inst_disp: 3
+    gv_inst_length: 7
+    gv_inst_offset: 0
+    gv_name: g_ViewMatrix
+    gv_rva: '0x23aa340'
+    gv_sig: 48 8D 0D ?? ?? ?? ?? 48 89 44 24 ?? 48 89 4C 24 ?? 4C 8D 0D ?? ?? ?? ??
+    gv_sig_va: '0x180bada86'
+    gv_va: '0x1823aa340'
   client/g_pAVI.linux.yaml:
     gv_name: g_pAVI
     gv_rva: '0x48ad5b0'
@@ -40371,5 +40380,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14173'
-last_publish_time: '2026-07-30T07:47:45Z'
+last_publish_time: '2026-07-30T09:14:12Z'
 schema_version: 4
