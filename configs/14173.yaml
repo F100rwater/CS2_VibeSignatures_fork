@@ -3707,6 +3707,23 @@ modules:
       - name: find-CSource2Client_vtable
         expected_output:
           - CSource2Client_vtable.{platform}.yaml
+      - name: find-GlobalVarsWarningFunc
+        platform: windows
+        expected_output:
+          - GlobalVarsWarningFunc.{platform}.yaml
+      - name: find-CSource2Client_SetGlobals
+        platform: windows
+        expected_output:
+          - CSource2Client_SetGlobals.{platform}.yaml
+        expected_input:
+          - GlobalVarsWarningFunc.{platform}.yaml
+          - CSource2Client_vtable.{platform}.yaml
+      - name: find-CSource2Client_SetGlobals-decompiles
+        platform: windows
+        expected_output:
+          - gpGlobals.{platform}.yaml
+        expected_input:
+          - CSource2Client_SetGlobals.{platform}.yaml
       - name: find-CSource2Client_Connect
         expected_output:
           - CSource2Client_Connect.{platform}.yaml
@@ -4495,6 +4512,17 @@ modules:
           - IGameSystem::OnClientPreRenderAlt
       - name: CSource2Client_vtable
         category: vtable
+      - name: GlobalVarsWarningFunc
+        category: func
+        platform: windows
+      - name: CSource2Client_SetGlobals
+        category: vfunc
+        platform: windows
+        alias:
+          - CSource2Client::SetGlobals
+      - name: gpGlobals
+        category: gv
+        platform: windows
       - name: CSource2Client_Connect
         category: vfunc
         alias:
