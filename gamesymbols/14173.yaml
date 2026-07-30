@@ -73,8 +73,8 @@ binaries:
       path: game/bin/win64/vphysics2.dll
       sha256: 6f5aa8c32e30d5369579f0e18bf97ec72e2076d3c06906efbfcc77f0c4111b80
 config_digest_version: 2
-config_sha256: sha256:ae2149ab6edd368bbb21989bc14f66e437fdae9122a6733130a258b0ec4940a6
-file_count: 3170
+config_sha256: sha256:57f14a5f9553dfcd2ba290a812f4920f2ccdf9bf025ceb352290ae6671831ed8
+file_count: 3173
 files:
   SDL3/SDL_GetMouse.windows.yaml:
     func_name: SDL_GetMouse
@@ -1467,6 +1467,15 @@ files:
     vfunc_index: 130
     vfunc_offset: '0x410'
     vtable_name: CSource2Client
+  client/CSource2Client_SetGlobals.windows.yaml:
+    func_name: CSource2Client_SetGlobals
+    func_rva: '0xb23e40'
+    func_sig: 48 8B 0D ?? ?? ?? ?? 4C 8D 05 ?? ?? ?? ?? 48 85 D2
+    func_size: '0x31'
+    func_va: '0x180b23e40'
+    vfunc_index: 11
+    vfunc_offset: '0x58'
+    vtable_name: CSource2Client_vtable
   client/CSource2Client_vtable.linux.yaml:
     vtable_class: CSource2Client
     vtable_entries:
@@ -3433,6 +3442,12 @@ files:
     func_sig_allow_across_function_boundary: true
     func_size: '0x238'
     func_va: '0x180f65110'
+  client/GlobalVarsWarningFunc.windows.yaml:
+    func_name: GlobalVarsWarningFunc
+    func_rva: '0xa59880'
+    func_sig: 40 53 48 83 EC ?? 8B 15 ?? ?? ?? ?? 8B D9
+    func_size: '0xb3'
+    func_va: '0x180a59880'
   client/IEngineServiceMgr_GetActiveLoopClientServerMode.linux.yaml:
     func_name: IEngineServiceMgr_GetActiveLoopClientServerMode
     vfunc_index: 31
@@ -5308,6 +5323,15 @@ files:
     gv_name: g_pWorldRendererMgr
     gv_rva: '0x25c9548'
     gv_va: '0x1825c9548'
+  client/gpGlobals.windows.yaml:
+    gv_inst_disp: 3
+    gv_inst_length: 7
+    gv_inst_offset: 0
+    gv_name: gpGlobals
+    gv_rva: '0x2090d60'
+    gv_sig: 48 89 15 ?? ?? ?? ?? 48 89 42 ??
+    gv_sig_va: '0x180b23e5c'
+    gv_va: '0x182090d60'
   client/s_pLocalPlayer.linux.yaml:
     gv_inst_disp: 3
     gv_inst_length: 7
@@ -40131,5 +40155,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14173'
-last_publish_time: '2026-07-29T16:15:11Z'
+last_publish_time: '2026-07-30T03:34:48Z'
 schema_version: 4
