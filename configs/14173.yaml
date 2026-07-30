@@ -983,6 +983,25 @@ modules:
       - name: find-CNetworkClientService_vtable
         expected_output:
           - CNetworkClientService_vtable.{platform}.yaml
+      - name: find-CNetworkClientService_RegisterEventMapInternal
+        platform: windows
+        expected_output:
+          - CNetworkClientService_RegisterEventMapInternal.{platform}.yaml
+      - name: find-CNetworkClientService_RegisterEventMap
+        platform: windows
+        expected_output:
+          - CNetworkClientService_RegisterEventMap.{platform}.yaml
+        expected_input:
+          - CNetworkClientService_RegisterEventMapInternal.{platform}.yaml
+          - CNetworkClientService_vtable.{platform}.yaml
+      - name: find-CNetworkClientService_OnEventMapCallbacks-engine
+        platform: windows
+        expected_output:
+          - RegisterEventListener_Abstract.{platform}.yaml
+          - CNetworkClientService_OnClientAdvanceTick.{platform}.yaml
+          - CNetworkClientService_OnClientPostAdvanceTick.{platform}.yaml
+        expected_input:
+          - CNetworkClientService_RegisterEventMapInternal.{platform}.yaml
       - name: find-CNetworkClientService_ReceivedServerInfo
         expected_output:
           - CNetworkClientService_ReceivedServerInfo.{platform}.yaml
@@ -2462,6 +2481,29 @@ modules:
           - CInputService::IsClientOnlyCommandAllowed
       - name: CNetworkClientService_vtable
         category: vtable
+      - name: CNetworkClientService_RegisterEventMapInternal
+        category: func
+        platform: windows
+        alias:
+          - CNetworkClientService::RegisterEventMapInternal
+      - name: CNetworkClientService_RegisterEventMap
+        category: vfunc
+        platform: windows
+        alias:
+          - CNetworkClientService::RegisterEventMap
+      - name: RegisterEventListener_Abstract
+        category: func
+        platform: windows
+      - name: CNetworkClientService_OnClientAdvanceTick
+        category: func
+        platform: windows
+        alias:
+          - CNetworkClientService::OnClientAdvanceTick
+      - name: CNetworkClientService_OnClientPostAdvanceTick
+        category: func
+        platform: windows
+        alias:
+          - CNetworkClientService::OnClientPostAdvanceTick
       - name: CNetworkClientService_ReceivedServerInfo
         category: vfunc
         alias:
