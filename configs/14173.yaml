@@ -1273,6 +1273,19 @@ modules:
       - name: find-CNetworkGameClient_vtable
         expected_output:
           - CNetworkGameClient_vtable.{platform}.yaml
+      - name: find-CNetworkClientService_OnSimpleLoopFrameUpdate-decompiles
+        platform: windows
+        expected_output:
+          - CNetworkGameClient_CreateMove.{platform}.yaml
+        expected_input:
+          - CNetworkClientService_OnSimpleLoopFrameUpdate.{platform}.yaml
+          - CNetworkGameClient_vtable.{platform}.yaml
+      - name: find-CNetworkGameClient_CreateMove-decompiles
+        platform: windows
+        expected_output:
+          - ISource2Client_CreateMove.{platform}.yaml
+        expected_input:
+          - CNetworkGameClient_CreateMove.{platform}.yaml
       - name: find-CNetworkGameClient_SetSignonState
         platform: windows
         expected_output:
@@ -2409,6 +2422,16 @@ modules:
           - CMsgSource2NetworkFlowQuality::PrintStats
       - name: CNetworkGameClient_vtable
         category: vtable
+      - name: CNetworkGameClient_CreateMove
+        category: vfunc
+        platform: windows
+        alias:
+          - CNetworkGameClient::CreateMove
+      - name: ISource2Client_CreateMove
+        category: vfunc
+        platform: windows
+        alias:
+          - ISource2Client::CreateMove
       - name: CNetworkGameClient_SetSignonState
         category: vfunc
         platform: windows
@@ -3814,6 +3837,25 @@ modules:
       - name: find-CSource2Client_vtable
         expected_output:
           - CSource2Client_vtable.{platform}.yaml
+      - name: find-CSource2Client_CreateMove
+        platform: windows
+        expected_output:
+          - CSource2Client_CreateMove.{platform}.yaml
+        expected_input:
+          - CSource2Client_vtable.{platform}.yaml
+          - ../engine/ISource2Client_CreateMove.{platform}.yaml
+      - name: find-CSource2Client_CreateMove-decompiles
+        platform: windows
+        expected_output:
+          - CClientInput_CreateMove.{platform}.yaml
+        expected_input:
+          - CSource2Client_CreateMove.{platform}.yaml
+      - name: find-CClientInput_CreateMove-decompiles
+        platform: windows
+        expected_output:
+          - CClientInput_m_viewangles.{platform}.yaml
+        expected_input:
+          - CClientInput_CreateMove.{platform}.yaml
       - name: find-CSource2Client_ProcessGameInput
         platform: windows
         expected_output:
@@ -4677,6 +4719,23 @@ modules:
           - IGameSystem::OnClientPreRenderAlt
       - name: CSource2Client_vtable
         category: vtable
+      - name: CSource2Client_CreateMove
+        category: vfunc
+        platform: windows
+        alias:
+          - CSource2Client::CreateMove
+      - name: CClientInput_CreateMove
+        category: vfunc
+        platform: windows
+        alias:
+          - CClientInput::CreateMove
+      - name: CClientInput_m_viewangles
+        category: structmember
+        platform: windows
+        struct: CClientInput
+        member: m_viewangles
+        alias:
+          - CClientInput::m_viewangles
       - name: CSource2Client_ProcessGameInput
         category: vfunc
         platform: windows
