@@ -4956,13 +4956,13 @@ modules:
         category: vfunc
         alias:
           - CSkeletonInstance::PostDataUpdate
-      - name: CSkeletonInstance_m_modelState
+      - name: CSkeletonInstance_m_modelState_m_simulationState
         category: structmember
         platform: windows
         struct: CSkeletonInstance
-        member: m_modelState
+        member: m_modelState.m_simulationState
         alias:
-          - CSkeletonInstance::m_modelState
+          - CSkeletonInstance::m_modelState.m_simulationState
       - name: CSkeletonInstance_m_modelState_m_hModel
         category: structmember
         platform: windows
