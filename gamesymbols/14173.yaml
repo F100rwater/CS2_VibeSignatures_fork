@@ -73,7 +73,7 @@ binaries:
       path: game/bin/win64/vphysics2.dll
       sha256: 6f5aa8c32e30d5369579f0e18bf97ec72e2076d3c06906efbfcc77f0c4111b80
 config_digest_version: 2
-config_sha256: sha256:cdbcd2f0009df537c164acef2a92aec529585dfaf35618294d08408beaa19ce6
+config_sha256: sha256:9b49b169515e2ec490ffc581b843ec9ab28325fefd2a1a86963ce95e1e0ce83a
 file_count: 3204
 files:
   SDL3/SDL_GetMouse.windows.yaml:
@@ -1154,33 +1154,6 @@ files:
     func_sig: 48 8B C4 48 89 70 ?? 57 48 81 EC ?? ?? ?? ?? 48 83 3D ?? ?? ?? ?? ??
     func_size: '0x370'
     func_va: '0x180bd1da0'
-  client/CModelState_SetupJointState.windows.yaml:
-    func_name: CModelState_SetupJointState
-    func_rva: '0xa59cc0'
-    func_sig: 48 89 5C 24 ?? 48 89 6C 24 ?? 56 57 41 56 48 83 EC ?? 48 8B F1 33 FF
-    func_size: '0x168'
-    func_va: '0x180a59cc0'
-  client/CModelState_m_nAttachmentCount.windows.yaml:
-    member_name: m_nAttachmentCount
-    offset: '0x18'
-    offset_sig: 89 46 ?? 89 56 ?? 0F 84 ?? ?? ?? ??
-    offset_sig_disp: 0
-    size: 4
-    struct_name: CModelState
-  client/CModelState_m_nBoneCount.windows.yaml:
-    member_name: m_nBoneCount
-    offset: '0x14'
-    offset_sig: 48 89 7E ?? 48 8D 6E ??
-    offset_sig_disp: 0
-    size: 8
-    struct_name: CModelState
-  client/CModelState_m_nTotalTransformCount.windows.yaml:
-    member_name: m_nTotalTransformCount
-    offset: '0x10'
-    offset_sig: 48 8D 6E ?? 89 7E ?? 48 85 DB
-    offset_sig_disp: 0
-    size: 4
-    struct_name: CModelState
   client/CNetworkGameClient_OnSource1Source1LegacyGameEvent.linux.yaml:
     func_name: CNetworkGameClient_OnSource1Source1LegacyGameEvent
     func_rva: '0x16d9d20'
@@ -1337,6 +1310,33 @@ files:
     vtable_size: '0x100'
     vtable_symbol: ??_7CPrediction@@6B@
     vtable_va: '0x181b0e760'
+  client/CSimulationState_SetupJointState.windows.yaml:
+    func_name: CSimulationState_SetupJointState
+    func_rva: '0xa59cc0'
+    func_sig: 48 89 5C 24 ?? 48 89 6C 24 ?? 56 57 41 56 48 83 EC ?? 48 8B F1 33 FF
+    func_size: '0x168'
+    func_va: '0x180a59cc0'
+  client/CSimulationState_m_nAttachmentCount.windows.yaml:
+    member_name: m_nAttachmentCount
+    offset: '0x18'
+    offset_sig: 89 46 ?? 89 56 ?? 0F 84 ?? ?? ?? ??
+    offset_sig_disp: 0
+    size: 4
+    struct_name: CSimulationState
+  client/CSimulationState_m_nBoneCount.windows.yaml:
+    member_name: m_nBoneCount
+    offset: '0x14'
+    offset_sig: 48 89 7E ?? 48 8D 6E ??
+    offset_sig_disp: 0
+    size: 4
+    struct_name: CSimulationState
+  client/CSimulationState_m_nTotalTransformCount.windows.yaml:
+    member_name: m_nTotalTransformCount
+    offset: '0x10'
+    offset_sig: 48 8D 6E ?? 89 7E ?? 48 85 DB
+    offset_sig_disp: 0
+    size: 4
+    struct_name: CSimulationState
   client/CSkeletonInstance_PostDataUpdate.linux.yaml:
     func_name: CSkeletonInstance_PostDataUpdate
     func_rva: '0x17cfe30'
@@ -1355,16 +1355,16 @@ files:
     vfunc_index: 25
     vfunc_offset: '0xc8'
     vtable_name: CSkeletonInstance
-  client/CSkeletonInstance_m_modelState.windows.yaml:
-    member_name: m_modelState
-    offset: '0x1c0'
-    struct_name: CSkeletonInstance
   client/CSkeletonInstance_m_modelState_m_hModel.windows.yaml:
     member_name: m_modelState.m_hModel
     offset: '0x1e0'
     offset_sig: 48 39 8E ?? ?? ?? ?? 75 ??
     offset_sig_disp: 0
     size: 8
+    struct_name: CSkeletonInstance
+  client/CSkeletonInstance_m_modelState_m_simulationState.windows.yaml:
+    member_name: m_modelState.m_simulationState
+    offset: '0x1c0'
     struct_name: CSkeletonInstance
   client/CSkeletonInstance_vtable.linux.yaml:
     vtable_class: CSkeletonInstance
@@ -40420,5 +40420,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14173'
-last_publish_time: '2026-07-30T11:43:23Z'
+last_publish_time: '2026-07-30T14:03:54Z'
 schema_version: 4
