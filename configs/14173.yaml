@@ -1011,6 +1011,12 @@ modules:
           - CNetworkClientService_OnServerBeginAsyncPostTickWork.{platform}.yaml
         expected_input:
           - CNetworkClientService_RegisterEventMapInternal.{platform}.yaml
+      - name: find-CNetworkClientService_OnClientProcessGameInput-decompiles
+        platform: windows
+        expected_output:
+          - ISource2Client_ProcessGameInput.{platform}.yaml
+        expected_input:
+          - CNetworkClientService_OnClientProcessGameInput.{platform}.yaml
       - name: find-CNetworkClientService_ReceivedServerInfo
         expected_output:
           - CNetworkClientService_ReceivedServerInfo.{platform}.yaml
@@ -2513,6 +2519,11 @@ modules:
         platform: windows
         alias:
           - CNetworkClientService::OnClientProcessGameInput
+      - name: ISource2Client_ProcessGameInput
+        category: vfunc
+        platform: windows
+        alias:
+          - ISource2Client::ProcessGameInput
       - name: CNetworkClientService_OnClientPollNetworking
         category: func
         platform: windows
@@ -3803,6 +3814,58 @@ modules:
       - name: find-CSource2Client_vtable
         expected_output:
           - CSource2Client_vtable.{platform}.yaml
+      - name: find-CSource2Client_ProcessGameInput
+        platform: windows
+        expected_output:
+          - CSource2Client_ProcessGameInput.{platform}.yaml
+        expected_input:
+          - CSource2Client_vtable.{platform}.yaml
+          - ../engine/ISource2Client_ProcessGameInput.{platform}.yaml
+      - name: find-CSource2Client_ProcessGameInput-decompiles
+        platform: windows
+        expected_output:
+          - ISource2Client_FrameStageNotify.{platform}.yaml
+        expected_input:
+          - CSource2Client_ProcessGameInput.{platform}.yaml
+      - name: find-CSource2Client_FrameStageNotify
+        platform: windows
+        expected_output:
+          - CSource2Client_FrameStageNotify.{platform}.yaml
+        expected_input:
+          - CSource2Client_vtable.{platform}.yaml
+          - ISource2Client_FrameStageNotify.{platform}.yaml
+      - name: find-CSource2Client_FrameStageNotify-decompiles
+        platform: windows
+        expected_output:
+          - OnRenderStart.{platform}.yaml
+        expected_input:
+          - CSource2Client_FrameStageNotify.{platform}.yaml
+      - name: find-OnRenderStart-decompiles
+        platform: windows
+        expected_output:
+          - IViewRender_OnRenderStart.{platform}.yaml
+        expected_input:
+          - OnRenderStart.{platform}.yaml
+      - name: find-CViewRender_vtable
+        expected_output:
+          - CViewRender_vtable.{platform}.yaml
+      - name: find-CViewRender_OnRenderStart
+        platform: windows
+        expected_output:
+          - CViewRender_OnRenderStart.{platform}.yaml
+        expected_input:
+          - CViewRender_vtable.{platform}.yaml
+          - IViewRender_OnRenderStart.{platform}.yaml
+      - name: find-CViewRender_Render
+        platform: windows
+        expected_output:
+          - CViewRender_Render.{platform}.yaml
+        expected_input:
+          - CViewRender_vtable.{platform}.yaml
+      - name: find-C_BaseEntity_SetInterpolationPhase
+        platform: windows
+        expected_output:
+          - C_BaseEntity_SetInterpolationPhase.{platform}.yaml
       - name: find-GlobalVarsWarningFunc
         platform: windows
         expected_output:
@@ -4608,6 +4671,46 @@ modules:
           - IGameSystem::OnClientPreRenderAlt
       - name: CSource2Client_vtable
         category: vtable
+      - name: CSource2Client_ProcessGameInput
+        category: vfunc
+        platform: windows
+        alias:
+          - CSource2Client::ProcessGameInput
+      - name: ISource2Client_FrameStageNotify
+        category: vfunc
+        platform: windows
+        alias:
+          - ISource2Client::FrameStageNotify
+      - name: CSource2Client_FrameStageNotify
+        category: vfunc
+        platform: windows
+        alias:
+          - CSource2Client::FrameStageNotify
+      - name: OnRenderStart
+        category: func
+        platform: windows
+      - name: IViewRender_OnRenderStart
+        category: vfunc
+        platform: windows
+        alias:
+          - IViewRender::OnRenderStart
+      - name: CViewRender_vtable
+        category: vtable
+      - name: CViewRender_OnRenderStart
+        category: vfunc
+        platform: windows
+        alias:
+          - CViewRender::OnRenderStart
+      - name: CViewRender_Render
+        category: vfunc
+        platform: windows
+        alias:
+          - CViewRender::Render
+      - name: C_BaseEntity_SetInterpolationPhase
+        category: func
+        platform: windows
+        alias:
+          - C_BaseEntity::SetInterpolationPhase
       - name: GlobalVarsWarningFunc
         category: func
         platform: windows
