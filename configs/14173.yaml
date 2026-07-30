@@ -4724,6 +4724,9 @@ modules:
         platform: windows
         alias:
           - CSource2Client::CreateMove
+      - name: CClientInput
+        category: struct
+        platform: windows
       - name: CClientInput_CreateMove
         category: vfunc
         platform: windows
