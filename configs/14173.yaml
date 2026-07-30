@@ -4164,9 +4164,9 @@ modules:
       - name: find-CSimulationState_SetupJointState-windows
         platform: windows
         expected_output:
-          - CModelState_m_nTotalTransformCount.{platform}.yaml
-          - CModelState_m_nBoneCount.{platform}.yaml
-          - CModelState_m_nAttachmentCount.{platform}.yaml
+          - CSimulationState_m_nTotalTransformCount.{platform}.yaml
+          - CSimulationState_m_nBoneCount.{platform}.yaml
+          - CSimulationState_m_nAttachmentCount.{platform}.yaml
         expected_input:
           - CSimulationState_SetupJointState.{platform}.yaml
       - name: find-CUserMessage_ExtraUserData_vtable
@@ -4977,27 +4977,27 @@ modules:
         platform: windows
         alias:
           - CSimulationState::SetupJointState
-      - name: CModelState_m_nTotalTransformCount
+      - name: CSimulationState_m_nTotalTransformCount
         category: structmember
         platform: windows
-        struct: CModelState
+        struct: CSimulationState
         member: m_nTotalTransformCount
         alias:
-          - CModelState::m_nTotalTransformCount
-      - name: CModelState_m_nBoneCount
+          - CSimulationState::m_nTotalTransformCount
+      - name: CSimulationState_m_nBoneCount
         category: structmember
         platform: windows
-        struct: CModelState
+        struct: CSimulationState
         member: m_nBoneCount
         alias:
-          - CModelState::m_nBoneCount
-      - name: CModelState_m_nAttachmentCount
+          - CSimulationState::m_nBoneCount
+      - name: CSimulationState_m_nAttachmentCount
         category: structmember
         platform: windows
-        struct: CModelState
+        struct: CSimulationState
         member: m_nAttachmentCount
         alias:
-          - CModelState::m_nAttachmentCount
+          - CSimulationState::m_nAttachmentCount
       - name: CUserMessage_ExtraUserData_vtable
         category: vtable
       - name: SendViolationReport
