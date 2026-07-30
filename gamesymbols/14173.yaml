@@ -73,7 +73,7 @@ binaries:
       path: game/bin/win64/vphysics2.dll
       sha256: 6f5aa8c32e30d5369579f0e18bf97ec72e2076d3c06906efbfcc77f0c4111b80
 config_digest_version: 2
-config_sha256: sha256:cdbcd2f0009df537c164acef2a92aec529585dfaf35618294d08408beaa19ce6
+config_sha256: sha256:66c12f67f77f120eaab5b38ecb6f444b806202078a1795c2ffb1b5f86a7feccd
 file_count: 3204
 files:
   SDL3/SDL_GetMouse.windows.yaml:
@@ -1355,16 +1355,16 @@ files:
     vfunc_index: 25
     vfunc_offset: '0xc8'
     vtable_name: CSkeletonInstance
-  client/CSkeletonInstance_m_modelState.windows.yaml:
-    member_name: m_modelState
-    offset: '0x1c0'
-    struct_name: CSkeletonInstance
   client/CSkeletonInstance_m_modelState_m_hModel.windows.yaml:
     member_name: m_modelState.m_hModel
     offset: '0x1e0'
     offset_sig: 48 39 8E ?? ?? ?? ?? 75 ??
     offset_sig_disp: 0
     size: 8
+    struct_name: CSkeletonInstance
+  client/CSkeletonInstance_m_modelState_m_simulationState.windows.yaml:
+    member_name: m_modelState.m_simulationState
+    offset: '0x1c0'
     struct_name: CSkeletonInstance
   client/CSkeletonInstance_vtable.linux.yaml:
     vtable_class: CSkeletonInstance
@@ -40420,5 +40420,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14173'
-last_publish_time: '2026-07-30T11:43:23Z'
+last_publish_time: '2026-07-30T12:30:56Z'
 schema_version: 4

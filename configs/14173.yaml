@@ -4157,7 +4157,7 @@ modules:
         platform: windows
         expected_output:
           - CSkeletonInstance_m_modelState_m_hModel.{platform}.yaml
-          - CSkeletonInstance_m_modelState.{platform}.yaml
+          - CSkeletonInstance_m_modelState_m_simulationState.{platform}.yaml
           - CModelState_SetupJointState.{platform}.yaml
         expected_input:
           - CSkeletonInstance_PostDataUpdate.{platform}.yaml

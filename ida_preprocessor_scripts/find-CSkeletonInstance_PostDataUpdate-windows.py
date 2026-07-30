@@ -9,7 +9,7 @@ TARGET_FUNCTION_NAMES = [
 
 TARGET_STRUCT_MEMBER_NAMES = [
     "CSkeletonInstance_m_modelState_m_hModel",
-    "CSkeletonInstance_m_modelState",
+    "CSkeletonInstance_m_modelState_m_simulationState",
 ]
 
 LLM_DECOMPILE = [
@@ -36,7 +36,7 @@ LLM_DECOMPILE = [
         },
     },
     {
-        "symbol_name": "CSkeletonInstance_m_modelState",
+        "symbol_name": "CSkeletonInstance_m_modelState_m_simulationState",
         "prompt_path": "prompt/call_llm_decompile.md",
         "reference_yaml_paths": [
             "references/client/CSkeletonInstance_PostDataUpdate.{platform}.yaml",
@@ -72,7 +72,7 @@ GENERATE_YAML_DESIRED_FIELDS = [
         ],
     ),
     (
-        "CSkeletonInstance_m_modelState",
+        "CSkeletonInstance_m_modelState_m_simulationState",
         [
             "struct_name",
             "member_name",
