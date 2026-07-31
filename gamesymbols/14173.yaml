@@ -1333,7 +1333,7 @@ files:
   client/CSimulationState_m_nTotalTransformCount.windows.yaml:
     member_name: m_nTotalTransformCount
     offset: '0x10'
-    offset_sig: 89 7E ?? 48 85 DB 74 ??
+    offset_sig: 48 8D 6E ?? 89 7E ?? 48 85 DB
     offset_sig_disp: 0
     size: 4
     struct_name: CSimulationState
@@ -40450,5 +40450,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14173'
-last_publish_time: '2026-07-31T02:57:22Z'
+last_publish_time: '2026-07-31T05:11:53Z'
 schema_version: 4
