@@ -7024,6 +7024,11 @@ modules:
           - CSource2GameEntities_CheckTransmit.{platform}.yaml
         expected_input:
           - CSource2GameEntities_vtable.{platform}.yaml
+      - name: find-CSource2GameEntities_ShouldClientReceiveStringTableUserData
+        expected_output:
+          - CSource2GameEntities_ShouldClientReceiveStringTableUserData.{platform}.yaml
+        expected_input:
+          - CSource2GameEntities_vtable.{platform}.yaml
       - name: find-CCheckTransmitInfo_m_nPlayerSlot
         expected_output:
           - CCheckTransmitInfo_m_nPlayerSlot.{platform}.yaml
@@ -9945,6 +9950,13 @@ modules:
           - ISource2GameEntities::CheckTransmit
           - ISource2GameEntities_CheckTransmit
           - CheckTransmit
+      - name: CSource2GameEntities_ShouldClientReceiveStringTableUserData
+        category: vfunc
+        alias:
+          - CSource2GameEntities::ShouldClientReceiveStringTableUserData
+          - ISource2GameEntities::ShouldClientReceiveStringTableUserData
+          - ISource2GameEntities_ShouldClientReceiveStringTableUserData
+          - ShouldClientReceiveStringTableUserData
       - name: CBaseEntity_EmitSoundFilter
         category: func
         alias:
