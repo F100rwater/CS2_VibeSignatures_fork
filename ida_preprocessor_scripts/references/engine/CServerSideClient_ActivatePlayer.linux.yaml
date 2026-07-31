@@ -13,13 +13,14 @@ disasm_code: |-
   .text:0000000000538CC4                 call    sub_522F00
   .text:0000000000538CC9                 lea     rdi, aCserversidecli_7; "CServerSideClient::ActivatePlayer -star"...
   .text:0000000000538CD0                 xor     eax, eax
-  .text:0000000000538CD2                 call    sub_2CA1C0
+  .text:0000000000538CD2                 call    _COM_TimestampedLog
   .text:0000000000538CD7                 mov     rdi, [rbx+50h]
   .text:0000000000538CDB                 call    sub_4F98F0
   .text:0000000000538CE0                 test    al, al
   .text:0000000000538CE2                 jz      loc_538E48
   .text:0000000000538CE8                 lea     r13, g_pSource2GameClients
-  .text:0000000000538CEF                 mov     esi, [rbx+48h]
+  .text:0000000000538CEF                 ; _QWORD
+  .text:0000000000538CEF                 mov     esi, [rbx+48h]; _QWORD
   .text:0000000000538CF2                 mov     rdi, [r13+0]
   .text:0000000000538CF6                 mov     rax, [rdi]
   .text:0000000000538CF9                 call    qword ptr [rax+0B0h]
@@ -27,7 +28,7 @@ disasm_code: |-
   .text:0000000000538D01                 jz      loc_538DD8
   .text:0000000000538D07                 lea     rdi, aClientactive; "ClientActive"
   .text:0000000000538D0E                 xor     eax, eax
-  .text:0000000000538D10                 call    sub_2CA1C0
+  .text:0000000000538D10                 call    _COM_TimestampedLog
   .text:0000000000538D15                 mov     r15, [r13+0]
   .text:0000000000538D19                 mov     rdi, rbx
   .text:0000000000538D1C                 mov     rax, [r15]
@@ -36,7 +37,7 @@ disasm_code: |-
   .text:0000000000538D28                 mov     r12, [rbx+40h]
   .text:0000000000538D2C                 mov     rdi, [rbx+50h]
   .text:0000000000538D30                 mov     [rbp+var_38], rax
-  .text:0000000000538D34                 lea     rax, unk_27CC16
+  .text:0000000000538D34                 lea     rax, src
   .text:0000000000538D3B                 test    r12, r12
   .text:0000000000538D3E                 cmovz   r12, rax
   .text:0000000000538D42                 call    sub_4F98F0
@@ -44,18 +45,20 @@ disasm_code: |-
   .text:0000000000538D4B                 mov     rdi, r15
   .text:0000000000538D4E                 movzx   edx, al
   .text:0000000000538D51                 mov     rcx, r12
-  .text:0000000000538D54                 mov     esi, [rbx+48h]
+  .text:0000000000538D54                 ; _QWORD
+  .text:0000000000538D54                 mov     esi, [rbx+48h]; _QWORD
   .text:0000000000538D57                 call    r14
   .text:0000000000538D5A                 lea     rdi, aClientsettings; "ClientSettingsChanged"
   .text:0000000000538D61                 xor     eax, eax
-  .text:0000000000538D63                 call    sub_2CA1C0
+  .text:0000000000538D63                 call    _COM_TimestampedLog
   .text:0000000000538D68                 mov     rdi, [r13+0]
-  .text:0000000000538D6C                 mov     esi, [rbx+48h]
+  .text:0000000000538D6C                 ; _QWORD
+  .text:0000000000538D6C                 mov     esi, [rbx+48h]; _QWORD
   .text:0000000000538D6F                 mov     rax, [rdi]
-  .text:0000000000538D72                 call    qword ptr [rax+98h]; 0x98 = 152LL = CSource2GameClients_ClientSettingsChanged
+  .text:0000000000538D72                 call    qword ptr [rax+98h]; 0x98 = 152LL = ISource2GameClients_ClientSettingsChanged
   .text:0000000000538D78                 lea     rdi, aTestscriptmgrC; "TestScriptMgr_CheckPoint(client_connect"...
   .text:0000000000538D7F                 xor     eax, eax
-  .text:0000000000538D81                 call    sub_2CA1C0
+  .text:0000000000538D81                 call    _COM_TimestampedLog
   .text:0000000000538D86                 lea     rax, g_pTestScriptMgr
   .text:0000000000538D8D                 mov     rdi, [rax]
   .text:0000000000538D90                 test    rdi, rdi
@@ -65,7 +68,7 @@ disasm_code: |-
   .text:0000000000538D9F                 call    qword ptr [rax+60h]
   .text:0000000000538DA2                 lea     rdi, aCserversidecli_8; "CServerSideClient::ActivatePlayer -end"
   .text:0000000000538DA9                 xor     eax, eax
-  .text:0000000000538DAB                 call    sub_2CA1C0
+  .text:0000000000538DAB                 call    _COM_TimestampedLog
   .text:0000000000538DB0                 mov     rdi, [rbx+50h]
   .text:0000000000538DB4                 mov     rax, [rdi]
   .text:0000000000538DB7                 call    qword ptr [rax+0E0h]
@@ -79,7 +82,7 @@ disasm_code: |-
   .text:0000000000538DD2                 pop     rbp
   .text:0000000000538DD3                 retn
   .text:0000000000538DD8                 lea     rdi, aClientputinser; "ClientPutInServer - no player in save g"...
-  .text:0000000000538DDF                 call    sub_2CA1C0
+  .text:0000000000538DDF                 call    _COM_TimestampedLog
   .text:0000000000538DE4                 mov     r14, [r13+0]
   .text:0000000000538DE8                 mov     rdi, rbx
   .text:0000000000538DEB                 mov     rax, [r14]
@@ -96,15 +99,16 @@ disasm_code: |-
   .text:0000000000538E1C                 jnz     short loc_538E60
   .text:0000000000538E1E                 movzx   ecx, byte ptr [rbx+0A0h]
   .text:0000000000538E25                 mov     rdx, [rbx+40h]
-  .text:0000000000538E29                 lea     rax, unk_27CC16
+  .text:0000000000538E29                 lea     rax, src
   .text:0000000000538E30                 mov     rdi, r14
-  .text:0000000000538E33                 mov     esi, [rbx+48h]
+  .text:0000000000538E33                 ; _QWORD
+  .text:0000000000538E33                 mov     esi, [rbx+48h]; _QWORD
   .text:0000000000538E36                 test    rdx, rdx
   .text:0000000000538E39                 cmovz   rdx, rax
   .text:0000000000538E3D                 call    r12
   .text:0000000000538E40                 jmp     loc_538D07
   .text:0000000000538E48                 lea     rdi, aClientputinser_0; "ClientPutInServer"
-  .text:0000000000538E4F                 call    sub_2CA1C0
+  .text:0000000000538E4F                 call    _COM_TimestampedLog
   .text:0000000000538E54                 lea     r13, g_pSource2GameClients
   .text:0000000000538E5B                 jmp     short loc_538DE4
   .text:0000000000538E60                 mov     [rbp+var_38], r8
@@ -114,26 +118,28 @@ disasm_code: |-
   .text:0000000000538E6D                 movzx   ecx, al
   .text:0000000000538E70                 jmp     short loc_538E25
 procedure: |-
-  void __fastcall sub_538CB0(__int64 a1, __int64 a2)
+  void __fastcall CServerSideClient_ActivatePlayer(__int64 a1, __int64 a2)
   {
     _QWORD *v2; // r15
-    void (__fastcall *v3)(_QWORD *, _QWORD, _QWORD, void *, __int64); // r14
+    void (__fastcall *v3)(_QWORD *, __int64, _QWORD, const bool *, __int64); // r14
     __int64 v4; // rax
-    void *v5; // r12
+    const bool *v5; // r12
     unsigned __int8 v6; // al
-    _QWORD *v7; // r14
-    void (__fastcall *v8)(_QWORD *, _QWORD, void *, __int64, __int64); // r12
-    __int64 v9; // rax
-    __int64 v10; // rcx
-    __int64 v11; // r8
-    __int64 (__fastcall *v12)(); // rax
-    void *v13; // rdx
-    unsigned __int8 v14; // al
-    __int64 v15; // [rsp+8h] [rbp-38h]
-    __int64 v16; // [rsp+8h] [rbp-38h]
+    __int64 v7; // rsi
+    const char *v8; // rsi
+    _QWORD *v9; // r14
+    void (__fastcall *v10)(_QWORD *, __int64, const bool *, __int64, __int64); // r12
+    __int64 v11; // rax
+    __int64 v12; // rcx
+    __int64 v13; // r8
+    __int64 (__fastcall *v14)(); // rax
+    const bool *v15; // rdx
+    unsigned __int8 v16; // al
+    __int64 v17; // [rsp+8h] [rbp-38h]
+    __int64 v18; // [rsp+8h] [rbp-38h]
 
     sub_522F00();
-    sub_2CA1C0("CServerSideClient::ActivatePlayer -start");
+    COM_TimestampedLog("CServerSideClient::ActivatePlayer -start", a2);
     if ( (unsigned __int8)sub_4F98F0(*(_QWORD *)(a1 + 80)) )
     {
       a2 = *(unsigned int *)(a1 + 72);
@@ -143,54 +149,58 @@ procedure: |-
       {
         goto LABEL_3;
       }
-      sub_2CA1C0("ClientPutInServer - no player in save game");
+      COM_TimestampedLog("ClientPutInServer - no player in save game", a2);
     }
     else
     {
-      sub_2CA1C0("ClientPutInServer");
+      COM_TimestampedLog("ClientPutInServer", a2);
     }
-    v7 = g_pSource2GameClients;
-    v8 = *(void (__fastcall **)(_QWORD *, _QWORD, void *, __int64, __int64))(*g_pSource2GameClients + 104LL);
-    v9 = sub_525210(a1);
-    v10 = 2;
-    v11 = v9;
+    v9 = g_pSource2GameClients;
+    v10 = *(void (__fastcall **)(_QWORD *, __int64, const bool *, __int64, __int64))(*g_pSource2GameClients + 104LL);
+    v11 = sub_525210(a1);
+    v12 = 2;
+    v13 = v11;
     if ( !*(_BYTE *)(a1 + 322) )
     {
-      v12 = *(__int64 (__fastcall **)())(*(_QWORD *)a1 + 152LL);
-      if ( v12 == sub_4F0CC0 )
+      v14 = *(__int64 (__fastcall **)())(*(_QWORD *)a1 + 152LL);
+      if ( v14 == sub_4F0CC0 )
       {
-        v10 = *(unsigned __int8 *)(a1 + 160);
+        v12 = *(unsigned __int8 *)(a1 + 160);
       }
       else
       {
-        v16 = v11;
-        v14 = ((__int64 (__fastcall *)(__int64, __int64, __int64 (__fastcall *)(), __int64))v12)(a1, a2, sub_4F0CC0, 2);
-        v11 = v16;
-        v10 = v14;
+        v18 = v13;
+        v16 = ((__int64 (__fastcall *)(__int64, __int64, __int64 (__fastcall *)(), __int64))v14)(a1, a2, sub_4F0CC0, 2);
+        v13 = v18;
+        v12 = v16;
       }
     }
-    v13 = *(void **)(a1 + 64);
-    if ( !v13 )
-      v13 = &unk_27CC16;
-    v8(v7, *(unsigned int *)(a1 + 72), v13, v10, v11);
+    v15 = *(const bool **)(a1 + 64);
+    a2 = *(unsigned int *)(a1 + 72);
+    if ( !v15 )
+      v15 = &src;
+    v10(v9, a2, v15, v12, v13);
   LABEL_3:
-    sub_2CA1C0("ClientActive");
+    COM_TimestampedLog("ClientActive", a2);
     v2 = g_pSource2GameClients;
-    v3 = *(void (__fastcall **)(_QWORD *, _QWORD, _QWORD, void *, __int64))(*g_pSource2GameClients + 112LL);
+    v3 = *(void (__fastcall **)(_QWORD *, __int64, _QWORD, const bool *, __int64))(*g_pSource2GameClients + 112LL);
     v4 = sub_525210(a1);
-    v5 = *(void **)(a1 + 64);
-    v15 = v4;
+    v5 = *(const bool **)(a1 + 64);
+    v17 = v4;
     if ( !v5 )
-      v5 = &unk_27CC16;
+      v5 = &src;
     v6 = sub_4F98F0(*(_QWORD *)(a1 + 80));
-    v3(v2, *(unsigned int *)(a1 + 72), v6, v5, v15);
-    sub_2CA1C0("ClientSettingsChanged");
-    (*(void (__fastcall **)(_QWORD *, _QWORD))(*g_pSource2GameClients + 152LL))(
-      g_pSource2GameClients,
-      *(unsigned int *)(a1 + 72));// 0x98 = 152LL = CSource2GameClients_ClientSettingsChanged
-    sub_2CA1C0("TestScriptMgr_CheckPoint(client_connected)");
+    v7 = *(unsigned int *)(a1 + 72);
+    v3(v2, v7, v6, v5, v17);
+    COM_TimestampedLog("ClientSettingsChanged", v7);
+    v8 = (const char *)*(unsigned int *)(a1 + 72);
+    (*(void (__fastcall **)(_QWORD *, const char *))(*g_pSource2GameClients + 152LL))(g_pSource2GameClients, v8);// 0x98 = 152LL = ISource2GameClients_ClientSettingsChanged
+    COM_TimestampedLog("TestScriptMgr_CheckPoint(client_connected)", v8);
     if ( g_pTestScriptMgr )
+    {
+      v8 = "client_connected";
       (*(void (__fastcall **)(_QWORD *, const char *))(*g_pTestScriptMgr + 96LL))(g_pTestScriptMgr, "client_connected");
-    sub_2CA1C0("CServerSideClient::ActivatePlayer -end");
+    }
+    COM_TimestampedLog("CServerSideClient::ActivatePlayer -end", v8);
     *(float *)(a1 + 3804) = (*(float (__fastcall **)(_QWORD))(**(_QWORD **)(a1 + 80) + 224LL))(*(_QWORD *)(a1 + 80));
   }

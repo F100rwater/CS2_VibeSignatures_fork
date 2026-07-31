@@ -106,8 +106,7 @@ disasm_code: |-
   .text:00000001800BCAA3                 mov     rcx, cs:g_pSource2GameClients
   .text:00000001800BCAAA                 mov     edx, [rsi]
   .text:00000001800BCAAC                 mov     rax, [rcx]
-  .text:00000001800BCAAF                 ; 0x98 = 152LL = CSource2GameClients_ClientSettingsChanged
-  .text:00000001800BCAAF                 call    qword ptr [rax+98h]; 0x98 = 152LL = CSource2GameClients_ClientSettingsChanged
+  .text:00000001800BCAAF                 call    qword ptr [rax+98h]; 0x98 = 152LL = ISource2GameClients_ClientSettingsChanged
   .text:00000001800BCAB5                 lea     rcx, aTestscriptmgrC; "TestScriptMgr_CheckPoint(client_connect"...
   .text:00000001800BCABC                 call    cs:COM_TimestampedLog
   .text:00000001800BCAC2                 mov     rcx, cs:g_pTestScriptMgr
@@ -130,7 +129,7 @@ disasm_code: |-
   .text:00000001800BCB15                 pop     rbx
   .text:00000001800BCB16                 retn
 procedure: |-
-  void __fastcall sub_1800BC8F0(__int64 a1)
+  void __fastcall CServerSideClient_ActivatePlayer(__int64 a1)
   {
     void *v2; // r14
     __int64 v3; // rdi
@@ -195,7 +194,7 @@ procedure: |-
       v2 = *(void **)(a1 + 64);
     v9(g_pSource2GameClients, *v7, *(unsigned __int8 *)(*(_QWORD *)(a1 + 80) + 305LL), v2, v3);
     COM_TimestampedLog("ClientSettingsChanged");
-    (*(void (__fastcall **)(__int64, _QWORD))(*(_QWORD *)g_pSource2GameClients + 152LL))(g_pSource2GameClients, *v7);// 0x98 = 152LL = CSource2GameClients_ClientSettingsChanged
+    (*(void (__fastcall **)(__int64, _QWORD))(*(_QWORD *)g_pSource2GameClients + 152LL))(g_pSource2GameClients, *v7);// 0x98 = 152LL = ISource2GameClients_ClientSettingsChanged
     COM_TimestampedLog("TestScriptMgr_CheckPoint(client_connected)");
     if ( g_pTestScriptMgr )
       (*(void (__fastcall **)(__int64, const char *))(*(_QWORD *)g_pTestScriptMgr + 96LL))(
