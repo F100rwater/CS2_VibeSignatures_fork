@@ -7042,6 +7042,11 @@ modules:
           - CSource2GameEntities_CheckTransmit.{platform}.yaml
         expected_input:
           - CSource2GameEntities_vtable.{platform}.yaml
+      - name: find-CSource2GameEntities_ShouldClientReceiveStringTableUserData
+        expected_output:
+          - CSource2GameEntities_ShouldClientReceiveStringTableUserData.{platform}.yaml
+        expected_input:
+          - CSource2GameEntities_vtable.{platform}.yaml
       - name: find-CCheckTransmitInfo_m_nPlayerSlot
         expected_output:
           - CCheckTransmitInfo_m_nPlayerSlot.{platform}.yaml
@@ -8079,9 +8084,28 @@ modules:
       - name: find-CLoopModeGame_vtable
         expected_output:
           - CLoopModeGame_vtable.{platform}.yaml
+      - name: find-CLoopModeGame_ctor
+        expected_output:
+          - CLoopModeGame_ctor.{platform}.yaml
       - name: find-CLoopModeFactory_CLoopModeGame_vtable
         expected_output:
           - CLoopModeFactory_CLoopModeGame_vtable.{platform}.yaml
+      - name: find-CLoopModeFactory_CLoopModeGame_CreateLoopMode-noinline
+        optional_output:
+          - CLoopModeFactory_CLoopModeGame_CreateLoopMode.{platform}.yaml
+        expected_input:
+          - CLoopModeFactory_CLoopModeGame_vtable.{platform}.yaml
+        prerequisite:
+          - find-CLoopModeGame_ctor
+      - name: find-CLoopModeFactory_CLoopModeGame_CreateLoopMode-inlined
+        expected_output:
+          - CLoopModeFactory_CLoopModeGame_CreateLoopMode.{platform}.yaml
+        expected_input:
+          - CLoopModeFactory_CLoopModeGame_vtable.{platform}.yaml
+        skip_if_exists:
+          - CLoopModeFactory_CLoopModeGame_CreateLoopMode.{platform}.yaml
+        prerequisite:
+          - find-CLoopModeFactory_CLoopModeGame_CreateLoopMode-noinline
       - name: find-CLoopModeGame_StaticInit
         expected_output:
           - CLoopModeGame_StaticInit.{platform}.yaml
@@ -9963,6 +9987,13 @@ modules:
           - ISource2GameEntities::CheckTransmit
           - ISource2GameEntities_CheckTransmit
           - CheckTransmit
+      - name: CSource2GameEntities_ShouldClientReceiveStringTableUserData
+        category: vfunc
+        alias:
+          - CSource2GameEntities::ShouldClientReceiveStringTableUserData
+          - ISource2GameEntities::ShouldClientReceiveStringTableUserData
+          - ISource2GameEntities_ShouldClientReceiveStringTableUserData
+          - ShouldClientReceiveStringTableUserData
       - name: CBaseEntity_EmitSoundFilter
         category: func
         alias:
@@ -11241,6 +11272,10 @@ modules:
         category: func
         alias:
           - CLoopModeGame::StaticInit
+      - name: CLoopModeGame_ctor
+        category: func
+        alias:
+          - CLoopModeGame::CLoopModeGame
       - name: CLoopModeGame_vtable
         category: vtable
       - name: CLoopModeFactory_CLoopModeGame_vtable
@@ -11249,6 +11284,10 @@ modules:
         category: vfunc
         alias:
           - CLoopModeFactory<CLoopModeGame>::Init
+      - name: CLoopModeFactory_CLoopModeGame_CreateLoopMode
+        category: vfunc
+        alias:
+          - CLoopModeFactory<CLoopModeGame>::CreateLoopMode
       - name: CLoopModeFactory_CLoopModeGame_Shutdown
         category: vfunc
         alias:

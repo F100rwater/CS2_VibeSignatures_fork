@@ -73,8 +73,8 @@ binaries:
       path: game/bin/win64/vphysics2.dll
       sha256: 6f5aa8c32e30d5369579f0e18bf97ec72e2076d3c06906efbfcc77f0c4111b80
 config_digest_version: 2
-config_sha256: sha256:8fa6e72771486fd9ba6606ff5ca37e093bfecfca2c95fceb414b35add461f133
-file_count: 3208
+config_sha256: sha256:6f244a94f02b752db547411c7e61b198f49d6fb46110bc56484d98eb99f9180c
+file_count: 3214
 files:
   SDL3/SDL_GetMouse.windows.yaml:
     func_name: SDL_GetMouse
@@ -29960,6 +29960,24 @@ files:
     vtable_size: '0x88'
     vtable_symbol: ??_7CLoadingSpawnGroup@@6B@
     vtable_va: '0x181798e68'
+  server/CLoopModeFactory_CLoopModeGame_CreateLoopMode.linux.yaml:
+    func_name: CLoopModeFactory_CLoopModeGame_CreateLoopMode
+    func_rva: '0x1711720'
+    func_sig: 55 BF 70 04 ?? ??
+    func_size: '0x27'
+    func_va: '0x1711720'
+    vfunc_index: 2
+    vfunc_offset: '0x10'
+    vtable_name: CLoopModeFactory_CLoopModeGame_vtable
+  server/CLoopModeFactory_CLoopModeGame_CreateLoopMode.windows.yaml:
+    func_name: CLoopModeFactory_CLoopModeGame_CreateLoopMode
+    func_rva: '0xbbf660'
+    func_sig: 48 89 74 24 ?? 57 48 83 EC ?? B9 ?? ?? ?? ?? E8 ?? ?? ?? ?? 33 F6
+    func_size: '0x1c8'
+    func_va: '0x180bbf660'
+    vfunc_index: 2
+    vfunc_offset: '0x10'
+    vtable_name: CLoopModeFactory_CLoopModeGame_vtable
   server/CLoopModeFactory_CLoopModeGame_Init.linux.yaml:
     func_name: CLoopModeFactory_CLoopModeGame_Init
     func_rva: '0x172e5b0'
@@ -30278,6 +30296,18 @@ files:
     func_sig: 40 53 48 83 EC ?? 48 8D 0D ?? ?? ?? ?? FF 15 ?? ?? ?? ?? 48 8D 0D ?? ?? ?? ?? FF 15 ?? ?? ?? ??
     func_size: '0xb5'
     func_va: '0x180bbf530'
+  server/CLoopModeGame_ctor.linux.yaml:
+    func_name: CLoopModeGame_ctor
+    func_rva: '0x17113b0'
+    func_sig: 55 48 8D 05 ?? ?? ?? ?? BA ?? ?? ?? ?? 41 B9 ?? ?? ?? ??
+    func_size: '0x370'
+    func_va: '0x17113b0'
+  server/CLoopModeGame_ctor.windows.yaml:
+    func_name: CLoopModeGame_ctor
+    func_rva: '0xbbf660'
+    func_sig: 48 89 74 24 ?? 57 48 83 EC ?? B9 ?? ?? ?? ?? E8 ?? ?? ?? ?? 33 F6
+    func_size: '0x1c8'
+    func_va: '0x180bbf660'
   server/CLoopModeGame_vtable.linux.yaml:
     vtable_class: CLoopModeGame
     vtable_entries:
@@ -35466,6 +35496,24 @@ files:
     vfunc_index: 12
     vfunc_offset: '0x60'
     vtable_name: CSource2GameEntities
+  server/CSource2GameEntities_ShouldClientReceiveStringTableUserData.linux.yaml:
+    func_name: CSource2GameEntities_ShouldClientReceiveStringTableUserData
+    func_rva: '0x18cfa50'
+    func_sig: 55 48 89 E5 53 48 89 F3 48 83 EC ?? 48 8B 3D ?? ?? ?? ??
+    func_size: '0xa3'
+    func_va: '0x18cfa50'
+    vfunc_index: 15
+    vfunc_offset: '0x78'
+    vtable_name: CSource2GameEntities
+  server/CSource2GameEntities_ShouldClientReceiveStringTableUserData.windows.yaml:
+    func_name: CSource2GameEntities_ShouldClientReceiveStringTableUserData
+    func_rva: '0xd17b80'
+    func_sig: 48 89 5C 24 ?? 57 48 83 EC ?? 48 8B 0D ?? ?? ?? ?? 4D 8B D1
+    func_size: '0x93'
+    func_va: '0x180d17b80'
+    vfunc_index: 14
+    vfunc_offset: '0x70'
+    vtable_name: CSource2GameEntities
   server/CSource2GameEntities_vtable.linux.yaml:
     vtable_class: CSource2GameEntities
     vtable_entries:
@@ -40450,5 +40498,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14173'
-last_publish_time: '2026-07-31T07:59:35Z'
+last_publish_time: '2026-07-31T12:08:29Z'
 schema_version: 4
