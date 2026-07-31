@@ -73,8 +73,8 @@ binaries:
       path: game/bin/win64/vphysics2.dll
       sha256: 6f5aa8c32e30d5369579f0e18bf97ec72e2076d3c06906efbfcc77f0c4111b80
 config_digest_version: 2
-config_sha256: sha256:645abaff12df3e838ebcc30f59c40131f9366d9cec0930f57f168d1c631b4360
-file_count: 3208
+config_sha256: sha256:fc4a3e39e56244a60398cff2e247eb9176033f87201441fa0304edda76dfc43f
+file_count: 3210
 files:
   SDL3/SDL_GetMouse.windows.yaml:
     func_name: SDL_GetMouse
@@ -35466,6 +35466,24 @@ files:
     vfunc_index: 12
     vfunc_offset: '0x60'
     vtable_name: CSource2GameEntities
+  server/CSource2GameEntities_ShouldClientReceiveStringTableUserData.linux.yaml:
+    func_name: CSource2GameEntities_ShouldClientReceiveStringTableUserData
+    func_rva: '0x18cfa50'
+    func_sig: 55 48 89 E5 53 48 89 F3 48 83 EC ?? 48 8B 3D ?? ?? ?? ??
+    func_size: '0xa3'
+    func_va: '0x18cfa50'
+    vfunc_index: 15
+    vfunc_offset: '0x78'
+    vtable_name: CSource2GameEntities
+  server/CSource2GameEntities_ShouldClientReceiveStringTableUserData.windows.yaml:
+    func_name: CSource2GameEntities_ShouldClientReceiveStringTableUserData
+    func_rva: '0xd17b80'
+    func_sig: 48 89 5C 24 ?? 57 48 83 EC ?? 48 8B 0D ?? ?? ?? ?? 4D 8B D1
+    func_size: '0x93'
+    func_va: '0x180d17b80'
+    vfunc_index: 14
+    vfunc_offset: '0x70'
+    vtable_name: CSource2GameEntities
   server/CSource2GameEntities_vtable.linux.yaml:
     vtable_class: CSource2GameEntities
     vtable_entries:
@@ -40450,5 +40468,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14173'
-last_publish_time: '2026-07-31T05:11:53Z'
+last_publish_time: '2026-07-31T10:26:10Z'
 schema_version: 4
