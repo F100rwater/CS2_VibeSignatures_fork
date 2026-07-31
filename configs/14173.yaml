@@ -652,6 +652,16 @@ modules:
           - CServerSideClient_ExecuteStringCommand.{platform}.yaml
         expected_input:
           - CServerSideClient_vtable.{platform}.yaml
+      - name: find-CServerSideClient_ActivatePlayer
+        expected_output:
+          - CServerSideClient_ActivatePlayer.{platform}.yaml
+        expected_input:
+          - CServerSideClient_vtable.{platform}.yaml
+      - name: find-CServerSideClient_ActivatePlayer-decompiles
+        expected_output:
+          - ISource2GameClients_ClientSettingsChanged.{platform}.yaml
+        expected_input:
+          - CServerSideClient_ActivatePlayer.{platform}.yaml
       - name: find-CGameResourceService_vtable
         expected_output:
           - CGameResourceService_vtable.{platform}.yaml
@@ -2062,6 +2072,14 @@ modules:
         category: vfunc
         alias:
           - CServerSideClient::ExecuteStringCommand
+      - name: CServerSideClient_ActivatePlayer
+        category: vfunc
+        alias:
+          - CServerSideClient::ActivatePlayer
+      - name: ISource2GameClients_ClientSettingsChanged
+        category: vfunc
+        alias:
+          - ISource2GameClients::ClientSettingsChanged
       - name: CGameResourceService_BuildResourceManifest
         category: func
         alias:
@@ -6128,6 +6146,12 @@ modules:
       - name: find-CBasePlayerController_HandleCommand_JoinTeam
         expected_output:
           - CBasePlayerController_HandleCommand_JoinTeam.{platform}.yaml
+      - name: find-CSource2GameClients_ClientSettingsChanged
+        expected_output:
+          - CSource2GameClients_ClientSettingsChanged.{platform}.yaml
+        expected_input:
+          - CSource2GameClients_vtable.{platform}.yaml
+          - ../engine/ISource2GameClients_ClientSettingsChanged.{platform}.yaml
       - name: find-CSource2GameClients_ClientDisconnect
         expected_output:
           - CSource2GameClients_ClientDisconnect.{platform}.yaml
@@ -9219,6 +9243,10 @@ modules:
         category: func
         alias:
           - CBasePlayerController::SetConnectedState
+      - name: CSource2GameClients_ClientSettingsChanged
+        category: vfunc
+        alias:
+          - CSource2GameClients::ClientSettingsChanged
       - name: CSource2GameClients_ClientDisconnect
         category: vfunc
         alias:
