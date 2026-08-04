@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
-"""Preprocess script for find-CCheckTransmitInfo_m_nPlayerSlot skill."""
+"""Preprocess script for find-CSource2GameEntities_CheckTransmit-decompiles skill."""
 
 from ida_analyze_util import preprocess_common_skill
 
+
 TARGET_STRUCT_MEMBER_NAMES = [
     "CCheckTransmitInfo_m_nPlayerSlot",
+    "CCheckTransmitInfo_m_bFullUpdate",
 ]
+
 
 LLM_DECOMPILE = [
     {
@@ -19,12 +22,34 @@ LLM_DECOMPILE = [
             "CSource2GameEntities_CheckTransmit.{platform}.yaml": "required",
         },
     },
+    {
+        "symbol_name": "CCheckTransmitInfo_m_bFullUpdate",
+        "prompt_path": "prompt/call_llm_decompile.md",
+        "reference_yaml_paths": [
+            "references/server/CSource2GameEntities_CheckTransmit.{platform}.yaml",
+        ],
+        "expected_result_sections": ["found_struct_offset"],
+        "dependency_policy": {
+            "CSource2GameEntities_CheckTransmit.{platform}.yaml": "required",
+        },
+    },
 ]
 
+
 GENERATE_YAML_DESIRED_FIELDS = [
-    # (symbol_name, generate_yaml_fields)
     (
         "CCheckTransmitInfo_m_nPlayerSlot",
+        [
+            "struct_name",
+            "member_name",
+            "offset",
+            "size",
+            "offset_sig",
+            "offset_sig_disp",
+        ],
+    ),
+    (
+        "CCheckTransmitInfo_m_bFullUpdate",
         [
             "struct_name",
             "member_name",
@@ -48,7 +73,7 @@ async def preprocess_skill(
     llm_config=None,
     debug=False,
 ):
-    """Reuse previous gamever offset_sig to locate target struct offset and write YAML."""
+    """Reuse previous gamever offset_sig to locate target struct offsets and write YAML."""
     return await preprocess_common_skill(
         session=session,
         expected_outputs=expected_outputs,

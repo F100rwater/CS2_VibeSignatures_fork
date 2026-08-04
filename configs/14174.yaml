@@ -7082,9 +7082,10 @@ modules:
           - CSource2GameEntities_ShouldClientReceiveStringTableUserData.{platform}.yaml
         expected_input:
           - CSource2GameEntities_vtable.{platform}.yaml
-      - name: find-CCheckTransmitInfo_m_nPlayerSlot
+      - name: find-CSource2GameEntities_CheckTransmit-decompiles
         expected_output:
           - CCheckTransmitInfo_m_nPlayerSlot.{platform}.yaml
+          - CCheckTransmitInfo_m_bFullUpdate.{platform}.yaml
         expected_input:
           - CSource2GameEntities_CheckTransmit.{platform}.yaml
       - name: find-CBaseEntity_EmitSoundFilter
@@ -10812,6 +10813,12 @@ modules:
         alias:
           - CCheckTransmitInfo::m_nPlayerSlot
           - CheckTransmitPlayerSlot
+      - name: CCheckTransmitInfo_m_bFullUpdate
+        category: structmember
+        struct: CCheckTransmitInfo
+        member: m_bFullUpdate
+        alias:
+          - CCheckTransmitInfo::m_bFullUpdate
       - name: CDedicatedServerWorkshopManager_SwitchToWorkshopMapGroup
         category: func
         alias:
