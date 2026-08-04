@@ -626,6 +626,11 @@ modules:
           - CNetworkGameServerBase_SetMaxClients.{platform}.yaml
         expected_input:
           - CNetworkGameServer_vtable.{platform}.yaml
+      - name: find-CNetworkGameServerBase_FillKV3ServerInfo
+        expected_output:
+          - CNetworkGameServerBase_FillKV3ServerInfo.{platform}.yaml
+        expected_input:
+          - CNetworkGameServer_vtable.{platform}.yaml
       - name: find-CNetworkGameServerBase_CheckTimeouts
         expected_output:
           - CNetworkGameServerBase_CheckTimeouts.{platform}.yaml
@@ -2296,6 +2301,10 @@ modules:
         category: vfunc
         alias:
           - CNetworkGameServerBase::SetMaxClients
+      - name: CNetworkGameServerBase_FillKV3ServerInfo
+        category: vfunc
+        alias:
+          - CNetworkGameServerBase::FillKV3ServerInfo
       - name: CNetworkGameServerBase_CheckTimeouts
         category: func
         alias:
