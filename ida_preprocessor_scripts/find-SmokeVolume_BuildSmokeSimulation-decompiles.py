@@ -9,27 +9,34 @@ TARGET_STRUCT_MEMBER_NAMES = [
 ]
 
 
-def _llm_decompile_spec(symbol_name, reference_stem):
-    return {
-        "symbol_name": symbol_name,
-        "prompt_path": "prompt/call_llm_decompile.md",
-        "reference_yaml_paths": [
-            f"references/server/{reference_stem}.{{platform}}.yaml",
-        ],
-        "expected_result_sections": ["found_struct_offset"],
-        "dependency_policy": {
-            f"{reference_stem}.{{platform}}.yaml": "required",
-        },
-    }
-
-
 # Windows writes these fields directly in BuildSmokeSimulation. Linux de-inlines
 # that initialization into SmokeVolume_BuildSmokeSimulation_Initialize.
 LLM_DECOMPILE_WINDOWS = [
-    _llm_decompile_spec(symbol_name, "SmokeVolume_BuildSmokeSimulation") for symbol_name in TARGET_STRUCT_MEMBER_NAMES
+    {
+        "symbol_name": symbol_name,
+        "prompt_path": "prompt/call_llm_decompile.md",
+        "reference_yaml_paths": [
+            "references/server/SmokeVolume_BuildSmokeSimulation.{platform}.yaml",
+        ],
+        "expected_result_sections": ["found_struct_offset"],
+        "dependency_policy": {
+            "SmokeVolume_BuildSmokeSimulation.{platform}.yaml": "required",
+        },
+    }
+    for symbol_name in TARGET_STRUCT_MEMBER_NAMES
 ]
 LLM_DECOMPILE_LINUX = [
-    _llm_decompile_spec(symbol_name, "SmokeVolume_BuildSmokeSimulation_Initialize")
+    {
+        "symbol_name": symbol_name,
+        "prompt_path": "prompt/call_llm_decompile.md",
+        "reference_yaml_paths": [
+            "references/server/SmokeVolume_BuildSmokeSimulation_Initialize.{platform}.yaml",
+        ],
+        "expected_result_sections": ["found_struct_offset"],
+        "dependency_policy": {
+            "SmokeVolume_BuildSmokeSimulation_Initialize.{platform}.yaml": "required",
+        },
+    }
     for symbol_name in TARGET_STRUCT_MEMBER_NAMES
 ]
 
