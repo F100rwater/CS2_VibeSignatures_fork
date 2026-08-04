@@ -36036,14 +36036,12 @@ files:
     offset: '0xdb0'
     offset_sig: 48 8D BB ?? ?? ?? ?? E8 ?? ?? ?? ?? 48 8B 43 ?? 8B 78 ?? E8 ?? ?? ?? ?? 31 F6
     offset_sig_disp: 0
-    size: 200
     struct_name: CSmokeGrenadeProjectile
   server/CSmokeGrenadeProjectile_m_SmokeVolume.windows.yaml:
     member_name: m_SmokeVolume
     offset: '0xad8'
     offset_sig: 48 8D 8F ?? ?? ?? ?? 4C 8B C3
     offset_sig_disp: 0
-    size: 8624
     struct_name: CSmokeGrenadeProjectile
   server/CSmokeGrenadeProjectile_vtable.linux.yaml:
     vtable_class: CSmokeGrenadeProjectile
@@ -42207,5 +42205,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14174'
-last_publish_time: '2026-08-04T14:17:46Z'
+last_publish_time: '2026-08-04T14:51:39Z'
 schema_version: 4
