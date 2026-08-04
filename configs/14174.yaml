@@ -6007,9 +6007,15 @@ modules:
           - CBasePlayerPawn_OnTakeDamage_Alive.{platform}.yaml
           - CBasePlayerPawn_OnTakeDamage_Dying.{platform}.yaml
           - CBasePlayerPawn_OnTakeDamage_Dead.{platform}.yaml
+          - DecalPlacementInfo_ctor.{platform}.yaml
         expected_input:
           - CBasePlayerPawn_OnTakeDamage.{platform}.yaml
           - CBasePlayerPawn_vtable.{platform}.yaml
+      - name: find-DecalPlacementInfo_ctor-decompiles
+        expected_output:
+          - CBaseModelEntity_GetBoneTransform.{platform}.yaml
+        expected_input:
+          - DecalPlacementInfo_ctor.{platform}.yaml
       - name: find-CCSPlayerPawn_OnTakeDamage
         expected_output:
           - CCSPlayerPawn_OnTakeDamage.{platform}.yaml
@@ -9096,6 +9102,14 @@ modules:
         category: vfunc
         alias:
           - CBasePlayerPawn::OnTakeDamage_Dead
+      - name: DecalPlacementInfo_ctor
+        category: func
+        alias:
+          - DecalPlacementInfo::DecalPlacementInfo
+      - name: CBaseModelEntity_GetBoneTransform
+        category: func
+        alias:
+          - CBaseModelEntity::GetBoneTransform
       - name: CBasePlayerPawn_OnTakeDamage
         category: vfunc
         alias:
