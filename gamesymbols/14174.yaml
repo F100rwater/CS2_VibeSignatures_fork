@@ -73,8 +73,8 @@ binaries:
       path: game/bin/win64/vphysics2.dll
       sha256: 6f5aa8c32e30d5369579f0e18bf97ec72e2076d3c06906efbfcc77f0c4111b80
 config_digest_version: 2
-config_sha256: sha256:92cbabf2892d5f952f944855c56bf68345868b06c982b7b4a6ec4e69f5db86d4
-file_count: 3245
+config_sha256: sha256:89f99e1402f93d039d3ed8aa147a1722e41e1c60a7feb78a2c581e9e4df9b458
+file_count: 3247
 files:
   SDL3/SDL_GetMouse.windows.yaml:
     func_name: SDL_GetMouse
@@ -11350,6 +11350,24 @@ files:
     vfunc_index: 30
     vfunc_offset: '0xf0'
     vtable_name: CNetworkGameServer_vtable
+  engine/CNetworkGameServer_ServerPostSimulate.linux.yaml:
+    func_name: CNetworkGameServer_ServerPostSimulate
+    func_rva: '0x515250'
+    func_sig: 83 7F ?? ?? 0F 86 ?? ?? ?? ?? 55 48 89 E5
+    func_size: '0x32f'
+    func_va: '0x515250'
+    vfunc_index: 18
+    vfunc_offset: '0x90'
+    vtable_name: CNetworkGameServer
+  engine/CNetworkGameServer_ServerPostSimulate.windows.yaml:
+    func_name: CNetworkGameServer_ServerPostSimulate
+    func_rva: '0x9efa0'
+    func_sig: 40 55 48 83 EC ?? 83 79 ?? ??
+    func_size: '0x277'
+    func_va: '0x18009efa0'
+    vfunc_index: 18
+    vfunc_offset: '0x90'
+    vtable_name: CNetworkGameServer
   engine/CNetworkGameServer_Shutdown.linux.yaml:
     func_name: CNetworkGameServer_Shutdown
     func_rva: '0x5151a0'
@@ -41407,5 +41425,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14174'
-last_publish_time: '2026-08-04T09:33:24Z'
+last_publish_time: '2026-08-04T10:21:26Z'
 schema_version: 4

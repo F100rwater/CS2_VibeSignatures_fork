@@ -1211,6 +1211,12 @@ modules:
         expected_input:
           - CNetworkGameServerBase_vtable.{platform}.yaml
           - INetworkGameServer_ServerPostSimulate.{platform}.yaml
+      - name: find-CNetworkGameServer_ServerPostSimulate
+        expected_output:
+          - CNetworkGameServer_ServerPostSimulate.{platform}.yaml
+        expected_input:
+          - CNetworkGameServer_vtable.{platform}.yaml
+          - CNetworkGameServerBase_ServerPostSimulate.{platform}.yaml
       - name: find-INetworkGameServer_ServerAdvanceTick
         expected_output:
           - INetworkGameServer_ServerAdvanceTick.{platform}.yaml
@@ -2815,6 +2821,10 @@ modules:
         category: vfunc
         alias:
           - CNetworkGameServerBase::ServerPostSimulate
+      - name: CNetworkGameServer_ServerPostSimulate
+        category: vfunc
+        alias:
+          - CNetworkGameServer::ServerPostSimulate
       - name: INetworkGameServer_ServerAdvanceTick
         category: vfunc
         alias:
