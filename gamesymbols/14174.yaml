@@ -73,8 +73,8 @@ binaries:
       path: game/bin/win64/vphysics2.dll
       sha256: 6f5aa8c32e30d5369579f0e18bf97ec72e2076d3c06906efbfcc77f0c4111b80
 config_digest_version: 2
-config_sha256: sha256:274af0c32334b4d5f388c91961d43c1a70693026576a7e21da96e73934355c8c
-file_count: 3241
+config_sha256: sha256:92cbabf2892d5f952f944855c56bf68345868b06c982b7b4a6ec4e69f5db86d4
+file_count: 3245
 files:
   SDL3/SDL_GetMouse.windows.yaml:
     func_name: SDL_GetMouse
@@ -17587,6 +17587,18 @@ files:
     func_sig: 40 53 48 83 EC ?? 48 8B 89 ?? ?? ?? ?? 48 8B DA 48 8B 01 FF 50 ?? 48 8B C8
     func_size: '0x26'
     func_va: '0x180afdbe0'
+  server/CBaseModelEntity_GetBoneTransform.linux.yaml:
+    func_name: CBaseModelEntity_GetBoneTransform
+    func_rva: '0x15dd0b0'
+    func_sig: 55 48 89 E5 41 56 49 89 F6 41 55 41 54 41 89 D4 53 48 89 FB 48 8B BE ?? ?? ?? ??
+    func_size: '0x84'
+    func_va: '0x15dd0b0'
+  server/CBaseModelEntity_GetBoneTransform.windows.yaml:
+    func_name: CBaseModelEntity_GetBoneTransform
+    func_rva: '0xaef140'
+    func_sig: 48 89 5C 24 ?? 48 89 6C 24 ?? 48 89 74 24 ?? 57 48 83 EC ?? 48 8B E9 41 8B F8 48 8B 89 ?? ?? ?? ??
+    func_size: '0x80'
+    func_va: '0x180aef140'
   server/CBaseModelEntity_GetModelScale.linux.yaml:
     func_name: CBaseModelEntity_GetModelScale
     func_rva: '0x15dce10'
@@ -38220,6 +38232,18 @@ files:
     func_sig: 48 89 5C 24 ?? 44 89 44 24 ?? 89 54 24 ?? 55 56 57 41 54 41 55 41 56 41 57 48 81 EC ?? ?? ?? ??
     func_size: '0x9a4'
     func_va: '0x180b7ec80'
+  server/DecalPlacementInfo_ctor.linux.yaml:
+    func_name: DecalPlacementInfo_ctor
+    func_rva: '0xec3630'
+    func_sig: 48 B8 ?? ?? ?? ?? ?? ?? ?? ?? 55 66 0F EF C0 48 89 E5 41 57 41 56 4D 89 CE
+    func_size: '0x535'
+    func_va: '0xec3630'
+  server/DecalPlacementInfo_ctor.windows.yaml:
+    func_name: DecalPlacementInfo_ctor
+    func_rva: '0x502c10'
+    func_sig: 48 8B C4 48 89 58 ?? 48 89 68 ?? 48 89 70 ?? 57 41 54 41 55 41 56 41 57 48 81 EC ?? ?? ?? ?? 44 8B B4 24 ?? ?? ?? ??
+    func_size: '0x5f9'
+    func_va: '0x180502c10'
   server/DispatchParticleEffect.linux.yaml:
     func_name: DispatchParticleEffect
     func_rva: '0x1724e00'
@@ -41383,5 +41407,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14174'
-last_publish_time: '2026-08-04T08:34:12Z'
+last_publish_time: '2026-08-04T09:33:24Z'
 schema_version: 4
