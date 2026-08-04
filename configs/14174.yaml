@@ -6072,6 +6072,22 @@ modules:
           - CSmokeGrenadeProjectile_m_SmokeVolume.{platform}.yaml
         expected_input:
           - CSmokeGrenadeProjectile_Detonate.{platform}.yaml
+      # Linux de-inlines the center-origin/start-time initialization out of
+      # SmokeVolume::BuildSmokeSimulation, so expose the shared helper first.
+      - name: find-SmokeVolume_BuildSmokeSimulation_Initialize-linux
+        platform: linux
+        expected_output:
+          - SmokeVolume_BuildSmokeSimulation_Initialize.{platform}.yaml
+        expected_input:
+          - SmokeVolume_BuildSmokeSimulation.{platform}.yaml
+      - name: find-SmokeVolume_BuildSmokeSimulation-decompiles
+        expected_output:
+          - SmokeVolume_m_vecCenterOrigin.{platform}.yaml
+          - SmokeVolume_m_flStartTime.{platform}.yaml
+        expected_input_windows:
+          - SmokeVolume_BuildSmokeSimulation.{platform}.yaml
+        expected_input_linux:
+          - SmokeVolume_BuildSmokeSimulation_Initialize.{platform}.yaml
       - name: find-SmokeVolume_GetSmokeDensityInLine_Lambda1_operator_call-decompiles
         expected_output:
           - SmokeVolume_m_nFrame.{platform}.yaml
@@ -9197,12 +9213,29 @@ modules:
         category: func
         alias:
           - SmokeVolume::BuildSmokeSimulation
+      - name: SmokeVolume_BuildSmokeSimulation_Initialize
+        category: func
+        platform: linux
+        alias:
+          - sub_1402310
+      - name: SmokeVolume
+        category: struct
+      - name: SmokeVolume_m_vecCenterOrigin
+        category: structmember
+        struct: SmokeVolume
+        member: m_vecCenterOrigin
+        alias:
+          - SmokeVolume::m_vecCenterOrigin
+      - name: SmokeVolume_m_flStartTime
+        category: structmember
+        struct: SmokeVolume
+        member: m_flStartTime
+        alias:
+          - SmokeVolume::m_flStartTime
       - name: SmokeVolume_GetSmokeDensityInLine_Lambda1_operator_call
         category: func
         alias:
           - SmokeVolume::GetSmokeDensityInLine::<lambda_1>::operator()
-      - name: SmokeVolume
-        category: struct
       - name: SmokeVolume_m_nFrame
         category: structmember
         struct: SmokeVolume
