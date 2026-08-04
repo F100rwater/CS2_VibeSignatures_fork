@@ -14,6 +14,7 @@ from gamesymbol_snapshot_lib.codec import (
     LEGACY_SCHEMA_VERSION,
     SCHEMA_2_VERSION,
     SCHEMA_3_VERSION,
+    SCHEMA_4_VERSION,
     SCHEMA_VERSION,
     build_snapshot_document,
     canonical_snapshot_bytes,
@@ -105,7 +106,10 @@ def _ensure_plain_binary(path: Path, game_root: Path) -> None:
         current = current.parent
 
 
-def collect_binary_metadata(contract) -> dict:
+def collect_binary_metadata(contract, schema_version: int = SCHEMA_VERSION) -> dict:
+    """Collect binary metadata for the requested published snapshot schema."""
+    if schema_version not in {SCHEMA_4_VERSION, SCHEMA_VERSION}:
+        raise SnapshotSchemaError(f"binary metadata is unsupported for schema {schema_version}")
     binaries = {}
     for key in sorted(contract.binary_targets):
         target = contract.binary_targets[key]
@@ -115,11 +119,20 @@ def collect_binary_metadata(contract) -> dict:
             hashes = hash_file(binary_path)
         except OSError as exc:
             raise SnapshotMismatchError(f"unable to hash binary file {binary_path}: {exc}") from exc
-        binaries.setdefault(target.module_name, {})[target.platform] = {
+        metadata = {
             "path": target.source_path,
             "sha256": hashes["sha256"],
             "md5": hashes["md5"],
         }
+        if schema_version == SCHEMA_VERSION:
+            metadata.update(
+                {
+                    "crc32": hashes["crc32"],
+                    "crc64": hashes["crc64"],
+                    "size": hashes["size"],
+                }
+            )
+        binaries.setdefault(target.module_name, {})[target.platform] = metadata
     return binaries
 
 
@@ -132,9 +145,9 @@ def build_actual_document(
     binaries: dict | None = None,
 ) -> dict:
     schema_version = schema_version or _schema_for_digest(contract.config_digest_version)
-    if schema_version == SCHEMA_VERSION:
+    if schema_version in {SCHEMA_4_VERSION, SCHEMA_VERSION}:
         last_publish_time = last_publish_time or _utc_publish_time()
-        binaries = collect_binary_metadata(contract) if binaries is None else binaries
+        binaries = collect_binary_metadata(contract, schema_version) if binaries is None else binaries
     return build_snapshot_document(
         contract.game_version,
         contract.config_sha256,
@@ -182,7 +195,7 @@ def validate_snapshot_contract(document: dict, contract) -> None:
             reason=ANALYSIS_OUTPUT_CONTRACT_MISMATCH_REASON,
         )
     _validate_snapshot_paths(document, contract)
-    if document["schema_version"] == SCHEMA_VERSION:
+    if document["schema_version"] in {SCHEMA_4_VERSION, SCHEMA_VERSION}:
         expected_paths = {
             (target.module_name, target.platform): target.source_path for target in contract.binary_targets.values()
         }
@@ -403,8 +416,13 @@ def migrate_snapshot(
                 reason="noncanonical_snapshot",
             )
         source = SnapshotContext(document, raw, transitional_contract)
-    if source.document["schema_version"] not in {LEGACY_SCHEMA_VERSION, SCHEMA_2_VERSION, SCHEMA_3_VERSION}:
-        raise SnapshotMismatchError("snapshot migration requires a schema 1, 2, or 3 source")
+    if source.document["schema_version"] not in {
+        LEGACY_SCHEMA_VERSION,
+        SCHEMA_2_VERSION,
+        SCHEMA_3_VERSION,
+        SCHEMA_4_VERSION,
+    }:
+        raise SnapshotMismatchError("snapshot migration requires a schema 1, 2, 3, or 4 source")
     target_contract = load_contract(config_path, game_version, bindir, LATEST_CONFIG_DIGEST_VERSION)
     _validate_snapshot_paths(source.document, target_contract)
     migrated = build_snapshot_document(
@@ -414,7 +432,7 @@ def migrate_snapshot(
         schema_version=SCHEMA_VERSION,
         config_digest_version=target_contract.config_digest_version,
         analysis_output_contract_version=target_contract.analysis_output_contract_version,
-        last_publish_time=last_publish_time or _utc_publish_time(),
+        last_publish_time=last_publish_time or source.document.get("last_publish_time") or _utc_publish_time(),
         binaries=collect_binary_metadata(target_contract),
     )
     data = canonical_snapshot_bytes(migrated)
