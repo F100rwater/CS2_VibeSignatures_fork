@@ -5791,6 +5791,24 @@ modules:
       - name: find-CGameEntitySystem_vtable
         expected_output:
           - CGameEntitySystem_vtable.{platform}.yaml
+      - name: find-CGameEventManager_vtable
+        expected_output:
+          - CGameEventManager_vtable.{platform}.yaml
+      - name: find-CChicken_vtable
+        expected_output:
+          - CChicken_vtable.{platform}.yaml
+      - name: find-CChicken_Event_Killed
+        expected_output:
+          - CChicken_Event_Killed.{platform}.yaml
+        expected_input:
+          - CChicken_vtable.{platform}.yaml
+      - name: find-CChicken_Event_Killed-decompiles
+        expected_output:
+          - CBaseEntity_EmitSound.{platform}.yaml
+          - CBaseModelEntity_FindBone.{platform}.yaml
+          - DispatchParticleEffect2.{platform}.yaml
+        expected_input:
+          - CChicken_Event_Killed.{platform}.yaml
       - name: find-CGameRules_vtable
         expected_output:
           - CGameRules_vtable.{platform}.yaml
@@ -7082,9 +7100,10 @@ modules:
           - CSource2GameEntities_ShouldClientReceiveStringTableUserData.{platform}.yaml
         expected_input:
           - CSource2GameEntities_vtable.{platform}.yaml
-      - name: find-CCheckTransmitInfo_m_nPlayerSlot
+      - name: find-CSource2GameEntities_CheckTransmit-decompiles
         expected_output:
           - CCheckTransmitInfo_m_nPlayerSlot.{platform}.yaml
+          - CCheckTransmitInfo_m_bFullUpdate.{platform}.yaml
         expected_input:
           - CSource2GameEntities_CheckTransmit.{platform}.yaml
       - name: find-CBaseEntity_EmitSoundFilter
@@ -10539,6 +10558,24 @@ modules:
         category: vtable
       - name: CGameEntitySystem_vtable
         category: vtable
+      - name: CGameEventManager_vtable
+        category: vtable
+      - name: CChicken_vtable
+        category: vtable
+      - name: CChicken_Event_Killed
+        category: vfunc
+        alias:
+          - CChicken::Event_Killed
+      - name: CBaseEntity_EmitSound
+        category: func
+        alias:
+          - CBaseEntity::EmitSound
+      - name: CBaseModelEntity_FindBone
+        category: func
+        alias:
+          - CBaseModelEntity::FindBone
+      - name: DispatchParticleEffect2
+        category: func
       - name: CGameEntitySystem_OnAddEntity
         category: vfunc
         alias:
@@ -10812,6 +10849,12 @@ modules:
         alias:
           - CCheckTransmitInfo::m_nPlayerSlot
           - CheckTransmitPlayerSlot
+      - name: CCheckTransmitInfo_m_bFullUpdate
+        category: structmember
+        struct: CCheckTransmitInfo
+        member: m_bFullUpdate
+        alias:
+          - CCheckTransmitInfo::m_bFullUpdate
       - name: CDedicatedServerWorkshopManager_SwitchToWorkshopMapGroup
         category: func
         alias:
