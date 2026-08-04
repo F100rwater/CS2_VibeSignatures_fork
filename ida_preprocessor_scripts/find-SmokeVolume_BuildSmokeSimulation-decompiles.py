@@ -26,8 +26,7 @@ def _llm_decompile_spec(symbol_name, reference_stem):
 # Windows writes these fields directly in BuildSmokeSimulation. Linux de-inlines
 # that initialization into SmokeVolume_BuildSmokeSimulation_Initialize.
 LLM_DECOMPILE_WINDOWS = [
-    _llm_decompile_spec(symbol_name, "SmokeVolume_BuildSmokeSimulation")
-    for symbol_name in TARGET_STRUCT_MEMBER_NAMES
+    _llm_decompile_spec(symbol_name, "SmokeVolume_BuildSmokeSimulation") for symbol_name in TARGET_STRUCT_MEMBER_NAMES
 ]
 LLM_DECOMPILE_LINUX = [
     _llm_decompile_spec(symbol_name, "SmokeVolume_BuildSmokeSimulation_Initialize")
