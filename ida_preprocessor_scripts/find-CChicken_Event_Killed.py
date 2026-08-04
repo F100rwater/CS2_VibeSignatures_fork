@@ -1,22 +1,37 @@
 #!/usr/bin/env python3
-"""Preprocess script for find-CNetworkGameServer_ServerPostSimulate skill."""
+"""Preprocess script for find-CChicken_Event_Killed skill."""
 
 from ida_analyze_util import preprocess_common_skill
 
-INHERIT_VFUNCS = [
-    # (target_func_name, inherit_vtable_class, base_vfunc_name, generate_func_sig)
-    (
-        "CNetworkGameServer_ServerPostSimulate",
-        "CNetworkGameServer",
-        "CNetworkGameServerBase_ServerPostSimulate",
-        True,
-    ),
+
+TARGET_FUNCTION_NAMES = [
+    "CChicken_Event_Killed",
 ]
 
+
+FUNC_XREFS = [
+    {
+        "func_name": "CChicken_Event_Killed",
+        "xref_strings": ["FULLMATCH:Chicken.Death"],
+        "xref_gvs": [],
+        "xref_signatures": [],
+        "xref_funcs": [],
+        "exclude_funcs": [],
+        "exclude_strings": [],
+        "exclude_gvs": [],
+        "exclude_signatures": [],
+    },
+]
+
+
+FUNC_VTABLE_RELATIONS = [
+    ("CChicken_Event_Killed", "CChicken_vtable"),
+]
+
+
 GENERATE_YAML_DESIRED_FIELDS = [
-    # (symbol_name, generate_yaml_fields)
     (
-        "CNetworkGameServer_ServerPostSimulate",
+        "CChicken_Event_Killed",
         [
             "func_name",
             "func_va",
@@ -41,9 +56,7 @@ async def preprocess_skill(
     image_base,
     debug=False,
 ):
-    """Reuse old func_sig first; fallback to inherited vtable index when needed."""
-    _ = skill_name
-
+    """Find CChicken::Event_Killed via the exact Chicken.Death debug string."""
     return await preprocess_common_skill(
         session=session,
         expected_outputs=expected_outputs,
@@ -51,7 +64,9 @@ async def preprocess_skill(
         new_binary_dir=new_binary_dir,
         platform=platform,
         image_base=image_base,
-        inherit_vfuncs=INHERIT_VFUNCS,
+        func_names=TARGET_FUNCTION_NAMES,
+        func_xrefs=FUNC_XREFS,
+        func_vtable_relations=FUNC_VTABLE_RELATIONS,
         generate_yaml_desired_fields=GENERATE_YAML_DESIRED_FIELDS,
         debug=debug,
     )

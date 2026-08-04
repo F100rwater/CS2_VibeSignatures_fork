@@ -849,6 +849,11 @@ modules:
           - CNetworkGameServerBase_BroadcastPrintf.{platform}.yaml
         expected_input:
           - CNetworkGameServerBase_vtable.{platform}.yaml
+      - name: find-CNetworkGameServerBase_BroadcastEntityVoice
+        expected_output:
+          - CNetworkGameServerBase_BroadcastEntityVoice.{platform}.yaml
+        expected_input:
+          - CNetworkGameServer_vtable.{platform}.yaml
       - name: find-CNetworkGameServerBase_WriteDeltaEntities
         expected_output:
           - CNetworkGameServerBase_WriteDeltaEntities.{platform}.yaml
@@ -2184,6 +2189,10 @@ modules:
         category: vfunc
         alias:
           - CNetworkGameServerBase::BroadcastPrintf
+      - name: CNetworkGameServerBase_BroadcastEntityVoice
+        category: vfunc
+        alias:
+          - CNetworkGameServerBase::BroadcastEntityVoice
       - name: CNetworkGameServerBase_WriteDeltaEntities
         category: func
         alias:
@@ -5792,6 +5801,24 @@ modules:
       - name: find-CGameEntitySystem_vtable
         expected_output:
           - CGameEntitySystem_vtable.{platform}.yaml
+      - name: find-CGameEventManager_vtable
+        expected_output:
+          - CGameEventManager_vtable.{platform}.yaml
+      - name: find-CChicken_vtable
+        expected_output:
+          - CChicken_vtable.{platform}.yaml
+      - name: find-CChicken_Event_Killed
+        expected_output:
+          - CChicken_Event_Killed.{platform}.yaml
+        expected_input:
+          - CChicken_vtable.{platform}.yaml
+      - name: find-CChicken_Event_Killed-decompiles
+        expected_output:
+          - CBaseEntity_EmitSound.{platform}.yaml
+          - CBaseModelEntity_FindBone.{platform}.yaml
+          - DispatchParticleEffect2.{platform}.yaml
+        expected_input:
+          - CChicken_Event_Killed.{platform}.yaml
       - name: find-CGameRules_vtable
         expected_output:
           - CGameRules_vtable.{platform}.yaml
@@ -5990,9 +6017,15 @@ modules:
           - CBasePlayerPawn_OnTakeDamage_Alive.{platform}.yaml
           - CBasePlayerPawn_OnTakeDamage_Dying.{platform}.yaml
           - CBasePlayerPawn_OnTakeDamage_Dead.{platform}.yaml
+          - DecalPlacementInfo_ctor.{platform}.yaml
         expected_input:
           - CBasePlayerPawn_OnTakeDamage.{platform}.yaml
           - CBasePlayerPawn_vtable.{platform}.yaml
+      - name: find-DecalPlacementInfo_ctor-decompiles
+        expected_output:
+          - CBaseModelEntity_GetBoneTransform.{platform}.yaml
+        expected_input:
+          - DecalPlacementInfo_ctor.{platform}.yaml
       - name: find-CCSPlayerPawn_OnTakeDamage
         expected_output:
           - CCSPlayerPawn_OnTakeDamage.{platform}.yaml
@@ -7083,9 +7116,10 @@ modules:
           - CSource2GameEntities_ShouldClientReceiveStringTableUserData.{platform}.yaml
         expected_input:
           - CSource2GameEntities_vtable.{platform}.yaml
-      - name: find-CCheckTransmitInfo_m_nPlayerSlot
+      - name: find-CSource2GameEntities_CheckTransmit-decompiles
         expected_output:
           - CCheckTransmitInfo_m_nPlayerSlot.{platform}.yaml
+          - CCheckTransmitInfo_m_bFullUpdate.{platform}.yaml
         expected_input:
           - CSource2GameEntities_CheckTransmit.{platform}.yaml
       - name: find-CBaseEntity_EmitSoundFilter
@@ -9078,6 +9112,14 @@ modules:
         category: vfunc
         alias:
           - CBasePlayerPawn::OnTakeDamage_Dead
+      - name: DecalPlacementInfo_ctor
+        category: func
+        alias:
+          - DecalPlacementInfo::DecalPlacementInfo
+      - name: CBaseModelEntity_GetBoneTransform
+        category: func
+        alias:
+          - CBaseModelEntity::GetBoneTransform
       - name: CBasePlayerPawn_OnTakeDamage
         category: vfunc
         alias:
@@ -10540,6 +10582,24 @@ modules:
         category: vtable
       - name: CGameEntitySystem_vtable
         category: vtable
+      - name: CGameEventManager_vtable
+        category: vtable
+      - name: CChicken_vtable
+        category: vtable
+      - name: CChicken_Event_Killed
+        category: vfunc
+        alias:
+          - CChicken::Event_Killed
+      - name: CBaseEntity_EmitSound
+        category: func
+        alias:
+          - CBaseEntity::EmitSound
+      - name: CBaseModelEntity_FindBone
+        category: func
+        alias:
+          - CBaseModelEntity::FindBone
+      - name: DispatchParticleEffect2
+        category: func
       - name: CGameEntitySystem_OnAddEntity
         category: vfunc
         alias:
@@ -10813,6 +10873,12 @@ modules:
         alias:
           - CCheckTransmitInfo::m_nPlayerSlot
           - CheckTransmitPlayerSlot
+      - name: CCheckTransmitInfo_m_bFullUpdate
+        category: structmember
+        struct: CCheckTransmitInfo
+        member: m_bFullUpdate
+        alias:
+          - CCheckTransmitInfo::m_bFullUpdate
       - name: CDedicatedServerWorkshopManager_SwitchToWorkshopMapGroup
         category: func
         alias:
