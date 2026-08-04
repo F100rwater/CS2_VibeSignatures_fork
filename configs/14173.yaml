@@ -2008,6 +2008,9 @@ modules:
       - name: find-CServerSideClientBase_GetNetworkIDString
         expected_output:
           - CServerSideClientBase_GetNetworkIDString.{platform}.yaml
+      - name: find-CServerSideClientBase_dtor
+        expected_output:
+          - CServerSideClientBase_dtor.{platform}.yaml
       # find-CEngineServer_GetPlayerNetworkIDString moved to the late engine pass and
       # split into a -noinline/-inlined fallback chain (deinline-fix): the -noinline link
       # anchors on the standalone CNetworkGameServer_GetPlayerNetworkIDString helper, which
@@ -3299,6 +3302,10 @@ modules:
         category: func
         alias:
           - CServerSideClientBase::GetNetworkIDString
+      - name: CServerSideClientBase_dtor
+        category: func
+        alias:
+          - CServerSideClientBase::~CServerSideClientBase
       - name: CServerSideClientBase_Connect
         category: vfunc
         alias:
