@@ -2008,6 +2008,9 @@ modules:
       - name: find-CServerSideClientBase_GetNetworkIDString
         expected_output:
           - CServerSideClientBase_GetNetworkIDString.{platform}.yaml
+      - name: find-CServerSideClientBase_dtor
+        expected_output:
+          - CServerSideClientBase_dtor.{platform}.yaml
       # find-CEngineServer_GetPlayerNetworkIDString moved to the late engine pass and
       # split into a -noinline/-inlined fallback chain (deinline-fix): the -noinline link
       # anchors on the standalone CNetworkGameServer_GetPlayerNetworkIDString helper, which
@@ -2535,6 +2538,11 @@ modules:
         platform: linux
         alias:
           - CInputService::IsClientOnlyCommandAllowed
+      - name: CServerSideClientBase_SetConVarUserInfo
+        category: func
+        platform: linux
+        alias:
+          - CServerSideClientBase::SetConVarUserInfo
       - name: CNetworkClientService_vtable
         category: vtable
       - name: CNetworkClientService_RegisterEventMapInternal
@@ -3299,6 +3307,10 @@ modules:
         category: func
         alias:
           - CServerSideClientBase::GetNetworkIDString
+      - name: CServerSideClientBase_dtor
+        category: func
+        alias:
+          - CServerSideClientBase::~CServerSideClientBase
       - name: CServerSideClientBase_Connect
         category: vfunc
         alias:
@@ -9255,6 +9267,10 @@ modules:
         category: vfunc
         alias:
           - CSource2GameClients::ClientSettingsChanged
+      - name: CSource2GameClients_ClientSetConVarUserInfoSet
+        category: vfunc
+        alias:
+          - CSource2GameClients::ClientSetConVarUserInfoSet
       - name: CSource2GameClients_ClientSetupVisibility
         category: vfunc
         alias:
@@ -11993,6 +12009,25 @@ modules:
           - CInputService_ProcessConVar.{platform}.yaml
         expected_input_linux:
           - CInputService_IsClientOnlyCommandAllowed.{platform}.yaml
+      # Linux de-inlines the ISource2GameClients::ClientSetConVarUserInfoSet
+      # dispatch that Windows inlines into CServerSideClientBase::~CServerSideClientBase
+      # into a shared out-of-line helper (tail-call optimized `mov rax,[rax+90h];
+      # jmp rax`), so the engine interface slot can only be recovered there on Linux.
+      # Keep in the late engine pass because g_pSource2GameClients is produced by
+      # find-g_pInterfaceGlobals_ppGlobal above.
+      - name: find-CServerSideClientBase_SetConVarUserInfo-linux
+        platform: linux
+        expected_output:
+          - CServerSideClientBase_SetConVarUserInfo.{platform}.yaml
+        expected_input:
+          - g_pSource2GameClients.{platform}.yaml
+      - name: find-CServerSideClientBase_dtor-decompiles
+        expected_output:
+          - ISource2GameClients_ClientSetConVarUserInfoSet.{platform}.yaml
+        expected_input_windows:
+          - CServerSideClientBase_dtor.{platform}.yaml
+        expected_input_linux:
+          - CServerSideClientBase_SetConVarUserInfo.{platform}.yaml
       - name: find-CNetworkClientService_IsPutInServer
         expected_output:
           - CNetworkClientService_IsPutInServer.{platform}.yaml
@@ -12105,6 +12140,16 @@ modules:
           - IGameSystemFactory_Shutdown.{platform}.yaml
         expected_input:
           - IGameSystem_ShutdownAllSystems.{platform}.yaml
+      # Bridge the engine ISource2GameClients::ClientSetConVarUserInfoSet slot
+      # (produced in the late engine pass) to the server CSource2GameClients
+      # override via the inherited vtable slot index. Placed in the late server
+      # pass because the engine slot is a late-engine-pass output.
+      - name: find-CSource2GameClients_ClientSetConVarUserInfoSet
+        expected_output:
+          - CSource2GameClients_ClientSetConVarUserInfoSet.{platform}.yaml
+        expected_input:
+          - CSource2GameClients_vtable.{platform}.yaml
+          - ../engine/ISource2GameClients_ClientSetConVarUserInfoSet.{platform}.yaml
   - name: engine  # Execute GetEventDispatcher after late client IEngineServiceMgr output
     path_windows: game/bin/win64/engine2.dll
     path_linux: game/bin/linuxsteamrt64/libengine2.so
