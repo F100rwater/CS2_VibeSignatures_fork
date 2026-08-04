@@ -54,7 +54,6 @@ GENERATE_YAML_DESIRED_FIELDS = [
             "struct_name",
             "member_name",
             "offset",
-            "size",
             "offset_sig",
             "offset_sig_disp",
         ],
