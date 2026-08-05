@@ -5,6 +5,7 @@ from ida_analyze_util import preprocess_common_skill
 
 TARGET_STRUCT_MEMBER_NAMES = [
     "SmokeVolume_m_vecCenterOrigin",
+    "SmokeVolume_m_pStorage",
     "SmokeVolume_m_flStartTime",
 ]
 
@@ -67,7 +68,7 @@ async def preprocess_skill(
     llm_config=None,
     debug=False,
 ):
-    """Locate SmokeVolume center-origin and start-time member offsets via LLM decompile."""
+    """Locate SmokeVolume center-origin, storage, and start-time offsets via LLM decompile."""
     llm_decompile = LLM_DECOMPILE_WINDOWS if platform == "windows" else LLM_DECOMPILE_LINUX
     return await preprocess_common_skill(
         session=session,
