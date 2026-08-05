@@ -121,8 +121,8 @@ binaries:
       sha256: '6f5aa8c32e30d5369579f0e18bf97ec72e2076d3c06906efbfcc77f0c4111b80'
       size: 4592280
 config_digest_version: 2
-config_sha256: sha256:453e1cb22f5349ff22e279428c4002892f81d45b4d81a90a750c30f6232417f6
-file_count: 3266
+config_sha256: sha256:a3602e0f31e80a4a1fb9ec0c989da9428a0d1c75f812d895750b623950b4adff
+file_count: 3268
 files:
   SDL3/SDL_GetMouse.windows.yaml:
     func_name: SDL_GetMouse
@@ -40407,19 +40407,31 @@ files:
     offset_sig_disp: 0
     size: 4
     struct_name: SmokeVolume
+  server/SmokeVolume_m_pStorage.linux.yaml:
+    member_name: m_pStorage
+    offset: '0x70'
+    offset_sig: 48 8B 7F ?? 48 85 FF 74 ?? BE ?? ?? ?? ?? E8 ?? ?? ?? ?? BF ?? ?? ?? ??
+    offset_sig_disp: 0
+    size: 8
+    struct_name: SmokeVolume
+  server/SmokeVolume_m_pStorage.windows.yaml:
+    member_name: m_pStorage
+    offset: '0x70'
+    offset_sig: 48 8B 4F ?? F2 0F 11 87 ?? ?? ?? ??
+    offset_sig_disp: 0
+    size: 8
+    struct_name: SmokeVolume
   server/SmokeVolume_m_vecCenterOrigin.linux.yaml:
     member_name: m_vecCenterOrigin
     offset: '0xd4'
     offset_sig: 48 89 87 ?? ?? ?? ?? 8B 46 ?? 89 87 ?? ?? ?? ?? 48 8B 7F ??
     offset_sig_disp: 0
-    size: 8
     struct_name: SmokeVolume
   server/SmokeVolume_m_vecCenterOrigin.windows.yaml:
     member_name: m_vecCenterOrigin
     offset: '0xd4'
     offset_sig: F2 0F 11 87 ?? ?? ?? ?? 89 87 ?? ?? ?? ?? C6 07 ??
     offset_sig_disp: 0
-    size: 8
     struct_name: SmokeVolume
   server/TraceAttack.linux.yaml:
     func_name: TraceAttack
@@ -42253,5 +42265,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14174'
-last_publish_time: '2026-08-04T14:51:39Z'
+last_publish_time: '2026-08-05T04:46:20Z'
 schema_version: 5
