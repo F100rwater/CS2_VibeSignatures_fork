@@ -10,6 +10,12 @@ const MD5_PATTERN = /^[0-9a-f]{32}$/
 const CRC32_PATTERN = /^[0-9a-f]{8}$/
 const CRC64_PATTERN = /^[0-9a-f]{16}$/
 const SNAPSHOT_FILE_PATTERN = /^(\d{4,10}[a-z]?)\.([0-9a-f]{64})\.json$/
+const LEGACY_DATASET_SCHEMA_VERSION = 2
+const CURRENT_DATASET_SCHEMA_VERSION = 3
+const SUPPORTED_DATASET_SCHEMA_VERSIONS = new Set([
+  LEGACY_DATASET_SCHEMA_VERSION,
+  CURRENT_DATASET_SCHEMA_VERSION,
+])
 
 function sha256(bytes) {
   return createHash('sha256').update(bytes).digest('hex')
@@ -69,10 +75,17 @@ function validateBinaryMetadata(value, source) {
   if (!Number.isInteger(value.size) || value.size < 0) throw new Error(`${source}.size must be a non-negative integer`)
 }
 
-function validateGameSymbolDataset(value, source, gameVersion) {
-  if (!isObject(value) || value.schemaVersion !== 3 || !isObject(value.source) || value.source.gameVersion !== gameVersion) {
+function validateGameSymbolDataset(value, source, gameVersion, requiredSchemaVersion) {
+  if (
+    !isObject(value)
+    || !SUPPORTED_DATASET_SCHEMA_VERSIONS.has(value.schemaVersion)
+    || !isObject(value.source)
+    || value.source.gameVersion !== gameVersion
+    || (requiredSchemaVersion !== undefined && value.schemaVersion !== requiredSchemaVersion)
+  ) {
     throw new Error(`${source}: snapshot body game version or schema is invalid`)
   }
+  if (value.schemaVersion === LEGACY_DATASET_SCHEMA_VERSION) return
   if (!isObject(value.binaries)) throw new Error(`${source}: binaries must be an object`)
   for (const [module, platforms] of Object.entries(value.binaries)) {
     if (!isObject(platforms)) throw new Error(`${source}: binaries.${module} must be an object`)
@@ -107,13 +120,13 @@ export function validateGameSymbolVerificationManifest(value, source = 'game-sym
   return value
 }
 
-function verifySnapshotBytes(fileName, bytes, source, expectedEntry) {
+function verifySnapshotBytes(fileName, bytes, source, expectedEntry, requiredSchemaVersion) {
   const match = SNAPSHOT_FILE_PATTERN.exec(fileName)
   if (!match) throw new Error(`${source}: snapshot filename must be <gameVersion>.<sha256>.json`)
   const actualSha256 = sha256(bytes)
   if (actualSha256 !== match[2]) throw new Error(`${source}: filename SHA-256 does not match content bytes`)
   const value = parseJson(bytes, source)
-  validateGameSymbolDataset(value, source, match[1])
+  validateGameSymbolDataset(value, source, match[1], requiredSchemaVersion)
   if (expectedEntry) {
     if (fileName !== expectedEntry.url) throw new Error(`${source}: index URL does not match filename`)
     if (bytes.byteLength !== expectedEntry.size) {
@@ -155,7 +168,7 @@ export async function verifyGameSymbolAssetDirectory(directory) {
   for (const entry of index.versions) {
     const filePath = join(root, entry.url)
     const bytes = await readFile(filePath)
-    verifySnapshotBytes(entry.url, bytes, filePath, entry)
+    verifySnapshotBytes(entry.url, bytes, filePath, entry, CURRENT_DATASET_SCHEMA_VERSION)
     if (!snapshots.has(entry.url)) throw new Error(`${filePath}: indexed snapshot is missing from the asset inventory`)
   }
   return {
