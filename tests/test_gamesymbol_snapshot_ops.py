@@ -55,7 +55,9 @@ class TestPack(unittest.TestCase):
                 return_value="2026-01-02T03:04:05Z",
             ):
                 first = workspace.pack()
-                second = workspace.pack()
+                with patch("gamesymbol_snapshot_lib.operations.hash_file") as hash_file:
+                    second = workspace.pack()
+            hash_file.assert_not_called()
             data = yaml.safe_load(first)
 
         self.assertEqual(first, second)

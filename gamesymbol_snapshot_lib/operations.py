@@ -136,6 +136,31 @@ def collect_binary_metadata(contract, schema_version: int = SCHEMA_VERSION) -> d
     return binaries
 
 
+def reusable_binary_metadata(snapshot_path, contract) -> dict | None:
+    """Return complete metadata from a matching published snapshot without rehashing binaries."""
+    if snapshot_path is None:
+        return None
+    try:
+        document, _raw = load_snapshot_for_contract(snapshot_path, contract, require_canonical=True)
+    except (SnapshotMismatchError, SnapshotSchemaError):
+        return None
+    if document["schema_version"] != SCHEMA_VERSION:
+        return None
+
+    for target in contract.binary_targets.values():
+        binary_path = _binary_file_path(contract, target)
+        _ensure_plain_binary(binary_path, contract.game_root)
+        try:
+            actual_size = binary_path.stat().st_size
+        except OSError as exc:
+            raise SnapshotMismatchError(f"unable to stat binary file {binary_path}: {exc}") from exc
+        metadata = document["binaries"][target.module_name][target.platform]
+        if actual_size != metadata["size"]:
+            return None
+    LOGGER.info("Reusing binary metadata from %s", snapshot_path)
+    return document["binaries"]
+
+
 def build_actual_document(
     contract,
     *,
@@ -267,12 +292,15 @@ def pack_snapshot(
     config_path=None,
     snapshot_path=None,
     last_publish_time: str | None = None,
+    binary_metadata_source_path=None,
 ) -> bytes:
     snapshot_path = Path(snapshot_path or f"gamesymbols/{game_version}.yaml")
     config_path = resolve_analysis_config(game_version, config_path)
     contract = load_contract(config_path, game_version, bindir, LATEST_CONFIG_DIGEST_VERSION)
     ensure_real_tree(Path(bindir), contract.game_root)
-    document = build_actual_document(contract, last_publish_time=last_publish_time)
+    metadata_source_path = Path(binary_metadata_source_path or snapshot_path)
+    binaries = reusable_binary_metadata(metadata_source_path, contract)
+    document = build_actual_document(contract, last_publish_time=last_publish_time, binaries=binaries)
     data = canonical_snapshot_bytes(document)
     reparsed = parse_snapshot_bytes(data, str(game_version))
     validate_snapshot_contract(reparsed, contract)
