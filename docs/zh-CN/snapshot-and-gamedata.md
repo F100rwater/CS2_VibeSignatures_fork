@@ -99,8 +99,6 @@ gamedata/<GAMEVER>/CS2FOW/gamedata/cs2fow.games.txt
 
 * 完整支持，所有符号均支持自动更新
 
-* CS2FOW 从游戏版本 `14174` 开始支持。
-
 ### [swiftlys2](https://github.com/swiftly-solution/swiftlys2)
 
 ```text

@@ -99,8 +99,6 @@ gamedata/<GAMEVER>/CS2FOW/gamedata/cs2fow.games.txt
 
 * Full support
 
-* CS2FOW output is supported since game version `14174`.
-
 ### [swiftlys2](https://github.com/swiftly-solution/swiftlys2)
 
 ```text
