@@ -43,7 +43,17 @@ LLM_DECOMPILE_LINUX = [
 
 GENERATE_YAML_DESIRED_FIELDS = [
     (
-        symbol_name,
+        "SmokeVolume_m_vecCenterOrigin",
+        [
+            "struct_name",
+            "member_name",
+            "offset",
+            "offset_sig",
+            "offset_sig_disp",
+        ],
+    ),
+    (
+        "SmokeVolume_m_pStorage",
         [
             "struct_name",
             "member_name",
@@ -52,8 +62,18 @@ GENERATE_YAML_DESIRED_FIELDS = [
             "offset_sig",
             "offset_sig_disp",
         ],
-    )
-    for symbol_name in TARGET_STRUCT_MEMBER_NAMES
+    ),
+    (
+        "SmokeVolume_m_flStartTime",
+        [
+            "struct_name",
+            "member_name",
+            "offset",
+            "size",
+            "offset_sig",
+            "offset_sig_disp",
+        ],
+    ),
 ]
 
 
