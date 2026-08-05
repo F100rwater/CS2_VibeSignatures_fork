@@ -121,8 +121,8 @@ binaries:
       sha256: '6f5aa8c32e30d5369579f0e18bf97ec72e2076d3c06906efbfcc77f0c4111b80'
       size: 4592280
 config_digest_version: 2
-config_sha256: sha256:248849daca67fe4580ab9f1b360746fc30656f09b9ee916bb7da0bcc037c26d4
-file_count: 3275
+config_sha256: sha256:231826a57dafc0d7b2935a735ed702709479f0dcb5f49e0368afe2bebbdb0e95
+file_count: 3279
 files:
   SDL3/SDL_GetMouse.windows.yaml:
     func_name: SDL_GetMouse
@@ -32265,6 +32265,20 @@ files:
     vtable_size: '0x48'
     vtable_symbol: ??_7CNavPhysicsInterface@@6B@
     vtable_va: '0x181861e70'
+  server/CNetworkGameServerBase_IsBackgroundMap.linux.yaml:
+    func_name: CNetworkGameServerBase_IsBackgroundMap
+    vfunc_index: 27
+    vfunc_offset: '0xd8'
+    vfunc_sig: 48 8B 80 D8 00 00 00 FF E0 0F 1F 00
+    vfunc_sig_allow_across_function_boundary: true
+    vtable_name: CNetworkGameServer_vtable
+  server/CNetworkGameServerBase_IsBackgroundMap.windows.yaml:
+    func_name: CNetworkGameServerBase_IsBackgroundMap
+    vfunc_index: 27
+    vfunc_offset: '0xd8'
+    vfunc_sig: FF 92 D8 00 00 00 84 C0
+    vfunc_sig_allow_across_function_boundary: true
+    vtable_name: CNetworkGameServer_vtable
   server/CNetworkSerializerBindingBuildFilter_GetFieldPriority.linux.yaml:
     func_name: CNetworkSerializerBindingBuildFilter_GetFieldPriority
     func_rva: '0x2134f10'
@@ -40265,6 +40279,18 @@ files:
     vfunc_offset: '0x3c8'
     vfunc_sig: FF 90 C8 03 00 00 48 63 54 24 ??
     vtable_name: CVPhys2World
+  server/IsBackgroundMap.linux.yaml:
+    func_name: IsBackgroundMap
+    func_rva: '0x1716180'
+    func_sig: 48 8B 3D ?? ?? ?? ?? 55 48 89 E5 48 85 FF
+    func_size: '0x64'
+    func_va: '0x1716180'
+  server/IsBackgroundMap.windows.yaml:
+    func_name: IsBackgroundMap
+    func_rva: '0xbdf6e0'
+    func_sig: 48 83 EC ?? 48 8B 0D ?? ?? ?? ?? 48 85 C9 74 ?? 48 8B 01 FF 50 ?? 84 C0
+    func_size: '0x51'
+    func_va: '0x180bdf6e0'
   server/LegacyGameEventListener.linux.yaml:
     func_name: LegacyGameEventListener
     func_rva: '0x16b0390'
@@ -42325,5 +42351,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14174'
-last_publish_time: '2026-08-05T09:10:50Z'
+last_publish_time: '2026-08-05T12:16:15Z'
 schema_version: 5

@@ -7205,6 +7205,16 @@ modules:
           - CSource2GameEntities_ShouldClientReceiveStringTableUserData.{platform}.yaml
         expected_input:
           - CSource2GameEntities_vtable.{platform}.yaml
+      - name: find-IsBackgroundMap
+        expected_output:
+          - IsBackgroundMap.{platform}.yaml
+        expected_input:
+          - CSource2GameEntities_ShouldClientReceiveStringTableUserData.{platform}.yaml
+      - name: find-CNetworkGameServerBase_IsBackgroundMap
+        expected_output:
+          - CNetworkGameServerBase_IsBackgroundMap.{platform}.yaml
+        expected_input:
+          - IsBackgroundMap.{platform}.yaml
       - name: find-CSource2GameEntities_CheckTransmit-decompiles
         expected_output:
           - CCheckTransmitInfo_m_nPlayerSlot.{platform}.yaml
@@ -10230,6 +10240,12 @@ modules:
           - ISource2GameEntities::ShouldClientReceiveStringTableUserData
           - ISource2GameEntities_ShouldClientReceiveStringTableUserData
           - ShouldClientReceiveStringTableUserData
+      - name: IsBackgroundMap
+        category: func
+      - name: CNetworkGameServerBase_IsBackgroundMap
+        category: vfunc
+        alias:
+          - CNetworkGameServerBase::IsBackgroundMap
       - name: CBaseEntity_EmitSoundFilter
         category: func
         alias:
