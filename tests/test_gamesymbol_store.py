@@ -3,6 +3,7 @@ import unittest
 from pathlib import Path
 from tempfile import TemporaryDirectory
 
+from gamesymbol_snapshot_lib.codec import SCHEMA_VERSION
 from gamesymbol_snapshot_lib.operations import pack_snapshot
 from gamesymbol_store import (
     DirectorySymbolStore,
@@ -67,7 +68,7 @@ class TestSnapshotSymbolStore(unittest.TestCase):
                 [entry.path for entry in store.glob_module("server", "ITest_*.windows.yaml")],
             )
             self.assertTrue(store.candidate_sha256.startswith("sha256:"))
-            self.assertEqual(4, store.schema_version)
+            self.assertEqual(SCHEMA_VERSION, store.schema_version)
             self.assertEqual(2, store.config_digest_version)
 
     def test_missing_and_unsafe_queries_are_typed(self) -> None:

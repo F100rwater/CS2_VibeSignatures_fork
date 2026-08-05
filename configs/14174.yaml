@@ -6083,6 +6083,7 @@ modules:
       - name: find-SmokeVolume_BuildSmokeSimulation-decompiles
         expected_output:
           - SmokeVolume_m_vecCenterOrigin.{platform}.yaml
+          - SmokeVolume_m_pStorage.{platform}.yaml
           - SmokeVolume_m_flStartTime.{platform}.yaml
         expected_input_windows:
           - SmokeVolume_BuildSmokeSimulation.{platform}.yaml
@@ -9226,6 +9227,12 @@ modules:
         member: m_vecCenterOrigin
         alias:
           - SmokeVolume::m_vecCenterOrigin
+      - name: SmokeVolume_m_pStorage
+        category: structmember
+        struct: SmokeVolume
+        member: m_pStorage
+        alias:
+          - SmokeVolume::m_pStorage
       - name: SmokeVolume_m_flStartTime
         category: structmember
         struct: SmokeVolume

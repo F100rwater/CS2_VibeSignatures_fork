@@ -21,8 +21,20 @@ async function temporaryRoot() {
 async function writeCurrentAssets(directory, gameVersion, marker) {
   await mkdir(directory, { recursive: true })
   const dataset = {
-    schemaVersion: 2,
+    schemaVersion: 3,
     source: { gameVersion },
+    binaries: {
+      server: {
+        windows: {
+          path: 'game/bin/win64/server.dll',
+          sha256: '1'.repeat(64),
+          md5: '2'.repeat(32),
+          crc32: '3'.repeat(8),
+          crc64: '4'.repeat(16),
+          size: 123,
+        },
+      },
+    },
     records: [{ marker }],
   }
   const bytes = Buffer.from(JSON.stringify(dataset), 'utf8')
@@ -30,13 +42,13 @@ async function writeCurrentAssets(directory, gameVersion, marker) {
   const url = `${gameVersion}.${digest}.json`
   await writeFile(join(directory, url), bytes)
   await writeFile(join(directory, 'index.json'), JSON.stringify({
-    schemaVersion: 3,
+    schemaVersion: 4,
     versions: [{
       gameVersion,
       url,
       sha256: digest,
       size: bytes.byteLength,
-      snapshotSchemaVersion: 4,
+      snapshotSchemaVersion: 5,
       fileCount: 1,
       lastPublishTime: '2026-07-28T00:00:00Z',
     }],
@@ -50,7 +62,7 @@ afterEach(async () => {
 })
 
 describe('immutable game-symbol asset verification', () => {
-  it('verifies index v3 metadata against the exact snapshot bytes', async () => {
+  it('verifies index v4 metadata against the exact snapshot bytes', async () => {
     const root = await temporaryRoot()
     const current = join(root, 'current')
     const asset = await writeCurrentAssets(current, '14172', '最终字节')
