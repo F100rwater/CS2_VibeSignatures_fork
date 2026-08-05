@@ -626,6 +626,12 @@ modules:
           - CNetworkGameServerBase_ServerPollNetworking.{platform}.yaml
         expected_input:
           - CNetworkGameServer_vtable.{platform}.yaml
+      - name: find-CNetworkGameServerBase_IsChangelevelPending
+        expected_output:
+          - CNetworkGameServerBase_IsChangelevelPending.{platform}.yaml
+        expected_input:
+          - CNetworkGameServer_vtable.{platform}.yaml
+          - CNetworkGameServerBase_ServerPollNetworking.{platform}.yaml
       - name: find-CNetworkGameServerBase_SetMaxClients
         expected_output:
           - CNetworkGameServerBase_SetMaxClients.{platform}.yaml
@@ -2213,6 +2219,10 @@ modules:
         category: vfunc
         alias:
           - CNetworkGameServerBase::ServerPollNetworking
+      - name: CNetworkGameServerBase_IsChangelevelPending
+        category: vfunc
+        alias:
+          - CNetworkGameServerBase::IsChangelevelPending
       - name: CNetworkGameServerBase_BroadcastMessage
         category: vfunc
         alias:
