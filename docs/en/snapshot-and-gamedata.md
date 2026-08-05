@@ -89,7 +89,7 @@ gamedata/<GAMEVER>/CS2Fixes/gamedata/cs2fixes.jsonc
 
 * Full support
 
-* `CCSPlayerPawn_GetMaxSpeed` is skipped because it is not present in `server.dll`.
+* `CCSPlayerPawn_GetMaxSpeed` is skipped because it has been inlined into it's caller in `server.dll`.
 
 ### [CS2FOW](https://gitlab.com/karola3vax-group/cs2fow)
 

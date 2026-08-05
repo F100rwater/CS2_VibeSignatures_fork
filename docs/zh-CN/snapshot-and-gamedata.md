@@ -89,7 +89,7 @@ gamedata/<GAMEVER>/CS2Fixes/gamedata/cs2fixes.jsonc
 
 * 完整支持，所有符号均支持自动更新
 
-* 跳过 `CCSPlayerPawn_GetMaxSpeed`，因为它并不存在于 `server.dll` 中。
+* 跳过 `CCSPlayerPawn_GetMaxSpeed`，因为在 `server.dll` 中被内联进了它的唯一调用者。
 
 ### [CS2FOW](https://gitlab.com/karola3vax-group/cs2fow)
 
