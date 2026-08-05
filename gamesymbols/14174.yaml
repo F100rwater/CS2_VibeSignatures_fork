@@ -73,8 +73,8 @@ binaries:
       path: game/bin/win64/vphysics2.dll
       sha256: 6f5aa8c32e30d5369579f0e18bf97ec72e2076d3c06906efbfcc77f0c4111b80
 config_digest_version: 2
-config_sha256: sha256:aa79159ddfbfc5896515c24bae4ec72e47a4d3e75059f12a3a4ab2e502a81f3a
-file_count: 3225
+config_sha256: sha256:7d7f0eacdeef454277a6c82b6edba20fdca78ed45460d2c220efc98d3b71dc06
+file_count: 3227
 files:
   SDL3/SDL_GetMouse.windows.yaml:
     func_name: SDL_GetMouse
@@ -10508,6 +10508,24 @@ files:
     func_sig: 48 89 5C 24 ?? 48 89 74 24 ?? 55 57 41 54 41 55 41 57 48 8B EC 48 83 EC ?? 48 8B FA
     func_size: '0x24d'
     func_va: '0x1800ae8f0'
+  engine/CNetworkGameServerBase_FillKV3ServerInfo.linux.yaml:
+    func_name: CNetworkGameServerBase_FillKV3ServerInfo
+    func_rva: '0x4fce40'
+    func_sig: 55 48 8D 05 ?? ?? ?? ?? 48 89 E5 41 57 49 89 FF 41 56 41 55 49 89 F5
+    func_size: '0xf3c'
+    func_va: '0x4fce40'
+    vfunc_index: 74
+    vfunc_offset: '0x250'
+    vtable_name: CNetworkGameServer_vtable
+  engine/CNetworkGameServerBase_FillKV3ServerInfo.windows.yaml:
+    func_name: CNetworkGameServerBase_FillKV3ServerInfo
+    func_rva: '0xaae10'
+    func_sig: 48 8B C4 48 89 50 ?? 55 53
+    func_size: '0xb3d'
+    func_va: '0x1800aae10'
+    vfunc_index: 69
+    vfunc_offset: '0x228'
+    vtable_name: CNetworkGameServer_vtable
   engine/CNetworkGameServerBase_FinishChangeLevel.linux.yaml:
     func_name: CNetworkGameServerBase_FinishChangeLevel
     func_rva: '0x502600'
@@ -40575,5 +40593,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14174'
-last_publish_time: '2026-08-04T06:30:42Z'
+last_publish_time: '2026-08-05T00:23:06Z'
 schema_version: 4
