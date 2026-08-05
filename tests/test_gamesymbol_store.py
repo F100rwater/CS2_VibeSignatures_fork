@@ -70,6 +70,10 @@ class TestSnapshotSymbolStore(unittest.TestCase):
             self.assertTrue(store.candidate_sha256.startswith("sha256:"))
             self.assertEqual(SCHEMA_VERSION, store.schema_version)
             self.assertEqual(2, store.config_digest_version)
+            binaries = store.binaries
+            self.assertGreater(binaries["server"]["windows"]["size"], 0)
+            binaries["server"]["windows"]["size"] = 0
+            self.assertGreater(store.binaries["server"]["windows"]["size"], 0)
 
     def test_missing_and_unsafe_queries_are_typed(self) -> None:
         with TemporaryDirectory() as temp_dir:
