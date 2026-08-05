@@ -1161,6 +1161,28 @@ modules:
           - CGameClientConnectPrerequisite_ctor.{platform}.yaml
         expected_input:
           - CGameClientConnectPrerequisite_vtable.{platform}.yaml
+      - name: find-CNetworkClientSpawnGroupCreatePrerequisites_vtable
+        expected_output:
+          - CNetworkClientSpawnGroupCreatePrerequisites_vtable.{platform}.yaml
+      - name: find-CNetworkClientSpawnGroupCreatePrerequisites_GetStatus
+        expected_output:
+          - CNetworkClientSpawnGroupCreatePrerequisites_GetStatus.{platform}.yaml
+        expected_input:
+          - CNetworkClientSpawnGroupCreatePrerequisites_vtable.{platform}.yaml
+      - name: find-CWaitForInitialSpawnGroupsPrerequisite_vtable
+        expected_output:
+          - CWaitForInitialSpawnGroupsPrerequisite_vtable.{platform}.yaml
+      - name: find-CWaitForInitialSpawnGroupsPrerequisite_GetStatus
+        expected_output:
+          - CWaitForInitialSpawnGroupsPrerequisite_GetStatus.{platform}.yaml
+        expected_input:
+          - CNetworkClientSpawnGroupCreatePrerequisites_GetStatus.{platform}.yaml
+          - CWaitForInitialSpawnGroupsPrerequisite_vtable.{platform}.yaml
+      - name: find-CNetworkGameServerBase_GetSpawnGroupLoadingStatus
+        expected_output:
+          - CNetworkGameServerBase_GetSpawnGroupLoadingStatus.{platform}.yaml
+        expected_input:
+          - CWaitForInitialSpawnGroupsPrerequisite_GetStatus.{platform}.yaml
       - name: find-CNetworkClientService_AddClientPrerequisites
         expected_output:
           - CNetworkClientService_AddClientPrerequisites.{platform}.yaml
@@ -2767,6 +2789,22 @@ modules:
         category: func
         alias:
           - CGameClientConnectPrerequisite::CGameClientConnectPrerequisite
+      - name: CNetworkClientSpawnGroupCreatePrerequisites_vtable
+        category: vtable
+      - name: CNetworkClientSpawnGroupCreatePrerequisites_GetStatus
+        category: vfunc
+        alias:
+          - CNetworkClientSpawnGroupCreatePrerequisites::GetStatus
+      - name: CWaitForInitialSpawnGroupsPrerequisite_vtable
+        category: vtable
+      - name: CWaitForInitialSpawnGroupsPrerequisite_GetStatus
+        category: vfunc
+        alias:
+          - CWaitForInitialSpawnGroupsPrerequisite::GetStatus
+      - name: CNetworkGameServerBase_GetSpawnGroupLoadingStatus
+        category: vfunc
+        alias:
+          - CNetworkGameServerBase::GetSpawnGroupLoadingStatus
       - name: CNetworkClientService_AddClientPrerequisites
         category: vfunc
         alias:

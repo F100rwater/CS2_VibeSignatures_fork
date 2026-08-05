@@ -121,8 +121,8 @@ binaries:
       sha256: '6f5aa8c32e30d5369579f0e18bf97ec72e2076d3c06906efbfcc77f0c4111b80'
       size: 4592280
 config_digest_version: 2
-config_sha256: sha256:248849daca67fe4580ab9f1b360746fc30656f09b9ee916bb7da0bcc037c26d4
-file_count: 3275
+config_sha256: sha256:ebac8d2cedf92d48a4f2a3143cb94ab712bd44ef106afec9e26af91507096ddb
+file_count: 3285
 files:
   SDL3/SDL_GetMouse.windows.yaml:
     func_name: SDL_GetMouse
@@ -9538,6 +9538,59 @@ files:
     vtable_size: '0x200'
     vtable_symbol: ??_7CNetworkClientService@@6B@
     vtable_va: '0x180573720'
+  engine/CNetworkClientSpawnGroupCreatePrerequisites_GetStatus.linux.yaml:
+    func_name: CNetworkClientSpawnGroupCreatePrerequisites_GetStatus
+    func_rva: '0x4055e0'
+    func_sig: 55 48 89 E5 41 57 41 56 41 55 41 54 53 48 89 FB 48 83 EC ?? 44 0F B7 67 ?? F2 0F 11 45 ?? 66 41 83 FC ?? 0F 84 ?? ?? ?? ?? 66 0F 2E 05 ?? ?? ?? ?? 0F 8A ?? ?? ?? ?? 0F 85 ?? ?? ?? ?? 31 D2 66 F7 43 ?? ?? ?? 74 ?? 48 8B 53 ?? 41 0F B7 C4 48 8D 04 80 4C 8D 34 C2
+    func_size: '0x6e8'
+    func_va: '0x4055e0'
+    vfunc_index: 4
+    vfunc_offset: '0x20'
+    vtable_name: CNetworkClientSpawnGroupCreatePrerequisites_vtable
+  engine/CNetworkClientSpawnGroupCreatePrerequisites_GetStatus.windows.yaml:
+    func_name: CNetworkClientSpawnGroupCreatePrerequisites_GetStatus
+    func_rva: '0x5da30'
+    func_sig: 48 8B C4 55 56 41 54 41 55
+    func_size: '0x489'
+    func_va: '0x18005da30'
+    vfunc_index: 3
+    vfunc_offset: '0x18'
+    vtable_name: CNetworkClientSpawnGroupCreatePrerequisites_vtable
+  engine/CNetworkClientSpawnGroupCreatePrerequisites_vtable.linux.yaml:
+    vtable_class: CNetworkClientSpawnGroupCreatePrerequisites
+    vtable_entries:
+      0: '0x4e8f90'
+      1: '0x4e9310'
+      10: '0x3fea20'
+      2: '0x3641e0'
+      3: '0x3641f0'
+      4: '0x4055e0'
+      5: '0x3f7080'
+      6: '0x406860'
+      7: '0x405440'
+      8: '0x404420'
+      9: '0x4eef80'
+    vtable_numvfunc: 11
+    vtable_rva: '0x9af1c8'
+    vtable_size: '0x58'
+    vtable_symbol: _ZTV43CNetworkClientSpawnGroupCreatePrerequisites + 0x10
+    vtable_va: '0x9af1c8'
+  engine/CNetworkClientSpawnGroupCreatePrerequisites_vtable.windows.yaml:
+    vtable_class: CNetworkClientSpawnGroupCreatePrerequisites
+    vtable_entries:
+      0: '0x18005b060'
+      1: '0x18005eac0'
+      2: '0x18005ead0'
+      3: '0x18005da30'
+      4: '0x18005e5e0'
+      5: '0x18005dec0'
+      6: '0x18005ba20'
+      7: '0x18005e510'
+    vtable_numvfunc: 8
+    vtable_rva: '0x531928'
+    vtable_size: '0x40'
+    vtable_symbol: ??_7CNetworkClientSpawnGroupCreatePrerequisites@@6B@
+    vtable_va: '0x180531928'
   engine/CNetworkGameClientBase_ClockDrift_AdjustFrameTime.linux.yaml:
     func_name: CNetworkGameClientBase_ClockDrift_AdjustFrameTime
     func_rva: '0x4da480'
@@ -10660,6 +10713,18 @@ files:
     vfunc_index: 65
     vfunc_offset: '0x208'
     vtable_name: CNetworkGameServerBase_vtable
+  engine/CNetworkGameServerBase_GetSpawnGroupLoadingStatus.linux.yaml:
+    func_name: CNetworkGameServerBase_GetSpawnGroupLoadingStatus
+    vfunc_index: 37
+    vfunc_offset: '0x128'
+    vfunc_sig: FF 90 28 01 00 00 85 C0
+    vtable_name: CNetworkGameServer_vtable
+  engine/CNetworkGameServerBase_GetSpawnGroupLoadingStatus.windows.yaml:
+    func_name: CNetworkGameServerBase_GetSpawnGroupLoadingStatus
+    vfunc_index: 37
+    vfunc_offset: '0x128'
+    vfunc_sig: 4C 8B 80 28 01 00 00
+    vtable_name: CNetworkGameServer_vtable
   engine/CNetworkGameServerBase_GetTimescale.linux.yaml:
     func_name: CNetworkGameServerBase_GetTimescale
     func_rva: '0x4f0fc0'
@@ -12848,6 +12913,53 @@ files:
     vtable_size: '0x158'
     vtable_symbol: CSplitScreenService_vtable
     vtable_va: '0x180578ca8'
+  engine/CWaitForInitialSpawnGroupsPrerequisite_GetStatus.linux.yaml:
+    func_name: CWaitForInitialSpawnGroupsPrerequisite_GetStatus
+    func_rva: '0x3f72b0'
+    func_size: '0x7e'
+    func_va: '0x3f72b0'
+    vfunc_index: 4
+    vfunc_offset: '0x20'
+    vfunc_sig: FF 50 20 83 F8 ?? 0F 84 ?? ?? ?? ?? 83 F8 ?? 74 ?? 85 C0 0F 85 ?? ?? ?? ?? 31 C0 48 83 C4 ??
+    vtable_name: CWaitForInitialSpawnGroupsPrerequisite_vtable
+  engine/CWaitForInitialSpawnGroupsPrerequisite_GetStatus.windows.yaml:
+    func_name: CWaitForInitialSpawnGroupsPrerequisite_GetStatus
+    func_rva: '0x1dcdf0'
+    func_size: '0x7d'
+    func_va: '0x1801dcdf0'
+    vfunc_index: 3
+    vfunc_offset: '0x18'
+    vfunc_sig: FF 50 18 8B C8 85 C0
+    vtable_name: CWaitForInitialSpawnGroupsPrerequisite_vtable
+  engine/CWaitForInitialSpawnGroupsPrerequisite_vtable.linux.yaml:
+    vtable_class: CWaitForInitialSpawnGroupsPrerequisite
+    vtable_entries:
+      0: '0x4004d0'
+      1: '0x400410'
+      2: '0x3641e0'
+      3: '0x3641f0'
+      4: '0x3f72b0'
+      5: '0x3f7330'
+      6: '0x406470'
+    vtable_numvfunc: 7
+    vtable_rva: '0x9a4258'
+    vtable_size: '0x38'
+    vtable_symbol: _ZTV38CWaitForInitialSpawnGroupsPrerequisite + 0x10
+    vtable_va: '0x9a4258'
+  engine/CWaitForInitialSpawnGroupsPrerequisite_vtable.windows.yaml:
+    vtable_class: CWaitForInitialSpawnGroupsPrerequisite
+    vtable_entries:
+      0: '0x1801dd3d0'
+      1: '0x18005eac0'
+      2: '0x18005ead0'
+      3: '0x1801dcdf0'
+      4: '0x1801dce70'
+      5: '0x18005eaf0'
+    vtable_numvfunc: 6
+    vtable_rva: '0x576140'
+    vtable_size: '0x30'
+    vtable_symbol: ??_7CWaitForInitialSpawnGroupsPrerequisite@@6B@
+    vtable_va: '0x180576140'
   engine/ConnectInterfaces.linux.yaml:
     func_name: ConnectInterfaces
     func_rva: '0x5f8bc0'
@@ -42325,5 +42437,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14174'
-last_publish_time: '2026-08-05T09:10:50Z'
+last_publish_time: '2026-08-05T14:16:59Z'
 schema_version: 5
