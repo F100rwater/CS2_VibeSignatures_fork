@@ -50,8 +50,12 @@ class TestPack(unittest.TestCase):
         with TemporaryDirectory() as temp_dir:
             workspace = SnapshotWorkspace(Path(temp_dir))
             workspace.write_required()
-            first = workspace.pack()
-            second = workspace.pack()
+            with patch(
+                "gamesymbol_snapshot_lib.operations._utc_publish_time",
+                return_value="2026-01-02T03:04:05Z",
+            ):
+                first = workspace.pack()
+                second = workspace.pack()
             data = yaml.safe_load(first)
 
         self.assertEqual(first, second)

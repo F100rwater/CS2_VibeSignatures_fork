@@ -849,6 +849,11 @@ modules:
           - CNetworkGameServerBase_BroadcastPrintf.{platform}.yaml
         expected_input:
           - CNetworkGameServerBase_vtable.{platform}.yaml
+      - name: find-CNetworkGameServerBase_BroadcastEntityVoice
+        expected_output:
+          - CNetworkGameServerBase_BroadcastEntityVoice.{platform}.yaml
+        expected_input:
+          - CNetworkGameServer_vtable.{platform}.yaml
       - name: find-CNetworkGameServerBase_WriteDeltaEntities
         expected_output:
           - CNetworkGameServerBase_WriteDeltaEntities.{platform}.yaml
@@ -1206,6 +1211,12 @@ modules:
         expected_input:
           - CNetworkGameServerBase_vtable.{platform}.yaml
           - INetworkGameServer_ServerPostSimulate.{platform}.yaml
+      - name: find-CNetworkGameServer_ServerPostSimulate
+        expected_output:
+          - CNetworkGameServer_ServerPostSimulate.{platform}.yaml
+        expected_input:
+          - CNetworkGameServer_vtable.{platform}.yaml
+          - CNetworkGameServerBase_ServerPostSimulate.{platform}.yaml
       - name: find-INetworkGameServer_ServerAdvanceTick
         expected_output:
           - INetworkGameServer_ServerAdvanceTick.{platform}.yaml
@@ -2178,6 +2189,10 @@ modules:
         category: vfunc
         alias:
           - CNetworkGameServerBase::BroadcastPrintf
+      - name: CNetworkGameServerBase_BroadcastEntityVoice
+        category: vfunc
+        alias:
+          - CNetworkGameServerBase::BroadcastEntityVoice
       - name: CNetworkGameServerBase_WriteDeltaEntities
         category: func
         alias:
@@ -2806,6 +2821,10 @@ modules:
         category: vfunc
         alias:
           - CNetworkGameServerBase::ServerPostSimulate
+      - name: CNetworkGameServer_ServerPostSimulate
+        category: vfunc
+        alias:
+          - CNetworkGameServer::ServerPostSimulate
       - name: INetworkGameServer_ServerAdvanceTick
         category: vfunc
         alias:
@@ -5782,6 +5801,24 @@ modules:
       - name: find-CGameEntitySystem_vtable
         expected_output:
           - CGameEntitySystem_vtable.{platform}.yaml
+      - name: find-CGameEventManager_vtable
+        expected_output:
+          - CGameEventManager_vtable.{platform}.yaml
+      - name: find-CChicken_vtable
+        expected_output:
+          - CChicken_vtable.{platform}.yaml
+      - name: find-CChicken_Event_Killed
+        expected_output:
+          - CChicken_Event_Killed.{platform}.yaml
+        expected_input:
+          - CChicken_vtable.{platform}.yaml
+      - name: find-CChicken_Event_Killed-decompiles
+        expected_output:
+          - CBaseEntity_EmitSound.{platform}.yaml
+          - CBaseModelEntity_FindBone.{platform}.yaml
+          - DispatchParticleEffect2.{platform}.yaml
+        expected_input:
+          - CChicken_Event_Killed.{platform}.yaml
       - name: find-CGameRules_vtable
         expected_output:
           - CGameRules_vtable.{platform}.yaml
@@ -5980,9 +6017,15 @@ modules:
           - CBasePlayerPawn_OnTakeDamage_Alive.{platform}.yaml
           - CBasePlayerPawn_OnTakeDamage_Dying.{platform}.yaml
           - CBasePlayerPawn_OnTakeDamage_Dead.{platform}.yaml
+          - DecalPlacementInfo_ctor.{platform}.yaml
         expected_input:
           - CBasePlayerPawn_OnTakeDamage.{platform}.yaml
           - CBasePlayerPawn_vtable.{platform}.yaml
+      - name: find-DecalPlacementInfo_ctor-decompiles
+        expected_output:
+          - CBaseModelEntity_GetBoneTransform.{platform}.yaml
+        expected_input:
+          - DecalPlacementInfo_ctor.{platform}.yaml
       - name: find-CCSPlayerPawn_OnTakeDamage
         expected_output:
           - CCSPlayerPawn_OnTakeDamage.{platform}.yaml
@@ -5998,14 +6041,58 @@ modules:
       - name: find-CFlashbangProjectile_vtable
         expected_output:
           - CFlashbangProjectile_vtable.{platform}.yaml
+      - name: find-CSmokeGrenadeProjectile_vtable
+        expected_output:
+          - CSmokeGrenadeProjectile_vtable.{platform}.yaml
       - name: find-CFlashbangProjectile_Spawn
         expected_output:
           - CFlashbangProjectile_Spawn.{platform}.yaml
         expected_input:
           - CFlashbangProjectile_vtable.{platform}.yaml
+      - name: find-CFlashbangProjectile_Detonate
+        expected_output:
+          - CFlashbangProjectile_Detonate.{platform}.yaml
+        expected_input:
+          - CFlashbangProjectile_vtable.{platform}.yaml
+      - name: find-CSmokeGrenadeProjectile_Detonate
+        expected_output:
+          - CSmokeGrenadeProjectile_Detonate.{platform}.yaml
+        expected_input:
+          - CSmokeGrenadeProjectile_vtable.{platform}.yaml
+          - CFlashbangProjectile_Detonate.{platform}.yaml
       - name: find-CSmokeGrenadeProjectile_Create
         expected_output:
           - CSmokeGrenadeProjectile_Create.{platform}.yaml
+      - name: find-SmokeVolume_GetSmokeDensityInLine_Lambda1_operator_call
+        expected_output:
+          - SmokeVolume_GetSmokeDensityInLine_Lambda1_operator_call.{platform}.yaml
+      - name: find-CSmokeGrenadeProjectile_Detonate-decompiles
+        expected_output:
+          - SmokeVolume_BuildSmokeSimulation.{platform}.yaml
+          - CSmokeGrenadeProjectile_m_SmokeVolume.{platform}.yaml
+        expected_input:
+          - CSmokeGrenadeProjectile_Detonate.{platform}.yaml
+      # Linux de-inlines the center-origin/start-time initialization out of
+      # SmokeVolume::BuildSmokeSimulation, so expose the shared helper first.
+      - name: find-SmokeVolume_BuildSmokeSimulation_Initialize-linux
+        platform: linux
+        expected_output:
+          - SmokeVolume_BuildSmokeSimulation_Initialize.{platform}.yaml
+        expected_input:
+          - SmokeVolume_BuildSmokeSimulation.{platform}.yaml
+      - name: find-SmokeVolume_BuildSmokeSimulation-decompiles
+        expected_output:
+          - SmokeVolume_m_vecCenterOrigin.{platform}.yaml
+          - SmokeVolume_m_flStartTime.{platform}.yaml
+        expected_input_windows:
+          - SmokeVolume_BuildSmokeSimulation.{platform}.yaml
+        expected_input_linux:
+          - SmokeVolume_BuildSmokeSimulation_Initialize.{platform}.yaml
+      - name: find-SmokeVolume_GetSmokeDensityInLine_Lambda1_operator_call-decompiles
+        expected_output:
+          - SmokeVolume_m_nFrame.{platform}.yaml
+        expected_input:
+          - SmokeVolume_GetSmokeDensityInLine_Lambda1_operator_call.{platform}.yaml
       - name: find-SV_Kill_SmokeGrenade_CommandHandler
         expected_output:
           - SV_Kill_SmokeGrenade_CommandHandler.{platform}.yaml
@@ -7073,9 +7160,10 @@ modules:
           - CSource2GameEntities_ShouldClientReceiveStringTableUserData.{platform}.yaml
         expected_input:
           - CSource2GameEntities_vtable.{platform}.yaml
-      - name: find-CCheckTransmitInfo_m_nPlayerSlot
+      - name: find-CSource2GameEntities_CheckTransmit-decompiles
         expected_output:
           - CCheckTransmitInfo_m_nPlayerSlot.{platform}.yaml
+          - CCheckTransmitInfo_m_bFullUpdate.{platform}.yaml
         expected_input:
           - CSource2GameEntities_CheckTransmit.{platform}.yaml
       - name: find-CBaseEntity_EmitSoundFilter
@@ -9068,6 +9156,14 @@ modules:
         category: vfunc
         alias:
           - CBasePlayerPawn::OnTakeDamage_Dead
+      - name: DecalPlacementInfo_ctor
+        category: func
+        alias:
+          - DecalPlacementInfo::DecalPlacementInfo
+      - name: CBaseModelEntity_GetBoneTransform
+        category: func
+        alias:
+          - CBaseModelEntity::GetBoneTransform
       - name: CBasePlayerPawn_OnTakeDamage
         category: vfunc
         alias:
@@ -9087,14 +9183,65 @@ modules:
       - name: CFlashbangProjectile_vtable
         category: vtable
         shared: true
+      - name: CSmokeGrenadeProjectile_vtable
+        category: vtable
       - name: CFlashbangProjectile_Spawn
         category: vfunc
         alias:
           - CFlashbangProjectile::Spawn
+      - name: CFlashbangProjectile_Detonate
+        category: vfunc
+        alias:
+          - CFlashbangProjectile::Detonate
+      - name: CSmokeGrenadeProjectile_Detonate
+        category: vfunc
+        alias:
+          - CSmokeGrenadeProjectile::Detonate
       - name: CSmokeGrenadeProjectile_Create
         category: func
         alias:
           - CSmokeGrenadeProjectile::Create
+      - name: CSmokeGrenadeProjectile
+        category: struct
+      - name: CSmokeGrenadeProjectile_m_SmokeVolume
+        category: structmember
+        struct: CSmokeGrenadeProjectile
+        member: m_SmokeVolume
+        alias:
+          - CSmokeGrenadeProjectile::m_SmokeVolume
+      - name: SmokeVolume_BuildSmokeSimulation
+        category: func
+        alias:
+          - SmokeVolume::BuildSmokeSimulation
+      - name: SmokeVolume_BuildSmokeSimulation_Initialize
+        category: func
+        platform: linux
+        alias:
+          - sub_1402310
+      - name: SmokeVolume
+        category: struct
+      - name: SmokeVolume_m_vecCenterOrigin
+        category: structmember
+        struct: SmokeVolume
+        member: m_vecCenterOrigin
+        alias:
+          - SmokeVolume::m_vecCenterOrigin
+      - name: SmokeVolume_m_flStartTime
+        category: structmember
+        struct: SmokeVolume
+        member: m_flStartTime
+        alias:
+          - SmokeVolume::m_flStartTime
+      - name: SmokeVolume_GetSmokeDensityInLine_Lambda1_operator_call
+        category: func
+        alias:
+          - SmokeVolume::GetSmokeDensityInLine::<lambda_1>::operator()
+      - name: SmokeVolume_m_nFrame
+        category: structmember
+        struct: SmokeVolume
+        member: m_nFrame
+        alias:
+          - SmokeVolume::m_nFrame
       - name: SV_Kill_SmokeGrenade_CommandHandler
         category: func
       - name: CEntitySystem_QueueDestroyEntity
@@ -10530,6 +10677,24 @@ modules:
         category: vtable
       - name: CGameEntitySystem_vtable
         category: vtable
+      - name: CGameEventManager_vtable
+        category: vtable
+      - name: CChicken_vtable
+        category: vtable
+      - name: CChicken_Event_Killed
+        category: vfunc
+        alias:
+          - CChicken::Event_Killed
+      - name: CBaseEntity_EmitSound
+        category: func
+        alias:
+          - CBaseEntity::EmitSound
+      - name: CBaseModelEntity_FindBone
+        category: func
+        alias:
+          - CBaseModelEntity::FindBone
+      - name: DispatchParticleEffect2
+        category: func
       - name: CGameEntitySystem_OnAddEntity
         category: vfunc
         alias:
@@ -10803,6 +10968,12 @@ modules:
         alias:
           - CCheckTransmitInfo::m_nPlayerSlot
           - CheckTransmitPlayerSlot
+      - name: CCheckTransmitInfo_m_bFullUpdate
+        category: structmember
+        struct: CCheckTransmitInfo
+        member: m_bFullUpdate
+        alias:
+          - CCheckTransmitInfo::m_bFullUpdate
       - name: CDedicatedServerWorkshopManager_SwitchToWorkshopMapGroup
         category: func
         alias:
