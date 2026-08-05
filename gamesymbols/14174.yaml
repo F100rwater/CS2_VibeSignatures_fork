@@ -73,8 +73,8 @@ binaries:
       path: game/bin/win64/vphysics2.dll
       sha256: 6f5aa8c32e30d5369579f0e18bf97ec72e2076d3c06906efbfcc77f0c4111b80
 config_digest_version: 2
-config_sha256: sha256:453e1cb22f5349ff22e279428c4002892f81d45b4d81a90a750c30f6232417f6
-file_count: 3266
+config_sha256: sha256:8927d85935f210bb16a1e26728c2edd8bc33c5da029659c657b12ab53df01505
+file_count: 3269
 files:
   SDL3/SDL_GetMouse.windows.yaml:
     func_name: SDL_GetMouse
@@ -10610,6 +10610,30 @@ files:
     vfunc_index: 0
     vfunc_offset: '0x0'
     vtable_name: CNetworkGameServerBase_vtable
+  engine/CNetworkGameServerBase_IsPausable.linux.yaml:
+    func_name: CNetworkGameServerBase_IsPausable
+    func_rva: '0x510460'
+    func_sig: 55 48 89 E5 41 55 41 89 F5 41 54 49 89 FC 53 48 83 EC ??
+    func_size: '0x1fc'
+    func_va: '0x510460'
+    vfunc_index: 76
+    vfunc_offset: '0x260'
+    vtable_name: CNetworkGameServer_vtable
+  engine/CNetworkGameServerBase_IsPausable.windows.yaml:
+    func_name: CNetworkGameServerBase_IsPausable
+    func_rva: '0x9bf80'
+    func_sig: 48 89 5C 24 ?? 57 48 83 EC ?? 8B FA 48 8B D9 E8 ?? ?? ?? ??
+    func_size: '0x28c'
+    func_va: '0x18009bf80'
+    vfunc_index: 71
+    vfunc_offset: '0x238'
+    vtable_name: CNetworkGameServer_vtable
+  engine/CNetworkGameServerBase_IsPausable_OfflineCheck.linux.yaml:
+    func_name: CNetworkGameServerBase_IsPausable_OfflineCheck
+    func_rva: '0x4f4ec0'
+    func_sig: 55 48 89 E5 53 48 89 FB 48 83 EC ?? E8 ?? ?? ?? ?? 84 C0 75 ?? 80 BB ?? 04 00 00 ??
+    func_size: '0xa7'
+    func_va: '0x4f4ec0'
   engine/CNetworkGameServerBase_IsSaveRestoreAllowed.linux.yaml:
     func_name: CNetworkGameServerBase_IsSaveRestoreAllowed
     func_rva: '0x4f16c0'
@@ -40364,14 +40388,12 @@ files:
     offset: '0xd4'
     offset_sig: 48 89 87 ?? ?? ?? ?? 8B 46 ?? 89 87 ?? ?? ?? ?? 48 8B 7F ??
     offset_sig_disp: 0
-    size: 8
     struct_name: SmokeVolume
   server/SmokeVolume_m_vecCenterOrigin.windows.yaml:
     member_name: m_vecCenterOrigin
     offset: '0xd4'
     offset_sig: F2 0F 11 87 ?? ?? ?? ?? 89 87 ?? ?? ?? ?? C6 07 ??
     offset_sig_disp: 0
-    size: 8
     struct_name: SmokeVolume
   server/TraceAttack.linux.yaml:
     func_name: TraceAttack
@@ -42205,5 +42227,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14174'
-last_publish_time: '2026-08-04T14:51:39Z'
+last_publish_time: '2026-08-05T07:38:14Z'
 schema_version: 4
