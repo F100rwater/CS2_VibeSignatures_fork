@@ -1255,6 +1255,12 @@ modules:
         expected_input:
           - CNetworkGameServerBase_vtable.{platform}.yaml
           - INetworkGameServer_ServerAdvanceTick.{platform}.yaml
+      - name: find-CNetworkGameServerBase_GetTime
+        expected_output:
+          - CNetworkGameServerBase_GetTime.{platform}.yaml
+        expected_input:
+          - CNetworkGameServerBase_ServerAdvanceTick.{platform}.yaml
+          - CNetworkGameServer_vtable.{platform}.yaml
       - name: find-INetworkGameServer_ServerProcessNetworking
         expected_output:
           - INetworkGameServer_ServerProcessNetworking.{platform}.yaml
@@ -2868,6 +2874,10 @@ modules:
         category: vfunc
         alias:
           - CNetworkGameServerBase::ServerAdvanceTick
+      - name: CNetworkGameServerBase_GetTime
+        category: vfunc
+        alias:
+          - CNetworkGameServerBase::GetTime
       - name: INetworkGameServer_ServerProcessNetworking
         category: vfunc
         alias:

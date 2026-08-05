@@ -121,8 +121,8 @@ binaries:
       sha256: '6f5aa8c32e30d5369579f0e18bf97ec72e2076d3c06906efbfcc77f0c4111b80'
       size: 4592280
 config_digest_version: 2
-config_sha256: sha256:eac64159217272d0af7241147a25953e5f2586b0602aa53130d45d1b7f819cba
-file_count: 3273
+config_sha256: sha256:cb03c6ea1a5e2b5f38fc1a0c3d53a2888ffed492e53de987b6834d819f1fb79a
+file_count: 3275
 files:
   SDL3/SDL_GetMouse.windows.yaml:
     func_name: SDL_GetMouse
@@ -10642,6 +10642,18 @@ files:
     vfunc_index: 65
     vfunc_offset: '0x208'
     vtable_name: CNetworkGameServerBase_vtable
+  engine/CNetworkGameServerBase_GetTime.linux.yaml:
+    func_name: CNetworkGameServerBase_GetTime
+    vfunc_index: 28
+    vfunc_offset: '0xe0'
+    vfunc_sig: 48 8B 80 E0 00 00 00 48 39 D0
+    vtable_name: CNetworkGameServer_vtable
+  engine/CNetworkGameServerBase_GetTime.windows.yaml:
+    func_name: CNetworkGameServerBase_GetTime
+    vfunc_index: 28
+    vfunc_offset: '0xe0'
+    vfunc_sig: FF 90 E0 00 00 00 F3 0F 10 0D ?? ?? ?? ??
+    vtable_name: CNetworkGameServer_vtable
   engine/CNetworkGameServerBase_GetTimescale.linux.yaml:
     func_name: CNetworkGameServerBase_GetTimescale
     func_rva: '0x4f0fc0'
@@ -42307,5 +42319,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14174'
-last_publish_time: '2026-08-05T07:48:00Z'
+last_publish_time: '2026-08-05T11:14:24Z'
 schema_version: 5
