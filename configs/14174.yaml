@@ -616,6 +616,18 @@ modules:
         expected_input:
           - CNetworkGameServerBase_vtable.{platform}.yaml
           - INetworkGameServer_GetMaxClients.{platform}.yaml
+      - name: find-CSteam3Server_SendUpdatedServerDetails
+        expected_output:
+          - CSteam3Server_SendUpdatedServerDetails.{platform}.yaml
+        expected_input:
+          - CNetworkGameServer_ActivateServer.{platform}.yaml
+      - name: find-CNetworkGameServerBase_GetMapName-AND-CNetworkGameServerBase_GetHostName
+        expected_output:
+          - CNetworkGameServerBase_GetMapName.{platform}.yaml
+          - CNetworkGameServerBase_GetHostName.{platform}.yaml
+        expected_input:
+          - CSteam3Server_SendUpdatedServerDetails.{platform}.yaml
+          - CNetworkGameServer_vtable.{platform}.yaml
       - name: find-CNetworkGameServerBase_ServerPollNetworking
         expected_output:
           - CNetworkGameServerBase_ServerPollNetworking.{platform}.yaml
@@ -2338,6 +2350,18 @@ modules:
         category: vfunc
         alias:
           - CNetworkGameServerBase::GetMaxClients
+      - name: CSteam3Server_SendUpdatedServerDetails
+        category: func
+        alias:
+          - CSteam3Server::SendUpdatedServerDetails
+      - name: CNetworkGameServerBase_GetMapName
+        category: vfunc
+        alias:
+          - CNetworkGameServerBase::GetMapName
+      - name: CNetworkGameServerBase_GetHostName
+        category: vfunc
+        alias:
+          - CNetworkGameServerBase::GetHostName
       - name: CNetworkGameServerBase_SetMaxClients
         category: vfunc
         alias:
