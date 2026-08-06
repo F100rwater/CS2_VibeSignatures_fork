@@ -14,8 +14,8 @@ disasm_code: |-
   .text:00000000004F3636                 jbe     loc_4F36F6
   .text:00000000004F363C                 mov     rax, [rbx]
   .text:00000000004F363F                 lea     rdx, sub_4F0FD0
-  .text:00000000004F3646                 ; 0x148 = 328LL = CNetworkGameServerBase_IsChangelevelPending
-  .text:00000000004F3646                 mov     rax, [rax+148h]; 0x148 = 328LL = CNetworkGameServerBase_IsChangelevelPending
+  .text:00000000004F3646                 ; 0x148 = 328LL = INetworkGameServer_IsChangelevelPending
+  .text:00000000004F3646                 mov     rax, [rax+148h]; 0x148 = 328LL = INetworkGameServer_IsChangelevelPending
   .text:00000000004F364D                 cmp     rax, rdx
   .text:00000000004F3650                 jnz     loc_4F37E8
   .text:00000000004F3656                 movzx   eax, byte ptr [rbx+2B8h]
@@ -199,7 +199,7 @@ procedure: |-
     if ( *(_DWORD *)(a1 + 56) <= 1u )
       return;
   LABEL_4:
-    v2 = *(__int64 (__fastcall **)())(*(_QWORD *)a1 + 328LL);// 0x148 = 328LL = CNetworkGameServerBase_IsChangelevelPending
+    v2 = *(__int64 (__fastcall **)())(*(_QWORD *)a1 + 328LL);// 0x148 = 328LL = INetworkGameServer_IsChangelevelPending
     if ( v2 == sub_4F0FD0 )
       v3 = *(_BYTE *)(a1 + 696);
     else

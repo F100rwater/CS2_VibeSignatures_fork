@@ -32,8 +32,8 @@ disasm_code: |-
   .text:00000001800B4A44                 jbe     short loc_1800B4A7C
   .text:00000001800B4A46                 mov     rax, [rbx]
   .text:00000001800B4A49                 mov     rcx, rbx
-  .text:00000001800B4A4C                 ; 0x148 = 328LL = CNetworkGameServerBase_IsChangelevelPending
-  .text:00000001800B4A4C                 call    qword ptr [rax+148h]; 0x148 = 328LL = CNetworkGameServerBase_IsChangelevelPending
+  .text:00000001800B4A4C                 ; 0x148 = 328LL = INetworkGameServer_IsChangelevelPending
+  .text:00000001800B4A4C                 call    qword ptr [rax+148h]; 0x148 = 328LL = INetworkGameServer_IsChangelevelPending
   .text:00000001800B4A52                 test    al, al
   .text:00000001800B4A54                 jnz     short loc_1800B4A7C
   .text:00000001800B4A56                 mov     rcx, cs:g_pNetworkSystem
@@ -80,7 +80,7 @@ procedure: |-
       }
       (*(void (__fastcall **)(__int64))(*(_QWORD *)g_pHostStateMgr + 88LL))(g_pHostStateMgr);
     }
-    if ( a1[14] > 1u && !(*(unsigned __int8 (__fastcall **)(_DWORD *))(*(_QWORD *)a1 + 328LL))(a1) )// 0x148 = 328LL = CNetworkGameServerBase_IsChangelevelPending
+    if ( a1[14] > 1u && !(*(unsigned __int8 (__fastcall **)(_DWORD *))(*(_QWORD *)a1 + 328LL))(a1) )// 0x148 = 328LL = INetworkGameServer_IsChangelevelPending
     {
       v3 = a1 + 2;
       if ( !a1 )
