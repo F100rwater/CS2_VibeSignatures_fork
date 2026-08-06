@@ -1,28 +1,22 @@
 #!/usr/bin/env python3
-"""Preprocess script for find-CNetworkGameServerBase_RemoveClientFromGame skill."""
+"""Preprocess script for find-CServerSideClientBase_SendServerInfo skill."""
 
 from ida_analyze_util import preprocess_common_skill
 
+
 TARGET_FUNCTION_NAMES = [
-    "CNetworkGameServerBase_RemoveClientFromGame",
+    "CServerSideClientBase_SendServerInfo",
 ]
 
 FUNC_XREFS = [
     {
-        "func_name": "CNetworkGameServerBase_RemoveClientFromGame",
-        "xref_strings": [],
-        # gv_va auto-loaded from g_pSource2GameClients.{platform}.yaml. Among the
-        # CNetworkGameServer_vtable entries that call CServerSideClientBase_GetNetworkIDString
-        # (RemoveClientFromGame, GetPlayerNetworkIDString, and ConnectClient on Linux), only
-        # RemoveClientFromGame also references g_pSource2GameClients -- so the
-        # xref_funcs + xref_gvs + vtable intersection collapses to it with no excludes.
-        "xref_gvs": [
-            "g_pSource2GameClients",
+        "func_name": "CServerSideClientBase_SendServerInfo",
+        "xref_strings": [
+            "FULLMATCH:SV_SendServerinfo->msg",
         ],
+        "xref_gvs": [],
         "xref_signatures": [],
-        "xref_funcs": [
-            "CServerSideClientBase_GetNetworkIDString",
-        ],
+        "xref_funcs": [],
         "exclude_funcs": [],
         "exclude_strings": [],
         "exclude_gvs": [],
@@ -31,14 +25,13 @@ FUNC_XREFS = [
 ]
 
 FUNC_VTABLE_RELATIONS = [
-    # (func_name, vtable_class)
-    ("CNetworkGameServerBase_RemoveClientFromGame", "CNetworkGameServer_vtable"),
+    # (func_name, vtable artifact stem)
+    ("CServerSideClientBase_SendServerInfo", "CServerSideClientBase_vtable"),
 ]
 
 GENERATE_YAML_DESIRED_FIELDS = [
-    # (symbol_name, generate_yaml_fields)
     (
-        "CNetworkGameServerBase_RemoveClientFromGame",
+        "CServerSideClientBase_SendServerInfo",
         [
             "func_name",
             "func_va",
@@ -63,7 +56,7 @@ async def preprocess_skill(
     image_base,
     debug=False,
 ):
-    """Reuse previous gamever func_sig to locate target function(s) and write YAML."""
+    """Locate CServerSideClientBase_SendServerInfo from the exact debug string."""
     return await preprocess_common_skill(
         session=session,
         expected_outputs=expected_outputs,

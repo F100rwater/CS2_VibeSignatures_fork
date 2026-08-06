@@ -662,6 +662,17 @@ modules:
       - name: find-CNetworkGameServerBase_CheckTimeouts
         expected_output:
           - CNetworkGameServerBase_CheckTimeouts.{platform}.yaml
+      - name: find-CNetworkGameServerBase_CheckTimeouts-decompiles
+        expected_output:
+          - CNetworkGameServerBase_IsHLTV.{platform}.yaml
+        expected_input:
+          - CNetworkGameServerBase_CheckTimeouts.{platform}.yaml
+          - CNetworkGameServerBase_vtable.{platform}.yaml
+      - name: find-CNetworkGameServerBase_GetPassword
+        expected_output:
+          - CNetworkGameServerBase_GetPassword.{platform}.yaml
+        expected_input:
+          - CNetworkGameServerBase_vtable.{platform}.yaml
       - name: find-CNetworkGameServerBase_OnKickById
         expected_output:
           - CNetworkGameServerBase_OnKickById.{platform}.yaml
@@ -850,28 +861,28 @@ modules:
           - CNetworkGameServerBase_IsSaveRestoreAllowed.{platform}.yaml
         expected_input:
           - CNetworkGameServerBase_vtable.{platform}.yaml
-      - name: find-CNetworkGameServerBase_IsPausable_OfflineCheck
+      - name: find-CNetworkGameServer_IsPausable_OfflineCheck
         optional_output:
-          - CNetworkGameServerBase_IsPausable_OfflineCheck.{platform}.yaml
+          - CNetworkGameServer_IsPausable_OfflineCheck.{platform}.yaml
         skip_if_exists:
-          - CNetworkGameServerBase_IsPausable.{platform}.yaml
-      - name: find-CNetworkGameServerBase_IsPausable-noinline
+          - CNetworkGameServer_IsPausable.{platform}.yaml
+      - name: find-CNetworkGameServer_IsPausable-noinline
         optional_output:
-          - CNetworkGameServerBase_IsPausable.{platform}.yaml
+          - CNetworkGameServer_IsPausable.{platform}.yaml
         expected_input:
           - CNetworkGameServer_vtable.{platform}.yaml
           - CNetworkGameServerBase_ConnectClient.{platform}.yaml
         prerequisite:
-          - find-CNetworkGameServerBase_IsPausable_OfflineCheck
-      - name: find-CNetworkGameServerBase_IsPausable-inlined
+          - find-CNetworkGameServer_IsPausable_OfflineCheck
+      - name: find-CNetworkGameServer_IsPausable-inlined
         expected_output:
-          - CNetworkGameServerBase_IsPausable.{platform}.yaml
+          - CNetworkGameServer_IsPausable.{platform}.yaml
         expected_input:
           - CNetworkGameServer_vtable.{platform}.yaml
         skip_if_exists:
-          - CNetworkGameServerBase_IsPausable.{platform}.yaml
+          - CNetworkGameServer_IsPausable.{platform}.yaml
         prerequisite:
-          - find-CNetworkGameServerBase_IsPausable-noinline
+          - find-CNetworkGameServer_IsPausable-noinline
       - name: find-CNetworkGameServerBase_Init
         expected_output:
           - CNetworkGameServerBase_Init.{platform}.yaml
@@ -2042,6 +2053,17 @@ modules:
       - name: find-CServerSideClientBase_vtable
         expected_output:
           - CServerSideClientBase_vtable.{platform}.yaml
+      - name: find-CServerSideClientBase_SendServerInfo
+        expected_output:
+          - CServerSideClientBase_SendServerInfo.{platform}.yaml
+        expected_input:
+          - CServerSideClientBase_vtable.{platform}.yaml
+      - name: find-CServerSideClientBase_SendServerInfo-decompiles
+        expected_output:
+          - CNetworkGameServerBase_FillServerInfo.{platform}.yaml
+        expected_input:
+          - CServerSideClientBase_SendServerInfo.{platform}.yaml
+          - CNetworkGameServerBase_vtable.{platform}.yaml
       - name: find-CDelayedCall2_CServerSideClientBase_UpdateAcknowledgedFramecountCall_vtable
         expected_output:
           - CDelayedCall2_CServerSideClientBase_UpdateAcknowledgedFramecountCall_vtable.{platform}.yaml
@@ -2369,10 +2391,10 @@ modules:
         category: vfunc
         alias:
           - CNetworkGameServerBase::IsSaveRestoreAllowed
-      - name: CNetworkGameServerBase_IsPausable
+      - name: CNetworkGameServer_IsPausable
         category: vfunc
         alias:
-          - CNetworkGameServerBase::IsPausable
+          - CNetworkGameServer::IsPausable
       - name: CNetworkGameServerBase_Init
         category: vfunc
         alias:
@@ -2438,6 +2460,14 @@ modules:
         category: func
         alias:
           - CNetworkGameServerBase::CheckTimeouts
+      - name: CNetworkGameServerBase_IsHLTV
+        category: vfunc
+        alias:
+          - CNetworkGameServerBase::IsHLTV
+      - name: CNetworkGameServerBase_GetPassword
+        category: vfunc
+        alias:
+          - CNetworkGameServerBase::GetPassword
       - name: CNetworkGameServerBase_OnKickById
         category: func
         alias:
@@ -3426,6 +3456,14 @@ modules:
           - CHLTVBroadcast::RecordSnapshot
       - name: CServerSideClientBase_vtable
         category: vtable
+      - name: CServerSideClientBase_SendServerInfo
+        category: vfunc
+        alias:
+          - CServerSideClientBase::SendServerInfo
+      - name: CNetworkGameServerBase_FillServerInfo
+        category: vfunc
+        alias:
+          - CNetworkGameServerBase::FillServerInfo
       - name: CDelayedCall2_CServerSideClientBase_UpdateAcknowledgedFramecountCall_vtable
         category: vtable
       - name: CServerSideClientBase_ProcessTick
@@ -3489,10 +3527,10 @@ modules:
         category: vfunc
         alias:
           - CNetworkGameServer::GetPlayerNetworkIDString
-      - name: CNetworkGameServerBase_RemoveClientFromGame
+      - name: CNetworkGameServer_RemoveClientFromGame
         category: vfunc
         alias:
-          - CNetworkGameServerBase::RemoveClientFromGame
+          - CNetworkGameServer::RemoveClientFromGame
       - name: CEngineServer_GetPlayerNetworkIDString
         category: vfunc
         alias:
@@ -12447,9 +12485,9 @@ modules:
       # Discovered as the CNetworkGameServer_vtable entry that BOTH calls
       # CServerSideClientBase_GetNetworkIDString and references g_pSource2GameClients (the
       # xref_funcs + xref_gvs + vtable intersection uniquely selects it, no excludes needed).
-      - name: find-CNetworkGameServerBase_RemoveClientFromGame
+      - name: find-CNetworkGameServer_RemoveClientFromGame
         expected_output:
-          - CNetworkGameServerBase_RemoveClientFromGame.{platform}.yaml
+          - CNetworkGameServer_RemoveClientFromGame.{platform}.yaml
         expected_input:
           - CServerSideClientBase_GetNetworkIDString.{platform}.yaml
           - CNetworkGameServer_vtable.{platform}.yaml

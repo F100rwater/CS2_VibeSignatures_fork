@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Preprocess script for find-CNetworkGameServerBase_IsPausable-noinline skill.
+"""Preprocess script for find-CNetworkGameServer_IsPausable-noinline skill.
 
-Deinline-fix chain, link 2/3.  Resolves ``CNetworkGameServerBase_IsPausable`` (a vfunc of
+Deinline-fix chain, link 2/3.  Resolves ``CNetworkGameServer_IsPausable`` (a vfunc of
 ``CNetworkGameServer_vtable``) as the caller of the standalone
-``CNetworkGameServerBase_IsPausable_OfflineCheck`` helper.  This path only applies when the
+``CNetworkGameServer_IsPausable_OfflineCheck`` helper.  This path only applies when the
 helper is NOT inlined into the vfunc (e.g. Linux 14174, where the ``offline`` /
 ``System/network`` strings live in the de-inlined ``sub_4F4EC0`` helper and IsPausable merely
 calls it).  When the helper is inlined the helper YAML resolves to the vfunc's own address and
@@ -15,23 +15,23 @@ so it survives the vtable intersection alongside IsPausable (e.g. Linux 14174 yi
 address is read from ``CNetworkGameServerBase_ConnectClient.{platform}.yaml``) to leave IsPausable
 as the sole candidate.  Its output is optional, so when the caller cannot be resolved (e.g. the
 helper YAML is absent because the inlined anchor was ambiguous) the
-``find-CNetworkGameServerBase_IsPausable-inlined`` fallback runs instead.
+``find-CNetworkGameServer_IsPausable-inlined`` fallback runs instead.
 """
 
 from ida_analyze_util import preprocess_common_skill
 
 TARGET_FUNCTION_NAMES = [
-    "CNetworkGameServerBase_IsPausable",
+    "CNetworkGameServer_IsPausable",
 ]
 
 FUNC_XREFS = [
     {
-        "func_name": "CNetworkGameServerBase_IsPausable",
+        "func_name": "CNetworkGameServer_IsPausable",
         "xref_strings": [],
         "xref_gvs": [],
         "xref_signatures": [],
         "xref_funcs": [
-            "CNetworkGameServerBase_IsPausable_OfflineCheck",
+            "CNetworkGameServer_IsPausable_OfflineCheck",
         ],
         "exclude_funcs": [
             "CNetworkGameServerBase_ConnectClient",
@@ -44,13 +44,13 @@ FUNC_XREFS = [
 
 FUNC_VTABLE_RELATIONS = [
     # (func_name, vtable_class)
-    ("CNetworkGameServerBase_IsPausable", "CNetworkGameServer_vtable"),
+    ("CNetworkGameServer_IsPausable", "CNetworkGameServer_vtable"),
 ]
 
 GENERATE_YAML_DESIRED_FIELDS = [
     # (symbol_name, generate_yaml_fields)
     (
-        "CNetworkGameServerBase_IsPausable",
+        "CNetworkGameServer_IsPausable",
         [
             "func_name",
             "func_va",
