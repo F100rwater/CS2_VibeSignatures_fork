@@ -1,15 +1,27 @@
 #!/usr/bin/env python3
-"""Preprocess script for find-INetworkGameServer_IsBackgroundMap skill."""
+"""Preprocess script for find-IsBackgroundMap-decompiles skill."""
 
 from ida_analyze_util import preprocess_common_skill
 
 TARGET_FUNCTION_NAMES = [
     "INetworkGameServer_IsBackgroundMap",
+    "ILoopModeGameSharedState_IsBackgroundMap",
 ]
 
 LLM_DECOMPILE = [
     {
         "symbol_name": "INetworkGameServer_IsBackgroundMap",
+        "prompt_path": "prompt/call_llm_decompile.md",
+        "reference_yaml_paths": [
+            "references/server/IsBackgroundMap.{platform}.yaml",
+        ],
+        "expected_result_sections": ["found_vcall"],
+        "dependency_policy": {
+            "IsBackgroundMap.{platform}.yaml": "required",
+        },
+    },
+    {
+        "symbol_name": "ILoopModeGameSharedState_IsBackgroundMap",
         "prompt_path": "prompt/call_llm_decompile.md",
         "reference_yaml_paths": [
             "references/server/IsBackgroundMap.{platform}.yaml",
@@ -25,6 +37,9 @@ FUNC_VTABLE_RELATIONS = [
     # INetworkGameServer is an abstract interface -- no vtable YAML is needed;
     # the vtable name is metadata only.
     ("INetworkGameServer_IsBackgroundMap", "INetworkGameServer"),
+    # ILoopModeGameSharedState is an abstract interface -- no vtable YAML is needed;
+    # the vtable name is metadata only.
+    ("ILoopModeGameSharedState_IsBackgroundMap", "ILoopModeGameSharedState"),
 ]
 
 GENERATE_YAML_DESIRED_FIELDS = [
@@ -35,6 +50,16 @@ GENERATE_YAML_DESIRED_FIELDS = [
             "func_name",
             "vfunc_sig",
             "vfunc_sig_allow_across_function_boundary:true",
+            "vfunc_offset",
+            "vfunc_index",
+            "vtable_name",
+        ],
+    ),
+    (
+        "ILoopModeGameSharedState_IsBackgroundMap",
+        [
+            "func_name",
+            "vfunc_sig",
             "vfunc_offset",
             "vfunc_index",
             "vtable_name",

@@ -8,7 +8,8 @@ disasm_code: |-
   .text:000000000171618E                 jz      short loc_17161AB
   .text:0000000001716190                 mov     rax, [rdi]
   .text:0000000001716193                 lea     rdx, sub_17118F0
-  .text:000000000171619A                 mov     rax, [rax+28h]
+  .text:000000000171619A                 ; 0x028 = 40LL = ILoopModeGameSharedState_IsBackgroundMap
+  .text:000000000171619A                 mov     rax, [rax+28h]; 0x028 = 40LL = ILoopModeGameSharedState_IsBackgroundMap
   .text:000000000171619E                 cmp     rax, rdx
   .text:00000000017161A1                 jnz     short loc_17161E0
   .text:00000000017161A3                 movzx   eax, byte ptr [rdi+5Fh]
@@ -38,8 +39,8 @@ procedure: |-
     __int64 result; // rax
     __int64 v2; // rdi
 
-    if ( !qword_284A170
-      || ((v0 = *(__int64 (__fastcall **)())(*(_QWORD *)qword_284A170 + 40LL), v0 != sub_17118F0)
+  if ( !qword_284A170
+    || ((v0 = *(__int64 (__fastcall **)())(*(_QWORD *)qword_284A170 + 40LL), v0 != sub_17118F0) // 0x028 = 40LL = ILoopModeGameSharedState_IsBackgroundMap
         ? (result = v0())
         : (result = *(unsigned __int8 *)(qword_284A170 + 95)),
           !(_BYTE)result) )

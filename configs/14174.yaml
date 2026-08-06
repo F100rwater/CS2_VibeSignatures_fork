@@ -7242,9 +7242,10 @@ modules:
           - IsBackgroundMap.{platform}.yaml
         expected_input:
           - CSource2GameEntities_ShouldClientReceiveStringTableUserData.{platform}.yaml
-      - name: find-INetworkGameServer_IsBackgroundMap
+      - name: find-IsBackgroundMap-decompiles
         expected_output:
           - INetworkGameServer_IsBackgroundMap.{platform}.yaml
+          - ILoopModeGameSharedState_IsBackgroundMap.{platform}.yaml
         expected_input:
           - IsBackgroundMap.{platform}.yaml
       - name: find-CSource2GameEntities_CheckTransmit-decompiles
@@ -10278,6 +10279,14 @@ modules:
         category: vfunc
         alias:
           - INetworkGameServer::IsBackgroundMap
+      - name: ILoopModeGameSharedState_IsBackgroundMap
+        category: vfunc
+        alias:
+          - ILoopModeGameSharedState::IsBackgroundMap
+      - name: CNetworkGameServerBase_IsBackgroundMap
+        category: vfunc
+        alias:
+          - CNetworkGameServerBase::IsBackgroundMap
       - name: CBaseEntity_EmitSoundFilter
         category: func
         alias:
@@ -12368,6 +12377,12 @@ modules:
         expected_input:
           - CNetworkClientService_vtable.{platform}.yaml
           - INetworkClientService_IsConnecting.{platform}.yaml
+      - name: find-CNetworkGameServerBase_IsBackgroundMap
+        expected_output:
+          - CNetworkGameServerBase_IsBackgroundMap.{platform}.yaml
+        expected_input:
+          - CNetworkGameServerBase_vtable.{platform}.yaml
+          - ../server/INetworkGameServer_IsBackgroundMap.{platform}.yaml
   - name: client  # Execute Shutdown-dependent client skills after engine2.dll generates ILoopModeFactory_Shutdown
     path_windows: game/csgo/bin/win64/client.dll
     path_linux: game/csgo/bin/linuxsteamrt64/libclient.so

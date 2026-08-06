@@ -6,7 +6,8 @@ disasm_code: |-
   .text:0000000180BDF6EB                 test    rcx, rcx
   .text:0000000180BDF6EE                 jz      short loc_180BDF701
   .text:0000000180BDF6F0                 mov     rax, [rcx]
-  .text:0000000180BDF6F3                 call    qword ptr [rax+28h]
+  .text:0000000180BDF6F3                 ; 0x028 = 40LL = ILoopModeGameSharedState_IsBackgroundMap
+  .text:0000000180BDF6F3                 call    qword ptr [rax+28h]; 0x028 = 40LL = ILoopModeGameSharedState_IsBackgroundMap
   .text:0000000180BDF6F6                 test    al, al
   .text:0000000180BDF6F8                 jz      short loc_180BDF701
   .text:0000000180BDF6FA                 mov     al, 1
@@ -32,8 +33,8 @@ procedure: |-
   {
     __int64 v0; // rax
 
-    if ( qword_181FC69C0
-      && (*(unsigned __int8 (__fastcall **)(__int64))(*(_QWORD *)qword_181FC69C0 + 40LL))(qword_181FC69C0) )
+  if ( qword_181FC69C0
+    && (*(unsigned __int8 (__fastcall **)(__int64))(*(_QWORD *)qword_181FC69C0 + 40LL))(qword_181FC69C0) ) // 0x028 = 40LL = ILoopModeGameSharedState_IsBackgroundMap
     {
       LOBYTE(v0) = 1;
     }
