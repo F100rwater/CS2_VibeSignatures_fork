@@ -61,10 +61,7 @@ async def preprocess_skill(
     vtable_va = _read_vtable_va(vtable_yaml_path)
     if not vtable_va:
         if debug:
-            print(
-                "    Preprocess: CServerSideClient_vtable vtable_va not found, "
-                "cannot resolve xref_gvs"
-            )
+            print("    Preprocess: CServerSideClient_vtable vtable_va not found, cannot resolve xref_gvs")
         return False
 
     func_xrefs = [
@@ -93,4 +90,3 @@ async def preprocess_skill(
         generate_yaml_desired_fields=GENERATE_YAML_DESIRED_FIELDS,
         debug=debug,
     )
-
