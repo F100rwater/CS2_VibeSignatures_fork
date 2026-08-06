@@ -121,8 +121,8 @@ binaries:
       sha256: '6f5aa8c32e30d5369579f0e18bf97ec72e2076d3c06906efbfcc77f0c4111b80'
       size: 4592280
 config_digest_version: 2
-config_sha256: sha256:2bb48180a8153caf20fff1867864342776cac210bc4fa64531cabb296ad95717
-file_count: 3307
+config_sha256: sha256:4f04000eacffe073b28268c6287f8589f1f5ddd1002aa12a7701e0fbccea1907
+file_count: 3309
 files:
   SDL3/SDL_GetMouse.windows.yaml:
     func_name: SDL_GetMouse
@@ -10789,16 +10789,20 @@ files:
     vtable_name: CNetworkGameServerBase
   engine/CNetworkGameServerBase_IsChangelevelPending.linux.yaml:
     func_name: CNetworkGameServerBase_IsChangelevelPending
+    func_rva: '0x4f0fd0'
+    func_size: '0x8'
+    func_va: '0x4f0fd0'
     vfunc_index: 41
     vfunc_offset: '0x148'
-    vfunc_sig: 48 8B 80 48 01 00 00 48 39 D0 0F 85 ?? ?? ?? ?? 0F B6 83 ?? 02 00 00
-    vtable_name: CNetworkGameServer_vtable
+    vtable_name: CNetworkGameServerBase
   engine/CNetworkGameServerBase_IsChangelevelPending.windows.yaml:
     func_name: CNetworkGameServerBase_IsChangelevelPending
+    func_rva: '0xb3d10'
+    func_size: '0x8'
+    func_va: '0x1800b3d10'
     vfunc_index: 41
     vfunc_offset: '0x148'
-    vfunc_sig: FF 90 48 01 00 00 84 C0 75 ?? 48 8B 0D ?? ?? ?? ??
-    vtable_name: CNetworkGameServer_vtable
+    vtable_name: CNetworkGameServerBase
   engine/CNetworkGameServerBase_IsPausable.linux.yaml:
     func_name: CNetworkGameServerBase_IsPausable
     func_rva: '0x510460'
@@ -13279,6 +13283,18 @@ files:
     vfunc_index: 22
     vfunc_offset: '0xb0'
     vfunc_sig: FF 90 B0 00 00 00 EB ??
+    vtable_name: INetworkGameServer
+  engine/INetworkGameServer_IsChangelevelPending.linux.yaml:
+    func_name: INetworkGameServer_IsChangelevelPending
+    vfunc_index: 41
+    vfunc_offset: '0x148'
+    vfunc_sig: 48 8B 80 48 01 00 00 48 39 D0 0F 85 ?? ?? ?? ?? 0F B6 83 ?? 02 00 00
+    vtable_name: INetworkGameServer
+  engine/INetworkGameServer_IsChangelevelPending.windows.yaml:
+    func_name: INetworkGameServer_IsChangelevelPending
+    vfunc_index: 41
+    vfunc_offset: '0x148'
+    vfunc_sig: FF 90 48 01 00 00 84 C0 75 ?? 48 8B 0D ?? ?? ?? ??
     vtable_name: INetworkGameServer
   engine/INetworkGameServer_PreWorldUpdate.linux.yaml:
     func_name: INetworkGameServer_PreWorldUpdate
@@ -42575,5 +42591,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14174'
-last_publish_time: '2026-08-06T09:52:05Z'
+last_publish_time: '2026-08-06T11:41:49Z'
 schema_version: 5

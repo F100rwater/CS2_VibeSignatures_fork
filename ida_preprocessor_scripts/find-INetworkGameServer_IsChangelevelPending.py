@@ -23,7 +23,7 @@ LLM_DECOMPILE = [
 
 FUNC_VTABLE_RELATIONS = [
     # (func_name, vtable_class)
-    ("INetworkGameServer_IsChangelevelPending", "CNetworkGameServer_vtable"),
+    ("INetworkGameServer_IsChangelevelPending", "INetworkGameServer"),
 ]
 
 GENERATE_YAML_DESIRED_FIELDS = [
