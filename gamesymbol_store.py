@@ -85,6 +85,9 @@ class SymbolStore(Protocol):
     @property
     def binaries(self) -> Mapping[str, Any]: ...
 
+    @property
+    def modules(self) -> Sequence[str]: ...
+
     def contains(self, module: str, filename: str) -> bool: ...
 
     def get(self, module: str, filename: str) -> Mapping[str, Any] | None: ...
@@ -186,6 +189,10 @@ class _MemorySymbolStore:
     @property
     def binaries(self) -> Mapping[str, Any]:
         return copy.deepcopy(self._binaries)
+
+    @property
+    def modules(self) -> Sequence[str]:
+        return tuple(self._modules)
 
     def contains(self, module: str, filename: str) -> bool:
         return self._key(module, filename) in self._files

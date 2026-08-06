@@ -369,6 +369,7 @@ def compile_and_compare(
             reference_modules = _to_list(test_item.get("reference_modules"))
             if should_parse_vtable:
                 alias_symbols = _to_list(test_item.get("alias_symbols"))
+                reference_vtable_owners = _to_list(test_item.get("reference_vtable_owners"))
                 try:
                     merge_reference_modules = _to_bool(test_item.get("merge_reference_modules"), default=True)
                 except ValueError as exc:
@@ -390,6 +391,7 @@ def compile_and_compare(
                             merge_reference_modules=merge_reference_modules,
                             pointer_size=pointer_size_from_target_triple(target),
                             alias_class_names=alias_symbols,
+                            reference_vtable_owners=reference_vtable_owners,
                         )
                     )
                 else:
@@ -404,6 +406,7 @@ def compile_and_compare(
                                 merge_reference_modules=False,
                                 pointer_size=pointer_size_from_target_triple(target),
                                 alias_class_names=alias_symbols,
+                                reference_vtable_owners=reference_vtable_owners,
                             )
                         )
             if should_parse_record:
