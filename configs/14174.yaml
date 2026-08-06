@@ -1172,6 +1172,28 @@ modules:
           - CGameClientConnectPrerequisite_ctor.{platform}.yaml
         expected_input:
           - CGameClientConnectPrerequisite_vtable.{platform}.yaml
+      - name: find-CNetworkClientSpawnGroupCreatePrerequisites_vtable
+        expected_output:
+          - CNetworkClientSpawnGroupCreatePrerequisites_vtable.{platform}.yaml
+      - name: find-CNetworkClientSpawnGroupCreatePrerequisites_GetStatus
+        expected_output:
+          - CNetworkClientSpawnGroupCreatePrerequisites_GetStatus.{platform}.yaml
+        expected_input:
+          - CNetworkClientSpawnGroupCreatePrerequisites_vtable.{platform}.yaml
+      - name: find-CWaitForInitialSpawnGroupsPrerequisite_vtable
+        expected_output:
+          - CWaitForInitialSpawnGroupsPrerequisite_vtable.{platform}.yaml
+      - name: find-CWaitForInitialSpawnGroupsPrerequisite_GetStatus
+        expected_output:
+          - CWaitForInitialSpawnGroupsPrerequisite_GetStatus.{platform}.yaml
+        expected_input:
+          - CNetworkClientSpawnGroupCreatePrerequisites_GetStatus.{platform}.yaml
+          - CWaitForInitialSpawnGroupsPrerequisite_vtable.{platform}.yaml
+      - name: find-INetworkGameServer_GetSpawnGroupLoadingStatus
+        expected_output:
+          - INetworkGameServer_GetSpawnGroupLoadingStatus.{platform}.yaml
+        expected_input:
+          - CWaitForInitialSpawnGroupsPrerequisite_GetStatus.{platform}.yaml
       - name: find-CNetworkClientService_AddClientPrerequisites
         expected_output:
           - CNetworkClientService_AddClientPrerequisites.{platform}.yaml
@@ -2800,6 +2822,22 @@ modules:
         category: func
         alias:
           - CGameClientConnectPrerequisite::CGameClientConnectPrerequisite
+      - name: CNetworkClientSpawnGroupCreatePrerequisites_vtable
+        category: vtable
+      - name: CNetworkClientSpawnGroupCreatePrerequisites_GetStatus
+        category: vfunc
+        alias:
+          - CNetworkClientSpawnGroupCreatePrerequisites::GetStatus
+      - name: CWaitForInitialSpawnGroupsPrerequisite_vtable
+        category: vtable
+      - name: CWaitForInitialSpawnGroupsPrerequisite_GetStatus
+        category: vfunc
+        alias:
+          - CWaitForInitialSpawnGroupsPrerequisite::GetStatus
+      - name: INetworkGameServer_GetSpawnGroupLoadingStatus
+        category: vfunc
+        alias:
+          - INetworkGameServer::GetSpawnGroupLoadingStatus
       - name: CNetworkClientService_AddClientPrerequisites
         category: vfunc
         alias:
@@ -7915,9 +7953,9 @@ modules:
           - CSpawnGroupMgrGameSystem_SetActiveSpawnGroup.{platform}.yaml
         expected_input:
           - CSpawnGroupMgrGameSystem_vtable.{platform}.yaml
-      - name: find-INetworkGameServer_MakeSpawnGroupActive
+      - name: find-CSpawnGroupMgrGameSystem_SetActiveSpawnGroup-decompiles
         expected_output:
-          - INetworkGameServer_MakeSpawnGroupActive.{platform}.yaml
+          - IVEngineServer2_MakeSpawnGroupActive.{platform}.yaml
         expected_input:
           - CSpawnGroupMgrGameSystem_SetActiveSpawnGroup.{platform}.yaml
       - name: find-CSpawnGroupMgrGameSystem_UnloadSpawnGroup
@@ -11198,10 +11236,10 @@ modules:
         category: vfunc
         alias:
           - CSpawnGroupMgrGameSystem::SetActiveSpawnGroup
-      - name: INetworkGameServer_MakeSpawnGroupActive
+      - name: IVEngineServer2_MakeSpawnGroupActive
         category: vfunc
         alias:
-          - INetworkGameServer::MakeSpawnGroupActive
+          - IVEngineServer2::MakeSpawnGroupActive
       - name: CSpawnGroupMgrGameSystem_UnloadSpawnGroup
         category: vfunc
         alias:
@@ -12797,6 +12835,8 @@ cpp_tests:
     merge_reference_modules: false  # Avoid stale duplicate INetworkGameServer_ClientUpdate at index 58
   - name: CNetworkGameServerBase_MSVC
     symbol: CNetworkGameServerBase
+    reference_vtable_owners:
+      - CNetworkGameServer
     cpp: cpp_tests/inetworkgameserver.cpp
     headers:
       - hl2sdk_cs2/public/iserver.h  # Used by the fix-cppheaders SKILL

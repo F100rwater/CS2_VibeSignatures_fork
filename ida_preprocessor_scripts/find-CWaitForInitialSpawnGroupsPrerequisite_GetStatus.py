@@ -1,37 +1,43 @@
 #!/usr/bin/env python3
-"""Preprocess script for INetworkGameServer::MakeSpawnGroupActive."""
+"""Preprocess script for find-CWaitForInitialSpawnGroupsPrerequisite_GetStatus skill."""
 
 from ida_analyze_util import preprocess_common_skill
 
 TARGET_FUNCTION_NAMES = [
-    "INetworkGameServer_MakeSpawnGroupActive",
+    "CWaitForInitialSpawnGroupsPrerequisite_GetStatus",
 ]
 
 LLM_DECOMPILE = [
     {
-        "symbol_name": "INetworkGameServer_MakeSpawnGroupActive",
+        "symbol_name": "CWaitForInitialSpawnGroupsPrerequisite_GetStatus",
         "prompt_path": "prompt/call_llm_decompile.md",
         "reference_yaml_paths": [
-            "references/server/CSpawnGroupMgrGameSystem_SetActiveSpawnGroup.{platform}.yaml",
+            "references/engine/CNetworkClientSpawnGroupCreatePrerequisites_GetStatus.{platform}.yaml",
         ],
         "expected_result_sections": ["found_vcall"],
         "dependency_policy": {
-            "CSpawnGroupMgrGameSystem_SetActiveSpawnGroup.{platform}.yaml": "required",
+            "CNetworkClientSpawnGroupCreatePrerequisites_GetStatus.{platform}.yaml": "required",
         },
     },
 ]
 
 FUNC_VTABLE_RELATIONS = [
-    # (func_name, vtable_class)
-    ("INetworkGameServer_MakeSpawnGroupActive", "CNetworkGameServer_vtable"),
+    # (func_name, vtable_class) -- artifact stem so the local vtable YAML is read
+    (
+        "CWaitForInitialSpawnGroupsPrerequisite_GetStatus",
+        "CWaitForInitialSpawnGroupsPrerequisite_vtable",
+    ),
 ]
 
 GENERATE_YAML_DESIRED_FIELDS = [
-    # Slim Pattern C: this vfunc is not a downstream predecessor.
+    # (symbol_name, generate_yaml_fields)
     (
-        "INetworkGameServer_MakeSpawnGroupActive",
+        "CWaitForInitialSpawnGroupsPrerequisite_GetStatus",
         [
             "func_name",
+            "func_va",
+            "func_rva",
+            "func_size",
             "vfunc_sig",
             "vfunc_offset",
             "vfunc_index",
@@ -52,8 +58,7 @@ async def preprocess_skill(
     llm_config=None,
     debug=False,
 ):
-    """Reuse previous gamever func_sig to locate target function(s) and write YAML."""
-    _ = skill_name
+    """Reuse previous gamever vfunc_sig to locate target function(s) and write YAML."""
     return await preprocess_common_skill(
         session=session,
         expected_outputs=expected_outputs,
