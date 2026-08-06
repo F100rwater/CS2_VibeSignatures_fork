@@ -10951,8 +10951,8 @@ files:
     vfunc_index: 3
     vfunc_offset: '0x18'
     vtable_name: CNetworkGameServerBase_vtable
-  engine/CNetworkGameServerBase_RemoveClientFromGame.linux.yaml:
-    func_name: CNetworkGameServerBase_RemoveClientFromGame
+  engine/CNetworkGameServer_RemoveClientFromGame.linux.yaml:
+    func_name: CNetworkGameServer_RemoveClientFromGame
     func_rva: '0x50ffa0'
     func_sig: 55 48 89 E5 41 57 41 56 41 55 41 54 53 48 89 F3 48 83 EC ?? 8B 46 ??
     func_size: '0x11a'
@@ -10960,8 +10960,8 @@ files:
     vfunc_index: 78
     vfunc_offset: '0x270'
     vtable_name: CNetworkGameServer_vtable
-  engine/CNetworkGameServerBase_RemoveClientFromGame.windows.yaml:
-    func_name: CNetworkGameServerBase_RemoveClientFromGame
+  engine/CNetworkGameServer_RemoveClientFromGame.windows.yaml:
+    func_name: CNetworkGameServer_RemoveClientFromGame
     func_rva: '0x9d5c0'
     func_sig: 40 53 41 57 48 83 EC ?? 45 33 FF
     func_size: '0x121'

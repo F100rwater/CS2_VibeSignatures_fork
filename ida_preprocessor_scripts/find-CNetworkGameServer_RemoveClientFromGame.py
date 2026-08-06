@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
-"""Preprocess script for find-CNetworkGameServerBase_RemoveClientFromGame skill."""
+"""Preprocess script for find-CNetworkGameServer_RemoveClientFromGame skill."""
 
 from ida_analyze_util import preprocess_common_skill
 
 TARGET_FUNCTION_NAMES = [
-    "CNetworkGameServerBase_RemoveClientFromGame",
+    "CNetworkGameServer_RemoveClientFromGame",
 ]
 
 FUNC_XREFS = [
     {
-        "func_name": "CNetworkGameServerBase_RemoveClientFromGame",
+        "func_name": "CNetworkGameServer_RemoveClientFromGame",
         "xref_strings": [],
         # gv_va auto-loaded from g_pSource2GameClients.{platform}.yaml. Among the
         # CNetworkGameServer_vtable entries that call CServerSideClientBase_GetNetworkIDString
@@ -32,13 +32,13 @@ FUNC_XREFS = [
 
 FUNC_VTABLE_RELATIONS = [
     # (func_name, vtable_class)
-    ("CNetworkGameServerBase_RemoveClientFromGame", "CNetworkGameServer_vtable"),
+    ("CNetworkGameServer_RemoveClientFromGame", "CNetworkGameServer_vtable"),
 ]
 
 GENERATE_YAML_DESIRED_FIELDS = [
     # (symbol_name, generate_yaml_fields)
     (
-        "CNetworkGameServerBase_RemoveClientFromGame",
+        "CNetworkGameServer_RemoveClientFromGame",
         [
             "func_name",
             "func_va",

@@ -3489,10 +3489,10 @@ modules:
         category: vfunc
         alias:
           - CNetworkGameServer::GetPlayerNetworkIDString
-      - name: CNetworkGameServerBase_RemoveClientFromGame
+      - name: CNetworkGameServer_RemoveClientFromGame
         category: vfunc
         alias:
-          - CNetworkGameServerBase::RemoveClientFromGame
+          - CNetworkGameServer::RemoveClientFromGame
       - name: CEngineServer_GetPlayerNetworkIDString
         category: vfunc
         alias:
@@ -12447,9 +12447,9 @@ modules:
       # Discovered as the CNetworkGameServer_vtable entry that BOTH calls
       # CServerSideClientBase_GetNetworkIDString and references g_pSource2GameClients (the
       # xref_funcs + xref_gvs + vtable intersection uniquely selects it, no excludes needed).
-      - name: find-CNetworkGameServerBase_RemoveClientFromGame
+      - name: find-CNetworkGameServer_RemoveClientFromGame
         expected_output:
-          - CNetworkGameServerBase_RemoveClientFromGame.{platform}.yaml
+          - CNetworkGameServer_RemoveClientFromGame.{platform}.yaml
         expected_input:
           - CServerSideClientBase_GetNetworkIDString.{platform}.yaml
           - CNetworkGameServer_vtable.{platform}.yaml
