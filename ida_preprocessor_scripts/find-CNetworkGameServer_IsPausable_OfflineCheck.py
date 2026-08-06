@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Preprocess script for find-CNetworkGameServerBase_IsPausable_OfflineCheck skill.
+"""Preprocess script for find-CNetworkGameServer_IsPausable_OfflineCheck skill.
 
 Deinline-fix chain, link 1/3.  Resolves the standalone offline/network-session check helper
 that ``CNetworkGameServerBase::IsPausable`` calls, anchored on the ``"offline"`` +
@@ -10,25 +10,25 @@ alongside the lowercase ``"system/network"`` literal instead).
 This is the first link of the inline/noinline fallback chain.  On builds where the helper is
 de-inlined (e.g. Linux 14174, standalone ``sub_4F4EC0``) the strings live inside the helper
 body, so this skill resolves it directly.  On builds where the helper is inlined into the
-``CNetworkGameServerBase_IsPausable`` vfunc (e.g. Windows 14174) the ``offline`` +
+``CNetworkGameServer_IsPausable`` vfunc (e.g. Windows 14174) the ``offline`` +
 ``System/network`` intersection yields >1 function (the vfunc plus a standalone sibling), so
-this skill soft-skips and control falls through to ``find-CNetworkGameServerBase_IsPausable-inlined``
+this skill soft-skips and control falls through to ``find-CNetworkGameServer_IsPausable-inlined``
 whose string-cap-vtable intersection is the load-bearing path.  The helper symbol is
 deliberately NOT registered in the active version config -- the YAML is used only as an
-intermediate for the ``find-CNetworkGameServerBase_IsPausable-noinline`` xref_funcs lookup.  The
+intermediate for the ``find-CNetworkGameServer_IsPausable-noinline`` xref_funcs lookup.  The
 skill's output is optional and is skipped whenever
-``CNetworkGameServerBase_IsPausable.{platform}.yaml`` already exists.
+``CNetworkGameServer_IsPausable.{platform}.yaml`` already exists.
 """
 
 from ida_analyze_util import preprocess_common_skill
 
 TARGET_FUNCTION_NAMES = [
-    "CNetworkGameServerBase_IsPausable_OfflineCheck",
+    "CNetworkGameServer_IsPausable_OfflineCheck",
 ]
 
 FUNC_XREFS = [
     {
-        "func_name": "CNetworkGameServerBase_IsPausable_OfflineCheck",
+        "func_name": "CNetworkGameServer_IsPausable_OfflineCheck",
         "xref_strings": [
             "FULLMATCH:offline",
             "FULLMATCH:System/network",
@@ -46,7 +46,7 @@ FUNC_XREFS = [
 GENERATE_YAML_DESIRED_FIELDS = [
     # (symbol_name, generate_yaml_fields)
     (
-        "CNetworkGameServerBase_IsPausable_OfflineCheck",
+        "CNetworkGameServer_IsPausable_OfflineCheck",
         [
             "func_name",
             "func_sig",

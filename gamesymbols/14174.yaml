@@ -10819,8 +10819,8 @@ files:
     vfunc_index: 41
     vfunc_offset: '0x148'
     vtable_name: CNetworkGameServerBase
-  engine/CNetworkGameServerBase_IsPausable.linux.yaml:
-    func_name: CNetworkGameServerBase_IsPausable
+  engine/CNetworkGameServer_IsPausable.linux.yaml:
+    func_name: CNetworkGameServer_IsPausable
     func_rva: '0x510460'
     func_sig: 55 48 89 E5 41 55 41 89 F5 41 54 49 89 FC 53 48 83 EC ??
     func_size: '0x1fc'
@@ -10828,8 +10828,8 @@ files:
     vfunc_index: 76
     vfunc_offset: '0x260'
     vtable_name: CNetworkGameServer_vtable
-  engine/CNetworkGameServerBase_IsPausable.windows.yaml:
-    func_name: CNetworkGameServerBase_IsPausable
+  engine/CNetworkGameServer_IsPausable.windows.yaml:
+    func_name: CNetworkGameServer_IsPausable
     func_rva: '0x9bf80'
     func_sig: 48 89 5C 24 ?? 57 48 83 EC ?? 8B FA 48 8B D9 E8 ?? ?? ?? ??
     func_size: '0x28c'
@@ -10837,8 +10837,8 @@ files:
     vfunc_index: 71
     vfunc_offset: '0x238'
     vtable_name: CNetworkGameServer_vtable
-  engine/CNetworkGameServerBase_IsPausable_OfflineCheck.linux.yaml:
-    func_name: CNetworkGameServerBase_IsPausable_OfflineCheck
+  engine/CNetworkGameServer_IsPausable_OfflineCheck.linux.yaml:
+    func_name: CNetworkGameServer_IsPausable_OfflineCheck
     func_rva: '0x4f4ec0'
     func_sig: 55 48 89 E5 53 48 89 FB 48 83 EC ?? E8 ?? ?? ?? ?? 84 C0 75 ?? 80 BB ?? 04 00 00 ??
     func_size: '0xa7'

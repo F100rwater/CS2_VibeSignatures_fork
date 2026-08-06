@@ -850,28 +850,28 @@ modules:
           - CNetworkGameServerBase_IsSaveRestoreAllowed.{platform}.yaml
         expected_input:
           - CNetworkGameServerBase_vtable.{platform}.yaml
-      - name: find-CNetworkGameServerBase_IsPausable_OfflineCheck
+      - name: find-CNetworkGameServer_IsPausable_OfflineCheck
         optional_output:
-          - CNetworkGameServerBase_IsPausable_OfflineCheck.{platform}.yaml
+          - CNetworkGameServer_IsPausable_OfflineCheck.{platform}.yaml
         skip_if_exists:
-          - CNetworkGameServerBase_IsPausable.{platform}.yaml
-      - name: find-CNetworkGameServerBase_IsPausable-noinline
+          - CNetworkGameServer_IsPausable.{platform}.yaml
+      - name: find-CNetworkGameServer_IsPausable-noinline
         optional_output:
-          - CNetworkGameServerBase_IsPausable.{platform}.yaml
+          - CNetworkGameServer_IsPausable.{platform}.yaml
         expected_input:
           - CNetworkGameServer_vtable.{platform}.yaml
           - CNetworkGameServerBase_ConnectClient.{platform}.yaml
         prerequisite:
-          - find-CNetworkGameServerBase_IsPausable_OfflineCheck
-      - name: find-CNetworkGameServerBase_IsPausable-inlined
+          - find-CNetworkGameServer_IsPausable_OfflineCheck
+      - name: find-CNetworkGameServer_IsPausable-inlined
         expected_output:
-          - CNetworkGameServerBase_IsPausable.{platform}.yaml
+          - CNetworkGameServer_IsPausable.{platform}.yaml
         expected_input:
           - CNetworkGameServer_vtable.{platform}.yaml
         skip_if_exists:
-          - CNetworkGameServerBase_IsPausable.{platform}.yaml
+          - CNetworkGameServer_IsPausable.{platform}.yaml
         prerequisite:
-          - find-CNetworkGameServerBase_IsPausable-noinline
+          - find-CNetworkGameServer_IsPausable-noinline
       - name: find-CNetworkGameServerBase_Init
         expected_output:
           - CNetworkGameServerBase_Init.{platform}.yaml
@@ -2369,10 +2369,10 @@ modules:
         category: vfunc
         alias:
           - CNetworkGameServerBase::IsSaveRestoreAllowed
-      - name: CNetworkGameServerBase_IsPausable
+      - name: CNetworkGameServer_IsPausable
         category: vfunc
         alias:
-          - CNetworkGameServerBase::IsPausable
+          - CNetworkGameServer::IsPausable
       - name: CNetworkGameServerBase_Init
         category: vfunc
         alias:
