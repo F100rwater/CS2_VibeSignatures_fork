@@ -191,6 +191,133 @@ class TestCompareVtableWithYaml(unittest.TestCase):
 
         self.assertEqual([], report["differences"])
 
+    def test_audits_vfunc_references_from_unconfigured_snapshot_modules(self) -> None:
+        compiler_output = "VFTable indices for 'ITest' (1 entry).\n   0 | void ITest::First() [pure]\n"
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            config = root / "config.yaml"
+            bindir = root / "bin"
+            gamever = "14167"
+            write_config(
+                config,
+                [
+                    module(
+                        "engine",
+                        [skill("find-engine", ["ITest_First.{platform}.yaml"])],
+                        linux=False,
+                    ),
+                    module(
+                        "server",
+                        [skill("find-server", ["ITest_WrongOwner.{platform}.yaml"])],
+                        linux=False,
+                    ),
+                ],
+            )
+            engine_dir = bindir / gamever / "engine"
+            engine_dir.mkdir(parents=True)
+            (engine_dir / "ITest_First.windows.yaml").write_text(
+                "func_name: ITest_First\nvtable_name: ITest\nvfunc_index: 0\n",
+                encoding="utf-8",
+            )
+            write_binary(engine_dir / "engine.dll")
+            server_dir = bindir / gamever / "server"
+            server_dir.mkdir(parents=True)
+            (server_dir / "ITest_WrongOwner.windows.yaml").write_text(
+                "func_name: ITest_WrongOwner\nvtable_name: ITest\nvfunc_index: 64\n",
+                encoding="utf-8",
+            )
+            write_binary(server_dir / "server.dll")
+            snapshot = root / "candidate.yaml"
+            pack_snapshot(gamever, bindir, config, snapshot)
+            store = SnapshotSymbolStore.open(snapshot, expected_game_version=gamever, config_path=config)
+
+            report = cpp_tests_util.compare_compiler_vtable_with_yaml(
+                class_name="ITest",
+                compiler_output=compiler_output,
+                symbol_store=store,
+                platform="windows",
+                reference_modules=["engine"],
+                merge_reference_modules=False,
+                pointer_size=8,
+            )
+
+        self.assertEqual("engine", report["reference_module"])
+        self.assertEqual(["engine", "server"], report["ownership_modules_checked"])
+        self.assertIn(
+            "reference_vfunc_index_missing",
+            [item["type"] for item in report["differences"]],
+        )
+
+    def test_reports_reference_vtable_owner_mismatch(self) -> None:
+        compiler_output = "VFTable indices for 'ITest' (1 entry).\n   0 | void ITest::First() [pure]\n"
+        with tempfile.TemporaryDirectory() as temp_dir:
+            module_dir = Path(temp_dir) / "14167" / "server"
+            module_dir.mkdir(parents=True)
+            (module_dir / "ITest_First.windows.yaml").write_text(
+                "func_name: ITest_First\nvtable_name: WrongOwner\nvfunc_index: 0\n",
+                encoding="utf-8",
+            )
+
+            report = cpp_tests_util.compare_compiler_vtable_with_yaml(
+                class_name="ITest",
+                compiler_output=compiler_output,
+                symbol_store=DirectorySymbolStore(temp_dir, "14167"),
+                platform="windows",
+                reference_modules=["server"],
+                pointer_size=8,
+            )
+
+        self.assertIn(
+            "reference_vtable_owner_mismatch",
+            [item["type"] for item in report["differences"]],
+        )
+
+    def test_reports_filename_and_func_name_owner_mismatch(self) -> None:
+        compiler_output = "VFTable indices for 'ITest' (1 entry).\n   0 | void ITest::First() [pure]\n"
+        with tempfile.TemporaryDirectory() as temp_dir:
+            module_dir = Path(temp_dir) / "14167" / "server"
+            module_dir.mkdir(parents=True)
+            (module_dir / "ITest_First.windows.yaml").write_text(
+                "func_name: WrongOwner_First\nvtable_name: ITest\nvfunc_index: 0\n",
+                encoding="utf-8",
+            )
+
+            report = cpp_tests_util.compare_compiler_vtable_with_yaml(
+                class_name="ITest",
+                compiler_output=compiler_output,
+                symbol_store=DirectorySymbolStore(temp_dir, "14167"),
+                platform="windows",
+                reference_modules=["server"],
+                pointer_size=8,
+            )
+
+        self.assertIn(
+            "reference_owner_mismatch",
+            [item["type"] for item in report["differences"]],
+        )
+
+    def test_accepts_explicit_reference_vtable_owner(self) -> None:
+        compiler_output = "VFTable indices for 'ITest' (1 entry).\n   0 | void ITest::First() [pure]\n"
+        with tempfile.TemporaryDirectory() as temp_dir:
+            module_dir = Path(temp_dir) / "14167" / "server"
+            module_dir.mkdir(parents=True)
+            (module_dir / "ITest_First.windows.yaml").write_text(
+                "func_name: ITest_First\nvtable_name: CConcrete_vtable\nvfunc_index: 0\n",
+                encoding="utf-8",
+            )
+
+            report = cpp_tests_util.compare_compiler_vtable_with_yaml(
+                class_name="ITest",
+                compiler_output=compiler_output,
+                symbol_store=DirectorySymbolStore(temp_dir, "14167"),
+                platform="windows",
+                reference_modules=["server"],
+                reference_vtable_owners=["CConcrete"],
+                pointer_size=8,
+            )
+
+        self.assertEqual([], report["differences"])
+
 
 class TestParseRecordLayouts(unittest.TestCase):
     def test_parses_struct_member_offsets_from_record_layout(self) -> None:
