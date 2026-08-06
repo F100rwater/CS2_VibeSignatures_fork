@@ -121,8 +121,8 @@ binaries:
       sha256: '6f5aa8c32e30d5369579f0e18bf97ec72e2076d3c06906efbfcc77f0c4111b80'
       size: 4592280
 config_digest_version: 2
-config_sha256: sha256:8397fa038cdb825d0d1047ebd7bdcad006a53c55f4372a165020b5c8e53eac63
-file_count: 3293
+config_sha256: sha256:0e4b73bbe6195df62f61c427d6e765dbcca962cbd25072ff7b1ccac1f9d2018f
+file_count: 3295
 files:
   SDL3/SDL_GetMouse.windows.yaml:
     func_name: SDL_GetMouse
@@ -40255,6 +40255,18 @@ files:
     vfunc_sig: FF 92 D8 00 00 00 84 C0
     vfunc_sig_allow_across_function_boundary: true
     vtable_name: INetworkGameServer
+  server/INetworkGameServer_MakeSpawnGroupActive.linux.yaml:
+    func_name: INetworkGameServer_MakeSpawnGroupActive
+    vfunc_index: 64
+    vfunc_offset: '0x200'
+    vfunc_sig: FF 90 00 02 00 00 89 5D ??
+    vtable_name: CNetworkGameServer_vtable
+  server/INetworkGameServer_MakeSpawnGroupActive.windows.yaml:
+    func_name: INetworkGameServer_MakeSpawnGroupActive
+    vfunc_index: 64
+    vfunc_offset: '0x200'
+    vfunc_sig: 4C 8B 82 00 02 00 00
+    vtable_name: CNetworkGameServer_vtable
   server/INetworkMessages_GetLoggingChannel.linux.yaml:
     func_name: INetworkMessages_GetLoggingChannel
     vfunc_index: 35
@@ -42439,5 +42451,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14174'
-last_publish_time: '2026-08-06T05:43:32Z'
+last_publish_time: '2026-08-06T06:25:43Z'
 schema_version: 5
