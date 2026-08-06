@@ -22,8 +22,8 @@ LLM_DECOMPILE = [
 ]
 
 FUNC_VTABLE_RELATIONS = [
-    # (func_name, vtable_class)
-    ("INetworkGameServer_GetSpawnGroupLoadingStatus", "CNetworkGameServer_vtable"),
+    # INetworkGameServer is an abstract interface; the vtable name is metadata only.
+    ("INetworkGameServer_GetSpawnGroupLoadingStatus", "INetworkGameServer"),
 ]
 
 GENERATE_YAML_DESIRED_FIELDS = [

@@ -121,7 +121,7 @@ binaries:
       sha256: '6f5aa8c32e30d5369579f0e18bf97ec72e2076d3c06906efbfcc77f0c4111b80'
       size: 4592280
 config_digest_version: 2
-config_sha256: sha256:d60bae4c094805d1a35233d2c9e362adadd9b61a879d9ccc93faa1da06e78b65
+config_sha256: sha256:36ff38d36c960a8ef530e3dfcc5c3e50fb671e8154f58ba8c4cdd9d52389515b
 file_count: 3305
 files:
   SDL3/SDL_GetMouse.windows.yaml:
@@ -13237,13 +13237,13 @@ files:
     vfunc_index: 37
     vfunc_offset: '0x128'
     vfunc_sig: FF 90 28 01 00 00 85 C0
-    vtable_name: CNetworkGameServer_vtable
+    vtable_name: INetworkGameServer
   engine/INetworkGameServer_GetSpawnGroupLoadingStatus.windows.yaml:
     func_name: INetworkGameServer_GetSpawnGroupLoadingStatus
     vfunc_index: 37
     vfunc_offset: '0x128'
     vfunc_sig: 4C 8B 80 28 01 00 00
-    vtable_name: CNetworkGameServer_vtable
+    vtable_name: INetworkGameServer
   engine/INetworkGameServer_GetTime.linux.yaml:
     func_name: INetworkGameServer_GetTime
     vfunc_index: 28
@@ -40367,18 +40367,6 @@ files:
     vfunc_sig: FF 92 D8 00 00 00 84 C0
     vfunc_sig_allow_across_function_boundary: true
     vtable_name: INetworkGameServer
-  server/INetworkGameServer_MakeSpawnGroupActive.linux.yaml:
-    func_name: INetworkGameServer_MakeSpawnGroupActive
-    vfunc_index: 64
-    vfunc_offset: '0x200'
-    vfunc_sig: FF 90 00 02 00 00 89 5D ??
-    vtable_name: CNetworkGameServer_vtable
-  server/INetworkGameServer_MakeSpawnGroupActive.windows.yaml:
-    func_name: INetworkGameServer_MakeSpawnGroupActive
-    vfunc_index: 64
-    vfunc_offset: '0x200'
-    vfunc_sig: 4C 8B 82 00 02 00 00
-    vtable_name: CNetworkGameServer_vtable
   server/INetworkMessages_GetLoggingChannel.linux.yaml:
     func_name: INetworkMessages_GetLoggingChannel
     vfunc_index: 35
@@ -40466,6 +40454,18 @@ files:
     vfunc_index: 55
     vfunc_offset: '0x1b8'
     vfunc_sig: FF 90 B8 01 00 00 48 8B 35 ?? ?? ?? ??
+    vtable_name: IVEngineServer2
+  server/IVEngineServer2_MakeSpawnGroupActive.linux.yaml:
+    func_name: IVEngineServer2_MakeSpawnGroupActive
+    vfunc_index: 64
+    vfunc_offset: '0x200'
+    vfunc_sig: FF 90 00 02 00 00 89 5D ??
+    vtable_name: IVEngineServer2
+  server/IVEngineServer2_MakeSpawnGroupActive.windows.yaml:
+    func_name: IVEngineServer2_MakeSpawnGroupActive
+    vfunc_index: 64
+    vfunc_offset: '0x200'
+    vfunc_sig: 4C 8B 82 00 02 00 00
     vtable_name: IVEngineServer2
   server/IVEngineServer2_ServerCommand.linux.yaml:
     func_name: IVEngineServer2_ServerCommand
@@ -42563,5 +42563,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14174'
-last_publish_time: '2026-08-06T07:27:41Z'
+last_publish_time: '2026-08-06T08:33:46Z'
 schema_version: 5

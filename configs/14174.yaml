@@ -7953,9 +7953,9 @@ modules:
           - CSpawnGroupMgrGameSystem_SetActiveSpawnGroup.{platform}.yaml
         expected_input:
           - CSpawnGroupMgrGameSystem_vtable.{platform}.yaml
-      - name: find-INetworkGameServer_MakeSpawnGroupActive
+      - name: find-CSpawnGroupMgrGameSystem_SetActiveSpawnGroup-decompiles
         expected_output:
-          - INetworkGameServer_MakeSpawnGroupActive.{platform}.yaml
+          - IVEngineServer2_MakeSpawnGroupActive.{platform}.yaml
         expected_input:
           - CSpawnGroupMgrGameSystem_SetActiveSpawnGroup.{platform}.yaml
       - name: find-CSpawnGroupMgrGameSystem_UnloadSpawnGroup
@@ -11236,10 +11236,10 @@ modules:
         category: vfunc
         alias:
           - CSpawnGroupMgrGameSystem::SetActiveSpawnGroup
-      - name: INetworkGameServer_MakeSpawnGroupActive
+      - name: IVEngineServer2_MakeSpawnGroupActive
         category: vfunc
         alias:
-          - INetworkGameServer::MakeSpawnGroupActive
+          - IVEngineServer2::MakeSpawnGroupActive
       - name: CSpawnGroupMgrGameSystem_UnloadSpawnGroup
         category: vfunc
         alias:
