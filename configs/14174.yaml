@@ -626,7 +626,7 @@ modules:
           - CSteam3Server_SendUpdatedServerDetails.{platform}.yaml
         expected_input:
           - CNetworkGameServer_ActivateServer.{platform}.yaml
-      - name: find-CNetworkGameServerBase_GetMapName-AND-CNetworkGameServerBase_GetHostName
+      - name: find-CSteam3Server_SendUpdatedServerDetails-decompiles
         expected_output:
           - CNetworkGameServerBase_GetMapName.{platform}.yaml
           - CNetworkGameServerBase_GetHostName.{platform}.yaml

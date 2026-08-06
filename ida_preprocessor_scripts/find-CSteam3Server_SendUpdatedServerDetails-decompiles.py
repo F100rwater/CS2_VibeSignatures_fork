@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Preprocess script for find-CNetworkGameServerBase_GetMapName-AND-CNetworkGameServerBase_GetHostName skill."""
+"""Preprocess script for find-CSteam3Server_SendUpdatedServerDetails-decompiles skill."""
 
 from ida_analyze_util import preprocess_common_skill
 
@@ -41,7 +41,6 @@ FUNC_VTABLE_RELATIONS = [
 
 GENERATE_YAML_DESIRED_FIELDS = [
     # (symbol_name, generate_yaml_fields)
-    # Slim Pattern C: these vfuncs are not downstream predecessors.
     (
         "CNetworkGameServerBase_GetMapName",
         [
@@ -76,7 +75,9 @@ async def preprocess_skill(
     llm_config=None,
     debug=False,
 ):
-    """Reuse previous gamever func_sig to locate target function(s) and write YAML."""
+    """Locate CNetworkGameServerBase map and host name vfuncs from Steam updates."""
+    _ = skill_name
+
     return await preprocess_common_skill(
         session=session,
         expected_outputs=expected_outputs,
