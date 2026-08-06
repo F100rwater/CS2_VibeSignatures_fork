@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
-"""Preprocess script for find-CNetworkGameServerBase_GetServerNetworkAddress skill."""
+"""Preprocess script for find-INetworkGameServer_GetServerNetworkAddress skill."""
 
 from ida_analyze_util import preprocess_common_skill
 
 TARGET_FUNCTION_NAMES = [
-    "CNetworkGameServerBase_GetServerNetworkAddress",
+    "INetworkGameServer_GetServerNetworkAddress",
 ]
 
 LLM_DECOMPILE = [
     {
-        "symbol_name": "CNetworkGameServerBase_GetServerNetworkAddress",
+        "symbol_name": "INetworkGameServer_GetServerNetworkAddress",
         "prompt_path": "prompt/call_llm_decompile.md",
         "reference_yaml_paths": [
             "references/engine/CNetworkGameServerBase_Init.{platform}.yaml",
@@ -22,15 +22,16 @@ LLM_DECOMPILE = [
 ]
 
 FUNC_VTABLE_RELATIONS = [
-    # (func_name, vtable_class)
-    ("CNetworkGameServerBase_GetServerNetworkAddress", "CNetworkGameServer_vtable"),
+    # INetworkGameServer is an abstract interface -- no vtable YAML is needed;
+    # the vtable name is metadata only.
+    ("INetworkGameServer_GetServerNetworkAddress", "INetworkGameServer"),
 ]
 
 GENERATE_YAML_DESIRED_FIELDS = [
     # (symbol_name, generate_yaml_fields)
     # Slim Pattern C: this vfunc is not a downstream predecessor.
     (
-        "CNetworkGameServerBase_GetServerNetworkAddress",
+        "INetworkGameServer_GetServerNetworkAddress",
         [
             "func_name",
             "vfunc_sig",

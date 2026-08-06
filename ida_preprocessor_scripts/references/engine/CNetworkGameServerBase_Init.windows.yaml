@@ -147,8 +147,8 @@ disasm_code: |-
   .text:00000001800ACC33                 mov     rax, [rdi]
   .text:00000001800ACC36                 lea     rdx, [rsp+98h+var_68]
   .text:00000001800ACC3B                 mov     rcx, rdi
-  .text:00000001800ACC3E                 ; 0x0F8 = 248LL = CNetworkGameServerBase_GetServerNetworkAddress
-  .text:00000001800ACC3E                 call    qword ptr [rax+0F8h]; 0x0F8 = 248LL = CNetworkGameServerBase_GetServerNetworkAddress
+  .text:00000001800ACC3E                 ; 0x0F8 = 248LL = INetworkGameServer_GetServerNetworkAddress
+  .text:00000001800ACC3E                 call    qword ptr [rax+0F8h]; 0x0F8 = 248LL = INetworkGameServer_GetServerNetworkAddress
   .text:00000001800ACC44                 mov     rcx, rax
   .text:00000001800ACC47                 xor     edx, edx
   .text:00000001800ACC49                 call    cs:?ToString@netadr_t@@QEBAPEBD_N@Z; netadr_t::ToString(bool)
@@ -386,7 +386,7 @@ procedure: |-
       sub_18017A130(a1 + 216);
       sub_18017AF20(a1 + 216, a2);
     }
-    v22 = (netadr_t *)(*(__int64 (__fastcall **)(__int64, _BYTE *))(*(_QWORD *)a1 + 248LL))(a1, v38);// 0x0F8 = 248LL = CNetworkGameServerBase_GetServerNetworkAddress
+    v22 = (netadr_t *)(*(__int64 (__fastcall **)(__int64, _BYTE *))(*(_QWORD *)a1 + 248LL))(a1, v38);// 0x0F8 = 248LL = INetworkGameServer_GetServerNetworkAddress
     v23 = netadr_t::ToString(v22, 0);
     *(_DWORD *)(a1 + 232) |= 0x10u;
     v24 = (_QWORD *)(*(_QWORD *)(a1 + 224) & 0xFFFFFFFFFFFFFFFCuLL);

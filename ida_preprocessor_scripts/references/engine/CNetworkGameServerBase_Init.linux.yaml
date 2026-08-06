@@ -44,8 +44,8 @@ disasm_code: |-
   .text:00000000004F705F                 call    sub_2F85A0
   .text:00000000004F7064                 mov     rax, [rbx]
   .text:00000000004F7067                 lea     rdx, sub_4F0FF0
-  .text:00000000004F706E                 ; 0x0F8 = 248LL = CNetworkGameServerBase_GetServerNetworkAddress
-  .text:00000000004F706E                 mov     rax, [rax+0F8h]; 0x0F8 = 248LL = CNetworkGameServerBase_GetServerNetworkAddress
+  .text:00000000004F706E                 ; 0x0F8 = 248LL = INetworkGameServer_GetServerNetworkAddress
+  .text:00000000004F706E                 mov     rax, [rax+0F8h]; 0x0F8 = 248LL = INetworkGameServer_GetServerNetworkAddress
   .text:00000000004F7075                 cmp     rax, rdx
   .text:00000000004F7078                 jnz     loc_4F7430
   .text:00000000004F707E                 lea     rax, g_pNetworkSystem
@@ -406,7 +406,7 @@ procedure: |-
     byte_A30290 = v10;
     sub_5889D0();
     sub_2F85A0(a1 + 216, a2);
-    v11 = *(__int64 (__fastcall **)())(*(_QWORD *)a1 + 248LL);// 0x0F8 = 248LL = CNetworkGameServerBase_GetServerNetworkAddress
+    v11 = *(__int64 (__fastcall **)())(*(_QWORD *)a1 + 248LL);// 0x0F8 = 248LL = INetworkGameServer_GetServerNetworkAddress
     if ( v11 == sub_4F0FF0 )
     {
       v12 = (*(__int64 (__fastcall **)(_QWORD *))(*g_pNetworkSystem + 264LL))(g_pNetworkSystem);
