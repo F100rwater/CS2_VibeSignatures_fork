@@ -12835,6 +12835,8 @@ cpp_tests:
     merge_reference_modules: false  # Avoid stale duplicate INetworkGameServer_ClientUpdate at index 58
   - name: CNetworkGameServerBase_MSVC
     symbol: CNetworkGameServerBase
+    reference_vtable_owners:
+      - CNetworkGameServer
     cpp: cpp_tests/inetworkgameserver.cpp
     headers:
       - hl2sdk_cs2/public/iserver.h  # Used by the fix-cppheaders SKILL
