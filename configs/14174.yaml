@@ -2053,6 +2053,17 @@ modules:
       - name: find-CServerSideClientBase_vtable
         expected_output:
           - CServerSideClientBase_vtable.{platform}.yaml
+      - name: find-CServerSideClientBase_SendServerInfo
+        expected_output:
+          - CServerSideClientBase_SendServerInfo.{platform}.yaml
+        expected_input:
+          - CServerSideClientBase_vtable.{platform}.yaml
+      - name: find-CServerSideClientBase_SendServerInfo-decompiles
+        expected_output:
+          - CNetworkGameServerBase_FillServerInfo.{platform}.yaml
+        expected_input:
+          - CServerSideClientBase_SendServerInfo.{platform}.yaml
+          - CNetworkGameServerBase_vtable.{platform}.yaml
       - name: find-CDelayedCall2_CServerSideClientBase_UpdateAcknowledgedFramecountCall_vtable
         expected_output:
           - CDelayedCall2_CServerSideClientBase_UpdateAcknowledgedFramecountCall_vtable.{platform}.yaml
@@ -3445,6 +3456,14 @@ modules:
           - CHLTVBroadcast::RecordSnapshot
       - name: CServerSideClientBase_vtable
         category: vtable
+      - name: CServerSideClientBase_SendServerInfo
+        category: vfunc
+        alias:
+          - CServerSideClientBase::SendServerInfo
+      - name: CNetworkGameServerBase_FillServerInfo
+        category: vfunc
+        alias:
+          - CNetworkGameServerBase::FillServerInfo
       - name: CDelayedCall2_CServerSideClientBase_UpdateAcknowledgedFramecountCall_vtable
         category: vtable
       - name: CServerSideClientBase_ProcessTick
