@@ -108,8 +108,8 @@ disasm_code: |-
   .text:00000001800B490B                 inc     dword ptr [rsi+44h]
   .text:00000001800B490E                 mov     rax, [rsi]
   .text:00000001800B4911                 mov     rcx, rsi
-  .text:00000001800B4914                 ; 0x0E0 = 224LL = CNetworkGameServerBase_GetTime
-  .text:00000001800B4914                 call    qword ptr [rax+0E0h]; 0x0E0 = 224LL = CNetworkGameServerBase_GetTime
+  .text:00000001800B4914                 ; 0x0E0 = 224LL = INetworkGameServer_GetTime
+  .text:00000001800B4914                 call    qword ptr [rax+0E0h]; 0x0E0 = 224LL = INetworkGameServer_GetTime
   .text:00000001800B491A                 movss   xmm1, cs:dword_180584F90
   .text:00000001800B4922                 lea     r8, [rsi+58h]
   .text:00000001800B4926                 movaps  xmm3, xmm0
@@ -247,7 +247,7 @@ procedure: |-
     {
       if ( (_DWORD)result != 4 )
         ++*(_DWORD *)(a1 + 68);
-      (*(void (__fastcall **)(__int64))(*(_QWORD *)a1 + 224LL))(a1);// 0x0E0 = 224LL = CNetworkGameServerBase_GetTime
+      (*(void (__fastcall **)(__int64))(*(_QWORD *)a1 + 224LL))(a1);// 0x0E0 = 224LL = INetworkGameServer_GetTime
       sub_18005EB40(
         (unsigned int)v19,
         (unsigned int)"C:\\buildworker\\csgo_rel_win64\\build\\src\\engine2\\networkgameserverbase.cpp:5698",

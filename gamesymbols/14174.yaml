@@ -121,8 +121,8 @@ binaries:
       sha256: '6f5aa8c32e30d5369579f0e18bf97ec72e2076d3c06906efbfcc77f0c4111b80'
       size: 4592280
 config_digest_version: 2
-config_sha256: sha256:cb03c6ea1a5e2b5f38fc1a0c3d53a2888ffed492e53de987b6834d819f1fb79a
-file_count: 3275
+config_sha256: sha256:5d233b21e11c0cff0e9254571e94d2baeb7c0bce22575f20ba61734c70680486
+file_count: 3283
 files:
   SDL3/SDL_GetMouse.windows.yaml:
     func_name: SDL_GetMouse
@@ -10610,6 +10610,48 @@ files:
     vfunc_index: 40
     vfunc_offset: '0x140'
     vtable_name: CNetworkGameServerBase_vtable
+  engine/CNetworkGameServerBase_GetClassBaseline.linux.yaml:
+    func_name: CNetworkGameServerBase_GetClassBaseline
+    func_rva: '0x4f2ec0'
+    func_sig: 55 BE ?? ?? ?? ?? 48 89 E5 41 56 49 89 D6 41 55 49 89 FD
+    func_size: '0x389'
+    func_va: '0x4f2ec0'
+    vfunc_index: 81
+    vfunc_offset: '0x288'
+    vtable_name: CNetworkGameServer_vtable
+  engine/CNetworkGameServerBase_GetClassBaseline.windows.yaml:
+    func_name: CNetworkGameServerBase_GetClassBaseline
+    func_rva: '0xad6c0'
+    func_sig: 48 89 5C 24 ?? 48 89 74 24 ?? 41 56 48 83 EC ?? 48 8B F1
+    func_size: '0x15f'
+    func_va: '0x1800ad6c0'
+    vfunc_index: 76
+    vfunc_offset: '0x260'
+    vtable_name: CNetworkGameServer_vtable
+  engine/CNetworkGameServerBase_GetHostName.linux.yaml:
+    func_name: CNetworkGameServerBase_GetHostName
+    vfunc_index: 72
+    vfunc_offset: '0x240'
+    vfunc_sig: FF 90 40 02 00 00 4C 89 F7
+    vtable_name: CNetworkGameServer_vtable
+  engine/CNetworkGameServerBase_GetHostName.windows.yaml:
+    func_name: CNetworkGameServerBase_GetHostName
+    vfunc_index: 67
+    vfunc_offset: '0x218'
+    vfunc_sig: FF 90 18 02 00 00 48 8B D0
+    vtable_name: CNetworkGameServer_vtable
+  engine/CNetworkGameServerBase_GetMapName.linux.yaml:
+    func_name: CNetworkGameServerBase_GetMapName
+    vfunc_index: 25
+    vfunc_offset: '0xc8'
+    vfunc_sig: FF 90 C8 00 00 00 4C 89 E7 48 89 C6
+    vtable_name: CNetworkGameServer_vtable
+  engine/CNetworkGameServerBase_GetMapName.windows.yaml:
+    func_name: CNetworkGameServerBase_GetMapName
+    vfunc_index: 25
+    vfunc_offset: '0xc8'
+    vfunc_sig: FF 90 C8 00 00 00 48 8B D0
+    vtable_name: CNetworkGameServer_vtable
   engine/CNetworkGameServerBase_GetMaxClients.linux.yaml:
     func_name: CNetworkGameServerBase_GetMaxClients
     func_rva: '0x4f0f50'
@@ -10642,18 +10684,6 @@ files:
     vfunc_index: 65
     vfunc_offset: '0x208'
     vtable_name: CNetworkGameServerBase_vtable
-  engine/CNetworkGameServerBase_GetTime.linux.yaml:
-    func_name: CNetworkGameServerBase_GetTime
-    vfunc_index: 28
-    vfunc_offset: '0xe0'
-    vfunc_sig: 48 8B 80 E0 00 00 00 48 39 D0
-    vtable_name: CNetworkGameServer_vtable
-  engine/CNetworkGameServerBase_GetTime.windows.yaml:
-    func_name: CNetworkGameServerBase_GetTime
-    vfunc_index: 28
-    vfunc_offset: '0xe0'
-    vfunc_sig: FF 90 E0 00 00 00 F3 0F 10 0D ?? ?? ?? ??
-    vtable_name: CNetworkGameServer_vtable
   engine/CNetworkGameServerBase_GetTimescale.linux.yaml:
     func_name: CNetworkGameServerBase_GetTimescale
     func_rva: '0x4f0fc0'
@@ -12842,6 +12872,18 @@ files:
     vtable_size: '0x158'
     vtable_symbol: CSplitScreenService_vtable
     vtable_va: '0x180578ca8'
+  engine/CSteam3Server_SendUpdatedServerDetails.linux.yaml:
+    func_name: CSteam3Server_SendUpdatedServerDetails
+    func_rva: '0x5763f0'
+    func_sig: 55 48 89 E5 41 57 41 56 41 55 41 54 4C 8D 25 ?? ?? ?? ?? 53 48 89 FB 4C 89 E7
+    func_size: '0x276'
+    func_va: '0x5763f0'
+  engine/CSteam3Server_SendUpdatedServerDetails.windows.yaml:
+    func_name: CSteam3Server_SendUpdatedServerDetails
+    func_rva: '0xf9fb0'
+    func_sig: 40 55 41 56 48 83 EC ?? 48 8B E9
+    func_size: '0x1fd'
+    func_va: '0x1800f9fb0'
   engine/ConnectInterfaces.linux.yaml:
     func_name: ConnectInterfaces
     func_rva: '0x5f8bc0'
@@ -13061,6 +13103,18 @@ files:
     vfunc_index: 12
     vfunc_offset: '0x60'
     vfunc_sig: FF 50 60 4C 8D 87 ?? ?? ?? ??
+    vtable_name: INetworkGameServer
+  engine/INetworkGameServer_GetTime.linux.yaml:
+    func_name: INetworkGameServer_GetTime
+    vfunc_index: 28
+    vfunc_offset: '0xe0'
+    vfunc_sig: 48 8B 80 E0 00 00 00 48 39 D0
+    vtable_name: INetworkGameServer
+  engine/INetworkGameServer_GetTime.windows.yaml:
+    func_name: INetworkGameServer_GetTime
+    vfunc_index: 28
+    vfunc_offset: '0xe0'
+    vfunc_sig: FF 90 E0 00 00 00 F3 0F 10 0D ?? ?? ?? ??
     vtable_name: INetworkGameServer
   engine/INetworkGameServer_GetTimescale.linux.yaml:
     func_name: INetworkGameServer_GetTimescale
@@ -42319,5 +42373,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14174'
-last_publish_time: '2026-08-05T11:14:24Z'
+last_publish_time: '2026-08-06T03:56:51Z'
 schema_version: 5

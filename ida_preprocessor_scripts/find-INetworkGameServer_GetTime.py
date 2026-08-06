@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
-"""Preprocess script for find-CNetworkGameServerBase_GetTime skill."""
+"""Preprocess script for find-INetworkGameServer_GetTime skill."""
 
 from ida_analyze_util import preprocess_common_skill
 
 TARGET_FUNCTION_NAMES = [
-    "CNetworkGameServerBase_GetTime",
+    "INetworkGameServer_GetTime",
 ]
 
 LLM_DECOMPILE = [
     {
-        "symbol_name": "CNetworkGameServerBase_GetTime",
+        "symbol_name": "INetworkGameServer_GetTime",
         "prompt_path": "prompt/call_llm_decompile.md",
         "reference_yaml_paths": [
             "references/engine/CNetworkGameServerBase_ServerAdvanceTick.{platform}.yaml",
@@ -22,15 +22,16 @@ LLM_DECOMPILE = [
 ]
 
 FUNC_VTABLE_RELATIONS = [
-    # (func_name, vtable_class)
-    ("CNetworkGameServerBase_GetTime", "CNetworkGameServer_vtable"),
+    # INetworkGameServer is an abstract interface -- no vtable YAML is needed;
+    # the vtable name is metadata only.
+    ("INetworkGameServer_GetTime", "INetworkGameServer"),
 ]
 
 GENERATE_YAML_DESIRED_FIELDS = [
     # (symbol_name, generate_yaml_fields)
     # Slim Pattern C: this vfunc is not a downstream predecessor.
     (
-        "CNetworkGameServerBase_GetTime",
+        "INetworkGameServer_GetTime",
         [
             "func_name",
             "vfunc_sig",
