@@ -621,6 +621,17 @@ modules:
           - CNetworkGameServerBase_GetClassBaseline.{platform}.yaml
         expected_input:
           - CNetworkGameServer_vtable.{platform}.yaml
+      - name: find-CSteam3Server_SendUpdatedServerDetails
+        expected_output:
+          - CSteam3Server_SendUpdatedServerDetails.{platform}.yaml
+        expected_input:
+          - CNetworkGameServer_ActivateServer.{platform}.yaml
+      - name: find-CSteam3Server_SendUpdatedServerDetails-decompiles
+        expected_output:
+          - CNetworkGameServerBase_GetMapName.{platform}.yaml
+          - CNetworkGameServerBase_GetHostName.{platform}.yaml
+        expected_input:
+          - CSteam3Server_SendUpdatedServerDetails.{platform}.yaml
       - name: find-CNetworkGameServerBase_ServerPollNetworking
         expected_output:
           - CNetworkGameServerBase_ServerPollNetworking.{platform}.yaml
@@ -1260,6 +1271,11 @@ modules:
         expected_input:
           - CNetworkGameServerBase_vtable.{platform}.yaml
           - INetworkGameServer_ServerAdvanceTick.{platform}.yaml
+      - name: find-INetworkGameServer_GetTime
+        expected_output:
+          - INetworkGameServer_GetTime.{platform}.yaml
+        expected_input:
+          - CNetworkGameServerBase_ServerAdvanceTick.{platform}.yaml
       - name: find-INetworkGameServer_ServerProcessNetworking
         expected_output:
           - INetworkGameServer_ServerProcessNetworking.{platform}.yaml
@@ -2347,6 +2363,18 @@ modules:
         category: vfunc
         alias:
           - CNetworkGameServerBase::GetClassBaseline
+      - name: CSteam3Server_SendUpdatedServerDetails
+        category: func
+        alias:
+          - CSteam3Server::SendUpdatedServerDetails
+      - name: CNetworkGameServerBase_GetMapName
+        category: vfunc
+        alias:
+          - CNetworkGameServerBase::GetMapName
+      - name: CNetworkGameServerBase_GetHostName
+        category: vfunc
+        alias:
+          - CNetworkGameServerBase::GetHostName
       - name: CNetworkGameServerBase_SetMaxClients
         category: vfunc
         alias:
@@ -2877,6 +2905,10 @@ modules:
         category: vfunc
         alias:
           - CNetworkGameServerBase::ServerAdvanceTick
+      - name: INetworkGameServer_GetTime
+        category: vfunc
+        alias:
+          - INetworkGameServer::GetTime
       - name: INetworkGameServer_ServerProcessNetworking
         category: vfunc
         alias:
@@ -7210,9 +7242,9 @@ modules:
           - IsBackgroundMap.{platform}.yaml
         expected_input:
           - CSource2GameEntities_ShouldClientReceiveStringTableUserData.{platform}.yaml
-      - name: find-CNetworkGameServerBase_IsBackgroundMap
+      - name: find-INetworkGameServer_IsBackgroundMap
         expected_output:
-          - CNetworkGameServerBase_IsBackgroundMap.{platform}.yaml
+          - INetworkGameServer_IsBackgroundMap.{platform}.yaml
         expected_input:
           - IsBackgroundMap.{platform}.yaml
       - name: find-CSource2GameEntities_CheckTransmit-decompiles
@@ -10242,10 +10274,10 @@ modules:
           - ShouldClientReceiveStringTableUserData
       - name: IsBackgroundMap
         category: func
-      - name: CNetworkGameServerBase_IsBackgroundMap
+      - name: INetworkGameServer_IsBackgroundMap
         category: vfunc
         alias:
-          - CNetworkGameServerBase::IsBackgroundMap
+          - INetworkGameServer::IsBackgroundMap
       - name: CBaseEntity_EmitSoundFilter
         category: func
         alias:

@@ -19,8 +19,8 @@ disasm_code: |-
   .text:0000000180BDF714                 jz      short loc_180BDF72C
   .text:0000000180BDF716                 mov     rdx, [rax]
   .text:0000000180BDF719                 mov     rcx, rax
-  .text:0000000180BDF71C                 ; 0x0D8 = 216LL = CNetworkGameServerBase_IsBackgroundMap
-  .text:0000000180BDF71C                 call    qword ptr [rdx+0D8h]; 0x0D8 = 216LL = CNetworkGameServerBase_IsBackgroundMap
+  .text:0000000180BDF71C                 ; 0x0D8 = 216LL = INetworkGameServer_IsBackgroundMap
+  .text:0000000180BDF71C                 call    qword ptr [rdx+0D8h]; 0x0D8 = 216LL = INetworkGameServer_IsBackgroundMap
   .text:0000000180BDF722                 test    al, al
   .text:0000000180BDF724                 setnz   al
   .text:0000000180BDF727                 add     rsp, 28h
@@ -41,7 +41,7 @@ procedure: |-
     {
       v0 = (*(__int64 (__fastcall **)(__int64))(*(_QWORD *)g_pNetworkServerService + 184LL))(g_pNetworkServerService);
       if ( v0 )
-        LOBYTE(v0) = (*(unsigned __int8 (__fastcall **)(__int64))(*(_QWORD *)v0 + 216LL))(v0) != 0;// 0x0D8 = 216LL = CNetworkGameServerBase_IsBackgroundMap
+        LOBYTE(v0) = (*(unsigned __int8 (__fastcall **)(__int64))(*(_QWORD *)v0 + 216LL))(v0) != 0;// 0x0D8 = 216LL = INetworkGameServer_IsBackgroundMap
     }
     return v0;
   }

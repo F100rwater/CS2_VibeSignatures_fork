@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
-"""Preprocess script for find-CNetworkGameServerBase_IsBackgroundMap skill."""
+"""Preprocess script for find-INetworkGameServer_IsBackgroundMap skill."""
 
 from ida_analyze_util import preprocess_common_skill
 
 TARGET_FUNCTION_NAMES = [
-    "CNetworkGameServerBase_IsBackgroundMap",
+    "INetworkGameServer_IsBackgroundMap",
 ]
 
 LLM_DECOMPILE = [
     {
-        "symbol_name": "CNetworkGameServerBase_IsBackgroundMap",
+        "symbol_name": "INetworkGameServer_IsBackgroundMap",
         "prompt_path": "prompt/call_llm_decompile.md",
         "reference_yaml_paths": [
             "references/server/IsBackgroundMap.{platform}.yaml",
@@ -22,14 +22,15 @@ LLM_DECOMPILE = [
 ]
 
 FUNC_VTABLE_RELATIONS = [
-    # (func_name, vtable_class)
-    ("CNetworkGameServerBase_IsBackgroundMap", "CNetworkGameServer_vtable"),
+    # INetworkGameServer is an abstract interface -- no vtable YAML is needed;
+    # the vtable name is metadata only.
+    ("INetworkGameServer_IsBackgroundMap", "INetworkGameServer"),
 ]
 
 GENERATE_YAML_DESIRED_FIELDS = [
     # Slim Pattern C: this vfunc is not a downstream predecessor.
     (
-        "CNetworkGameServerBase_IsBackgroundMap",
+        "INetworkGameServer_IsBackgroundMap",
         [
             "func_name",
             "vfunc_sig",
