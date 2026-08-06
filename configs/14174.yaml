@@ -616,6 +616,11 @@ modules:
         expected_input:
           - CNetworkGameServerBase_vtable.{platform}.yaml
           - INetworkGameServer_GetMaxClients.{platform}.yaml
+      - name: find-CNetworkGameServerBase_GetClassBaseline
+        expected_output:
+          - CNetworkGameServerBase_GetClassBaseline.{platform}.yaml
+        expected_input:
+          - CNetworkGameServer_vtable.{platform}.yaml
       - name: find-CSteam3Server_SendUpdatedServerDetails
         expected_output:
           - CSteam3Server_SendUpdatedServerDetails.{platform}.yaml
@@ -627,7 +632,6 @@ modules:
           - CNetworkGameServerBase_GetHostName.{platform}.yaml
         expected_input:
           - CSteam3Server_SendUpdatedServerDetails.{platform}.yaml
-          - CNetworkGameServer_vtable.{platform}.yaml
       - name: find-CNetworkGameServerBase_ServerPollNetworking
         expected_output:
           - CNetworkGameServerBase_ServerPollNetworking.{platform}.yaml
@@ -2350,6 +2354,10 @@ modules:
         category: vfunc
         alias:
           - CNetworkGameServerBase::GetMaxClients
+      - name: CNetworkGameServerBase_GetClassBaseline
+        category: vfunc
+        alias:
+          - CNetworkGameServerBase::GetClassBaseline
       - name: CSteam3Server_SendUpdatedServerDetails
         category: func
         alias:
