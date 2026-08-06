@@ -662,6 +662,12 @@ modules:
       - name: find-CNetworkGameServerBase_CheckTimeouts
         expected_output:
           - CNetworkGameServerBase_CheckTimeouts.{platform}.yaml
+      - name: find-CNetworkGameServerBase_CheckTimeouts-decompiles
+        expected_output:
+          - CNetworkGameServerBase_IsHLTV.{platform}.yaml
+        expected_input:
+          - CNetworkGameServerBase_CheckTimeouts.{platform}.yaml
+          - CNetworkGameServerBase_vtable.{platform}.yaml
       - name: find-CNetworkGameServerBase_OnKickById
         expected_output:
           - CNetworkGameServerBase_OnKickById.{platform}.yaml
@@ -2438,6 +2444,10 @@ modules:
         category: func
         alias:
           - CNetworkGameServerBase::CheckTimeouts
+      - name: CNetworkGameServerBase_IsHLTV
+        category: vfunc
+        alias:
+          - CNetworkGameServerBase::IsHLTV
       - name: CNetworkGameServerBase_OnKickById
         category: func
         alias:
