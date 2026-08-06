@@ -1,35 +1,37 @@
 #!/usr/bin/env python3
-"""Preprocess script for find-CNetworkGameServerBase_MakeSpawnGroupActive skill."""
+"""Preprocess script for find-INetworkGameServer_GetServerNetworkAddress skill."""
 
 from ida_analyze_util import preprocess_common_skill
 
 TARGET_FUNCTION_NAMES = [
-    "CNetworkGameServerBase_MakeSpawnGroupActive",
+    "INetworkGameServer_GetServerNetworkAddress",
 ]
 
 LLM_DECOMPILE = [
     {
-        "symbol_name": "CNetworkGameServerBase_MakeSpawnGroupActive",
+        "symbol_name": "INetworkGameServer_GetServerNetworkAddress",
         "prompt_path": "prompt/call_llm_decompile.md",
         "reference_yaml_paths": [
-            "references/server/CSpawnGroupMgrGameSystem_SetActiveSpawnGroup.{platform}.yaml",
+            "references/engine/CNetworkGameServerBase_Init.{platform}.yaml",
         ],
         "expected_result_sections": ["found_vcall"],
         "dependency_policy": {
-            "CSpawnGroupMgrGameSystem_SetActiveSpawnGroup.{platform}.yaml": "required",
+            "CNetworkGameServerBase_Init.{platform}.yaml": "required",
         },
     },
 ]
 
 FUNC_VTABLE_RELATIONS = [
-    # (func_name, vtable_class)
-    ("CNetworkGameServerBase_MakeSpawnGroupActive", "CNetworkGameServer_vtable"),
+    # INetworkGameServer is an abstract interface -- no vtable YAML is needed;
+    # the vtable name is metadata only.
+    ("INetworkGameServer_GetServerNetworkAddress", "INetworkGameServer"),
 ]
 
 GENERATE_YAML_DESIRED_FIELDS = [
+    # (symbol_name, generate_yaml_fields)
     # Slim Pattern C: this vfunc is not a downstream predecessor.
     (
-        "CNetworkGameServerBase_MakeSpawnGroupActive",
+        "INetworkGameServer_GetServerNetworkAddress",
         [
             "func_name",
             "vfunc_sig",
