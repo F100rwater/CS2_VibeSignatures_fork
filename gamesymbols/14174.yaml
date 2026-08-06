@@ -121,7 +121,7 @@ binaries:
       sha256: '6f5aa8c32e30d5369579f0e18bf97ec72e2076d3c06906efbfcc77f0c4111b80'
       size: 4592280
 config_digest_version: 2
-config_sha256: sha256:33b14bd9ab72c148c4b4a11d105d4b46a28cf612a8858188d5f55377b50b3907
+config_sha256: sha256:d60bae4c094805d1a35233d2c9e362adadd9b61a879d9ccc93faa1da06e78b65
 file_count: 3305
 files:
   SDL3/SDL_GetMouse.windows.yaml:
@@ -10737,18 +10737,6 @@ files:
     vfunc_index: 65
     vfunc_offset: '0x208'
     vtable_name: CNetworkGameServerBase_vtable
-  engine/CNetworkGameServerBase_GetSpawnGroupLoadingStatus.linux.yaml:
-    func_name: CNetworkGameServerBase_GetSpawnGroupLoadingStatus
-    vfunc_index: 37
-    vfunc_offset: '0x128'
-    vfunc_sig: FF 90 28 01 00 00 85 C0
-    vtable_name: CNetworkGameServer_vtable
-  engine/CNetworkGameServerBase_GetSpawnGroupLoadingStatus.windows.yaml:
-    func_name: CNetworkGameServerBase_GetSpawnGroupLoadingStatus
-    vfunc_index: 37
-    vfunc_offset: '0x128'
-    vfunc_sig: 4C 8B 80 28 01 00 00
-    vtable_name: CNetworkGameServer_vtable
   engine/CNetworkGameServerBase_GetTimescale.linux.yaml:
     func_name: CNetworkGameServerBase_GetTimescale
     func_rva: '0x4f0fc0'
@@ -13244,6 +13232,18 @@ files:
     vfunc_offset: '0xf8'
     vfunc_sig: FF 90 F8 00 00 00 48 8B C8
     vtable_name: INetworkGameServer
+  engine/INetworkGameServer_GetSpawnGroupLoadingStatus.linux.yaml:
+    func_name: INetworkGameServer_GetSpawnGroupLoadingStatus
+    vfunc_index: 37
+    vfunc_offset: '0x128'
+    vfunc_sig: FF 90 28 01 00 00 85 C0
+    vtable_name: CNetworkGameServer_vtable
+  engine/INetworkGameServer_GetSpawnGroupLoadingStatus.windows.yaml:
+    func_name: INetworkGameServer_GetSpawnGroupLoadingStatus
+    vfunc_index: 37
+    vfunc_offset: '0x128'
+    vfunc_sig: 4C 8B 80 28 01 00 00
+    vtable_name: CNetworkGameServer_vtable
   engine/INetworkGameServer_GetTime.linux.yaml:
     func_name: INetworkGameServer_GetTime
     vfunc_index: 28
@@ -42563,5 +42563,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14174'
-last_publish_time: '2026-08-06T07:12:26Z'
+last_publish_time: '2026-08-06T07:27:41Z'
 schema_version: 5

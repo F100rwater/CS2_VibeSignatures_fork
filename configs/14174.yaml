@@ -1189,9 +1189,9 @@ modules:
         expected_input:
           - CNetworkClientSpawnGroupCreatePrerequisites_GetStatus.{platform}.yaml
           - CWaitForInitialSpawnGroupsPrerequisite_vtable.{platform}.yaml
-      - name: find-CNetworkGameServerBase_GetSpawnGroupLoadingStatus
+      - name: find-INetworkGameServer_GetSpawnGroupLoadingStatus
         expected_output:
-          - CNetworkGameServerBase_GetSpawnGroupLoadingStatus.{platform}.yaml
+          - INetworkGameServer_GetSpawnGroupLoadingStatus.{platform}.yaml
         expected_input:
           - CWaitForInitialSpawnGroupsPrerequisite_GetStatus.{platform}.yaml
       - name: find-CNetworkClientService_AddClientPrerequisites
@@ -2834,10 +2834,10 @@ modules:
         category: vfunc
         alias:
           - CWaitForInitialSpawnGroupsPrerequisite::GetStatus
-      - name: CNetworkGameServerBase_GetSpawnGroupLoadingStatus
+      - name: INetworkGameServer_GetSpawnGroupLoadingStatus
         category: vfunc
         alias:
-          - CNetworkGameServerBase::GetSpawnGroupLoadingStatus
+          - INetworkGameServer::GetSpawnGroupLoadingStatus
       - name: CNetworkClientService_AddClientPrerequisites
         category: vfunc
         alias:

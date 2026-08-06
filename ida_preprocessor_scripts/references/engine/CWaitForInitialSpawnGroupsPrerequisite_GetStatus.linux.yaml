@@ -27,8 +27,8 @@ disasm_code: |-
   .text:00000000003F72FB                 mov     rdi, r14
   .text:00000000003F72FE                 mov     esi, [rax+rbx]
   .text:00000000003F7301                 mov     rax, [r14]
-  .text:00000000003F7304                 ; 0x128 = 296LL = CNetworkGameServerBase_GetSpawnGroupLoadingStatus
-  .text:00000000003F7304                 call    qword ptr [rax+128h]; 0x128 = 296LL = CNetworkGameServerBase_GetSpawnGroupLoadingStatus
+  .text:00000000003F7304                 ; 0x128 = 296LL = INetworkGameServer_GetSpawnGroupLoadingStatus
+  .text:00000000003F7304                 call    qword ptr [rax+128h]; 0x128 = 296LL = INetworkGameServer_GetSpawnGroupLoadingStatus
   .text:00000000003F730A                 test    eax, eax
   .text:00000000003F730C                 jnz     short loc_3F72E8
   .text:00000000003F730E                 pop     rbx
@@ -63,7 +63,7 @@ procedure: |-
     v4 = 0;
     while ( 1 )
     {
-      result = (*(__int64 (__fastcall **)(__int64, _QWORD))(*(_QWORD *)v1 + 296LL))(// 0x128 = 296LL = CNetworkGameServerBase_GetSpawnGroupLoadingStatus
+      result = (*(__int64 (__fastcall **)(__int64, _QWORD))(*(_QWORD *)v1 + 296LL))(// 0x128 = 296LL = INetworkGameServer_GetSpawnGroupLoadingStatus
                  v1,
                  *(unsigned int *)(*(_QWORD *)(a1 + 24) + v4));
       if ( !(_DWORD)result || (_DWORD)result == 2 )

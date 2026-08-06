@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
-"""Preprocess script for find-CNetworkGameServerBase_GetSpawnGroupLoadingStatus skill."""
+"""Preprocess script for find-INetworkGameServer_GetSpawnGroupLoadingStatus skill."""
 
 from ida_analyze_util import preprocess_common_skill
 
 TARGET_FUNCTION_NAMES = [
-    "CNetworkGameServerBase_GetSpawnGroupLoadingStatus",
+    "INetworkGameServer_GetSpawnGroupLoadingStatus",
 ]
 
 LLM_DECOMPILE = [
     {
-        "symbol_name": "CNetworkGameServerBase_GetSpawnGroupLoadingStatus",
+        "symbol_name": "INetworkGameServer_GetSpawnGroupLoadingStatus",
         "prompt_path": "prompt/call_llm_decompile.md",
         "reference_yaml_paths": [
             "references/engine/CWaitForInitialSpawnGroupsPrerequisite_GetStatus.{platform}.yaml",
@@ -23,13 +23,13 @@ LLM_DECOMPILE = [
 
 FUNC_VTABLE_RELATIONS = [
     # (func_name, vtable_class)
-    ("CNetworkGameServerBase_GetSpawnGroupLoadingStatus", "CNetworkGameServer_vtable"),
+    ("INetworkGameServer_GetSpawnGroupLoadingStatus", "CNetworkGameServer_vtable"),
 ]
 
 GENERATE_YAML_DESIRED_FIELDS = [
     # (symbol_name, generate_yaml_fields)
     (
-        "CNetworkGameServerBase_GetSpawnGroupLoadingStatus",
+        "INetworkGameServer_GetSpawnGroupLoadingStatus",
         [
             "func_name",
             "vfunc_sig",
