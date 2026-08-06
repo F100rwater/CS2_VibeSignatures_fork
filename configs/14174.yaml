@@ -668,6 +668,11 @@ modules:
         expected_input:
           - CNetworkGameServerBase_CheckTimeouts.{platform}.yaml
           - CNetworkGameServerBase_vtable.{platform}.yaml
+      - name: find-CNetworkGameServerBase_GetPassword
+        expected_output:
+          - CNetworkGameServerBase_GetPassword.{platform}.yaml
+        expected_input:
+          - CNetworkGameServerBase_vtable.{platform}.yaml
       - name: find-CNetworkGameServerBase_OnKickById
         expected_output:
           - CNetworkGameServerBase_OnKickById.{platform}.yaml
@@ -2448,6 +2453,10 @@ modules:
         category: vfunc
         alias:
           - CNetworkGameServerBase::IsHLTV
+      - name: CNetworkGameServerBase_GetPassword
+        category: vfunc
+        alias:
+          - CNetworkGameServerBase::GetPassword
       - name: CNetworkGameServerBase_OnKickById
         category: func
         alias:
