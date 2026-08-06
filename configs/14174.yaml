@@ -682,6 +682,17 @@ modules:
       - name: find-CServerSideClient_vtable
         expected_output:
           - CServerSideClient_vtable.{platform}.yaml
+      - name: find-CServerSideClient_ctor
+        expected_output:
+          - CServerSideClient_ctor.{platform}.yaml
+        expected_input:
+          - CServerSideClient_vtable.{platform}.yaml
+      - name: find-CNetworkGameServer_CreateNewClient
+        expected_output:
+          - CNetworkGameServer_CreateNewClient.{platform}.yaml
+        expected_input:
+          - CServerSideClient_ctor.{platform}.yaml
+          - CNetworkGameServer_vtable.{platform}.yaml
       - name: find-CSVCMsg_PeerList_t_vtable
         expected_output:
           - CSVCMsg_PeerList_t_vtable.{platform}.yaml
@@ -2187,6 +2198,14 @@ modules:
         category: vtable
       - name: CSVCMsg_PeerList_t_vtable
         category: vtable
+      - name: CServerSideClient_ctor
+        category: func
+        alias:
+          - CServerSideClient::CServerSideClient
+      - name: CNetworkGameServer_CreateNewClient
+        category: vfunc
+        alias:
+          - CNetworkGameServer::CreateNewClient
       - name: CServerSideClient_IsHearingClient
         category: vfunc
         alias:
