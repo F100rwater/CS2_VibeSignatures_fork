@@ -121,8 +121,8 @@ binaries:
       sha256: '6f5aa8c32e30d5369579f0e18bf97ec72e2076d3c06906efbfcc77f0c4111b80'
       size: 4592280
 config_digest_version: 2
-config_sha256: sha256:7fe401825e0f062cca17aa44b7c153be8f81e78929eff7804013c4e163c00529
-file_count: 3291
+config_sha256: sha256:8397fa038cdb825d0d1047ebd7bdcad006a53c55f4372a165020b5c8e53eac63
+file_count: 3293
 files:
   SDL3/SDL_GetMouse.windows.yaml:
     func_name: SDL_GetMouse
@@ -13119,6 +13119,18 @@ files:
     vfunc_index: 12
     vfunc_offset: '0x60'
     vfunc_sig: FF 50 60 4C 8D 87 ?? ?? ?? ??
+    vtable_name: INetworkGameServer
+  engine/INetworkGameServer_GetServerNetworkAddress.linux.yaml:
+    func_name: INetworkGameServer_GetServerNetworkAddress
+    vfunc_index: 31
+    vfunc_offset: '0xf8'
+    vfunc_sig: 48 8B 80 F8 00 00 00 48 39 D0 0F 85 ?? ?? ?? ?? 48 8D 05 ?? ?? ?? ??
+    vtable_name: INetworkGameServer
+  engine/INetworkGameServer_GetServerNetworkAddress.windows.yaml:
+    func_name: INetworkGameServer_GetServerNetworkAddress
+    vfunc_index: 31
+    vfunc_offset: '0xf8'
+    vfunc_sig: FF 90 F8 00 00 00 48 8B C8
     vtable_name: INetworkGameServer
   engine/INetworkGameServer_GetTime.linux.yaml:
     func_name: INetworkGameServer_GetTime
@@ -42427,5 +42439,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14174'
-last_publish_time: '2026-08-06T04:57:35Z'
+last_publish_time: '2026-08-06T05:43:32Z'
 schema_version: 5

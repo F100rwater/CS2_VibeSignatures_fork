@@ -1298,6 +1298,11 @@ modules:
         expected_input:
           - CNetworkGameServerBase_vtable.{platform}.yaml
           - INetworkGameServer_GetTimescale.{platform}.yaml
+      - name: find-INetworkGameServer_GetServerNetworkAddress
+        expected_output:
+          - INetworkGameServer_GetServerNetworkAddress.{platform}.yaml
+        expected_input:
+          - CNetworkGameServerBase_Init.{platform}.yaml
       - name: find-ISource2Server_PreWorldUpdate
         expected_output:
           - ISource2Server_PreWorldUpdate.{platform}.yaml
@@ -2925,6 +2930,10 @@ modules:
         category: vfunc
         alias:
           - CNetworkGameServerBase::GetTimescale
+      - name: INetworkGameServer_GetServerNetworkAddress
+        category: vfunc
+        alias:
+          - INetworkGameServer::GetServerNetworkAddress
       - name: ISource2Server_PreWorldUpdate
         category: vfunc
         alias:
