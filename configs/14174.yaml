@@ -621,6 +621,17 @@ modules:
           - CNetworkGameServerBase_GetClassBaseline.{platform}.yaml
         expected_input:
           - CNetworkGameServer_vtable.{platform}.yaml
+      - name: find-CSteam3Server_SendUpdatedServerDetails
+        expected_output:
+          - CSteam3Server_SendUpdatedServerDetails.{platform}.yaml
+        expected_input:
+          - CNetworkGameServer_ActivateServer.{platform}.yaml
+      - name: find-CSteam3Server_SendUpdatedServerDetails-decompiles
+        expected_output:
+          - CNetworkGameServerBase_GetMapName.{platform}.yaml
+          - CNetworkGameServerBase_GetHostName.{platform}.yaml
+        expected_input:
+          - CSteam3Server_SendUpdatedServerDetails.{platform}.yaml
       - name: find-CNetworkGameServerBase_ServerPollNetworking
         expected_output:
           - CNetworkGameServerBase_ServerPollNetworking.{platform}.yaml
@@ -1282,6 +1293,11 @@ modules:
         expected_input:
           - CNetworkGameServerBase_vtable.{platform}.yaml
           - INetworkGameServer_ServerAdvanceTick.{platform}.yaml
+      - name: find-INetworkGameServer_GetTime
+        expected_output:
+          - INetworkGameServer_GetTime.{platform}.yaml
+        expected_input:
+          - CNetworkGameServerBase_ServerAdvanceTick.{platform}.yaml
       - name: find-INetworkGameServer_ServerProcessNetworking
         expected_output:
           - INetworkGameServer_ServerProcessNetworking.{platform}.yaml
@@ -1304,6 +1320,11 @@ modules:
         expected_input:
           - CNetworkGameServerBase_vtable.{platform}.yaml
           - INetworkGameServer_GetTimescale.{platform}.yaml
+      - name: find-INetworkGameServer_GetServerNetworkAddress
+        expected_output:
+          - INetworkGameServer_GetServerNetworkAddress.{platform}.yaml
+        expected_input:
+          - CNetworkGameServerBase_Init.{platform}.yaml
       - name: find-ISource2Server_PreWorldUpdate
         expected_output:
           - ISource2Server_PreWorldUpdate.{platform}.yaml
@@ -2369,6 +2390,18 @@ modules:
         category: vfunc
         alias:
           - CNetworkGameServerBase::GetClassBaseline
+      - name: CSteam3Server_SendUpdatedServerDetails
+        category: func
+        alias:
+          - CSteam3Server::SendUpdatedServerDetails
+      - name: CNetworkGameServerBase_GetMapName
+        category: vfunc
+        alias:
+          - CNetworkGameServerBase::GetMapName
+      - name: CNetworkGameServerBase_GetHostName
+        category: vfunc
+        alias:
+          - CNetworkGameServerBase::GetHostName
       - name: CNetworkGameServerBase_SetMaxClients
         category: vfunc
         alias:
@@ -2915,6 +2948,10 @@ modules:
         category: vfunc
         alias:
           - CNetworkGameServerBase::ServerAdvanceTick
+      - name: INetworkGameServer_GetTime
+        category: vfunc
+        alias:
+          - INetworkGameServer::GetTime
       - name: INetworkGameServer_ServerProcessNetworking
         category: vfunc
         alias:
@@ -2931,6 +2968,10 @@ modules:
         category: vfunc
         alias:
           - CNetworkGameServerBase::GetTimescale
+      - name: INetworkGameServer_GetServerNetworkAddress
+        category: vfunc
+        alias:
+          - INetworkGameServer::GetServerNetworkAddress
       - name: ISource2Server_PreWorldUpdate
         category: vfunc
         alias:
@@ -7243,6 +7284,17 @@ modules:
           - CSource2GameEntities_ShouldClientReceiveStringTableUserData.{platform}.yaml
         expected_input:
           - CSource2GameEntities_vtable.{platform}.yaml
+      - name: find-IsBackgroundMap
+        expected_output:
+          - IsBackgroundMap.{platform}.yaml
+        expected_input:
+          - CSource2GameEntities_ShouldClientReceiveStringTableUserData.{platform}.yaml
+      - name: find-IsBackgroundMap-decompiles
+        expected_output:
+          - INetworkGameServer_IsBackgroundMap.{platform}.yaml
+          - ILoopModeGameSharedState_IsBackgroundMap.{platform}.yaml
+        expected_input:
+          - IsBackgroundMap.{platform}.yaml
       - name: find-CSource2GameEntities_CheckTransmit-decompiles
         expected_output:
           - CCheckTransmitInfo_m_nPlayerSlot.{platform}.yaml
@@ -7901,6 +7953,11 @@ modules:
           - CSpawnGroupMgrGameSystem_SetActiveSpawnGroup.{platform}.yaml
         expected_input:
           - CSpawnGroupMgrGameSystem_vtable.{platform}.yaml
+      - name: find-INetworkGameServer_MakeSpawnGroupActive
+        expected_output:
+          - INetworkGameServer_MakeSpawnGroupActive.{platform}.yaml
+        expected_input:
+          - CSpawnGroupMgrGameSystem_SetActiveSpawnGroup.{platform}.yaml
       - name: find-CSpawnGroupMgrGameSystem_UnloadSpawnGroup
         expected_output:
           - CSpawnGroupMgrGameSystem_UnloadSpawnGroup.{platform}.yaml
@@ -10268,6 +10325,20 @@ modules:
           - ISource2GameEntities::ShouldClientReceiveStringTableUserData
           - ISource2GameEntities_ShouldClientReceiveStringTableUserData
           - ShouldClientReceiveStringTableUserData
+      - name: IsBackgroundMap
+        category: func
+      - name: INetworkGameServer_IsBackgroundMap
+        category: vfunc
+        alias:
+          - INetworkGameServer::IsBackgroundMap
+      - name: ILoopModeGameSharedState_IsBackgroundMap
+        category: vfunc
+        alias:
+          - ILoopModeGameSharedState::IsBackgroundMap
+      - name: CNetworkGameServerBase_IsBackgroundMap
+        category: vfunc
+        alias:
+          - CNetworkGameServerBase::IsBackgroundMap
       - name: CBaseEntity_EmitSoundFilter
         category: func
         alias:
@@ -11165,6 +11236,10 @@ modules:
         category: vfunc
         alias:
           - CSpawnGroupMgrGameSystem::SetActiveSpawnGroup
+      - name: INetworkGameServer_MakeSpawnGroupActive
+        category: vfunc
+        alias:
+          - INetworkGameServer::MakeSpawnGroupActive
       - name: CSpawnGroupMgrGameSystem_UnloadSpawnGroup
         category: vfunc
         alias:
@@ -12358,6 +12433,12 @@ modules:
         expected_input:
           - CNetworkClientService_vtable.{platform}.yaml
           - INetworkClientService_IsConnecting.{platform}.yaml
+      - name: find-CNetworkGameServerBase_IsBackgroundMap
+        expected_output:
+          - CNetworkGameServerBase_IsBackgroundMap.{platform}.yaml
+        expected_input:
+          - CNetworkGameServerBase_vtable.{platform}.yaml
+          - ../server/INetworkGameServer_IsBackgroundMap.{platform}.yaml
   - name: client  # Execute Shutdown-dependent client skills after engine2.dll generates ILoopModeFactory_Shutdown
     path_windows: game/csgo/bin/win64/client.dll
     path_linux: game/csgo/bin/linuxsteamrt64/libclient.so
