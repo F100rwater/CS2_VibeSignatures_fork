@@ -121,8 +121,8 @@ binaries:
       sha256: '6f5aa8c32e30d5369579f0e18bf97ec72e2076d3c06906efbfcc77f0c4111b80'
       size: 4592280
 config_digest_version: 2
-config_sha256: sha256:7d74b905aa978c14ddf3c57d9fdc45d9a94a2072ccc1e574c519b032d4df0cb9
-file_count: 3313
+config_sha256: sha256:3b5488e6ee6b2b5f36010674d873f895836c38a9df2dd41bd1f544027b315965
+file_count: 3315
 files:
   SDL3/SDL_GetMouse.windows.yaml:
     func_name: SDL_GetMouse
@@ -10681,6 +10681,22 @@ files:
     vfunc_index: 76
     vfunc_offset: '0x260'
     vtable_name: CNetworkGameServer_vtable
+  engine/CNetworkGameServerBase_GetClientConnectionType.linux.yaml:
+    func_name: CNetworkGameServerBase_GetClientConnectionType
+    func_rva: '0x4f1050'
+    func_size: '0x26'
+    func_va: '0x4f1050'
+    vfunc_index: 55
+    vfunc_offset: '0x1b8'
+    vtable_name: CNetworkGameServerBase
+  engine/CNetworkGameServerBase_GetClientConnectionType.windows.yaml:
+    func_name: CNetworkGameServerBase_GetClientConnectionType
+    func_rva: '0xb5980'
+    func_size: '0x27'
+    func_va: '0x1800b5980'
+    vfunc_index: 55
+    vfunc_offset: '0x1b8'
+    vtable_name: CNetworkGameServerBase
   engine/CNetworkGameServerBase_GetHostName.linux.yaml:
     func_name: CNetworkGameServerBase_GetHostName
     vfunc_index: 72
@@ -32493,18 +32509,6 @@ files:
     vtable_size: '0x48'
     vtable_symbol: ??_7CNavPhysicsInterface@@6B@
     vtable_va: '0x181861e70'
-  server/CNetworkGameServerBase_GetClientConnectionType.linux.yaml:
-    func_name: CNetworkGameServerBase_GetClientConnectionType
-    vfunc_index: 55
-    vfunc_offset: '0x1b8'
-    vfunc_sig: 4C 8B A8 B8 01 00 00 E8 ?? ?? ?? ?? 48 89 DF
-    vtable_name: CNetworkGameServer_vtable
-  server/CNetworkGameServerBase_GetClientConnectionType.windows.yaml:
-    func_name: CNetworkGameServerBase_GetClientConnectionType
-    vfunc_index: 55
-    vfunc_offset: '0x1b8'
-    vfunc_sig: 48 8B B2 B8 01 00 00
-    vtable_name: CNetworkGameServer_vtable
   server/CNetworkSerializerBindingBuildFilter_GetFieldPriority.linux.yaml:
     func_name: CNetworkSerializerBindingBuildFilter_GetFieldPriority
     func_rva: '0x2134f10'
@@ -40405,6 +40409,18 @@ files:
     vfunc_index: 3
     vfunc_offset: '0x18'
     vtable_name: ILoopMode
+  server/INetworkGameServer_GetClientConnectionType.linux.yaml:
+    func_name: INetworkGameServer_GetClientConnectionType
+    vfunc_index: 55
+    vfunc_offset: '0x1b8'
+    vfunc_sig: 4C 8B A8 B8 01 00 00 E8 ?? ?? ?? ?? 48 89 DF
+    vtable_name: INetworkGameServer
+  server/INetworkGameServer_GetClientConnectionType.windows.yaml:
+    func_name: INetworkGameServer_GetClientConnectionType
+    vfunc_index: 55
+    vfunc_offset: '0x1b8'
+    vfunc_sig: 48 8B B2 B8 01 00 00
+    vtable_name: INetworkGameServer
   server/INetworkGameServer_IsBackgroundMap.linux.yaml:
     func_name: INetworkGameServer_IsBackgroundMap
     vfunc_index: 27
@@ -42615,5 +42631,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14174'
-last_publish_time: '2026-08-06T12:12:13Z'
+last_publish_time: '2026-08-06T12:39:14Z'
 schema_version: 5

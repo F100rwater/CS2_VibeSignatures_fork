@@ -2255,6 +2255,10 @@ modules:
           - CNetworkGameServerBase::ConnectClient
       - name: CNetworkGameServerBase_vtable
         category: vtable
+      - name: CNetworkGameServerBase_GetClientConnectionType
+        category: vfunc
+        alias:
+          - CNetworkGameServerBase::GetClientConnectionType
       - name: CNetworkGameServerBase_ServerSimulateInternal
         category: func
         platform: linux
@@ -8561,9 +8565,9 @@ modules:
           - CBasePlayerController_IsFakeClient.{platform}.yaml
         expected_input:
           - CPlayerCommandQueue_ctor.{platform}.yaml
-      - name: find-CNetworkGameServerBase_GetClientConnectionType
+      - name: find-INetworkGameServer_GetClientConnectionType
         expected_output:
-          - CNetworkGameServerBase_GetClientConnectionType.{platform}.yaml
+          - INetworkGameServer_GetClientConnectionType.{platform}.yaml
         expected_input:
           - CBasePlayerController_IsFakeClient.{platform}.yaml
       - name: find-CEntitySaveRestoreBlockHandler_vtable
@@ -11822,10 +11826,10 @@ modules:
         alias:
           - CBasePlayerController::IsFakeClient
           - IsFakeClient
-      - name: CNetworkGameServerBase_GetClientConnectionType
+      - name: INetworkGameServer_GetClientConnectionType
         category: vfunc
         alias:
-          - CNetworkGameServerBase::GetClientConnectionType
+          - INetworkGameServer::GetClientConnectionType
       - name: CNavPhysicsInterface_vtable
         category: vtable
       - name: ConnectInterfaces
@@ -12478,6 +12482,12 @@ modules:
         expected_input:
           - CNetworkGameServerBase_vtable.{platform}.yaml
           - ../server/INetworkGameServer_IsBackgroundMap.{platform}.yaml
+      - name: find-CNetworkGameServerBase_GetClientConnectionType
+        expected_output:
+          - CNetworkGameServerBase_GetClientConnectionType.{platform}.yaml
+        expected_input:
+          - CNetworkGameServerBase_vtable.{platform}.yaml
+          - ../server/INetworkGameServer_GetClientConnectionType.{platform}.yaml
   - name: client  # Execute Shutdown-dependent client skills after engine2.dll generates ILoopModeFactory_Shutdown
     path_windows: game/csgo/bin/win64/client.dll
     path_linux: game/csgo/bin/linuxsteamrt64/libclient.so

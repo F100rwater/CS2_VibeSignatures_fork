@@ -12,8 +12,8 @@ disasm_code: |-
   .text:0000000180AF97B2                 mov     rcx, rbx
   .text:0000000180AF97B5                 mov     rdi, rax
   .text:0000000180AF97B8                 mov     rdx, [rax]
-  .text:0000000180AF97BB                 ; 0x1B8 = 440LL = CNetworkGameServerBase_GetClientConnectionType
-  .text:0000000180AF97BB                 mov     rsi, [rdx+1B8h]; 0x1B8 = 440LL = CNetworkGameServerBase_GetClientConnectionType
+  .text:0000000180AF97BB                 ; 0x1B8 = 440LL = INetworkGameServer_GetClientConnectionType
+  .text:0000000180AF97BB                 mov     rsi, [rdx+1B8h]; 0x1B8 = 440LL = INetworkGameServer_GetClientConnectionType
   .text:0000000180AF97C2                 lea     rdx, [rsp+28h+arg_8]
   .text:0000000180AF97C7                 call    sub_1812436E0
   .text:0000000180AF97CC                 mov     ecx, [rsp+28h+arg_8]
@@ -38,7 +38,7 @@ procedure: |-
     int v6; // [rsp+38h] [rbp+10h] BYREF
 
     v2 = (*(__int64 (__fastcall **)(__int64))(*(_QWORD *)g_pNetworkServerService + 184LL))(g_pNetworkServerService);
-    v3 = *(__int64 (__fastcall **)(__int64, __int64))(*(_QWORD *)v2 + 440LL);// 0x1B8 = 440LL = CNetworkGameServerBase_GetClientConnectionType
+    v3 = *(__int64 (__fastcall **)(__int64, __int64))(*(_QWORD *)v2 + 440LL);// 0x1B8 = 440LL = INetworkGameServer_GetClientConnectionType
     sub_1812436E0(a1, &v6);
     v4 = (unsigned int)(v6 - 1);
     if ( v6 == -1 )

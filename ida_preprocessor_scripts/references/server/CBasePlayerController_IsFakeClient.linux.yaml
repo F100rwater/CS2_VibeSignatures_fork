@@ -15,8 +15,8 @@ disasm_code: |-
   .text:00000000015E0D03                 mov     rdi, r12
   .text:00000000015E0D06                 mov     rbx, rax
   .text:00000000015E0D09                 mov     rax, [rax]
-  .text:00000000015E0D0C                 ; 0x1B8 = 440LL = CNetworkGameServerBase_GetClientConnectionType
-  .text:00000000015E0D0C                 mov     r13, [rax+1B8h]; 0x1B8 = 440LL = CNetworkGameServerBase_GetClientConnectionType
+  .text:00000000015E0D0C                 ; 0x1B8 = 440LL = INetworkGameServer_GetClientConnectionType
+  .text:00000000015E0D0C                 mov     r13, [rax+1B8h]; 0x1B8 = 440LL = INetworkGameServer_GetClientConnectionType
   .text:00000000015E0D13                 call    sub_2109F30
   .text:00000000015E0D18                 mov     rdi, rbx
   .text:00000000015E0D1B                 mov     esi, eax
@@ -40,7 +40,7 @@ procedure: |-
     int v3; // eax
 
     v1 = (*(__int64 (__fastcall **)(_QWORD *))(*g_pNetworkServerService + 192LL))(g_pNetworkServerService);
-    v2 = *(__int64 (__fastcall **)(__int64, _QWORD))(*(_QWORD *)v1 + 440LL);// 0x1B8 = 440LL = CNetworkGameServerBase_GetClientConnectionType
+    v2 = *(__int64 (__fastcall **)(__int64, _QWORD))(*(_QWORD *)v1 + 440LL);// 0x1B8 = 440LL = INetworkGameServer_GetClientConnectionType
     v3 = sub_2109F30(a1);
     return v2(v1, v3 - (unsigned int)(v3 != -1)) & 1;
   }
