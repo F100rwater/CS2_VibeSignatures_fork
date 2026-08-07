@@ -70,4 +70,3 @@ async def preprocess_skill(
         generate_yaml_desired_fields=GENERATE_YAML_DESIRED_FIELDS,
         debug=debug,
     )
-

@@ -68,10 +68,7 @@ async def preprocess_skill(
     vtable_va = _read_vtable_va(vtable_yaml_path)
     if not vtable_va:
         if debug:
-            print(
-                "    Preprocess: CUserMessageServerFrameTime_t_vtable vtable_va not found, "
-                "cannot resolve xref_gvs"
-            )
+            print("    Preprocess: CUserMessageServerFrameTime_t_vtable vtable_va not found, cannot resolve xref_gvs")
         return False
 
     func_xrefs = [
