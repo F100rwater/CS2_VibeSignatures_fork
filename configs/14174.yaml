@@ -5965,6 +5965,9 @@ modules:
       - name: find-CSource2Server_vtable
         expected_output:
           - CSource2Server_vtable.{platform}.yaml
+      - name: find-CUserMessageServerFrameTime_t_vtable
+        expected_output:
+          - CUserMessageServerFrameTime_t_vtable.{platform}.yaml
       - name: find-CSource2Server_vtable2
         expected_output:
           - CSource2Server_vtable2.{platform}.yaml
@@ -6733,6 +6736,17 @@ modules:
           - CSource2Server_ApplyGameSettings.{platform}.yaml
         expected_input:
           - CSource2Server_vtable.{platform}.yaml
+      - name: find-CSource2Server_GetEntityReport
+        expected_output:
+          - CSource2Server_GetEntityReport.{platform}.yaml
+        expected_input:
+          - CSource2Server_vtable.{platform}.yaml
+      - name: find-CSource2Server_BroadcastServerFrameTime
+        expected_output:
+          - CSource2Server_BroadcastServerFrameTime.{platform}.yaml
+        expected_input:
+          - CSource2Server_vtable.{platform}.yaml
+          - CUserMessageServerFrameTime_t_vtable.{platform}.yaml
       - name: find-CSource2Server_WriteSignonMessages
         expected_output:
           - CSource2Server_WriteSignonMessages.{platform}.yaml
@@ -8950,6 +8964,8 @@ modules:
     symbols:
       - name: CSource2Server_vtable
         category: vtable
+      - name: CUserMessageServerFrameTime_t_vtable
+        category: vtable
       - name: CSource2Server_vtable2
         category: vtable
       - name: CSource2Server_OnStreamEntitiesFromFileCompleted
@@ -9934,6 +9950,14 @@ modules:
         category: vfunc
         alias:
           - CSource2Server::ApplyGameSettings
+      - name: CSource2Server_GetEntityReport
+        category: vfunc
+        alias:
+          - CSource2Server::GetEntityReport
+      - name: CSource2Server_BroadcastServerFrameTime
+        category: vfunc
+        alias:
+          - CSource2Server::BroadcastServerFrameTime
       - name: CSource2Server_WriteSignonMessages
         category: vfunc
         alias:
