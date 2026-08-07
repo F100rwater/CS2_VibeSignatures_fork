@@ -12992,6 +12992,10 @@ cpp_tests:
       - client  # bin/{gamever}/client/CGameEventManager_*.{platform}.yaml
   - name: ISource2Server_MSVC
     symbol: ISource2Server
+    alias_symbols:
+      - CSource2Server
+    exclude_reference_vtables:
+      - CSource2Server_vtable2
     cpp: cpp_tests/isource2server.cpp
     headers:
       - hl2sdk_cs2/public/eiface.h  # Used by the fix-cppheaders SKILL
@@ -13014,3 +13018,4 @@ cpp_tests:
       - fdump-vtable-layouts
     reference_modules:
       - engine  # bin/{gamever}/engine/ISource2Server_*.{platform}.yaml
+      - server  # bin/{gamever}/server/CSource2Server_*.{platform}.yaml

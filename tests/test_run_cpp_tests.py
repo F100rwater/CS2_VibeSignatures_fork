@@ -318,6 +318,119 @@ class TestCompareVtableWithYaml(unittest.TestCase):
 
         self.assertEqual([], report["differences"])
 
+    def test_excludes_configured_reference_vtable_from_merge_and_ownership_audit(self) -> None:
+        compiler_output = "VFTable indices for 'ITest' (1 entry).\n   0 | void ITest::First() [pure]\n"
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir) / "14167"
+            engine_dir = root / "engine"
+            engine_dir.mkdir(parents=True)
+            (engine_dir / "ITest_First.windows.yaml").write_text(
+                "func_name: ITest_First\nvtable_name: ITest\nvfunc_index: 0\n",
+                encoding="utf-8",
+            )
+
+            server_dir = root / "server"
+            server_dir.mkdir(parents=True)
+            (server_dir / "CConcrete_First.windows.yaml").write_text(
+                "func_name: CConcrete_First\nvtable_name: CConcrete\nvfunc_index: 0\n",
+                encoding="utf-8",
+            )
+            (server_dir / "CConcrete_Secondary.windows.yaml").write_text(
+                "func_name: CConcrete_Secondary\nvtable_name: CConcrete_vtable2\nvfunc_index: 0\n",
+                encoding="utf-8",
+            )
+            (server_dir / "CConcrete_vtable.windows.yaml").write_text(
+                "vtable_size: '0x8'\nvtable_numvfunc: 1\n",
+                encoding="utf-8",
+            )
+            (server_dir / "CConcrete_vtable2.windows.yaml").write_text(
+                "vtable_size: '0x10'\nvtable_numvfunc: 2\n",
+                encoding="utf-8",
+            )
+
+            symbol_store = DirectorySymbolStore(temp_dir, "14167")
+            unfiltered_report = cpp_tests_util.compare_compiler_vtable_with_yaml(
+                class_name="ITest",
+                compiler_output=compiler_output,
+                symbol_store=symbol_store,
+                platform="windows",
+                reference_modules=["engine", "server"],
+                alias_class_names=["CConcrete"],
+                pointer_size=8,
+            )
+            filtered_report = cpp_tests_util.compare_compiler_vtable_with_yaml(
+                class_name="ITest",
+                compiler_output=compiler_output,
+                symbol_store=symbol_store,
+                platform="windows",
+                reference_modules=["engine", "server"],
+                alias_class_names=["CConcrete"],
+                exclude_reference_vtables=["CConcrete_vtable2"],
+                pointer_size=8,
+            )
+
+        self.assertIn(
+            "reference_conflict_vfunc_name",
+            [item["type"] for item in unfiltered_report["differences"]],
+        )
+        self.assertIn(
+            "reference_conflict_vtable_size",
+            [item["type"] for item in unfiltered_report["differences"]],
+        )
+        self.assertEqual([], filtered_report["differences"])
+        self.assertCountEqual(
+            [
+                "server/CConcrete_Secondary.windows.yaml",
+                "server/CConcrete_vtable2.windows.yaml",
+            ],
+            filtered_report["reference_files_excluded"],
+        )
+        self.assertEqual(
+            ["server/CConcrete_Secondary.windows.yaml"],
+            filtered_report["ownership_files_excluded"],
+        )
+
+
+class TestCompileAndCompareConfig(unittest.TestCase):
+    @patch.object(run_cpp_tests, "compare_compiler_vtable_with_yaml")
+    @patch.object(run_cpp_tests.subprocess, "run")
+    def test_passes_excluded_reference_vtables_to_vtable_compare(
+        self,
+        mock_run,
+        mock_compare,
+    ) -> None:
+        mock_run.return_value = argparse.Namespace(returncode=0, stdout="", stderr="")
+        mock_compare.return_value = {
+            "class_name": "ITest",
+            "platform": "windows",
+            "differences": [],
+        }
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            (root / "test.cpp").write_text("int main() { return 0; }\n", encoding="utf-8")
+            result = run_cpp_tests.compile_and_compare(
+                test_item={
+                    "name": "ITest_MSVC",
+                    "symbol": "ITest",
+                    "alias_symbols": ["CConcrete"],
+                    "exclude_reference_vtables": ["CConcrete_vtable2"],
+                    "cpp": "test.cpp",
+                    "target": "x86_64-pc-windows-msvc",
+                    "additional_compiler_options": ["fdump-vtable-layouts"],
+                    "reference_modules": ["engine", "server"],
+                },
+                args=argparse.Namespace(clang="clang++", std="c++20"),
+                config_dir=root,
+                symbol_store=object(),
+            )
+
+        self.assertEqual("ok", result["status"])
+        self.assertEqual(
+            ["CConcrete_vtable2"],
+            mock_compare.call_args.kwargs["exclude_reference_vtables"],
+        )
+
 
 class TestParseRecordLayouts(unittest.TestCase):
     def test_parses_struct_member_offsets_from_record_layout(self) -> None:
