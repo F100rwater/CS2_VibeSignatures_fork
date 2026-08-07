@@ -121,8 +121,8 @@ binaries:
       sha256: '6f5aa8c32e30d5369579f0e18bf97ec72e2076d3c06906efbfcc77f0c4111b80'
       size: 4592280
 config_digest_version: 2
-config_sha256: sha256:31b39750c33a7c0e2f196f65f4498038e9422d79deec989308987ae96a4cd84d
-file_count: 3327
+config_sha256: sha256:0c4319a7feee2d70a07236b06d6ecffaecc45fa70d92f43fb439663d2a59c457
+file_count: 3333
 files:
   SDL3/SDL_GetMouse.windows.yaml:
     func_name: SDL_GetMouse
@@ -37640,6 +37640,24 @@ files:
     vfunc_index: 18
     vfunc_offset: '0x90'
     vtable_name: CSource2Server
+  server/CSource2Server_BroadcastServerFrameTime.linux.yaml:
+    func_name: CSource2Server_BroadcastServerFrameTime
+    func_rva: '0x18d4cf0'
+    func_sig: 55 48 89 E5 41 57 41 56 41 55 41 54 4C 8D 65 ?? 53 48 8D 9D ?? ?? ?? ??
+    func_size: '0x12a'
+    func_va: '0x18d4cf0'
+    vfunc_index: 79
+    vfunc_offset: '0x278'
+    vtable_name: CSource2Server_vtable
+  server/CSource2Server_BroadcastServerFrameTime.windows.yaml:
+    func_name: CSource2Server_BroadcastServerFrameTime
+    func_rva: '0xd1c150'
+    func_sig: 48 89 5C 24 ?? 48 89 74 24 ?? 57 48 81 EC ?? ?? ?? ?? 0F 29 B4 24 ?? ?? ?? ?? 48 8D 4C 24 ??
+    func_size: '0x14b'
+    func_va: '0x180d1c150'
+    vfunc_index: 79
+    vfunc_offset: '0x278'
+    vtable_name: CSource2Server_vtable
   server/CSource2Server_Connect.linux.yaml:
     func_name: CSource2Server_Connect
     func_rva: '0x18d6f00'
@@ -37730,6 +37748,24 @@ files:
     vfunc_index: 42
     vfunc_offset: '0x150'
     vtable_name: CSource2Server
+  server/CSource2Server_GetEntityReport.linux.yaml:
+    func_name: CSource2Server_GetEntityReport
+    func_rva: '0x18e6fc0'
+    func_sig: 55 48 8D 35 ?? ?? ?? ?? 48 89 E5 41 57 41 56 41 55 4C 8D 2D ?? ?? ?? ??
+    func_size: '0x55d'
+    func_va: '0x18e6fc0'
+    vfunc_index: 82
+    vfunc_offset: '0x290'
+    vtable_name: CSource2Server_vtable
+  server/CSource2Server_GetEntityReport.windows.yaml:
+    func_name: CSource2Server_GetEntityReport
+    func_rva: '0xd1c300'
+    func_sig: 48 89 5C 24 ?? 48 89 74 24 ?? 55 57 41 54 41 56 41 57 48 8D 6C 24 ?? 48 81 EC ?? ?? ?? ?? 49 8B 40 ??
+    func_size: '0x441'
+    func_va: '0x180d1c300'
+    vfunc_index: 82
+    vfunc_offset: '0x290'
+    vtable_name: CSource2Server_vtable
   server/CSource2Server_GetLevelsFromSaveFile.linux.yaml:
     func_name: CSource2Server_GetLevelsFromSaveFile
     func_rva: '0x18d19e0'
@@ -39334,6 +39370,33 @@ files:
     vtable_size: '0x8a8'
     vtable_symbol: ??_7CTriggerPush@@6B@
     vtable_va: '0x18184cc28'
+  server/CUserMessageServerFrameTime_t_vtable.linux.yaml:
+    vtable_class: CUserMessageServerFrameTime_t
+    vtable_entries:
+      0: '0x18d1df0'
+      1: '0x18d1e30'
+      2: '0x17769d0'
+      3: '0x17769e0'
+      4: '0x17769f0'
+      5: '0x1778490'
+    vtable_numvfunc: 6
+    vtable_rva: '0x24ccb10'
+    vtable_size: '0x30'
+    vtable_symbol: _ZTV29CUserMessageServerFrameTime_t + 0x10
+    vtable_va: '0x24ccb10'
+  server/CUserMessageServerFrameTime_t_vtable.windows.yaml:
+    vtable_class: CUserMessageServerFrameTime_t
+    vtable_entries:
+      0: '0x180d20f60'
+      1: '0x180c158b0'
+      2: '0x180c158a0'
+      3: '0x180c158c0'
+      4: '0x180c15910'
+    vtable_numvfunc: 5
+    vtable_rva: '0x17e3548'
+    vtable_size: '0x28'
+    vtable_symbol: ??_7CUserMessageServerFrameTime_t@@6B@
+    vtable_va: '0x1817e3548'
   server/CUtlVectorEmbeddedNetworkVar_CSPerRoundStats_t_NetworkVar_m_perRoundStats_SetCount.windows.yaml:
     func_name: CUtlVectorEmbeddedNetworkVar_CSPerRoundStats_t_NetworkVar_m_perRoundStats_SetCount
     func_rva: '0x1c64f0'
@@ -42721,5 +42784,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14174'
-last_publish_time: '2026-08-07T04:35:09Z'
+last_publish_time: '2026-08-07T07:32:31Z'
 schema_version: 5
