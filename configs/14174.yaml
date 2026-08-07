@@ -2020,9 +2020,9 @@ modules:
         expected_input:
           - CLoopTypeSimple_vtable.{platform}.yaml
           - CLoopTypeBase_FrameUpdate.{platform}.yaml
-      - name: find-ISource2Server_OutOfGameFrameBoundary
+      - name: find-ISource2Server_UpdateWhenNotInGame
         expected_output:
-          - ISource2Server_OutOfGameFrameBoundary.{platform}.yaml
+          - ISource2Server_UpdateWhenNotInGame.{platform}.yaml
         expected_input:
           - CLoopTypeSimple_FrameUpdate.{platform}.yaml
       - name: find-SetInfo_CommandHandler
@@ -3050,10 +3050,10 @@ modules:
         alias:
           - ISource2Server::PreWorldUpdate
         shared: true
-      - name: ISource2Server_OutOfGameFrameBoundary
+      - name: ISource2Server_UpdateWhenNotInGame
         category: vfunc
         alias:
-          - ISource2Server::OutOfGameFrameBoundary
+          - ISource2Server::UpdateWhenNotInGame
       - name: INetworkMessages_SetIsForServer
         category: vfunc
         alias:
@@ -5975,17 +5975,17 @@ modules:
           - CSource2Server_OnStreamEntitiesFromFileCompleted.{platform}.yaml
         expected_input:
           - CSource2Server_vtable2.{platform}.yaml
-      - name: find-CSource2Server_OutOfGameFrameBoundary
+      - name: find-CSource2Server_UpdateWhenNotInGame
         expected_output:
-          - CSource2Server_OutOfGameFrameBoundary.{platform}.yaml
+          - CSource2Server_UpdateWhenNotInGame.{platform}.yaml
         expected_input:
           - CSource2Server_vtable.{platform}.yaml
-          - ../engine/ISource2Server_OutOfGameFrameBoundary.{platform}.yaml
+          - ../engine/ISource2Server_UpdateWhenNotInGame.{platform}.yaml
       - name: find-IGameSystem_OnOutOfGameFrameBoundary
         expected_output:
           - IGameSystem_OnOutOfGameFrameBoundary.{platform}.yaml
         expected_input:
-          - CSource2Server_OutOfGameFrameBoundary.{platform}.yaml
+          - CSource2Server_UpdateWhenNotInGame.{platform}.yaml
           - IGameSystem_vtable.{platform}.yaml
       - name: find-CSource2GameEntities_vtable
         expected_output:
@@ -8960,10 +8960,10 @@ modules:
         category: vfunc
         alias:
           - CSource2Server::PreWorldUpdate
-      - name: CSource2Server_OutOfGameFrameBoundary
+      - name: CSource2Server_UpdateWhenNotInGame
         category: vfunc
         alias:
-          - CSource2Server::OutOfGameFrameBoundary
+          - CSource2Server::UpdateWhenNotInGame
       - name: CSource2GameEntities_vtable
         category: vtable
       - name: CSource2GameClients_vtable

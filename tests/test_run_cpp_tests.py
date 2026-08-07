@@ -395,6 +395,47 @@ class TestMainExitStatus(unittest.TestCase):
     @patch.object(run_cpp_tests, "get_default_target_triple")
     @patch.object(run_cpp_tests, "parse_config")
     @patch.object(run_cpp_tests, "parse_args")
+    def test_returns_failure_when_no_targets_are_runnable(
+        self,
+        mock_parse_args,
+        mock_parse_config,
+        mock_get_default_target_triple,
+        mock_probe_target_support,
+        mock_run_one_test,
+        mock_open_snapshot_store,
+    ) -> None:
+        mock_parse_args.return_value = argparse.Namespace(
+            configyaml="configs/14174.yaml",
+            snapshot="candidate.yaml",
+            gamever="14174",
+            clang="clang++",
+            std="c++20",
+            debug=False,
+        )
+        mock_parse_config.return_value = [
+            {
+                "name": "UnsupportedLayout",
+                "symbol": "IUnsupportedLayout",
+                "cpp": "test.cpp",
+                "target": "x86_64-pc-windows-msvc",
+            }
+        ]
+        mock_get_default_target_triple.return_value = "x86_64-unknown-linux-gnu"
+        mock_probe_target_support.return_value = {"supported": False, "output": "unsupported target"}
+        mock_open_snapshot_store.return_value.candidate_sha256 = "sha256:test"
+        mock_open_snapshot_store.return_value.game_version = "14174"
+        mock_open_snapshot_store.return_value.file_count = 1
+        mock_open_snapshot_store.return_value.config_sha256 = "sha256:config"
+
+        self.assertEqual(1, run_cpp_tests.main())
+        mock_run_one_test.assert_not_called()
+
+    @patch.object(run_cpp_tests, "open_snapshot_store")
+    @patch.object(run_cpp_tests, "run_one_test")
+    @patch.object(run_cpp_tests, "probe_target_support")
+    @patch.object(run_cpp_tests, "get_default_target_triple")
+    @patch.object(run_cpp_tests, "parse_config")
+    @patch.object(run_cpp_tests, "parse_args")
     def test_returns_failure_when_record_or_vtable_compare_has_differences(
         self,
         mock_parse_args,

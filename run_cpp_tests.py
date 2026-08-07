@@ -517,8 +517,8 @@ def main():
         print(f"- skip: {skipped.get('name', 'unnamed_test')} (target={skipped.get('target', '')})")
 
     if not runnable_tests:
-        print("No runnable tests for current clang++ environment.")
-        return 0
+        print("Error: No runnable tests for current clang++ environment.")
+        return 1
 
     print("=== running cpp_tests ===")
     compile_failed_count = 0

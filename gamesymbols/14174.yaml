@@ -121,7 +121,7 @@ binaries:
       sha256: '6f5aa8c32e30d5369579f0e18bf97ec72e2076d3c06906efbfcc77f0c4111b80'
       size: 4592280
 config_digest_version: 2
-config_sha256: sha256:2d83e5fe522753570dca5f0b88a0f4249b4d06caee800e45b599ed5f87c66d4a
+config_sha256: sha256:31b39750c33a7c0e2f196f65f4498038e9422d79deec989308987ae96a4cd84d
 file_count: 3327
 files:
   SDL3/SDL_GetMouse.windows.yaml:
@@ -13569,18 +13569,6 @@ files:
     vfunc_offset: '0x98'
     vfunc_sig: FF 90 98 00 00 00 48 8D 0D ?? ?? ?? ??
     vtable_name: ISource2GameClients
-  engine/ISource2Server_OutOfGameFrameBoundary.linux.yaml:
-    func_name: ISource2Server_OutOfGameFrameBoundary
-    vfunc_index: 45
-    vfunc_offset: '0x168'
-    vfunc_sig: FF 90 68 01 00 00 48 8D 05 ?? ?? ?? ?? 48 8B 38
-    vtable_name: ISource2Server
-  engine/ISource2Server_OutOfGameFrameBoundary.windows.yaml:
-    func_name: ISource2Server_OutOfGameFrameBoundary
-    vfunc_index: 45
-    vfunc_offset: '0x168'
-    vfunc_sig: FF 90 68 01 00 00 48 8B 0D ?? ?? ?? ??
-    vtable_name: ISource2Server
   engine/ISource2Server_PreWorldUpdate.linux.yaml:
     func_name: ISource2Server_PreWorldUpdate
     vfunc_index: 15
@@ -13590,6 +13578,18 @@ files:
     func_name: ISource2Server_PreWorldUpdate
     vfunc_index: 15
     vfunc_offset: '0x78'
+    vtable_name: ISource2Server
+  engine/ISource2Server_UpdateWhenNotInGame.linux.yaml:
+    func_name: ISource2Server_UpdateWhenNotInGame
+    vfunc_index: 45
+    vfunc_offset: '0x168'
+    vfunc_sig: FF 90 68 01 00 00 48 8D 05 ?? ?? ?? ?? 48 8B 38
+    vtable_name: ISource2Server
+  engine/ISource2Server_UpdateWhenNotInGame.windows.yaml:
+    func_name: ISource2Server_UpdateWhenNotInGame
+    vfunc_index: 45
+    vfunc_offset: '0x168'
+    vfunc_sig: FF 90 68 01 00 00 48 8B 0D ?? ?? ?? ??
     vtable_name: ISource2Server
   engine/InitSteam.linux.yaml:
     func_name: InitSteam
@@ -37820,24 +37820,6 @@ files:
     vfunc_index: 0
     vfunc_offset: '0x0'
     vtable_name: CSource2Server_vtable2
-  server/CSource2Server_OutOfGameFrameBoundary.linux.yaml:
-    func_name: CSource2Server_OutOfGameFrameBoundary
-    func_rva: '0x18d1830'
-    func_sig: 55 48 89 E5 41 54 53 48 83 EC ?? 8B 3D ?? ?? ?? ?? F3 0F 11 45 ??
-    func_size: '0xbb'
-    func_va: '0x18d1830'
-    vfunc_index: 45
-    vfunc_offset: '0x168'
-    vtable_name: CSource2Server
-  server/CSource2Server_OutOfGameFrameBoundary.windows.yaml:
-    func_name: CSource2Server_OutOfGameFrameBoundary
-    func_rva: '0xd1b4f0'
-    func_sig: 48 83 EC ?? 8B 0D ?? ?? ?? ?? F3 0F 11 4C 24 ??
-    func_size: '0xd6'
-    func_va: '0x180d1b4f0'
-    vfunc_index: 45
-    vfunc_offset: '0x168'
-    vtable_name: CSource2Server
   server/CSource2Server_PreShutdown.linux.yaml:
     func_name: CSource2Server_PreShutdown
     func_rva: '0x18d3da0'
@@ -37925,6 +37907,24 @@ files:
     func_va: '0x180d1a410'
     vfunc_index: 4
     vfunc_offset: '0x20'
+    vtable_name: CSource2Server
+  server/CSource2Server_UpdateWhenNotInGame.linux.yaml:
+    func_name: CSource2Server_UpdateWhenNotInGame
+    func_rva: '0x18d1830'
+    func_sig: 55 48 89 E5 41 54 53 48 83 EC ?? 8B 3D ?? ?? ?? ?? F3 0F 11 45 ??
+    func_size: '0xbb'
+    func_va: '0x18d1830'
+    vfunc_index: 45
+    vfunc_offset: '0x168'
+    vtable_name: CSource2Server
+  server/CSource2Server_UpdateWhenNotInGame.windows.yaml:
+    func_name: CSource2Server_UpdateWhenNotInGame
+    func_rva: '0xd1b4f0'
+    func_sig: 48 83 EC ?? 8B 0D ?? ?? ?? ?? F3 0F 11 4C 24 ??
+    func_size: '0xd6'
+    func_va: '0x180d1b4f0'
+    vfunc_index: 45
+    vfunc_offset: '0x168'
     vtable_name: CSource2Server
   server/CSource2Server_WriteSignonMessages.linux.yaml:
     func_name: CSource2Server_WriteSignonMessages
@@ -42721,5 +42721,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14174'
-last_publish_time: '2026-08-06T16:10:23Z'
+last_publish_time: '2026-08-07T03:13:26Z'
 schema_version: 5
