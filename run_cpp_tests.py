@@ -370,6 +370,7 @@ def compile_and_compare(
             if should_parse_vtable:
                 alias_symbols = _to_list(test_item.get("alias_symbols"))
                 reference_vtable_owners = _to_list(test_item.get("reference_vtable_owners"))
+                exclude_reference_vtables = _to_list(test_item.get("exclude_reference_vtables"))
                 try:
                     merge_reference_modules = _to_bool(test_item.get("merge_reference_modules"), default=True)
                 except ValueError as exc:
@@ -392,6 +393,7 @@ def compile_and_compare(
                             pointer_size=pointer_size_from_target_triple(target),
                             alias_class_names=alias_symbols,
                             reference_vtable_owners=reference_vtable_owners,
+                            exclude_reference_vtables=exclude_reference_vtables,
                         )
                     )
                 else:
@@ -407,6 +409,7 @@ def compile_and_compare(
                                 pointer_size=pointer_size_from_target_triple(target),
                                 alias_class_names=alias_symbols,
                                 reference_vtable_owners=reference_vtable_owners,
+                                exclude_reference_vtables=exclude_reference_vtables,
                             )
                         )
             if should_parse_record:
@@ -517,8 +520,8 @@ def main():
         print(f"- skip: {skipped.get('name', 'unnamed_test')} (target={skipped.get('target', '')})")
 
     if not runnable_tests:
-        print("No runnable tests for current clang++ environment.")
-        return 0
+        print("Error: No runnable tests for current clang++ environment.")
+        return 1
 
     print("=== running cpp_tests ===")
     compile_failed_count = 0

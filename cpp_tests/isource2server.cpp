@@ -3,7 +3,7 @@
 #define RESTRICT
 
 // Avoid pulling edict.h's heavier transitive include chain; eiface.h only needs
-// these as pointer/reference types for the IVEngineServer2 layout test.
+// these as pointer/reference types for the ISource2Server layout tests.
 #define EDICT_H
 #define ISERVERENTITY_H
 class CGlobalVars;
@@ -19,11 +19,11 @@ struct ChangeAccessorFieldPathIndex_t
 #include <entity2/entityidentity.h>
 #include <eiface.h>
 
-IVEngineServer2 *engineserver();
+ISource2Server *sourceserver();
 
 int main()
 {
-	engineserver()->GetSteamUniverse();
+	sourceserver()->PreWorldUpdate(false);
 
 	return 0;
 }

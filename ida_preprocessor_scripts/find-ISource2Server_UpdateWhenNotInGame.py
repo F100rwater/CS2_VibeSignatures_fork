@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
-"""Preprocess script for find-ISource2Server_OutOfGameFrameBoundary skill."""
+"""Preprocess script for find-ISource2Server_UpdateWhenNotInGame skill."""
 
 from ida_analyze_util import preprocess_common_skill
 
 TARGET_FUNCTION_NAMES = [
-    "ISource2Server_OutOfGameFrameBoundary",
+    "ISource2Server_UpdateWhenNotInGame",
 ]
 
 LLM_DECOMPILE = [
     {
-        "symbol_name": "ISource2Server_OutOfGameFrameBoundary",
+        "symbol_name": "ISource2Server_UpdateWhenNotInGame",
         "prompt_path": "prompt/call_llm_decompile.md",
         "reference_yaml_paths": [
             "references/engine/CLoopTypeSimple_FrameUpdate.{platform}.yaml",
@@ -22,12 +22,12 @@ LLM_DECOMPILE = [
 ]
 
 FUNC_VTABLE_RELATIONS = [
-    ("ISource2Server_OutOfGameFrameBoundary", "ISource2Server"),
+    ("ISource2Server_UpdateWhenNotInGame", "ISource2Server"),
 ]
 
 GENERATE_YAML_DESIRED_FIELDS = [
     (
-        "ISource2Server_OutOfGameFrameBoundary",
+        "ISource2Server_UpdateWhenNotInGame",
         [
             "func_name",
             "vfunc_sig",

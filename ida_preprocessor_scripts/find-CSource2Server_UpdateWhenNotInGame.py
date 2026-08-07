@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
-"""Preprocess script for find-CSource2Server_OutOfGameFrameBoundary skill."""
+"""Preprocess script for find-CSource2Server_UpdateWhenNotInGame skill."""
 
 from ida_analyze_util import preprocess_common_skill
 
 INHERIT_VFUNCS = [
     # (target_func_name, inherit_vtable_class, base_vfunc_name, generate_func_sig)
     (
-        "CSource2Server_OutOfGameFrameBoundary",
+        "CSource2Server_UpdateWhenNotInGame",
         "CSource2Server",
-        "../engine/ISource2Server_OutOfGameFrameBoundary",
+        "../engine/ISource2Server_UpdateWhenNotInGame",
         True,
     ),
 ]
@@ -16,7 +16,7 @@ INHERIT_VFUNCS = [
 GENERATE_YAML_DESIRED_FIELDS = [
     # (symbol_name, generate_yaml_fields)
     (
-        "CSource2Server_OutOfGameFrameBoundary",
+        "CSource2Server_UpdateWhenNotInGame",
         [
             "func_name",
             "func_va",
