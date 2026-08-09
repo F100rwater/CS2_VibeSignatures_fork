@@ -3637,15 +3637,28 @@ def process_binary(
                 agent_model=agent_model,
                 progress_callback=progress_callback,
             ):
-                success_count += 1
-                print("    Success")
-                _report_skill_status(
-                    reporting,
-                    job_id,
-                    skill_name,
-                    TaskStatus.SUCCEEDED,
-                    ProcessPhase.FINISHED,
-                )
+                optional_output_generated = any(os.path.exists(path) for path in optional_outputs)
+                if not required_outputs and optional_outputs and not optional_output_generated:
+                    skip_count += 1
+                    print("    Skipped: optional outputs not generated")
+                    _report_skill_status(
+                        reporting,
+                        job_id,
+                        skill_name,
+                        TaskStatus.SKIPPED,
+                        ProcessPhase.FINISHED,
+                        reason=ProcessReason.OPTIONAL_OUTPUT_ABSENT,
+                    )
+                else:
+                    success_count += 1
+                    print("    Success")
+                    _report_skill_status(
+                        reporting,
+                        job_id,
+                        skill_name,
+                        TaskStatus.SUCCEEDED,
+                        ProcessPhase.FINISHED,
+                    )
             else:
                 fail_count += 1
                 print("    Failed")
