@@ -66,6 +66,7 @@ from ida_skill_preprocessor import (
     PREPROCESS_STATUS_NO_SCRIPT,
     PREPROCESS_STATUS_SUCCESS,
     preprocess_single_skill_via_mcp,
+    report_preprocess_exception,
 )
 from ida_mcp_session import (
     McpConnectionError,
@@ -3487,8 +3488,7 @@ def process_binary(
                         symbol_aliases=symbol_aliases,
                     )
                 except Exception as e:
-                    if debug:
-                        print(f"  Pre-processing error for {skill_name}: {e}")
+                    report_preprocess_exception(skill_name, "runner dispatch", e, debug=debug)
                     preprocess_status = PREPROCESS_STATUS_FAILED
 
             if preprocess_status is True or preprocess_status == PREPROCESS_STATUS_SUCCESS:

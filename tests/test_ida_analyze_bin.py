@@ -2799,6 +2799,61 @@ class TestProcessBinary(unittest.TestCase):
         )
         mock_run_skill.assert_called_once()
 
+    def test_process_binary_reports_unexpected_preprocess_exception_before_fallback(self) -> None:
+        with TemporaryDirectory() as temp_dir:
+            binary_dir = Path(temp_dir) / "bin" / "14141" / "engine"
+            binary_dir.mkdir(parents=True, exist_ok=True)
+            binary_path = str(binary_dir / "libengine2.so")
+            fake_process = object()
+
+            with (
+                patch.object(ida_analyze_bin, "start_idalib_mcp", return_value=fake_process),
+                patch.object(
+                    ida_analyze_bin,
+                    "ensure_mcp_available",
+                    return_value=(fake_process, True),
+                ),
+                patch.object(
+                    ida_analyze_bin,
+                    "_run_validate_expected_input_artifacts_via_mcp",
+                    return_value=[],
+                ),
+                patch.object(
+                    ida_analyze_bin,
+                    "_run_preprocess_single_skill_via_mcp",
+                    side_effect=RuntimeError("runner exploded"),
+                ),
+                patch.object(ida_analyze_bin, "report_preprocess_exception") as mock_report_exception,
+                patch.object(ida_analyze_bin, "run_skill", return_value=True) as mock_run_skill,
+                patch.object(ida_analyze_bin, "quit_ida_gracefully", return_value=None),
+            ):
+                success, fail, skip = ida_analyze_bin.process_binary(
+                    binary_path=binary_path,
+                    skills=[
+                        {
+                            "name": "a_preprocess_raises",
+                            "expected_output": ["A.{platform}.yaml"],
+                            "expected_input": [],
+                        },
+                    ],
+                    old_binary_dir=None,
+                    platform="windows",
+                    agent="codex",
+                    max_retries=1,
+                    debug=False,
+                    host="127.0.0.1",
+                    port=39091,
+                    ida_args=None,
+                )
+
+        self.assertEqual((1, 0, 0), (success, fail, skip))
+        mock_report_exception.assert_called_once()
+        self.assertEqual("a_preprocess_raises", mock_report_exception.call_args.args[0])
+        self.assertEqual("runner dispatch", mock_report_exception.call_args.args[1])
+        self.assertIsInstance(mock_report_exception.call_args.args[2], RuntimeError)
+        self.assertFalse(mock_report_exception.call_args.kwargs["debug"])
+        mock_run_skill.assert_called_once()
+
     def test_process_binary_skips_vcall_targets_after_preprocess_fallback_failure(self) -> None:
         with TemporaryDirectory() as temp_dir:
             binary_dir = Path(temp_dir) / "bin" / "14141" / "engine"
