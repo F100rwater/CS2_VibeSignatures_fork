@@ -10,6 +10,8 @@ import sys
 import tempfile
 from pathlib import Path
 
+from dotenv import load_dotenv
+
 try:
     import yaml
 except ImportError as exc:
@@ -19,6 +21,9 @@ except ImportError as exc:
 
 from depot_util import append_auth_args, run_command
 from analysis_config import AnalysisConfigError, resolve_analysis_config
+
+
+load_dotenv()
 
 
 DEFAULT_CONFIG_FILE = "download.yaml"
