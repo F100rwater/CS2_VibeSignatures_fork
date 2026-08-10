@@ -1811,6 +1811,11 @@ modules:
         expected_input:
           - CLoopTypeClientServer_vtable.{platform}.yaml
           - CLoopTypeClientSimple_ActivateEngineServices.{platform}.yaml
+      - name: find-CSource2Server_GetActiveWorldName
+        expected_output:
+          - CSource2Server_GetActiveWorldName.{platform}.yaml
+        expected_input:
+          - CLoopTypeClientServer_ActivateLoop.{platform}.yaml
       - name: find-CLoopTypeClientServer_AllocateLoopMode
         expected_output:
           - CLoopTypeClientServer_AllocateLoopMode.{platform}.yaml
@@ -3279,6 +3284,10 @@ modules:
         category: vfunc
         alias:
           - CLoopTypeClientServer::ActivateLoop
+      - name: CSource2Server_GetActiveWorldName
+        category: vfunc
+        alias:
+          - CSource2Server::GetActiveWorldName
       - name: CLoopTypeClientServer_AllocateLoopMode
         category: vfunc
         alias:
