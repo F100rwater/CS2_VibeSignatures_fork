@@ -600,6 +600,11 @@ modules:
         expected_input:
           - CNetworkGameServer_vtable.{platform}.yaml
           - CNetworkGameServerBase_Shutdown.{platform}.yaml
+      - name: find-CSource2Server_GetAllServerClasses
+        expected_output:
+          - CSource2Server_GetAllServerClasses.{platform}.yaml
+        expected_input:
+          - CNetworkGameServer_Shutdown.{platform}.yaml
       - name: find-CNetworkGameServer_SpawnServer
         expected_output:
           - CNetworkGameServer_SpawnServer.{platform}.yaml
@@ -2443,6 +2448,10 @@ modules:
         category: vfunc
         alias:
           - CNetworkGameServer::Shutdown
+      - name: CSource2Server_GetAllServerClasses
+        category: vfunc
+        alias:
+          - CSource2Server::GetAllServerClasses
       - name: CNetworkGameServer_SpawnServer
         category: vfunc
         alias:
