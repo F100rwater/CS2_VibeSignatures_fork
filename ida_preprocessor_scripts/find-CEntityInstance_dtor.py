@@ -62,16 +62,11 @@ async def preprocess_skill(
     xref to CEntityInstance_vtable narrows the result to the destructor. This
     mirrors the sibling find-CBaseEntity_dtor, which also anchors on its vtable.
     """
-    vtable_yaml_path = os.path.join(
-        new_binary_dir, f"CEntityInstance_vtable.{platform}.yaml"
-    )
+    vtable_yaml_path = os.path.join(new_binary_dir, f"CEntityInstance_vtable.{platform}.yaml")
     vtable_va = _read_vtable_va(vtable_yaml_path)
     if not vtable_va:
         if debug:
-            print(
-                "    Preprocess: CEntityInstance_vtable vtable_va not found, "
-                "cannot resolve xref_gvs"
-            )
+            print("    Preprocess: CEntityInstance_vtable vtable_va not found, cannot resolve xref_gvs")
         return False
 
     # The CEntityInstance destructor writes the vtable pointer directly
