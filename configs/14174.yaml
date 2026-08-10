@@ -7407,6 +7407,12 @@ modules:
         expected_input:
           - CBaseEntity_vtable.{platform}.yaml
           - CEntityInstance_Precache.{platform}.yaml
+      - name: find-CCSPlayerController_AddedToEntityDatabase
+        expected_output:
+          - CCSPlayerController_AddedToEntityDatabase.{platform}.yaml
+        expected_input:
+          - CCSPlayerController_vtable.{platform}.yaml
+          - CEntityInstance_AddedToEntityDatabase.{platform}.yaml
       - name: find-CEnvEntityIgniter_Precache
         expected_output:
           - CEnvEntityIgniter_Precache.{platform}.yaml
@@ -10721,6 +10727,10 @@ modules:
         alias:
           - CBaseEntity::Precache
           - Precache
+      - name: CCSPlayerController_AddedToEntityDatabase
+        category: vfunc
+        alias:
+          - CCSPlayerController::AddedToEntityDatabase
       - name: CEnvEntityIgniter_Precache
         category: vfunc
         alias:
