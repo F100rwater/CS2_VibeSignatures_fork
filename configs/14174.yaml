@@ -668,6 +668,11 @@ modules:
         expected_input:
           - CNetworkGameServerBase_CheckTimeouts.{platform}.yaml
           - CNetworkGameServerBase_vtable.{platform}.yaml
+      - name: find-CSource2Server_ShouldTimeoutClient
+        expected_output:
+          - CSource2Server_ShouldTimeoutClient.{platform}.yaml
+        expected_input:
+          - CNetworkGameServerBase_CheckTimeouts.{platform}.yaml
       - name: find-CNetworkGameServerBase_GetPassword
         expected_output:
           - CNetworkGameServerBase_GetPassword.{platform}.yaml
@@ -2483,6 +2488,10 @@ modules:
         category: vfunc
         alias:
           - CNetworkGameServerBase::IsHLTV
+      - name: CSource2Server_ShouldTimeoutClient
+        category: vfunc
+        alias:
+          - CSource2Server::ShouldTimeoutClient
       - name: CNetworkGameServerBase_GetPassword
         category: vfunc
         alias:
