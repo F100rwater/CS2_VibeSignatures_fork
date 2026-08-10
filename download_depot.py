@@ -80,7 +80,10 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Remember password for subsequent logins",
     )
-    return parser.parse_args()
+    args = parser.parse_args()
+    if not args.remember_password and args.username and args.password:
+        args.remember_password = True
+    return args
 
 
 def load_downloads(config_path: str) -> list[dict]:
