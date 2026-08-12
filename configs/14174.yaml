@@ -6807,6 +6807,16 @@ modules:
           - g_pGameTypes.{platform}.yaml
         expected_input:
           - CSource2Server_Connect.{platform}.yaml
+      - name: find-GlobalVarsWarningFunc
+        expected_output:
+          - GlobalVarsWarningFunc.{platform}.yaml
+      - name: find-CSource2Server_SetGlobals
+        expected_output:
+          - CSource2Server_SetGlobals.{platform}.yaml
+        expected_input:
+          - GlobalVarsWarningFunc.{platform}.yaml
+          - CSource2Server_vtable.{platform}.yaml
+          - CSource2Server_Connect.{platform}.yaml
       - name: find-IAppSystem_Connect
         expected_output:
           - IAppSystem_Connect.{platform}.yaml
