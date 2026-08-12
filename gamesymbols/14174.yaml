@@ -121,8 +121,8 @@ binaries:
       sha256: '6f5aa8c32e30d5369579f0e18bf97ec72e2076d3c06906efbfcc77f0c4111b80'
       size: 4592280
 config_digest_version: 2
-config_sha256: sha256:660d19ae344885c323839332cbd246a319fa393ecae3cf1b9df5c868d7bf17f7
-file_count: 3345
+config_sha256: sha256:45855118d25e39ee8c3f8b1824ac4c2c49980dda7fa2d58f8576335dd923c010
+file_count: 3349
 files:
   SDL3/SDL_GetMouse.windows.yaml:
     func_name: SDL_GetMouse
@@ -12975,30 +12975,6 @@ files:
     vtable_size: '0x278'
     vtable_symbol: ??_7CServerSideClient@@6B@
     vtable_va: '0x180543638'
-  engine/CSource2Server_GetActiveWorldName.linux.yaml:
-    func_name: CSource2Server_GetActiveWorldName
-    vfunc_index: 30
-    vfunc_offset: '0xf0'
-    vfunc_sig: FF 90 F0 00 00 00 48 89 C6 48 8B BB ?? ?? ?? ??
-    vtable_name: CSource2Server
-  engine/CSource2Server_GetActiveWorldName.windows.yaml:
-    func_name: CSource2Server_GetActiveWorldName
-    vfunc_index: 30
-    vfunc_offset: '0xf0'
-    vfunc_sig: FF 90 F0 00 00 00 48 8B F0 48 8B 9F ?? ?? ?? ??
-    vtable_name: CSource2Server
-  engine/CSource2Server_GetAllServerClasses.linux.yaml:
-    func_name: CSource2Server_GetAllServerClasses
-    vfunc_index: 29
-    vfunc_offset: '0xe8'
-    vfunc_sig: FF 90 E8 00 00 00 48 89 C2 48 8B 40 ?? 48 63 12 48 8D 0C D0
-    vtable_name: CSource2Server
-  engine/CSource2Server_GetAllServerClasses.windows.yaml:
-    func_name: CSource2Server_GetAllServerClasses
-    vfunc_index: 29
-    vfunc_offset: '0xe8'
-    vfunc_sig: FF 90 E8 00 00 00 48 8B 48 ??
-    vtable_name: CSource2Server
   engine/CSplitScreenService_AddSplitScreenUser.linux.yaml:
     func_name: CSplitScreenService_AddSplitScreenUser
     func_rva: '0x446280'
@@ -13641,6 +13617,30 @@ files:
     vfunc_offset: '0x98'
     vfunc_sig: FF 90 98 00 00 00 48 8D 0D ?? ?? ?? ??
     vtable_name: ISource2GameClients
+  engine/ISource2Server_GetActiveWorldName.linux.yaml:
+    func_name: ISource2Server_GetActiveWorldName
+    vfunc_index: 30
+    vfunc_offset: '0xf0'
+    vfunc_sig: FF 90 F0 00 00 00 48 89 C6 48 8B BB ?? ?? ?? ??
+    vtable_name: ISource2Server
+  engine/ISource2Server_GetActiveWorldName.windows.yaml:
+    func_name: ISource2Server_GetActiveWorldName
+    vfunc_index: 30
+    vfunc_offset: '0xf0'
+    vfunc_sig: FF 90 F0 00 00 00 48 8B F0 48 8B 9F ?? ?? ?? ??
+    vtable_name: ISource2Server
+  engine/ISource2Server_GetAllServerClasses.linux.yaml:
+    func_name: ISource2Server_GetAllServerClasses
+    vfunc_index: 29
+    vfunc_offset: '0xe8'
+    vfunc_sig: FF 90 E8 00 00 00 48 89 C2 48 8B 40 ?? 48 63 12 48 8D 0C D0
+    vtable_name: ISource2Server
+  engine/ISource2Server_GetAllServerClasses.windows.yaml:
+    func_name: ISource2Server_GetAllServerClasses
+    vfunc_index: 29
+    vfunc_offset: '0xe8'
+    vfunc_sig: FF 90 E8 00 00 00 48 8B 48 ??
+    vtable_name: ISource2Server
   engine/ISource2Server_PreWorldUpdate.linux.yaml:
     func_name: ISource2Server_PreWorldUpdate
     vfunc_index: 15
@@ -37820,6 +37820,42 @@ files:
     vfunc_index: 42
     vfunc_offset: '0x150'
     vtable_name: CSource2Server
+  server/CSource2Server_GetActiveWorldName.linux.yaml:
+    func_name: CSource2Server_GetActiveWorldName
+    func_rva: '0x18d1a70'
+    func_sig: 55 48 89 E5 53 48 83 EC ?? 48 8D 05 ?? ?? ?? ?? 48 8B 18
+    func_size: '0x3d'
+    func_va: '0x18d1a70'
+    vfunc_index: 30
+    vfunc_offset: '0xf0'
+    vtable_name: CSource2Server
+  server/CSource2Server_GetActiveWorldName.windows.yaml:
+    func_name: CSource2Server_GetActiveWorldName
+    func_rva: '0xd1b0c0'
+    func_sig: 48 83 EC ?? 48 8B 0D ?? ?? ?? ?? 48 85 C9 75 ?? 48 8D 05 ?? ?? ?? ??
+    func_size: '0x33'
+    func_va: '0x180d1b0c0'
+    vfunc_index: 30
+    vfunc_offset: '0xf0'
+    vtable_name: CSource2Server
+  server/CSource2Server_GetAllServerClasses.linux.yaml:
+    func_name: CSource2Server_GetAllServerClasses
+    func_rva: '0x18cf370'
+    func_sig: 48 8D 05 99 6E ?? ?? 48 8B 00
+    func_size: '0x17'
+    func_va: '0x18cf370'
+    vfunc_index: 29
+    vfunc_offset: '0xe8'
+    vtable_name: CSource2Server
+  server/CSource2Server_GetAllServerClasses.windows.yaml:
+    func_name: CSource2Server_GetAllServerClasses
+    func_rva: '0xd1b0a0'
+    func_sig: 48 8B 05 D9 8D ?? ?? 48 8B 88 E0 ?? ?? ??
+    func_size: '0x15'
+    func_va: '0x180d1b0a0'
+    vfunc_index: 29
+    vfunc_offset: '0xe8'
+    vtable_name: CSource2Server
   server/CSource2Server_GetEntityReport.linux.yaml:
     func_name: CSource2Server_GetEntityReport
     func_rva: '0x18e6fc0'
@@ -42856,5 +42892,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14174'
-last_publish_time: '2026-08-12T11:05:59Z'
+last_publish_time: '2026-08-12T11:51:37Z'
 schema_version: 5
