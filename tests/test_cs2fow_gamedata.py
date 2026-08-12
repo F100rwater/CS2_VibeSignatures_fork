@@ -120,10 +120,14 @@ class TestCS2FOWGamedata(unittest.TestCase):
     def test_contract_declares_v2_static_source_and_output(self) -> None:
         self.assertEqual(2, self.contract.api_version)
         self.assertEqual(("gamedata/cs2fow.games.txt",), self.contract.output_paths)
-        # Upstream is unreachable; the template is bundled and seeded statically.
         self.assertEqual((), self.contract.download_sources)
         self.assertEqual(
-            (("cs2fow.games.txt", "gamedata/cs2fow.games.txt"),),
+            (
+                (
+                    "templates/cs2fow.games.txt",
+                    "gamedata/cs2fow.games.txt",
+                ),
+            ),
             self.contract.static_sources,
         )
 
