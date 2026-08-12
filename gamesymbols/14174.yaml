@@ -121,8 +121,8 @@ binaries:
       sha256: '6f5aa8c32e30d5369579f0e18bf97ec72e2076d3c06906efbfcc77f0c4111b80'
       size: 4592280
 config_digest_version: 2
-config_sha256: sha256:d7e1bd9643799fb7279356f0c4d01954f4d8c2adcaadc0bf74c960a86001ca92
-file_count: 3359
+config_sha256: sha256:22b69af5d76e383979e436a6ac4fd68fdc1e366d2b7012e1948193eb104691cf
+file_count: 3361
 files:
   SDL3/SDL_GetMouse.windows.yaml:
     func_name: SDL_GetMouse
@@ -17510,6 +17510,24 @@ files:
     vfunc_offset: '0x4a8'
     vfunc_sig: FF 90 A8 04 00 00 48 85 F6
     vtable_name: CBaseEntity
+  server/CBaseEntity_UpdateOnRemove.linux.yaml:
+    func_name: CBaseEntity_UpdateOnRemove
+    func_rva: '0x1823d60'
+    func_sig: 55 48 89 E5 41 57 41 56 41 55 41 54 53 48 89 FB 48 83 C7 ?? 48 81 EC ?? ?? ?? ?? E8 ?? ?? ?? ??
+    func_size: '0x477'
+    func_va: '0x1823d60'
+    vfunc_index: 15
+    vfunc_offset: '0x78'
+    vtable_name: CBaseEntity_vtable
+  server/CBaseEntity_UpdateOnRemove.windows.yaml:
+    func_name: CBaseEntity_UpdateOnRemove
+    func_rva: '0xc88950'
+    func_sig: 48 89 5C 24 ?? 48 89 74 24 ?? 55 57 41 56 48 8D 6C 24 ?? 48 81 EC ?? ?? ?? ?? 48 8B F1
+    func_size: '0x408'
+    func_va: '0x180c88950'
+    vfunc_index: 14
+    vfunc_offset: '0x70'
+    vtable_name: CBaseEntity_vtable
   server/CBaseEntity_Use.linux.yaml:
     func_name: CBaseEntity_Use
     func_rva: '0x17c2ff0'
@@ -42970,5 +42988,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14174'
-last_publish_time: '2026-08-12T15:46:21Z'
+last_publish_time: '2026-08-12T16:09:24Z'
 schema_version: 5
