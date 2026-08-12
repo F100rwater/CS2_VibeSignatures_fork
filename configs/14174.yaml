@@ -6785,6 +6785,12 @@ modules:
         expected_input:
           - CPlayerCommandQueue_ctor.{platform}.yaml
           - CCSPlayerController_vtable.{platform}.yaml
+      - name: find-CCSPlayerController_Disconnect
+        expected_output:
+          - CCSPlayerController_Disconnect.{platform}.yaml
+        expected_input:
+          - CEntityInstance_Disconnect.{platform}.yaml
+          - CCSPlayerController_vtable.{platform}.yaml
       - name: find-CCSPlayerController_SwitchTeam
         expected_output:
           - CCSPlayerController_SwitchTeam.{platform}.yaml
@@ -9982,6 +9988,10 @@ modules:
         category: vfunc
         alias:
           - CCSPlayerController::Connect
+      - name: CCSPlayerController_Disconnect
+        category: vfunc
+        alias:
+          - CCSPlayerController::Disconnect
       - name: CCSPlayerController_SwitchTeam
         category: func
         alias:

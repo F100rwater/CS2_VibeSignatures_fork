@@ -121,8 +121,8 @@ binaries:
       sha256: '6f5aa8c32e30d5369579f0e18bf97ec72e2076d3c06906efbfcc77f0c4111b80'
       size: 4592280
 config_digest_version: 2
-config_sha256: sha256:4ff4442d0f00525d445fcea6a7db860a67b8b34a0e6ec4c7efd42ffb2f944933
-file_count: 3357
+config_sha256: sha256:d7e1bd9643799fb7279356f0c4d01954f4d8c2adcaadc0bf74c960a86001ca92
+file_count: 3359
 files:
   SDL3/SDL_GetMouse.windows.yaml:
     func_name: SDL_GetMouse
@@ -21391,6 +21391,24 @@ files:
     func_va: '0x180ae7ea0'
     vfunc_index: 5
     vfunc_offset: '0x28'
+    vtable_name: CCSPlayerController
+  server/CCSPlayerController_Disconnect.linux.yaml:
+    func_name: CCSPlayerController_Disconnect
+    func_rva: '0x15c4810'
+    func_sig: 55 31 F6 48 89 E5 53 48 89 FB 48 83 EC ?? E8 ?? ?? ?? ?? 48 8B 03
+    func_size: '0x2c'
+    func_va: '0x15c4810'
+    vfunc_index: 7
+    vfunc_offset: '0x38'
+    vtable_name: CCSPlayerController
+  server/CCSPlayerController_Disconnect.windows.yaml:
+    func_name: CCSPlayerController_Disconnect
+    func_rva: '0xae93b0'
+    func_sig: 40 53 48 83 EC ?? 33 D2 48 8B D9 E8 ?? ?? ?? ?? 48 8B 03
+    func_size: '0x29'
+    func_va: '0x180ae93b0'
+    vfunc_index: 6
+    vfunc_offset: '0x30'
     vtable_name: CCSPlayerController
   server/CCSPlayerController_GetThinkFunction.linux.yaml:
     func_name: CCSPlayerController_GetThinkFunction
@@ -42952,5 +42970,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14174'
-last_publish_time: '2026-08-12T14:03:07Z'
+last_publish_time: '2026-08-12T15:46:21Z'
 schema_version: 5
