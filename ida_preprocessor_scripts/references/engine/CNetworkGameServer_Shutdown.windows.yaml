@@ -18,8 +18,8 @@ disasm_code: |-
   .text:000000018009C250                 test    rcx, rcx
   .text:000000018009C253                 jz      short loc_18009C283
   .text:000000018009C255                 mov     rax, [rcx]
-  .text:000000018009C258                 ; 0x0E8 = 232LL = CSource2Server_GetAllServerClasses
-  .text:000000018009C258                 call    qword ptr [rax+0E8h]; 0x0E8 = 232LL = CSource2Server_GetAllServerClasses
+  .text:000000018009C258                 ; 0x0E8 = 232LL = ISource2Server_GetAllServerClasses
+  .text:000000018009C258                 call    qword ptr [rax+0E8h]; 0x0E8 = 232LL = ISource2Server_GetAllServerClasses
   .text:000000018009C25E                 mov     rcx, [rax+8]
   .text:000000018009C262                 movsxd  rax, dword ptr [rax]
   .text:000000018009C265                 lea     rdx, [rcx+rax*8]
@@ -133,7 +133,7 @@ procedure: |-
     CNetworkGameServerBase_Shutdown(a1);
     if ( g_pSource2Server )
     {
-      v2 = (int *)(*(__int64 (__fastcall **)(__int64))(*(_QWORD *)g_pSource2Server + 232LL))(g_pSource2Server);// 0x0E8 = 232LL = CSource2Server_GetAllServerClasses
+      v2 = (int *)(*(__int64 (__fastcall **)(__int64))(*(_QWORD *)g_pSource2Server + 232LL))(g_pSource2Server);// 0x0E8 = 232LL = ISource2Server_GetAllServerClasses
       v3 = *((__int64 **)v2 + 1);
       for ( i = &v3[*v2]; v3 != i; *(_DWORD *)(v5 + 44) = -1 )
         v5 = *v3++;

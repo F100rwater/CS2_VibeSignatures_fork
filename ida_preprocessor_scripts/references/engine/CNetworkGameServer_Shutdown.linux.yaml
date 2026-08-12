@@ -16,8 +16,8 @@ disasm_code: |-
   .text:00000000005151CB                 test    rdi, rdi
   .text:00000000005151CE                 jz      short loc_515213
   .text:00000000005151D0                 mov     rax, [rdi]
-  .text:00000000005151D3                 ; 0x0E8 = 232LL = CSource2Server_GetAllServerClasses
-  .text:00000000005151D3                 call    qword ptr [rax+0E8h]; 0x0E8 = 232LL = CSource2Server_GetAllServerClasses
+  .text:00000000005151D3                 ; 0x0E8 = 232LL = ISource2Server_GetAllServerClasses
+  .text:00000000005151D3                 call    qword ptr [rax+0E8h]; 0x0E8 = 232LL = ISource2Server_GetAllServerClasses
   .text:00000000005151D9                 mov     rdx, rax
   .text:00000000005151DC                 mov     rax, [rax+8]
   .text:00000000005151E0                 movsxd  rdx, dword ptr [rdx]
@@ -59,7 +59,7 @@ procedure: |-
     CNetworkGameServerBase_Shutdown(a1);
     if ( g_pSource2Server )
     {
-      v2 = (int *)(*(__int64 (__fastcall **)(_QWORD *))(*g_pSource2Server + 232LL))(g_pSource2Server);// 0x0E8 = 232LL = CSource2Server_GetAllServerClasses
+      v2 = (int *)(*(__int64 (__fastcall **)(_QWORD *))(*g_pSource2Server + 232LL))(g_pSource2Server);// 0x0E8 = 232LL = ISource2Server_GetAllServerClasses
       v3 = *((__int64 **)v2 + 1);
       for ( i = &v3[*v2]; v3 != i; *(_DWORD *)(v5 + 44) = -1 )
         v5 = *v3++;
