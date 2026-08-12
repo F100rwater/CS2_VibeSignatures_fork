@@ -567,6 +567,15 @@ modules:
           - CNetworkGameServer_ActivateServer.{platform}.yaml
         expected_input:
           - CNetworkGameServer_vtable.{platform}.yaml
+      - name: find-CNetworkGameServerBase_ReplyChallenge
+        expected_output:
+          - CNetworkGameServerBase_ReplyChallenge.{platform}.yaml
+      - name: find-CNetworkGameServerBase_GetChallengeType
+        expected_output:
+          - CNetworkGameServerBase_GetChallengeType.{platform}.yaml
+        expected_input:
+          - CNetworkGameServerBase_ReplyChallenge.{platform}.yaml
+          - CNetworkGameServerBase_vtable.{platform}.yaml
       - name: find-CNetworkStringTableContainer_DirectUpdate
         optional_output:
           - CNetworkStringTableContainer_DirectUpdate.{platform}.yaml
@@ -600,6 +609,11 @@ modules:
         expected_input:
           - CNetworkGameServer_vtable.{platform}.yaml
           - CNetworkGameServerBase_Shutdown.{platform}.yaml
+      - name: find-CSource2Server_GetAllServerClasses
+        expected_output:
+          - CSource2Server_GetAllServerClasses.{platform}.yaml
+        expected_input:
+          - CNetworkGameServer_Shutdown.{platform}.yaml
       - name: find-CNetworkGameServer_SpawnServer
         expected_output:
           - CNetworkGameServer_SpawnServer.{platform}.yaml
@@ -824,6 +838,12 @@ modules:
           - CNetworkGameServer_GetFreeClient.{platform}.yaml
         expected_input:
           - CNetworkGameServerBase_ConnectClient.{platform}.yaml
+      - name: find-CNetworkGameServerBase_CheckPassword
+        expected_output:
+          - CNetworkGameServerBase_CheckPassword.{platform}.yaml
+        expected_input:
+          - CNetworkGameServerBase_ConnectClient.{platform}.yaml
+          - CNetworkGameServer_vtable.{platform}.yaml
       - name: find-CNetworkGameServerBase_CreateFakeClient
         expected_output:
           - CNetworkGameServerBase_CreateFakeClient.{platform}.yaml
@@ -1299,6 +1319,12 @@ modules:
         expected_input:
           - CNetworkGameServerBase_vtable.{platform}.yaml
           - INetworkGameServer_ServerEndSimulate.{platform}.yaml
+      - name: find-CNetworkGameServerBase_CalculateCPUUsage
+        expected_output:
+          - CNetworkGameServerBase_CalculateCPUUsage.{platform}.yaml
+        expected_input:
+          - CNetworkGameServerBase_vtable.{platform}.yaml
+          - CNetworkGameServerBase_ServerEndSimulate.{platform}.yaml
       - name: find-INetworkGameServer_ServerPostSimulate
         expected_output:
           - INetworkGameServer_ServerPostSimulate.{platform}.yaml
@@ -2299,6 +2325,10 @@ modules:
         category: func
         alias:
           - CNetworkGameServerBase::ConnectClient
+      - name: CNetworkGameServerBase_CheckPassword
+        category: vfunc
+        alias:
+          - CNetworkGameServerBase::CheckPassword
       - name: CNetworkGameServerBase_vtable
         category: vtable
       - name: CNetworkGameServerBase_GetClientConnectionType
@@ -2440,6 +2470,14 @@ modules:
         category: vfunc
         alias:
           - CNetworkGameServer::DirectUpdate
+      - name: CNetworkGameServerBase_ReplyChallenge
+        category: func
+        alias:
+          - CNetworkGameServerBase::ReplyChallenge
+      - name: CNetworkGameServerBase_GetChallengeType
+        category: vfunc
+        alias:
+          - CNetworkGameServerBase::GetChallengeType
       - name: CNetworkGameServer_Init
         category: vfunc
         alias:
@@ -2448,6 +2486,10 @@ modules:
         category: vfunc
         alias:
           - CNetworkGameServer::Shutdown
+      - name: CSource2Server_GetAllServerClasses
+        category: vfunc
+        alias:
+          - CSource2Server::GetAllServerClasses
       - name: CNetworkGameServer_SpawnServer
         category: vfunc
         alias:
@@ -3006,6 +3048,10 @@ modules:
         category: vfunc
         alias:
           - CNetworkGameServerBase::ServerEndSimulate
+      - name: CNetworkGameServerBase_CalculateCPUUsage
+        category: vfunc
+        alias:
+          - CNetworkGameServerBase::CalculateCPUUsage
       - name: INetworkGameServer_ServerPostSimulate
         category: vfunc
         alias:
