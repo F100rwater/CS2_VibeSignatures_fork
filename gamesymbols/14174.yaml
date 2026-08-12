@@ -121,8 +121,8 @@ binaries:
       sha256: '6f5aa8c32e30d5369579f0e18bf97ec72e2076d3c06906efbfcc77f0c4111b80'
       size: 4592280
 config_digest_version: 2
-config_sha256: sha256:0bc60c545034ea3a0df89266358548baf486b82b1095d8b8dc47b7657f2fa160
-file_count: 3351
+config_sha256: sha256:8c514bb711d0a5be21864037c2bcf94e182e5dd87d124abc7e91218303c86cb1
+file_count: 3355
 files:
   SDL3/SDL_GetMouse.windows.yaml:
     func_name: SDL_GetMouse
@@ -13650,6 +13650,18 @@ files:
     func_name: ISource2Server_PreWorldUpdate
     vfunc_index: 15
     vfunc_offset: '0x78'
+    vtable_name: ISource2Server
+  engine/ISource2Server_ShouldTimeoutClient.linux.yaml:
+    func_name: ISource2Server_ShouldTimeoutClient
+    vfunc_index: 25
+    vfunc_offset: '0xc8'
+    vfunc_sig: 48 8B 92 C8 00 00 00
+    vtable_name: ISource2Server
+  engine/ISource2Server_ShouldTimeoutClient.windows.yaml:
+    func_name: ISource2Server_ShouldTimeoutClient
+    vfunc_index: 25
+    vfunc_offset: '0xc8'
+    vfunc_sig: 48 8B 98 C8 00 00 00
     vtable_name: ISource2Server
   engine/ISource2Server_UpdateWhenNotInGame.linux.yaml:
     func_name: ISource2Server_UpdateWhenNotInGame
@@ -38046,6 +38058,24 @@ files:
     vfunc_index: 47
     vfunc_offset: '0x178'
     vtable_name: CSource2Server
+  server/CSource2Server_ShouldTimeoutClient.linux.yaml:
+    func_name: CSource2Server_ShouldTimeoutClient
+    func_rva: '0x18d4940'
+    func_sig: 48 8B 3D ?? ?? ?? ?? 48 85 FF 74 ?? 48 8B 07 48 8D 15 ?? ?? ?? ?? 48 8B 80 ?? ?? ?? ?? 48 39 D0 75 ?? 31 C0
+    func_size: '0x2a'
+    func_va: '0x18d4940'
+    vfunc_index: 25
+    vfunc_offset: '0xc8'
+    vtable_name: CSource2Server
+  server/CSource2Server_ShouldTimeoutClient.windows.yaml:
+    func_name: CSource2Server_ShouldTimeoutClient
+    func_rva: '0xd1afe0'
+    func_sig: 48 8B 0D ?? ?? ?? ?? 48 85 C9 75 ?? 32 C0 C3 48 8B 01 48 FF A0 ?? ?? ?? ??
+    func_size: '0x19'
+    func_va: '0x180d1afe0'
+    vfunc_index: 25
+    vfunc_offset: '0xc8'
+    vtable_name: CSource2Server
   server/CSource2Server_Shutdown.linux.yaml:
     func_name: CSource2Server_Shutdown
     func_rva: '0x18d1330'
@@ -42904,5 +42934,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14174'
-last_publish_time: '2026-08-12T12:23:17Z'
+last_publish_time: '2026-08-12T12:56:46Z'
 schema_version: 5

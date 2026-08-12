@@ -679,6 +679,7 @@ modules:
       - name: find-CNetworkGameServerBase_CheckTimeouts-decompiles
         expected_output:
           - CNetworkGameServerBase_IsHLTV.{platform}.yaml
+          - ISource2Server_ShouldTimeoutClient.{platform}.yaml
         expected_input:
           - CNetworkGameServerBase_CheckTimeouts.{platform}.yaml
           - CNetworkGameServerBase_vtable.{platform}.yaml
@@ -2530,6 +2531,10 @@ modules:
         category: vfunc
         alias:
           - CNetworkGameServerBase::IsHLTV
+      - name: ISource2Server_ShouldTimeoutClient
+        category: vfunc
+        alias:
+          - ISource2Server::ShouldTimeoutClient
       - name: CNetworkGameServerBase_GetPassword
         category: vfunc
         alias:
@@ -6032,6 +6037,12 @@ modules:
         expected_input:
           - CSource2Server_vtable.{platform}.yaml
           - ../engine/ISource2Server_GetActiveWorldName.{platform}.yaml
+      - name: find-CSource2Server_ShouldTimeoutClient
+        expected_output:
+          - CSource2Server_ShouldTimeoutClient.{platform}.yaml
+        expected_input:
+          - CSource2Server_vtable.{platform}.yaml
+          - ../engine/ISource2Server_ShouldTimeoutClient.{platform}.yaml
       - name: find-CUserMessageServerFrameTime_t_vtable
         expected_output:
           - CUserMessageServerFrameTime_t_vtable.{platform}.yaml
@@ -9045,6 +9056,10 @@ modules:
         category: vfunc
         alias:
           - CSource2Server::GetActiveWorldName
+      - name: CSource2Server_ShouldTimeoutClient
+        category: vfunc
+        alias:
+          - CSource2Server::ShouldTimeoutClient
       - name: CUserMessageServerFrameTime_t_vtable
         category: vtable
       - name: CSource2Server_vtable2
