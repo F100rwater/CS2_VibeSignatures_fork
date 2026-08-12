@@ -1,58 +1,36 @@
 #!/usr/bin/env python3
-"""Preprocess script for find-CNetworkGameServerBase_CheckTimeouts-decompiles skill."""
+"""Preprocess script for find-CNetworkGameServerBase_GetChallengeType skill."""
 
 from ida_analyze_util import preprocess_common_skill
 
-
 TARGET_FUNCTION_NAMES = [
-    "CNetworkGameServerBase_IsHLTV",
-    "ISource2Server_ShouldTimeoutClient",
+    "CNetworkGameServerBase_GetChallengeType",
 ]
 
 LLM_DECOMPILE = [
     {
-        "symbol_name": "CNetworkGameServerBase_IsHLTV",
+        "symbol_name": "CNetworkGameServerBase_GetChallengeType",
         "prompt_path": "prompt/call_llm_decompile.md",
         "reference_yaml_paths": [
-            "references/engine/CNetworkGameServerBase_CheckTimeouts.{platform}.yaml",
+            "references/engine/CNetworkGameServerBase_ReplyChallenge.{platform}.yaml",
         ],
         "expected_result_sections": ["found_vcall"],
         "dependency_policy": {
-            "CNetworkGameServerBase_CheckTimeouts.{platform}.yaml": "required",
-        },
-    },
-    {
-        "symbol_name": "ISource2Server_ShouldTimeoutClient",
-        "prompt_path": "prompt/call_llm_decompile.md",
-        "reference_yaml_paths": [
-            "references/engine/CNetworkGameServerBase_CheckTimeouts.{platform}.yaml",
-        ],
-        "expected_result_sections": ["found_vcall"],
-        "dependency_policy": {
-            "CNetworkGameServerBase_CheckTimeouts.{platform}.yaml": "required",
+            "CNetworkGameServerBase_ReplyChallenge.{platform}.yaml": "required",
         },
     },
 ]
 
 FUNC_VTABLE_RELATIONS = [
     # (func_name, vtable_class)
-    ("CNetworkGameServerBase_IsHLTV", "CNetworkGameServerBase"),
-    ("ISource2Server_ShouldTimeoutClient", "ISource2Server"),
+    ("CNetworkGameServerBase_GetChallengeType", "CNetworkGameServerBase"),
 ]
 
 GENERATE_YAML_DESIRED_FIELDS = [
+    # (symbol_name, generate_yaml_fields)
+    # ALWAYS include "vfunc_sig" for Pattern C (vfunc via LLM_DECOMPILE).
     (
-        "CNetworkGameServerBase_IsHLTV",
-        [
-            "func_name",
-            "vfunc_sig",
-            "vfunc_offset",
-            "vfunc_index",
-            "vtable_name",
-        ],
-    ),
-    (
-        "ISource2Server_ShouldTimeoutClient",
+        "CNetworkGameServerBase_GetChallengeType",
         [
             "func_name",
             "vfunc_sig",
@@ -75,7 +53,7 @@ async def preprocess_skill(
     llm_config=None,
     debug=False,
 ):
-    """Locate vfunc slots reached by CheckTimeouts via LLM decompile."""
+    """Reuse previous gamever vfunc_sig to locate target function(s) and write YAML."""
     return await preprocess_common_skill(
         session=session,
         expected_outputs=expected_outputs,

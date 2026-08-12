@@ -1,58 +1,59 @@
 #!/usr/bin/env python3
-"""Preprocess script for find-CNetworkGameServerBase_CheckTimeouts-decompiles skill."""
+"""Preprocess ConnectClient's GetFreeClient call and CheckPassword vcall."""
 
 from ida_analyze_util import preprocess_common_skill
 
 
 TARGET_FUNCTION_NAMES = [
-    "CNetworkGameServerBase_IsHLTV",
-    "ISource2Server_ShouldTimeoutClient",
+    "CNetworkGameServer_GetFreeClient",
+    "CNetworkGameServerBase_CheckPassword",
 ]
 
 LLM_DECOMPILE = [
     {
-        "symbol_name": "CNetworkGameServerBase_IsHLTV",
+        "symbol_name": "CNetworkGameServer_GetFreeClient",
         "prompt_path": "prompt/call_llm_decompile.md",
         "reference_yaml_paths": [
-            "references/engine/CNetworkGameServerBase_CheckTimeouts.{platform}.yaml",
+            "references/engine/CNetworkGameServerBase_ConnectClient.{platform}.yaml",
         ],
-        "expected_result_sections": ["found_vcall"],
+        "expected_result_sections": ["found_call"],
         "dependency_policy": {
-            "CNetworkGameServerBase_CheckTimeouts.{platform}.yaml": "required",
+            "CNetworkGameServerBase_ConnectClient.{platform}.yaml": "required",
         },
     },
     {
-        "symbol_name": "ISource2Server_ShouldTimeoutClient",
+        "symbol_name": "CNetworkGameServerBase_CheckPassword",
         "prompt_path": "prompt/call_llm_decompile.md",
         "reference_yaml_paths": [
-            "references/engine/CNetworkGameServerBase_CheckTimeouts.{platform}.yaml",
+            "references/engine/CNetworkGameServerBase_ConnectClient.{platform}.yaml",
         ],
         "expected_result_sections": ["found_vcall"],
         "dependency_policy": {
-            "CNetworkGameServerBase_CheckTimeouts.{platform}.yaml": "required",
+            "CNetworkGameServerBase_ConnectClient.{platform}.yaml": "required",
         },
     },
 ]
 
 FUNC_VTABLE_RELATIONS = [
     # (func_name, vtable_class)
-    ("CNetworkGameServerBase_IsHLTV", "CNetworkGameServerBase"),
-    ("ISource2Server_ShouldTimeoutClient", "ISource2Server"),
+    ("CNetworkGameServerBase_CheckPassword", "CNetworkGameServerBase"),
 ]
 
 GENERATE_YAML_DESIRED_FIELDS = [
+    # No func_sig: GetFreeClient's head bytes are not unique in the binary.
+    # LLM_DECOMPILE is used to locate it each time.
     (
-        "CNetworkGameServerBase_IsHLTV",
+        "CNetworkGameServer_GetFreeClient",
         [
             "func_name",
-            "vfunc_sig",
-            "vfunc_offset",
-            "vfunc_index",
-            "vtable_name",
+            "func_va",
+            "func_rva",
+            "func_size",
         ],
     ),
+    # vfunc_sig is MANDATORY for Pattern C (LLM_DECOMPILE vfunc).
     (
-        "ISource2Server_ShouldTimeoutClient",
+        "CNetworkGameServerBase_CheckPassword",
         [
             "func_name",
             "vfunc_sig",
@@ -75,7 +76,7 @@ async def preprocess_skill(
     llm_config=None,
     debug=False,
 ):
-    """Locate vfunc slots reached by CheckTimeouts via LLM decompile."""
+    """Locate GetFreeClient and CheckPassword from ConnectClient via LLM decompile."""
     return await preprocess_common_skill(
         session=session,
         expected_outputs=expected_outputs,
