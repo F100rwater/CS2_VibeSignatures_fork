@@ -121,7 +121,7 @@ binaries:
       sha256: '6f5aa8c32e30d5369579f0e18bf97ec72e2076d3c06906efbfcc77f0c4111b80'
       size: 4592280
 config_digest_version: 2
-config_sha256: sha256:15bb2bd440f96e064a629da56434e00c166e2880094c92351e408317742f1a1a
+config_sha256: sha256:74b3f357792fe2c1e1ab98663cd82a73070dbcba34ef8b5c4edff83bbe3c66d4
 file_count: 3339
 files:
   SDL3/SDL_GetMouse.windows.yaml:
@@ -10692,13 +10692,13 @@ files:
     vfunc_index: 86
     vfunc_offset: '0x2b0'
     vfunc_sig: FF 90 B0 02 00 00 BA ?? ?? ?? ??
-    vtable_name: CNetworkGameServer_vtable
+    vtable_name: CNetworkGameServerBase
   engine/CNetworkGameServerBase_GetChallengeType.windows.yaml:
     func_name: CNetworkGameServerBase_GetChallengeType
     vfunc_index: 81
     vfunc_offset: '0x288'
     vfunc_sig: FF 90 88 02 00 00 BA ?? ?? ?? ??
-    vtable_name: CNetworkGameServer_vtable
+    vtable_name: CNetworkGameServerBase
   engine/CNetworkGameServerBase_GetClassBaseline.linux.yaml:
     func_name: CNetworkGameServerBase_GetClassBaseline
     func_rva: '0x4f2ec0'
@@ -42820,5 +42820,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14174'
-last_publish_time: '2026-08-12T08:38:44Z'
+last_publish_time: '2026-08-12T08:50:01Z'
 schema_version: 5

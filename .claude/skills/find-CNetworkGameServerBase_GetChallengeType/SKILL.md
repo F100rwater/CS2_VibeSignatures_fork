@@ -100,7 +100,7 @@ obtain `vfunc_sig` (the offset bytes are fixed in the signature; `vfunc_sig_disp
 **ALWAYS** Use SKILL `/write-vfunc-as-yaml` with:
 
 - `func_name`: `CNetworkGameServerBase_GetChallengeType`
-- `vtable_name`: `CNetworkGameServer_vtable`
+- `vtable_name`: `CNetworkGameServerBase`
 - `vfunc_offset`: the resolved offset (hex, e.g. `0x2B0` / `0x288`)
 - `vfunc_index`: `vfunc_offset / 8`
 - `vfunc_sig`: from Step 3

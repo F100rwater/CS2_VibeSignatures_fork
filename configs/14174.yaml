@@ -575,7 +575,7 @@ modules:
           - CNetworkGameServerBase_GetChallengeType.{platform}.yaml
         expected_input:
           - CNetworkGameServerBase_ReplyChallenge.{platform}.yaml
-          - CNetworkGameServer_vtable.{platform}.yaml
+          - CNetworkGameServerBase_vtable.{platform}.yaml
       - name: find-CNetworkStringTableContainer_DirectUpdate
         optional_output:
           - CNetworkStringTableContainer_DirectUpdate.{platform}.yaml

@@ -23,7 +23,7 @@ LLM_DECOMPILE = [
 
 FUNC_VTABLE_RELATIONS = [
     # (func_name, vtable_class)
-    ("CNetworkGameServerBase_GetChallengeType", "CNetworkGameServer_vtable"),
+    ("CNetworkGameServerBase_GetChallengeType", "CNetworkGameServerBase"),
 ]
 
 GENERATE_YAML_DESIRED_FIELDS = [
