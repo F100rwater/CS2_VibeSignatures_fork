@@ -12,12 +12,13 @@ GENERATOR_API_VERSION = 2
 
 GAMEDATA_PATH = "gamedata/cs2fow.games.txt"
 OUTPUT_PATHS = (GAMEDATA_PATH,)
-DOWNLOAD_SOURCES = [
-    (
-        "https://gitlab.com/karola3vax-group/cs2fow/-/raw/main/gamedata/cs2fow.games.txt?ref_type=heads",
-        GAMEDATA_PATH,
-    ),
-]
+# Upstream (gitlab.com/karola3vax-group/cs2fow) went private/unreachable
+# (HTTP 403) and the GitHub mirror was taken down (HTTP 404), so the
+# last-known-good template is bundled here and seeded as a static source.
+# update() re-patches every offset from the snapshot on each run, so the
+# bundled values only serve as a structural template.
+TEMPLATE_SOURCE = "cs2fow.games.txt"
+STATIC_SOURCES = ((TEMPLATE_SOURCE, GAMEDATA_PATH),)
 
 SUPPORTED_PLATFORMS = {"windows", "linux"}
 ASSIGNMENT_RE = re.compile(
