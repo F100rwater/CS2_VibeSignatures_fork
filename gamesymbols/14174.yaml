@@ -121,8 +121,8 @@ binaries:
       sha256: '6f5aa8c32e30d5369579f0e18bf97ec72e2076d3c06906efbfcc77f0c4111b80'
       size: 4592280
 config_digest_version: 2
-config_sha256: sha256:50f66432cfecd46c7b752d9f831deda6b120beb8cfa4f4888c6caa44ca543557
-file_count: 3341
+config_sha256: sha256:04921b35fdbc83946f2319d8c1b6fc6eec6c7b1c4095e88015496dfd69cd3c76
+file_count: 3343
 files:
   SDL3/SDL_GetMouse.windows.yaml:
     func_name: SDL_GetMouse
@@ -12975,6 +12975,18 @@ files:
     vtable_size: '0x278'
     vtable_symbol: ??_7CServerSideClient@@6B@
     vtable_va: '0x180543638'
+  engine/CSource2Server_GetAllServerClasses.linux.yaml:
+    func_name: CSource2Server_GetAllServerClasses
+    vfunc_index: 29
+    vfunc_offset: '0xe8'
+    vfunc_sig: FF 90 E8 00 00 00 48 89 C2 48 8B 40 ?? 48 63 12 48 8D 0C D0
+    vtable_name: CSource2Server
+  engine/CSource2Server_GetAllServerClasses.windows.yaml:
+    func_name: CSource2Server_GetAllServerClasses
+    vfunc_index: 29
+    vfunc_offset: '0xe8'
+    vfunc_sig: FF 90 E8 00 00 00 48 8B 48 ??
+    vtable_name: CSource2Server
   engine/CSplitScreenService_AddSplitScreenUser.linux.yaml:
     func_name: CSplitScreenService_AddSplitScreenUser
     func_rva: '0x446280'
@@ -42832,5 +42844,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14174'
-last_publish_time: '2026-08-12T10:10:26Z'
+last_publish_time: '2026-08-12T10:44:33Z'
 schema_version: 5
