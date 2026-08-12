@@ -383,6 +383,28 @@ jobs:
           Write-Host "Copied persisted bin/$env:GAMEVER into PR workspace; robocopy exit code $robocopyExitCode"
           $global:LASTEXITCODE = 0
 
+          # Also copy persisted *.i64 databases (excluded by .stignore) so
+          # idalib-mcp can reuse them and skip the initial auto-analysis pass.
+          $i64RobocopyArgs = @(
+            $sourceBinGamever
+            $targetBinGamever
+            "*.i64"
+            "/S"
+            "/COPY:DAT"
+            "/DCOPY:DAT"
+            "/R:2"
+            "/W:5"
+            "/XF"
+            "*.id0"
+          )
+          robocopy @i64RobocopyArgs
+          $i64ExitCode = $LASTEXITCODE
+          if ($i64ExitCode -ge 8) {
+            throw "Failed to copy persisted *.i64 databases; robocopy exit code $i64ExitCode"
+          }
+          Write-Host "Copied persisted *.i64 databases; robocopy exit code $i64ExitCode"
+          $global:LASTEXITCODE = 0
+
       - name: Restore deterministic base and invalidate affected outputs
         id: restore-base
         shell: pwsh
@@ -692,6 +714,8 @@ jobs:
         startsWith(github.event.pull_request.title, 'chore(gamesymbols): publish '))
     environment: win64
     runs-on: [self-hosted, windows, x64]
+    env:
+      PERSISTED_WORKSPACE: ${{ secrets.PERSISTED_WORKSPACE }}
     steps:
       - name: Finalize PR workspace
         id: finalize-workspace
@@ -740,6 +764,45 @@ jobs:
           }
 
           Write-Host "PR closed (merged=$prWasMerged); candidate validation never writes persisted YAML."
+
+          if ($prWasMerged -eq "true") {
+            $prBinRoot = Join-Path $prWorkspace "bin"
+            if (Test-Path -LiteralPath $prBinRoot -PathType Container) {
+              $persistedBinRoot = Join-Path $env:PERSISTED_WORKSPACE "bin"
+              Get-ChildItem -LiteralPath $prBinRoot -Directory | ForEach-Object {
+                $gamever = $_.Name
+                $sourceGameverDir = $_.FullName
+                $targetGameverDir = Join-Path $persistedBinRoot $gamever
+                if (-not (Test-Path -LiteralPath $targetGameverDir -PathType Container)) {
+                  New-Item -ItemType Directory -Path $targetGameverDir -Force | Out-Null
+                }
+                $i64Args = @(
+                  $sourceGameverDir
+                  $targetGameverDir
+                  "*.i64"
+                  "/S"
+                  "/COPY:DAT"
+                  "/DCOPY:DAT"
+                  "/R:2"
+                  "/W:5"
+                  "/XF"
+                  "*.id0"
+                )
+                robocopy @i64Args
+                $i64Exit = $LASTEXITCODE
+                if ($i64Exit -ge 8) {
+                  Write-Host "::warning title=i64-persist::Failed to persist *.i64 for GAMEVER=$gamever; robocopy exit code $i64Exit"
+                } else {
+                  Write-Host "Persisted *.i64 databases for GAMEVER=$gamever back to PERSISTED_WORKSPACE"
+                }
+                $global:LASTEXITCODE = 0
+              }
+            } else {
+              Write-Host "No bin directory in PR workspace; nothing to persist."
+            }
+          } else {
+            Write-Host "PR was closed without merging; skipping *.i64 persistence."
+          }
 
           Set-Location $workspaceRoot
 

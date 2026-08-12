@@ -121,8 +121,8 @@ binaries:
       sha256: '6f5aa8c32e30d5369579f0e18bf97ec72e2076d3c06906efbfcc77f0c4111b80'
       size: 4592280
 config_digest_version: 2
-config_sha256: sha256:2bb68195d6fa503291f81c09e6d839b001b9031d9ec8edb69d8f772c6bb4570e
-file_count: 3355
+config_sha256: sha256:4ff4442d0f00525d445fcea6a7db860a67b8b34a0e6ec4c7efd42ffb2f944933
+file_count: 3357
 files:
   SDL3/SDL_GetMouse.windows.yaml:
     func_name: SDL_GetMouse
@@ -21338,6 +21338,24 @@ files:
     vtable_size: '0x418'
     vtable_symbol: ??_7CCSGameRules@@6B@
     vtable_va: '0x18171a130'
+  server/CCSPlayerController_AddedToEntityDatabase.linux.yaml:
+    func_name: CCSPlayerController_AddedToEntityDatabase
+    func_rva: '0x1824380'
+    func_sig: 55 48 89 E5 53 48 89 FB 48 83 EC ?? E8 ?? ?? ?? ?? 48 8D 7B ?? E8 ?? ?? ?? ?? 48 8B 7B ??
+    func_size: '0x3f'
+    func_va: '0x1824380'
+    vfunc_index: 9
+    vfunc_offset: '0x48'
+    vtable_name: CCSPlayerController
+  server/CCSPlayerController_AddedToEntityDatabase.windows.yaml:
+    func_name: CCSPlayerController_AddedToEntityDatabase
+    func_rva: '0xc53f40'
+    func_sig: 40 53 48 83 EC ?? 48 8B D9 E8 ?? ?? ?? ?? 48 8D 4B ?? E8 ?? ?? ?? ?? 48 8B 4B ??
+    func_size: '0x3a'
+    func_va: '0x180c53f40'
+    vfunc_index: 8
+    vfunc_offset: '0x40'
+    vtable_name: CCSPlayerController
   server/CCSPlayerController_ChangeTeam.linux.yaml:
     func_name: CCSPlayerController_ChangeTeam
     func_rva: '0x1528c30'
@@ -42934,5 +42952,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14174'
-last_publish_time: '2026-08-12T13:30:40Z'
+last_publish_time: '2026-08-12T14:03:07Z'
 schema_version: 5
