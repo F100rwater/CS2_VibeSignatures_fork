@@ -624,7 +624,7 @@ files:
   client/CGameSystemReallocatingFactory_CSource2EntitySystem_CreateGameSystem.linux.yaml:
     func_name: CGameSystemReallocatingFactory_CSource2EntitySystem_CreateGameSystem
     func_rva: '0x1675540'
-    func_sig: 55 BE ?? ?? ?? ?? 48 89 E5 53 48 83 EC ?? 48 8B 05 63 9F E8 ??
+    func_sig: 55 BE ?? ?? ?? ?? 48 89 E5 53 48 83 EC ?? 48 8B 05 5B AA E8 ??
     func_size: '0x64'
     func_va: '0x1675540'
     vfunc_index: 3
@@ -633,7 +633,7 @@ files:
   client/CGameSystemReallocatingFactory_CSource2EntitySystem_CreateGameSystem.windows.yaml:
     func_name: CGameSystemReallocatingFactory_CSource2EntitySystem_CreateGameSystem
     func_rva: '0x9653c0'
-    func_sig: 40 53 48 83 EC ?? 48 8B 05 73 2D FF ??
+    func_sig: 40 53 48 83 EC ?? 48 8B 05 23 45 FF ??
     func_size: '0x56'
     func_va: '0x1809653c0'
     vfunc_index: 3
@@ -42820,5 +42820,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14174'
-last_publish_time: '2026-08-12T08:50:01Z'
+last_publish_time: '2026-08-12T09:25:56Z'
 schema_version: 5
