@@ -1,37 +1,36 @@
 #!/usr/bin/env python3
-"""Preprocess script for find-CNetworkGameServerBase_CheckPassword skill."""
+"""Preprocess script for find-CNetworkGameServerBase_GetChallengeType skill."""
 
 from ida_analyze_util import preprocess_common_skill
 
-
 TARGET_FUNCTION_NAMES = [
-    "CNetworkGameServerBase_CheckPassword",
+    "CNetworkGameServerBase_GetChallengeType",
 ]
 
 LLM_DECOMPILE = [
     {
-        "symbol_name": "CNetworkGameServerBase_CheckPassword",
+        "symbol_name": "CNetworkGameServerBase_GetChallengeType",
         "prompt_path": "prompt/call_llm_decompile.md",
         "reference_yaml_paths": [
-            "references/engine/CNetworkGameServerBase_ConnectClient.{platform}.yaml",
+            "references/engine/CNetworkGameServerBase_ReplyChallenge.{platform}.yaml",
         ],
         "expected_result_sections": ["found_vcall"],
         "dependency_policy": {
-            "CNetworkGameServerBase_ConnectClient.{platform}.yaml": "required",
+            "CNetworkGameServerBase_ReplyChallenge.{platform}.yaml": "required",
         },
     },
 ]
 
 FUNC_VTABLE_RELATIONS = [
     # (func_name, vtable_class)
-    ("CNetworkGameServerBase_CheckPassword", "CNetworkGameServerBase"),
+    ("CNetworkGameServerBase_GetChallengeType", "CNetworkGameServerBase"),
 ]
 
 GENERATE_YAML_DESIRED_FIELDS = [
     # (symbol_name, generate_yaml_fields)
-    # vfunc_sig is MANDATORY for Pattern C (LLM_DECOMPILE vfunc).
+    # ALWAYS include "vfunc_sig" for Pattern C (vfunc via LLM_DECOMPILE).
     (
-        "CNetworkGameServerBase_CheckPassword",
+        "CNetworkGameServerBase_GetChallengeType",
         [
             "func_name",
             "vfunc_sig",
@@ -54,7 +53,7 @@ async def preprocess_skill(
     llm_config=None,
     debug=False,
 ):
-    """Locate CNetworkGameServerBase_CheckPassword from ConnectClient via LLM decompile."""
+    """Reuse previous gamever vfunc_sig to locate target function(s) and write YAML."""
     return await preprocess_common_skill(
         session=session,
         expected_outputs=expected_outputs,

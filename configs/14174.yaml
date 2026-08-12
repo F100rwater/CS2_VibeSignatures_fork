@@ -567,6 +567,15 @@ modules:
           - CNetworkGameServer_ActivateServer.{platform}.yaml
         expected_input:
           - CNetworkGameServer_vtable.{platform}.yaml
+      - name: find-CNetworkGameServerBase_ReplyChallenge
+        expected_output:
+          - CNetworkGameServerBase_ReplyChallenge.{platform}.yaml
+      - name: find-CNetworkGameServerBase_GetChallengeType
+        expected_output:
+          - CNetworkGameServerBase_GetChallengeType.{platform}.yaml
+        expected_input:
+          - CNetworkGameServerBase_ReplyChallenge.{platform}.yaml
+          - CNetworkGameServerBase_vtable.{platform}.yaml
       - name: find-CNetworkStringTableContainer_DirectUpdate
         optional_output:
           - CNetworkStringTableContainer_DirectUpdate.{platform}.yaml
@@ -1305,6 +1314,12 @@ modules:
         expected_input:
           - CNetworkGameServerBase_vtable.{platform}.yaml
           - INetworkGameServer_ServerEndSimulate.{platform}.yaml
+      - name: find-CNetworkGameServerBase_CalculateCPUUsage
+        expected_output:
+          - CNetworkGameServerBase_CalculateCPUUsage.{platform}.yaml
+        expected_input:
+          - CNetworkGameServerBase_vtable.{platform}.yaml
+          - CNetworkGameServerBase_ServerEndSimulate.{platform}.yaml
       - name: find-INetworkGameServer_ServerPostSimulate
         expected_output:
           - INetworkGameServer_ServerPostSimulate.{platform}.yaml
@@ -2445,6 +2460,14 @@ modules:
         category: vfunc
         alias:
           - CNetworkGameServer::DirectUpdate
+      - name: CNetworkGameServerBase_ReplyChallenge
+        category: func
+        alias:
+          - CNetworkGameServerBase::ReplyChallenge
+      - name: CNetworkGameServerBase_GetChallengeType
+        category: vfunc
+        alias:
+          - CNetworkGameServerBase::GetChallengeType
       - name: CNetworkGameServer_Init
         category: vfunc
         alias:
@@ -3011,6 +3034,10 @@ modules:
         category: vfunc
         alias:
           - CNetworkGameServerBase::ServerEndSimulate
+      - name: CNetworkGameServerBase_CalculateCPUUsage
+        category: vfunc
+        alias:
+          - CNetworkGameServerBase::CalculateCPUUsage
       - name: INetworkGameServer_ServerPostSimulate
         category: vfunc
         alias:
