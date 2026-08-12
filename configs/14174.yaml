@@ -609,9 +609,9 @@ modules:
         expected_input:
           - CNetworkGameServer_vtable.{platform}.yaml
           - CNetworkGameServerBase_Shutdown.{platform}.yaml
-      - name: find-CSource2Server_GetAllServerClasses
+      - name: find-ISource2Server_GetAllServerClasses
         expected_output:
-          - CSource2Server_GetAllServerClasses.{platform}.yaml
+          - ISource2Server_GetAllServerClasses.{platform}.yaml
         expected_input:
           - CNetworkGameServer_Shutdown.{platform}.yaml
       - name: find-CNetworkGameServer_SpawnServer
@@ -1837,9 +1837,9 @@ modules:
         expected_input:
           - CLoopTypeClientServer_vtable.{platform}.yaml
           - CLoopTypeClientSimple_ActivateEngineServices.{platform}.yaml
-      - name: find-CSource2Server_GetActiveWorldName
+      - name: find-ISource2Server_GetActiveWorldName
         expected_output:
-          - CSource2Server_GetActiveWorldName.{platform}.yaml
+          - ISource2Server_GetActiveWorldName.{platform}.yaml
         expected_input:
           - CLoopTypeClientServer_ActivateLoop.{platform}.yaml
       - name: find-CLoopTypeClientServer_AllocateLoopMode
@@ -2486,10 +2486,10 @@ modules:
         category: vfunc
         alias:
           - CNetworkGameServer::Shutdown
-      - name: CSource2Server_GetAllServerClasses
+      - name: ISource2Server_GetAllServerClasses
         category: vfunc
         alias:
-          - CSource2Server::GetAllServerClasses
+          - ISource2Server::GetAllServerClasses
       - name: CNetworkGameServer_SpawnServer
         category: vfunc
         alias:
@@ -3330,10 +3330,10 @@ modules:
         category: vfunc
         alias:
           - CLoopTypeClientServer::ActivateLoop
-      - name: CSource2Server_GetActiveWorldName
+      - name: ISource2Server_GetActiveWorldName
         category: vfunc
         alias:
-          - CSource2Server::GetActiveWorldName
+          - ISource2Server::GetActiveWorldName
       - name: CLoopTypeClientServer_AllocateLoopMode
         category: vfunc
         alias:
@@ -6020,6 +6020,18 @@ modules:
       - name: find-CSource2Server_vtable
         expected_output:
           - CSource2Server_vtable.{platform}.yaml
+      - name: find-CSource2Server_GetAllServerClasses
+        expected_output:
+          - CSource2Server_GetAllServerClasses.{platform}.yaml
+        expected_input:
+          - CSource2Server_vtable.{platform}.yaml
+          - ../engine/ISource2Server_GetAllServerClasses.{platform}.yaml
+      - name: find-CSource2Server_GetActiveWorldName
+        expected_output:
+          - CSource2Server_GetActiveWorldName.{platform}.yaml
+        expected_input:
+          - CSource2Server_vtable.{platform}.yaml
+          - ../engine/ISource2Server_GetActiveWorldName.{platform}.yaml
       - name: find-CUserMessageServerFrameTime_t_vtable
         expected_output:
           - CUserMessageServerFrameTime_t_vtable.{platform}.yaml
@@ -9019,6 +9031,14 @@ modules:
     symbols:
       - name: CSource2Server_vtable
         category: vtable
+      - name: CSource2Server_GetAllServerClasses
+        category: vfunc
+        alias:
+          - CSource2Server::GetAllServerClasses
+      - name: CSource2Server_GetActiveWorldName
+        category: vfunc
+        alias:
+          - CSource2Server::GetActiveWorldName
       - name: CUserMessageServerFrameTime_t_vtable
         category: vtable
       - name: CSource2Server_vtable2

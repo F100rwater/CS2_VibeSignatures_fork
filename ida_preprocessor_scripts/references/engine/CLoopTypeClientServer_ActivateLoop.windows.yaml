@@ -35,8 +35,8 @@ disasm_code: |-
   .text:0000000180224569                 test    rcx, rcx
   .text:000000018022456C                 jz      short loc_18022457A
   .text:000000018022456E                 mov     rax, [rcx]
-  .text:0000000180224571                 ; 0x0F0 = 240LL = CSource2Server_GetActiveWorldName
-  .text:0000000180224571                 call    qword ptr [rax+0F0h]; 0x0F0 = 240LL = CSource2Server_GetActiveWorldName
+  .text:0000000180224571                 ; 0x0F0 = 240LL = ISource2Server_GetActiveWorldName
+  .text:0000000180224571                 call    qword ptr [rax+0F0h]; 0x0F0 = 240LL = ISource2Server_GetActiveWorldName
   .text:0000000180224577                 mov     rsi, rax
   .text:000000018022457A                 mov     rbx, [rdi+178h]
   .text:0000000180224581                 mov     rcx, rbx
@@ -111,7 +111,7 @@ procedure: |-
     *(_QWORD *)(a1 + 304) = 0;
     *(_QWORD *)(a1 + 312) = 0;
     if ( v9 )
-      v10 = (const char *)(*(__int64 (__fastcall **)(__int64))(*(_QWORD *)v9 + 240LL))(v9);// 0x0F0 = 240LL = CSource2Server_GetActiveWorldName
+      v10 = (const char *)(*(__int64 (__fastcall **)(__int64))(*(_QWORD *)v9 + 240LL))(v9);// 0x0F0 = 240LL = ISource2Server_GetActiveWorldName
     v11 = *(_QWORD *)(a1 + 376);
     sub_18021F750(v11);
     v12 = *(_DWORD *)(v11 + 36);
