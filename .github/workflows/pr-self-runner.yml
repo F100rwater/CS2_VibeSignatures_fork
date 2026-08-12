@@ -383,6 +383,28 @@ jobs:
           Write-Host "Copied persisted bin/$env:GAMEVER into PR workspace; robocopy exit code $robocopyExitCode"
           $global:LASTEXITCODE = 0
 
+          # Also copy persisted *.i64 databases (excluded by .stignore) so
+          # idalib-mcp can reuse them and skip the initial auto-analysis pass.
+          $i64RobocopyArgs = @(
+            $sourceBinGamever
+            $targetBinGamever
+            "*.i64"
+            "/S"
+            "/COPY:DAT"
+            "/DCOPY:DAT"
+            "/R:2"
+            "/W:5"
+            "/XF"
+            "*.id0"
+          )
+          robocopy @i64RobocopyArgs
+          $i64ExitCode = $LASTEXITCODE
+          if ($i64ExitCode -ge 8) {
+            throw "Failed to copy persisted *.i64 databases; robocopy exit code $i64ExitCode"
+          }
+          Write-Host "Copied persisted *.i64 databases; robocopy exit code $i64ExitCode"
+          $global:LASTEXITCODE = 0
+
       - name: Restore deterministic base and invalidate affected outputs
         id: restore-base
         shell: pwsh
