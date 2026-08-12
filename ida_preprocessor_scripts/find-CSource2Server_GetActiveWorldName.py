@@ -1,30 +1,30 @@
 #!/usr/bin/env python3
-"""Preprocess script for find-CSource2Server_ShouldTimeoutClient skill."""
+"""Preprocess script for find-CSource2Server_GetActiveWorldName skill."""
 
 from ida_analyze_util import preprocess_common_skill
 
 INHERIT_VFUNCS = [
     # (target_func_name, inherit_vtable_class, base_vfunc_name, generate_func_sig)
     (
-        "CSource2Server_ShouldTimeoutClient",
+        "CSource2Server_GetActiveWorldName",
         "CSource2Server",
-        "../engine/ISource2Server_ShouldTimeoutClient",
+        "../engine/ISource2Server_GetActiveWorldName",
         True,
     ),
 ]
 
 GENERATE_YAML_DESIRED_FIELDS = [
     (
-        "CSource2Server_ShouldTimeoutClient",
+        "CSource2Server_GetActiveWorldName",
         [
             "func_name",
             "func_va",
             "func_rva",
             "func_size",
             "func_sig",
+            "vtable_name",
             "vfunc_offset",
             "vfunc_index",
-            "vtable_name",
         ],
     ),
 ]
@@ -40,7 +40,7 @@ async def preprocess_skill(
     image_base,
     debug=False,
 ):
-    """Locate the CSource2Server override from the ISource2Server slot."""
+    """Reuse an old signature or inherit the interface slot into CSource2Server."""
     _ = skill_name
 
     return await preprocess_common_skill(
