@@ -121,8 +121,8 @@ binaries:
       sha256: '6f5aa8c32e30d5369579f0e18bf97ec72e2076d3c06906efbfcc77f0c4111b80'
       size: 4592280
 config_digest_version: 2
-config_sha256: sha256:74b3f357792fe2c1e1ab98663cd82a73070dbcba34ef8b5c4edff83bbe3c66d4
-file_count: 3339
+config_sha256: sha256:50f66432cfecd46c7b752d9f831deda6b120beb8cfa4f4888c6caa44ca543557
+file_count: 3341
 files:
   SDL3/SDL_GetMouse.windows.yaml:
     func_name: SDL_GetMouse
@@ -10604,6 +10604,18 @@ files:
     vfunc_index: 83
     vfunc_offset: '0x298'
     vfunc_sig: FF 90 98 02 00 00 45 8B F4
+    vtable_name: CNetworkGameServerBase
+  engine/CNetworkGameServerBase_CheckPassword.linux.yaml:
+    func_name: CNetworkGameServerBase_CheckPassword
+    vfunc_index: 85
+    vfunc_offset: '0x2a8'
+    vfunc_sig: FF 90 A8 02 00 00 84 C0
+    vtable_name: CNetworkGameServerBase
+  engine/CNetworkGameServerBase_CheckPassword.windows.yaml:
+    func_name: CNetworkGameServerBase_CheckPassword
+    vfunc_index: 82
+    vfunc_offset: '0x290'
+    vfunc_sig: FF 90 90 02 00 00 84 C0
     vtable_name: CNetworkGameServerBase
   engine/CNetworkGameServerBase_CheckTimeouts.linux.yaml:
     func_name: CNetworkGameServerBase_CheckTimeouts
@@ -42820,5 +42832,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14174'
-last_publish_time: '2026-08-12T09:25:56Z'
+last_publish_time: '2026-08-12T10:10:26Z'
 schema_version: 5
