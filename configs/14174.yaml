@@ -834,13 +834,9 @@ modules:
           - CNetworkGameServerBase_ServerSimulate.{platform}.yaml
         expected_input_linux:
           - CNetworkGameServerBase_ServerSimulateInternal.{platform}.yaml
-      - name: find-CNetworkGameServer_GetFreeClient
+      - name: find-CNetworkGameServerBase_ConnectClient-decompiles
         expected_output:
           - CNetworkGameServer_GetFreeClient.{platform}.yaml
-        expected_input:
-          - CNetworkGameServerBase_ConnectClient.{platform}.yaml
-      - name: find-CNetworkGameServerBase_CheckPassword
-        expected_output:
           - CNetworkGameServerBase_CheckPassword.{platform}.yaml
         expected_input:
           - CNetworkGameServerBase_ConnectClient.{platform}.yaml

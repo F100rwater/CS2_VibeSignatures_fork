@@ -1,14 +1,26 @@
 #!/usr/bin/env python3
-"""Preprocess script for find-CNetworkGameServerBase_CheckPassword skill."""
+"""Preprocess ConnectClient's GetFreeClient call and CheckPassword vcall."""
 
 from ida_analyze_util import preprocess_common_skill
 
 
 TARGET_FUNCTION_NAMES = [
+    "CNetworkGameServer_GetFreeClient",
     "CNetworkGameServerBase_CheckPassword",
 ]
 
 LLM_DECOMPILE = [
+    {
+        "symbol_name": "CNetworkGameServer_GetFreeClient",
+        "prompt_path": "prompt/call_llm_decompile.md",
+        "reference_yaml_paths": [
+            "references/engine/CNetworkGameServerBase_ConnectClient.{platform}.yaml",
+        ],
+        "expected_result_sections": ["found_call"],
+        "dependency_policy": {
+            "CNetworkGameServerBase_ConnectClient.{platform}.yaml": "required",
+        },
+    },
     {
         "symbol_name": "CNetworkGameServerBase_CheckPassword",
         "prompt_path": "prompt/call_llm_decompile.md",
@@ -28,7 +40,17 @@ FUNC_VTABLE_RELATIONS = [
 ]
 
 GENERATE_YAML_DESIRED_FIELDS = [
-    # (symbol_name, generate_yaml_fields)
+    # No func_sig: GetFreeClient's head bytes are not unique in the binary.
+    # LLM_DECOMPILE is used to locate it each time.
+    (
+        "CNetworkGameServer_GetFreeClient",
+        [
+            "func_name",
+            "func_va",
+            "func_rva",
+            "func_size",
+        ],
+    ),
     # vfunc_sig is MANDATORY for Pattern C (LLM_DECOMPILE vfunc).
     (
         "CNetworkGameServerBase_CheckPassword",
@@ -54,7 +76,7 @@ async def preprocess_skill(
     llm_config=None,
     debug=False,
 ):
-    """Locate CNetworkGameServerBase_CheckPassword from ConnectClient via LLM decompile."""
+    """Locate GetFreeClient and CheckPassword from ConnectClient via LLM decompile."""
     return await preprocess_common_skill(
         session=session,
         expected_outputs=expected_outputs,
