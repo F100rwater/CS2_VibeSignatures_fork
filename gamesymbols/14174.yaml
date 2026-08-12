@@ -121,8 +121,8 @@ binaries:
       sha256: '6f5aa8c32e30d5369579f0e18bf97ec72e2076d3c06906efbfcc77f0c4111b80'
       size: 4592280
 config_digest_version: 2
-config_sha256: sha256:0c4319a7feee2d70a07236b06d6ecffaecc45fa70d92f43fb439663d2a59c457
-file_count: 3333
+config_sha256: sha256:4893ae40e49c663191d17500a457fb8d9f4428623bc1b90f6a644bf694c9e77d
+file_count: 3335
 files:
   SDL3/SDL_GetMouse.windows.yaml:
     func_name: SDL_GetMouse
@@ -624,7 +624,7 @@ files:
   client/CGameSystemReallocatingFactory_CSource2EntitySystem_CreateGameSystem.linux.yaml:
     func_name: CGameSystemReallocatingFactory_CSource2EntitySystem_CreateGameSystem
     func_rva: '0x1675540'
-    func_sig: 55 BE ?? ?? ?? ?? 48 89 E5 53 48 83 EC ?? 48 8B 05 63 9F E8 ??
+    func_sig: 55 BE ?? ?? ?? ?? 48 89 E5 53 48 83 EC ?? 48 8B 05 5B AA E8 ??
     func_size: '0x64'
     func_va: '0x1675540'
     vfunc_index: 3
@@ -633,7 +633,7 @@ files:
   client/CGameSystemReallocatingFactory_CSource2EntitySystem_CreateGameSystem.windows.yaml:
     func_name: CGameSystemReallocatingFactory_CSource2EntitySystem_CreateGameSystem
     func_rva: '0x9653c0'
-    func_sig: 40 53 48 83 EC ?? 48 8B 05 73 2D FF ??
+    func_sig: 40 53 48 83 EC ?? 48 8B 05 23 45 FF ??
     func_size: '0x56'
     func_va: '0x1809653c0'
     vfunc_index: 3
@@ -10593,6 +10593,18 @@ files:
     vfunc_index: 49
     vfunc_offset: '0x188'
     vtable_name: CNetworkGameServerBase_vtable
+  engine/CNetworkGameServerBase_CalculateCPUUsage.linux.yaml:
+    func_name: CNetworkGameServerBase_CalculateCPUUsage
+    vfunc_index: 88
+    vfunc_offset: '0x2c0'
+    vfunc_sig: 48 8B 80 C0 02 00 00
+    vtable_name: CNetworkGameServerBase
+  engine/CNetworkGameServerBase_CalculateCPUUsage.windows.yaml:
+    func_name: CNetworkGameServerBase_CalculateCPUUsage
+    vfunc_index: 83
+    vfunc_offset: '0x298'
+    vfunc_sig: FF 90 98 02 00 00 45 8B F4
+    vtable_name: CNetworkGameServerBase
   engine/CNetworkGameServerBase_CheckTimeouts.linux.yaml:
     func_name: CNetworkGameServerBase_CheckTimeouts
     func_rva: '0x4f9c00'
@@ -42784,5 +42796,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14174'
-last_publish_time: '2026-08-09T12:35:41Z'
+last_publish_time: '2026-08-10T06:51:46Z'
 schema_version: 5
