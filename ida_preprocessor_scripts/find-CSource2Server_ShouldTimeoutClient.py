@@ -1,31 +1,30 @@
 #!/usr/bin/env python3
-"""Preprocess script for find-CCSPlayerController_Disconnect skill."""
+"""Preprocess script for find-CSource2Server_ShouldTimeoutClient skill."""
 
 from ida_analyze_util import preprocess_common_skill
 
 INHERIT_VFUNCS = [
     # (target_func_name, inherit_vtable_class, base_vfunc_name, generate_func_sig)
     (
-        "CCSPlayerController_Disconnect",
-        "CCSPlayerController",
-        "CEntityInstance_Disconnect",
+        "CSource2Server_ShouldTimeoutClient",
+        "CSource2Server",
+        "../engine/ISource2Server_ShouldTimeoutClient",
         True,
     ),
 ]
 
 GENERATE_YAML_DESIRED_FIELDS = [
-    # (symbol_name, generate_yaml_fields)
     (
-        "CCSPlayerController_Disconnect",
+        "CSource2Server_ShouldTimeoutClient",
         [
             "func_name",
             "func_va",
             "func_rva",
             "func_size",
             "func_sig",
-            "vtable_name",
             "vfunc_offset",
             "vfunc_index",
+            "vtable_name",
         ],
     ),
 ]
@@ -41,7 +40,7 @@ async def preprocess_skill(
     image_base,
     debug=False,
 ):
-    """Reuse old func_sig first; fallback to vtable index + generated signature when needed."""
+    """Locate the CSource2Server override from the ISource2Server slot."""
     _ = skill_name
 
     return await preprocess_common_skill(

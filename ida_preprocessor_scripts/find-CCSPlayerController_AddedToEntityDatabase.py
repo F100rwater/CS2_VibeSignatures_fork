@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
-"""Preprocess script for find-CCSPlayerController_Disconnect skill."""
+"""Preprocess script for find-CCSPlayerController_AddedToEntityDatabase skill."""
 
 from ida_analyze_util import preprocess_common_skill
 
 INHERIT_VFUNCS = [
     # (target_func_name, inherit_vtable_class, base_vfunc_name, generate_func_sig)
     (
-        "CCSPlayerController_Disconnect",
+        "CCSPlayerController_AddedToEntityDatabase",
         "CCSPlayerController",
-        "CEntityInstance_Disconnect",
+        "CEntityInstance_AddedToEntityDatabase",
         True,
     ),
 ]
@@ -16,7 +16,7 @@ INHERIT_VFUNCS = [
 GENERATE_YAML_DESIRED_FIELDS = [
     # (symbol_name, generate_yaml_fields)
     (
-        "CCSPlayerController_Disconnect",
+        "CCSPlayerController_AddedToEntityDatabase",
         [
             "func_name",
             "func_va",
