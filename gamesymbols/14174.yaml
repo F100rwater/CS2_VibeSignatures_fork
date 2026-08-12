@@ -121,8 +121,8 @@ binaries:
       sha256: '6f5aa8c32e30d5369579f0e18bf97ec72e2076d3c06906efbfcc77f0c4111b80'
       size: 4592280
 config_digest_version: 2
-config_sha256: sha256:45855118d25e39ee8c3f8b1824ac4c2c49980dda7fa2d58f8576335dd923c010
-file_count: 3349
+config_sha256: sha256:0bc60c545034ea3a0df89266358548baf486b82b1095d8b8dc47b7657f2fa160
+file_count: 3351
 files:
   SDL3/SDL_GetMouse.windows.yaml:
     func_name: SDL_GetMouse
@@ -26196,6 +26196,18 @@ files:
     func_sig: 40 53 48 83 EC ?? 48 83 79 ?? ?? 48 8B D9 0F 85 ?? ?? ?? ?? 48 8B 0D ?? ?? ?? ??
     func_size: '0xc5'
     func_va: '0x181244980'
+  server/CEntityInstance_dtor.linux.yaml:
+    func_name: CEntityInstance_dtor
+    func_rva: '0x21089c0'
+    func_sig: 55 48 8D 05 ?? ?? ?? ?? 48 89 E5 41 55 41 54 53 48 89 FB 48 83 EC ?? 4C 8B 67 ?? 48 89 07 4D 85 E4 74 ?? 41 80 7C 24 ?? ?? 0F 85 ?? ?? ?? ?? 41 0F B7 44 24 ?? 83 E8 ?? 66 41 89 44 24 ?? 66 85 C0 0F 8E ?? ?? ?? ?? 48 C7 43 ?? ?? ?? ?? ?? 48 8B 43 ?? 48 85 C0 74 ?? 48 8B 50 ?? 48 85 D2 74 ?? 48 8D 3D ?? ?? ?? ?? 48 89 DE E8 ?? ?? ?? ?? 48 8B 43 ?? 48 C7 40 ?? ?? ?? ?? ?? 48 8B 73 ?? 48 85 F6 74 ?? 48 8D 05 ?? ?? ?? ?? 48 8B 38 48 85 FF 74 ?? 48 8B 07 48 8B 80 ?? ?? ?? ??
+    func_size: '0x12a'
+    func_va: '0x21089c0'
+  server/CEntityInstance_dtor.windows.yaml:
+    func_name: CEntityInstance_dtor
+    func_rva: '0x1242210'
+    func_sig: 48 89 5C 24 ?? 48 89 74 24 ?? 57 48 83 EC ?? 48 8B 79 ?? 48 8D 05 ?? ?? ?? ?? 33 F6
+    func_size: '0xeb'
+    func_va: '0x181242210'
   server/CEntityInstance_m_CScriptComponent.linux.yaml:
     member_name: m_CScriptComponent
     offset: '0x28'
@@ -42892,5 +42904,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14174'
-last_publish_time: '2026-08-12T11:51:37Z'
+last_publish_time: '2026-08-12T12:23:17Z'
 schema_version: 5

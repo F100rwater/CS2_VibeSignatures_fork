@@ -7671,6 +7671,12 @@ modules:
           - CEntityInstance_vdtor.{platform}.yaml
         expected_input:
           - CBaseEntity_vdtor.{platform}.yaml
+      - name: find-CEntityInstance_dtor
+        expected_output:
+          - CEntityInstance_dtor.{platform}.yaml
+        expected_input:
+          - CEntityInstance_vtable.{platform}.yaml
+          - CEntityInstance_UpdateOnRemove.{platform}.yaml
       - name: find-CEntityInstance_Spawn
         expected_output:
           - CEntityInstance_Spawn.{platform}.yaml
@@ -9268,6 +9274,10 @@ modules:
         category: vfunc
         alias:
           - CEntityInstance::~CEntityInstance (virtual)
+      - name: CEntityInstance_dtor
+        category: func
+        alias:
+          - CEntityInstance::~CEntityInstance
       - name: CEntitySaveRestoreBlockHandler_vtable
         category: vtable
       - name: CEntitySaveRestoreBlockHandler_PreSave
