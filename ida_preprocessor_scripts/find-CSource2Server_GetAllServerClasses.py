@@ -34,7 +34,7 @@ FUNC_VTABLE_RELATIONS = [
     # concrete body lives in the server module, so no CSource2Server_vtable YAML is
     # consumed here. The vfunc_sig anchors on the vcall instruction inside the
     # engine predecessor CNetworkGameServer_Shutdown.
-    ("CSource2Server_GetAllServerClasses", "CSource2Server_vtable"),
+    ("CSource2Server_GetAllServerClasses", "CSource2Server"),
 ]
 
 GENERATE_YAML_DESIRED_FIELDS = [
