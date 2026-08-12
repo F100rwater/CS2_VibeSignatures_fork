@@ -121,8 +121,8 @@ binaries:
       sha256: '6f5aa8c32e30d5369579f0e18bf97ec72e2076d3c06906efbfcc77f0c4111b80'
       size: 4592280
 config_digest_version: 2
-config_sha256: sha256:04921b35fdbc83946f2319d8c1b6fc6eec6c7b1c4095e88015496dfd69cd3c76
-file_count: 3343
+config_sha256: sha256:660d19ae344885c323839332cbd246a319fa393ecae3cf1b9df5c868d7bf17f7
+file_count: 3345
 files:
   SDL3/SDL_GetMouse.windows.yaml:
     func_name: SDL_GetMouse
@@ -12975,6 +12975,18 @@ files:
     vtable_size: '0x278'
     vtable_symbol: ??_7CServerSideClient@@6B@
     vtable_va: '0x180543638'
+  engine/CSource2Server_GetActiveWorldName.linux.yaml:
+    func_name: CSource2Server_GetActiveWorldName
+    vfunc_index: 30
+    vfunc_offset: '0xf0'
+    vfunc_sig: FF 90 F0 00 00 00 48 89 C6 48 8B BB ?? ?? ?? ??
+    vtable_name: CSource2Server
+  engine/CSource2Server_GetActiveWorldName.windows.yaml:
+    func_name: CSource2Server_GetActiveWorldName
+    vfunc_index: 30
+    vfunc_offset: '0xf0'
+    vfunc_sig: FF 90 F0 00 00 00 48 8B F0 48 8B 9F ?? ?? ?? ??
+    vtable_name: CSource2Server
   engine/CSource2Server_GetAllServerClasses.linux.yaml:
     func_name: CSource2Server_GetAllServerClasses
     vfunc_index: 29
@@ -42844,5 +42856,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14174'
-last_publish_time: '2026-08-12T10:44:33Z'
+last_publish_time: '2026-08-12T11:05:59Z'
 schema_version: 5
