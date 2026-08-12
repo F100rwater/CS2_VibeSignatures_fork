@@ -121,7 +121,7 @@ binaries:
       sha256: '6f5aa8c32e30d5369579f0e18bf97ec72e2076d3c06906efbfcc77f0c4111b80'
       size: 4592280
 config_digest_version: 2
-config_sha256: sha256:54779c78bd83eef0bb7409de5be189458c861508727b451fc71a281610597be3
+config_sha256: sha256:dd5924de988f13c22a49556460bb73b7359760b1a793aa57e738e1a709764ba2
 file_count: 3335
 files:
   SDL3/SDL_GetMouse.windows.yaml:
@@ -10598,13 +10598,13 @@ files:
     vfunc_index: 88
     vfunc_offset: '0x2c0'
     vfunc_sig: 48 8B 80 C0 02 00 00
-    vtable_name: CNetworkGameServer
+    vtable_name: CNetworkGameServerBase
   engine/CNetworkGameServerBase_CalculateCPUUsage.windows.yaml:
     func_name: CNetworkGameServerBase_CalculateCPUUsage
     vfunc_index: 83
     vfunc_offset: '0x298'
     vfunc_sig: FF 90 98 02 00 00 45 8B F4
-    vtable_name: CNetworkGameServer
+    vtable_name: CNetworkGameServerBase
   engine/CNetworkGameServerBase_CheckTimeouts.linux.yaml:
     func_name: CNetworkGameServerBase_CheckTimeouts
     func_rva: '0x4f9c00'

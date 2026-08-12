@@ -24,7 +24,7 @@ LLM_DECOMPILE = [
 
 FUNC_VTABLE_RELATIONS = [
     # (func_name, vtable_class)
-    ("CNetworkGameServerBase_CalculateCPUUsage", "CNetworkGameServer"),
+    ("CNetworkGameServerBase_CalculateCPUUsage", "CNetworkGameServerBase"),
 ]
 
 GENERATE_YAML_DESIRED_FIELDS = [
