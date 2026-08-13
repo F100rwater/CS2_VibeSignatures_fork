@@ -347,6 +347,64 @@ def is_http_404(result) -> bool:
     return result.returncode != 0 and re.search(r"\bHTTP\s+404\b", command_detail(result), re.IGNORECASE) is not None
 
 
+def probe_binsync(root: Path) -> tuple[bool, str]:
+    """Probe whether BinSync initialization can run in this environment.
+
+    Returns (True, "") when usable, or (False, reason) when unavailable.
+    Never raises and never modifies anything.
+    """
+    if shutil.which("gh") is None:
+        return False, "GitHub CLI (gh) is not installed or not on PATH"
+    try:
+        auth = run_command(
+            ["gh", "auth", "status", "--hostname", "github.com"],
+            root,
+            allowed=(0, 1),
+            capture=True,
+            label="checking gh authentication",
+        )
+    except InitGamebinError as exc:
+        return False, str(exc)
+    if auth.returncode != 0:
+        detail = command_detail(auth) or f"exit code {auth.returncode}"
+        return False, f"gh is not authenticated to github.com: {detail}"
+    try:
+        api = run_command(
+            ["gh", "api", "user", "--jq", ".login"],
+            root,
+            allowed=(0, 1),
+            capture=True,
+            label="checking GitHub API reachability",
+        )
+    except InitGamebinError as exc:
+        return False, str(exc)
+    if api.returncode != 0:
+        detail = command_detail(api) or f"exit code {api.returncode}"
+        return False, f"cannot reach the GitHub API: {detail}"
+    try:
+        org = run_command(
+            ["gh", "api", f"orgs/{GITHUB_OWNER}", "--jq", ".login"],
+            root,
+            allowed=(0, 1),
+            capture=True,
+            label=f"checking access to the {GITHUB_OWNER} organization",
+        )
+    except InitGamebinError as exc:
+        return False, str(exc)
+    if org.returncode != 0:
+        detail = command_detail(org) or f"exit code {org.returncode}"
+        return False, (
+            f"authenticated GitHub account does not have access to the "
+            f"{GITHUB_OWNER} organization: {detail}"
+        )
+    if org.stdout.strip().casefold() != GITHUB_OWNER.casefold():
+        return False, (
+            f"authenticated GitHub account does not have access to the "
+            f"{GITHUB_OWNER} organization"
+        )
+    return True, ""
+
+
 def gh_api(root: Path, endpoint: str, *, method="GET", fields=None, allow_404=False):
     """Call gh api and distinguish explicit HTTP 404 from every other failure."""
     command = ["gh", "api", "--method", method, endpoint]
@@ -774,8 +832,13 @@ def run_depot_fallback(root: Path, gamever: str, config_path: Path) -> None:
     run_command(command, root, label="copy_depot_bin.py")
 
 
-def prepare(root: Path, requested: str) -> dict:
-    """Prepare configured binaries and return a summary."""
+def prepare(root: Path, requested: str, *, binsync_mode: str = "skip") -> dict:
+    """Prepare configured binaries and return a summary.
+
+    BinSync recovery is opt-in: the default "skip" mode never probes or
+    provisions; "enable" probes availability first and fails loudly when the
+    environment cannot run BinSync (used by CI).
+    """
     versions = load_versions(root / "download.yaml")
     gamever = select_version(requested, versions)
     try:
@@ -798,7 +861,12 @@ def prepare(root: Path, requested: str) -> dict:
                 source = "Steam depot fallback"
     if not check_binaries(root, gamever, config_path):
         raise InitGamebinError(f"configured binaries are still incomplete for GAMEVER {gamever}")
-    binsync = prepare_binsync_projects(root, gamever, config_path)
+    binsync = None
+    if binsync_mode == "enable":
+        available, reason = probe_binsync(root)
+        if not available:
+            raise InitGamebinError(f"BinSync initialization is unavailable and was requested: {reason}")
+        binsync = prepare_binsync_projects(root, gamever, config_path)
     return {
         "gamever": gamever,
         "source": source,
@@ -821,19 +889,36 @@ def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest="command", required=True)
     commands.add_parser("versions", help="List GAMEVER values from download.yaml")
+    commands.add_parser("check-binsync", help="Probe whether BinSync initialization is available")
     prepare_parser = commands.add_parser("prepare", help="Prepare configured binaries")
     prepare_parser.add_argument("gamever", help="Exact GAMEVER from download.yaml, or latest")
+    prepare_parser.add_argument(
+        "--binsync",
+        choices=["enable", "skip"],
+        default="skip",
+        help="Enable or skip BinSync recovery (default: skip)",
+    )
     args = parser.parse_args(argv)
     try:
         root = repository_root()
         if args.command == "versions":
             print_versions(load_versions(root / "download.yaml"))
+        elif args.command == "check-binsync":
+            available, reason = probe_binsync(root)
+            if available:
+                print("BinSync available")
+                return 0
+            print(f"BinSync unavailable: {reason}")
+            return 1
         else:
-            result = prepare(root, args.gamever)
+            result = prepare(root, args.gamever, binsync_mode=args.binsync)
             print(f"Selected GAMEVER: {result['gamever']}")
             print(f"Binary source: {result['source']}")
             print(f"Archive merge: {result['copied']} copied, {result['skipped']} skipped")
-            print(f"BinSync recovery: {format_binsync_summary(result['binsync'])}")
+            if result["binsync"] is None:
+                print("BinSync recovery: skipped")
+            else:
+                print(f"BinSync recovery: {format_binsync_summary(result['binsync'])}")
     except InitGamebinError as exc:
         print(f"Error: {exc}", file=sys.stderr)
         return 1

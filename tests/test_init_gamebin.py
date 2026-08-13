@@ -461,9 +461,10 @@ class TestInitGamebin(unittest.TestCase):
             patch.object(init_gamebin, "check_binaries", side_effect=[True, True]),
             patch.object(init_gamebin, "download_release_asset") as download,
             patch.object(init_gamebin, "resolve_analysis_config", return_value=config),
+            patch.object(init_gamebin, "probe_binsync", return_value=(True, "")),
             patch.object(init_gamebin, "prepare_binsync_projects", return_value=binsync_summary()) as binsync,
         ):
-            result = init_gamebin.prepare(root, "14168")
+            result = init_gamebin.prepare(root, "14168", binsync_mode="enable")
         self.assertEqual("existing local binaries", result["source"])
         download.assert_not_called()
         binsync.assert_called_once_with(root, "14168", config)
@@ -477,11 +478,148 @@ class TestInitGamebin(unittest.TestCase):
             patch.object(init_gamebin, "download_release_asset", return_value=False),
             patch.object(init_gamebin, "run_depot_fallback") as fallback,
             patch.object(init_gamebin, "resolve_analysis_config", return_value=config),
+            patch.object(init_gamebin, "probe_binsync", return_value=(True, "")),
             patch.object(init_gamebin, "prepare_binsync_projects", return_value=binsync_summary()),
         ):
-            result = init_gamebin.prepare(root, "14168")
+            result = init_gamebin.prepare(root, "14168", binsync_mode="enable")
         self.assertEqual("Steam depot fallback", result["source"])
         fallback.assert_called_once_with(root, "14168", config)
+
+    def test_prepare_default_skips_binsync_without_probing(self) -> None:
+        root = Path("repo")
+        config = root / "configs" / "14168.yaml"
+        with (
+            patch.object(init_gamebin, "load_versions", return_value=["14168"]),
+            patch.object(init_gamebin, "check_binaries", side_effect=[True, True]),
+            patch.object(init_gamebin, "resolve_analysis_config", return_value=config),
+            patch.object(init_gamebin, "probe_binsync") as probe,
+            patch.object(init_gamebin, "prepare_binsync_projects") as binsync,
+        ):
+            result = init_gamebin.prepare(root, "14168")
+        self.assertEqual("existing local binaries", result["source"])
+        self.assertIsNone(result["binsync"])
+        probe.assert_not_called()
+        binsync.assert_not_called()
+
+    def test_prepare_enable_fails_when_binsync_unavailable(self) -> None:
+        root = Path("repo")
+        config = root / "configs" / "14168.yaml"
+        with (
+            patch.object(init_gamebin, "load_versions", return_value=["14168"]),
+            patch.object(init_gamebin, "check_binaries", side_effect=[True, True]),
+            patch.object(init_gamebin, "resolve_analysis_config", return_value=config),
+            patch.object(init_gamebin, "probe_binsync", return_value=(False, "gh is not installed")),
+            patch.object(init_gamebin, "prepare_binsync_projects") as binsync,
+        ):
+            with self.assertRaisesRegex(init_gamebin.InitGamebinError, "unavailable"):
+                init_gamebin.prepare(root, "14168", binsync_mode="enable")
+        binsync.assert_not_called()
+
+    def test_probe_binsync_reports_missing_gh(self) -> None:
+        with patch.object(init_gamebin.shutil, "which", return_value=None):
+            self.assertEqual(
+                (False, "GitHub CLI (gh) is not installed or not on PATH"),
+                init_gamebin.probe_binsync(Path("repo")),
+            )
+
+    def test_probe_binsync_reports_unauthenticated_gh(self) -> None:
+        with patch.object(
+            init_gamebin,
+            "run_command",
+            return_value=completed([], returncode=1, stderr="not logged in"),
+        ):
+            available, reason = init_gamebin.probe_binsync(Path("repo"))
+        self.assertFalse(available)
+        self.assertIn("gh is not authenticated to github.com", reason)
+
+    def test_probe_binsync_reports_api_unreachable(self) -> None:
+        with patch.object(
+            init_gamebin,
+            "run_command",
+            side_effect=[
+                completed([], returncode=0),
+                completed([], returncode=1, stderr="Network error"),
+            ],
+        ):
+            available, reason = init_gamebin.probe_binsync(Path("repo"))
+        self.assertFalse(available)
+        self.assertIn("cannot reach the GitHub API", reason)
+
+    def test_probe_binsync_reports_org_access_denied(self) -> None:
+        with patch.object(
+            init_gamebin,
+            "run_command",
+            side_effect=[
+                completed([], returncode=0),
+                completed([], returncode=0, stdout="HZDEV"),
+                completed([], returncode=1, stderr="HTTP 404"),
+            ],
+        ):
+            available, reason = init_gamebin.probe_binsync(Path("repo"))
+        self.assertFalse(available)
+        self.assertIn("HLND2T organization", reason)
+
+    def test_probe_binsync_reports_org_login_mismatch(self) -> None:
+        with patch.object(
+            init_gamebin,
+            "run_command",
+            side_effect=[
+                completed([], returncode=0),
+                completed([], returncode=0, stdout="HZDEV"),
+                completed([], returncode=0, stdout="SomeOtherOrg"),
+            ],
+        ):
+            available, reason = init_gamebin.probe_binsync(Path("repo"))
+        self.assertFalse(available)
+        self.assertIn("HLND2T organization", reason)
+
+    def test_probe_binsync_reports_available(self) -> None:
+        with patch.object(
+            init_gamebin.shutil,
+            "which",
+            return_value="gh",
+        ), patch.object(
+            init_gamebin,
+            "run_command",
+            return_value=completed([], returncode=0, stdout="HLND2T"),
+        ):
+            self.assertEqual((True, ""), init_gamebin.probe_binsync(Path("repo")))
+
+    def test_main_check_binsync_reports_availability(self) -> None:
+        output = io.StringIO()
+        with (
+            patch.object(init_gamebin, "repository_root", return_value=Path("repo")),
+            patch.object(init_gamebin, "probe_binsync", return_value=(True, "")),
+            patch("sys.stdout", output),
+        ):
+            self.assertEqual(0, init_gamebin.main(["check-binsync"]))
+        self.assertIn("BinSync available", output.getvalue())
+
+        output = io.StringIO()
+        with (
+            patch.object(init_gamebin, "repository_root", return_value=Path("repo")),
+            patch.object(init_gamebin, "probe_binsync", return_value=(False, "gh is not installed")),
+            patch("sys.stdout", output),
+        ):
+            self.assertEqual(1, init_gamebin.main(["check-binsync"]))
+        self.assertIn("BinSync unavailable: gh is not installed", output.getvalue())
+
+    def test_main_reports_binsync_skipped(self) -> None:
+        result = {
+            "gamever": "14169",
+            "source": "existing local binaries",
+            "copied": 0,
+            "skipped": 0,
+            "binsync": None,
+        }
+        output = io.StringIO()
+        with (
+            patch.object(init_gamebin, "repository_root", return_value=Path("repo")),
+            patch.object(init_gamebin, "prepare", return_value=result),
+            patch("sys.stdout", output),
+        ):
+            self.assertEqual(0, init_gamebin.main(["prepare", "14169"]))
+        self.assertIn("BinSync recovery: skipped", output.getvalue())
 
     def test_main_reports_binary_preparation_only(self) -> None:
         result = {

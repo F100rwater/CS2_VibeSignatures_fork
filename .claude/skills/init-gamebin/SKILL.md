@@ -24,15 +24,34 @@ YAML locally in this skill.
    Wait for an explicit version before continuing.
 3. Reject values absent from `download.yaml`; do not guess or silently use latest.
 
+## Decide BinSync
+
+BinSync recovery is opt-in. Decide whether to enable it before preparing binaries:
+
+1. Probe availability from the owning repository root:
+
+   ```powershell
+   uv run init_gamebin.py check-binsync
+   ```
+
+2. If the probe exits 1 (unavailable), tell the user BinSync initialization is skipped and why
+   (`BinSync unavailable: <reason>`), then proceed to preparation **without** enabling BinSync.
+3. If the probe exits 0 (available), **ask** the user whether to enable BinSync and wait for an
+   explicit yes/no. Never enable BinSync without explicit consent, and never skip the probe.
+   - Yes → prepare with `--binsync enable`.
+   - No → prepare with `--binsync skip` (or omit the flag).
+
 ## Prepare Binaries
 
-Run from the owning repository root:
+Run from the owning repository root with the BinSync decision applied:
 
 ```powershell
-uv run init_gamebin.py prepare <GAMEVER-or-latest>
+uv run init_gamebin.py prepare <GAMEVER-or-latest> --binsync <enable|skip>
 ```
 
-The script checks existing binaries, downloads and non-overwritingly merges `gamebin-<GAMEVER>.7z` when needed, and uses
+Without `--binsync`, BinSync is skipped and never probed. `--binsync enable` probes first and **fails**
+(instead of skipping) when the environment cannot run BinSync. The script checks existing binaries,
+downloads and non-overwritingly merges `gamebin-<GAMEVER>.7z` when needed, and uses
 the Steam depot fallback only for a missing Release asset. After every configured Windows and Linux binary exists, it:
 
 1. Resolves targets in first-seen config order, Windows before Linux, and deduplicates repeated real binary paths.

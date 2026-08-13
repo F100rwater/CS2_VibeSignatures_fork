@@ -234,7 +234,7 @@ jobs:
             throw "HLND2T_GH_TOKEN authenticated to an unexpected organization: '$($orgLogin.Trim())' (expected HLND2T)."
           }
           Write-Host "HLND2T_GH_TOKEN authenticated to $($orgLogin.Trim())"
-          uv run init_gamebin.py prepare "$env:GAMEVER"
+          uv run init_gamebin.py prepare "$env:GAMEVER" --binsync enable
           if ($LASTEXITCODE -ne 0) { throw "init_gamebin.py prepare failed with exit code $LASTEXITCODE" }
 
       - name: Analyze binaries with normal producer scheduling
