@@ -9,7 +9,7 @@ from pathlib import Path
 from unittest.mock import MagicMock, patch
 
 
-SCRIPT = Path(".claude/skills/init-gamebin/scripts/init_gamebin.py")
+SCRIPT = Path("init_gamebin.py")
 SPEC = importlib.util.spec_from_file_location("init_gamebin", SCRIPT)
 init_gamebin = importlib.util.module_from_spec(SPEC)
 assert SPEC.loader is not None
@@ -50,7 +50,7 @@ def git(cwd: Path, *arguments: str) -> subprocess.CompletedProcess:
 
 class TestInitGamebin(unittest.TestCase):
     def test_script_resolves_its_own_repository_root(self) -> None:
-        expected = SCRIPT.resolve().parents[4]
+        expected = SCRIPT.resolve().parent
         with patch.object(init_gamebin, "run_command", return_value=completed([], stdout=f"{expected}\n")):
             self.assertEqual(expected, init_gamebin.repository_root())
 
@@ -359,6 +359,7 @@ class TestInitGamebin(unittest.TestCase):
                 "set_remote_default_branch",
                 side_effect=lambda *_: events.append("default"),
             ),
+            patch.object(init_gamebin, "validate_sidecar", return_value=False),
             patch.object(
                 init_gamebin,
                 "write_sidecar_atomic",

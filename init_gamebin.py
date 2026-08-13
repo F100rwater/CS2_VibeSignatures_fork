@@ -19,7 +19,7 @@ from pathlib import Path
 import requests
 import yaml
 
-REPOSITORY_ROOT = Path(__file__).resolve().parents[4]
+REPOSITORY_ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(REPOSITORY_ROOT))
 
 from analysis_config import AnalysisConfigError, resolve_analysis_config  # noqa: E402
@@ -79,7 +79,7 @@ def run_command(command, cwd: Path, *, allowed=(0,), capture=False, label=None):
 
 def repository_root() -> Path:
     """Require execution from the repository that owns this project-level skill."""
-    expected = Path(__file__).resolve().parents[4]
+    expected = Path(__file__).resolve().parent
     result = run_command(["git", "rev-parse", "--show-toplevel"], expected, capture=True, label="git rev-parse")
     actual = Path(result.stdout.strip()).resolve()
     if actual != expected:

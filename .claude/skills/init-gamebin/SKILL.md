@@ -5,7 +5,7 @@ description: Initialize this repository's local game binaries and per-binary Bin
 
 # Initialize Game Binaries
 
-Use the bundled script as the only entry point for downloading, merging, depot fallback, and BinSync recovery setup.
+Use the repository-root script as the only entry point for downloading, merging, depot fallback, and BinSync recovery setup.
 Never overwrite an existing binary, substitute an unlisted version, or continue after a failed step. Delegate all symbol
 snapshot behavior to the project-level `$restore-from-snapshot` skill; do not call `gamesymbol_snapshot.py` or restore
 YAML locally in this skill.
@@ -16,7 +16,7 @@ YAML locally in this skill.
 2. If the user did not specify a version, run:
 
    ```powershell
-   uv run python .claude/skills/init-gamebin/scripts/init_gamebin.py versions
+   uv run init_gamebin.py versions
    ```
 
    Tell the user which entry is latest and ask: `Which GAMEVER do you want to initialize?`
@@ -28,7 +28,7 @@ YAML locally in this skill.
 Run from the owning repository root:
 
 ```powershell
-uv run python .claude/skills/init-gamebin/scripts/init_gamebin.py prepare <GAMEVER-or-latest>
+uv run init_gamebin.py prepare <GAMEVER-or-latest>
 ```
 
 The script checks existing binaries, downloads and non-overwritingly merges `gamebin-<GAMEVER>.7z` when needed, and uses
