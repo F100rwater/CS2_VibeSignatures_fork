@@ -574,14 +574,17 @@ class TestInitGamebin(unittest.TestCase):
         self.assertIn("HLND2T organization", reason)
 
     def test_probe_binsync_reports_available(self) -> None:
-        with patch.object(
-            init_gamebin.shutil,
-            "which",
-            return_value="gh",
-        ), patch.object(
-            init_gamebin,
-            "run_command",
-            return_value=completed([], returncode=0, stdout="HLND2T"),
+        with (
+            patch.object(
+                init_gamebin.shutil,
+                "which",
+                return_value="gh",
+            ),
+            patch.object(
+                init_gamebin,
+                "run_command",
+                return_value=completed([], returncode=0, stdout="HLND2T"),
+            ),
         ):
             self.assertEqual((True, ""), init_gamebin.probe_binsync(Path("repo")))
 

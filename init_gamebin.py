@@ -394,14 +394,10 @@ def probe_binsync(root: Path) -> tuple[bool, str]:
     if org.returncode != 0:
         detail = command_detail(org) or f"exit code {org.returncode}"
         return False, (
-            f"authenticated GitHub account does not have access to the "
-            f"{GITHUB_OWNER} organization: {detail}"
+            f"authenticated GitHub account does not have access to the {GITHUB_OWNER} organization: {detail}"
         )
     if org.stdout.strip().casefold() != GITHUB_OWNER.casefold():
-        return False, (
-            f"authenticated GitHub account does not have access to the "
-            f"{GITHUB_OWNER} organization"
-        )
+        return False, (f"authenticated GitHub account does not have access to the {GITHUB_OWNER} organization")
     return True, ""
 
 
@@ -519,10 +515,15 @@ def create_public_remote(root: Path, repo_name: str) -> None:
     """
     run_command(
         [
-            "gh", "api", "--method", "POST",
+            "gh",
+            "api",
+            "--method",
+            "POST",
             f"orgs/{GITHUB_OWNER}/repos",
-            "-f", f"name={repo_name}",
-            "-f", "visibility=public",
+            "-f",
+            f"name={repo_name}",
+            "-f",
+            "visibility=public",
         ],
         root,
         capture=True,
