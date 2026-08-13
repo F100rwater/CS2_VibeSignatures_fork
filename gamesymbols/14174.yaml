@@ -121,8 +121,8 @@ binaries:
       sha256: '6f5aa8c32e30d5369579f0e18bf97ec72e2076d3c06906efbfcc77f0c4111b80'
       size: 4592280
 config_digest_version: 2
-config_sha256: sha256:8f944c604fc0425c7362ca85da626be6d5832ba53cac6951d358f6a096ab1cd4
-file_count: 3373
+config_sha256: sha256:78d5bc62c354ba4532f10670ee9d49ad7000d38b6ba7402939323ebef774bd56
+file_count: 3377
 files:
   SDL3/SDL_GetMouse.windows.yaml:
     func_name: SDL_GetMouse
@@ -38202,6 +38202,24 @@ files:
     vfunc_index: 47
     vfunc_offset: '0x178'
     vtable_name: CSource2Server
+  server/CSource2Server_SetGlobals.linux.yaml:
+    func_name: CSource2Server_SetGlobals
+    func_rva: '0x18cf470'
+    func_sig: 48 8B 05 ?? ?? ?? ?? 48 8D 15 ?? ?? ?? ?? 31 C9
+    func_size: '0x31'
+    func_va: '0x18cf470'
+    vfunc_index: 12
+    vfunc_offset: '0x60'
+    vtable_name: CSource2Server_vtable
+  server/CSource2Server_SetGlobals.windows.yaml:
+    func_name: CSource2Server_SetGlobals
+    func_rva: '0xd1a550'
+    func_sig: 48 8B 0D ?? ?? ?? ?? 4C 8D 05 ?? ?? ?? ?? 48 85 D2
+    func_size: '0x31'
+    func_va: '0x180d1a550'
+    vfunc_index: 12
+    vfunc_offset: '0x60'
+    vtable_name: CSource2Server_vtable
   server/CSource2Server_ShouldTimeoutClient.linux.yaml:
     func_name: CSource2Server_ShouldTimeoutClient
     func_rva: '0x18d4940'
@@ -39945,6 +39963,18 @@ files:
     func_sig: 48 89 5C 24 ?? 48 89 74 24 ?? 48 89 7C 24 ?? 44 89 44 24 ??
     func_size: '0x735'
     func_va: '0x180a59ff0'
+  server/GlobalVarsWarningFunc.linux.yaml:
+    func_name: GlobalVarsWarningFunc
+    func_rva: '0x178acf0'
+    func_sig: 55 48 89 E5 41 54 53 0F B6 05 ?? 75 0C 01
+    func_size: '0x9e'
+    func_va: '0x178acf0'
+  server/GlobalVarsWarningFunc.windows.yaml:
+    func_name: GlobalVarsWarningFunc
+    func_rva: '0xc335d0'
+    func_sig: 40 53 48 83 EC ?? 8B 15 ?? ?? ?? ?? 8B D9
+    func_size: '0xb3'
+    func_va: '0x180c335d0'
   server/HideState_OnUpdate.linux.yaml:
     func_name: HideState_OnUpdate
     func_rva: '0xc8ba30'
@@ -43078,5 +43108,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14174'
-last_publish_time: '2026-08-13T12:57:54Z'
+last_publish_time: '2026-08-13T13:34:42Z'
 schema_version: 5
