@@ -23,14 +23,17 @@ uv sync
 ## 初始化最新游戏版本的 binaries
 
 对于新检出的仓库，在运行符号分析前请使用 `SKILL: init-gamebin` 初始化 `download.yaml` 中最新游戏版本的
-binaries。请明确这样请求 agent：
+binaries。
+
+使用以下提示词：
 
 ```text
 Use SKILL: init-gamebin to initialize the latest game version's binaries.
 ```
 
-该 skill 会从仓库版本列表解析最新的游戏版本号，下载或合并对应的 binaries 且不会覆盖已有文件，然后委托
-`restore-from-snapshot` 恢复 symbol YAML。如果没有指定游戏版本，skill 会先列出可用版本并要求用户选择。
+该 SKILL 会从仓库版本列表解析最新的游戏版本号，下载或合并对应的 binaries 且不会覆盖已有文件，然后委托 `restore-from-snapshot` 恢复 symbol YAML。
+
+如果没有指定游戏版本，skill 会先列出可用版本并向你询问。
 
 ## 故障排查
 
