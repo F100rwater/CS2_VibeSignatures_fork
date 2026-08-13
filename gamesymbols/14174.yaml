@@ -121,8 +121,8 @@ binaries:
       sha256: '6f5aa8c32e30d5369579f0e18bf97ec72e2076d3c06906efbfcc77f0c4111b80'
       size: 4592280
 config_digest_version: 2
-config_sha256: sha256:c3075121a5328d73f4764eef5c5f1bda2e6159f722ac877e5ea1278262dbdccf
-file_count: 3363
+config_sha256: sha256:fcc6ace08cf995e1b114496ced10490fb62276c0310f1a545100e5c8b5f77b5a
+file_count: 3365
 files:
   SDL3/SDL_GetMouse.windows.yaml:
     func_name: SDL_GetMouse
@@ -16143,6 +16143,24 @@ files:
     func_va: '0x180c51ee0'
     vfunc_index: 13
     vfunc_offset: '0x68'
+    vtable_name: CBaseEntity
+  server/CBaseEntity_AddChangeAccessorPath.linux.yaml:
+    func_name: CBaseEntity_AddChangeAccessorPath
+    func_rva: '0xa29b10'
+    func_sig: 48 8D 47 ?? 48 89 F2 48 89 FE 48 89 C7 E9 3E 26 05 ??
+    func_size: '0x12'
+    func_va: '0xa29b10'
+    vfunc_index: 37
+    vfunc_offset: '0x128'
+    vtable_name: CBaseEntity
+  server/CBaseEntity_AddChangeAccessorPath.windows.yaml:
+    func_name: CBaseEntity_AddChangeAccessorPath
+    func_rva: '0x14ed90'
+    func_sig: 40 53 48 83 EC ?? 4D 8B C8 48 8B DA
+    func_size: '0x21'
+    func_va: '0x18014ed90'
+    vfunc_index: 36
+    vfunc_offset: '0x120'
     vtable_name: CBaseEntity
   server/CBaseEntity_AddContextForScript.linux.yaml:
     func_name: CBaseEntity_AddContextForScript
@@ -43006,5 +43024,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14174'
-last_publish_time: '2026-08-13T01:46:15Z'
+last_publish_time: '2026-08-13T03:31:50Z'
 schema_version: 5

@@ -8906,6 +8906,12 @@ modules:
           - CEntityInstance_AddChangeAccessorPath.{platform}.yaml
         expected_input:
           - EntityInstanceAddChangeAccessorPath.{platform}.yaml
+      - name: find-CBaseEntity_AddChangeAccessorPath
+        expected_output:
+          - CBaseEntity_AddChangeAccessorPath.{platform}.yaml
+        expected_input:
+          - CBaseEntity_vtable.{platform}.yaml
+          - CEntityInstance_AddChangeAccessorPath.{platform}.yaml
       - name: find-CEntityInstance_AssignChangeAccessorPathIds
         expected_output:
           - CEntityInstance_AssignChangeAccessorPathIds.{platform}.yaml
@@ -9456,6 +9462,10 @@ modules:
         category: vfunc
         alias:
           - CEntityInstance::AddChangeAccessorPath
+      - name: CBaseEntity_AddChangeAccessorPath
+        category: vfunc
+        alias:
+          - CBaseEntity::AddChangeAccessorPath
       - name: CEntityInstance_AssignChangeAccessorPathIds
         category: vfunc
         alias:
