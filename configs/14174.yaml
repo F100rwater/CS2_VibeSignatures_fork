@@ -6225,6 +6225,11 @@ modules:
           - CBaseEntity_UpdateOnRemove.{platform}.yaml
         expected_input:
           - CBaseEntity_vtable.{platform}.yaml
+      - name: find-CBaseEntity_ModifyOrAppendCriteria
+        expected_output:
+          - CBaseEntity_ModifyOrAppendCriteria.{platform}.yaml
+        expected_input:
+          - CBaseEntity_vtable.{platform}.yaml
       - name: find-CEntityInstance_OnRestore
         expected_output:
           - CEntityInstance_OnRestore.{platform}.yaml
@@ -9305,6 +9310,10 @@ modules:
         category: vfunc
         alias:
           - CBaseEntity::UpdateOnRemove
+      - name: CBaseEntity_ModifyOrAppendCriteria
+        category: vfunc
+        alias:
+          - CBaseEntity::ModifyOrAppendCriteria
       - name: CEntityInstance_OnRestore
         category: vfunc
         alias:
