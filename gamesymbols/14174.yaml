@@ -121,8 +121,8 @@ binaries:
       sha256: '6f5aa8c32e30d5369579f0e18bf97ec72e2076d3c06906efbfcc77f0c4111b80'
       size: 4592280
 config_digest_version: 2
-config_sha256: sha256:fcc6ace08cf995e1b114496ced10490fb62276c0310f1a545100e5c8b5f77b5a
-file_count: 3365
+config_sha256: sha256:d767c691d249a7e579b5af0378cf78f45f9c5c2999d1c6ef3bb3a9c6a17bff48
+file_count: 3371
 files:
   SDL3/SDL_GetMouse.windows.yaml:
     func_name: SDL_GetMouse
@@ -32830,6 +32830,42 @@ files:
     vtable_size: '0x28'
     vtable_symbol: ??_7CNetworkSerializerBindingBuildFilter@@6B@
     vtable_va: '0x1818a30a8'
+  server/CNetworkServerService_AddServerPrerequisites.linux.yaml:
+    func_name: CNetworkServerService_AddServerPrerequisites
+    vfunc_index: 29
+    vfunc_offset: '0xe8'
+    vfunc_sig: FF 90 E8 00 00 00 4C 8B 6D ??
+    vtable_name: CNetworkServerService_vtable
+  server/CNetworkServerService_AddServerPrerequisites.windows.yaml:
+    func_name: CNetworkServerService_AddServerPrerequisites
+    vfunc_index: 28
+    vfunc_offset: '0xe0'
+    vfunc_sig: FF 90 E0 00 00 00 48 8B 5D ??
+    vtable_name: CNetworkServerService_vtable
+  server/CNetworkServerService_SetFinalSimulationTickThisFrame.linux.yaml:
+    func_name: CNetworkServerService_SetFinalSimulationTickThisFrame
+    vfunc_index: 33
+    vfunc_offset: '0x108'
+    vfunc_sig: FF 90 08 01 00 00 31 F6
+    vtable_name: CNetworkServerService_vtable
+  server/CNetworkServerService_SetFinalSimulationTickThisFrame.windows.yaml:
+    func_name: CNetworkServerService_SetFinalSimulationTickThisFrame
+    vfunc_index: 32
+    vfunc_offset: '0x100'
+    vfunc_sig: FF 90 00 01 00 00 48 8B C8
+    vtable_name: CNetworkServerService_vtable
+  server/CNetworkServerService_SetGameSpawnGroupMgr.linux.yaml:
+    func_name: CNetworkServerService_SetGameSpawnGroupMgr
+    vfunc_index: 28
+    vfunc_offset: '0xe0'
+    vfunc_sig: FF 90 E0 00 00 00 8B 95 ?? ?? ?? ??
+    vtable_name: CNetworkServerService_vtable
+  server/CNetworkServerService_SetGameSpawnGroupMgr.windows.yaml:
+    func_name: CNetworkServerService_SetGameSpawnGroupMgr
+    vfunc_index: 27
+    vfunc_offset: '0xd8'
+    vfunc_sig: FF 90 D8 00 00 00 33 DB
+    vtable_name: CNetworkServerService_vtable
   server/CNetworkTransmitComponent_StateChanged.linux.yaml:
     func_name: CNetworkTransmitComponent_StateChanged
     func_rva: '0xa9ad10'
@@ -43024,5 +43060,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14174'
-last_publish_time: '2026-08-13T03:31:50Z'
+last_publish_time: '2026-08-13T03:58:18Z'
 schema_version: 5
