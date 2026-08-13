@@ -28,7 +28,11 @@ def parse_args(argv=None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("gamever", help="Exact GAMEVER from download.yaml")
     parser.add_argument("--python", required=True, help="Interpreter with idalib + binsync + declib")
-    parser.add_argument("--headless-script", required=True, help="Path to headless_force_push.py")
+    parser.add_argument(
+        "--headless-script",
+        default=str(REPOSITORY_ROOT / "headless_force_push.py"),
+        help="Path to headless_force_push.py (defaults to the repo copy)",
+    )
     return parser.parse_args(argv)
 
 

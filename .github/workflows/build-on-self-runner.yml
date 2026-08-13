@@ -266,9 +266,7 @@ jobs:
             Write-Warning "BinSync push skipped: no python on PATH"
             exit 0
           }
-          uv run python push_binsync_symbols.py "$env:GAMEVER" `
-            --python "$pythonExe" `
-            --headless-script "D:\binsync\examples\headless_force_push.py"
+          uv run python push_binsync_symbols.py "$env:GAMEVER" --python "$pythonExe"
 
       - name: Build immutable symbol and gamedata candidates
         id: build-candidates
