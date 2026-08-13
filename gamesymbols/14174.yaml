@@ -121,8 +121,8 @@ binaries:
       sha256: '6f5aa8c32e30d5369579f0e18bf97ec72e2076d3c06906efbfcc77f0c4111b80'
       size: 4592280
 config_digest_version: 2
-config_sha256: sha256:4bfb6653e467e430524754450cd19936c225a20db6423a738f65678a29fdad47
-file_count: 3363
+config_sha256: sha256:fcc6ace08cf995e1b114496ced10490fb62276c0310f1a545100e5c8b5f77b5a
+file_count: 3365
 files:
   SDL3/SDL_GetMouse.windows.yaml:
     func_name: SDL_GetMouse
@@ -16534,6 +16534,24 @@ files:
     vfunc_index: 24
     vfunc_offset: '0xc0'
     vtable_name: CBaseEntity_vtable
+  server/CBaseEntity_OnSetDormant.linux.yaml:
+    func_name: CBaseEntity_OnSetDormant
+    func_rva: '0x1824250'
+    func_sig: 55 48 89 E5 41 54 41 89 D4 53 48 89 FB E8 ?? ?? ?? ?? 45 85 E4
+    func_size: '0x129'
+    func_va: '0x1824250'
+    vfunc_index: 16
+    vfunc_offset: '0x80'
+    vtable_name: CBaseEntity
+  server/CBaseEntity_OnSetDormant.windows.yaml:
+    func_name: CBaseEntity_OnSetDormant
+    func_rva: '0xc76a20'
+    func_sig: 40 55 53 57 48 8B EC 48 83 EC ?? 41 8B D8
+    func_size: '0x1f9'
+    func_va: '0x180c76a20'
+    vfunc_index: 15
+    vfunc_offset: '0x78'
+    vtable_name: CBaseEntity
   server/CBaseEntity_OnTakeDamage.linux.yaml:
     func_name: CBaseEntity_OnTakeDamage
     vfunc_index: 127
@@ -43006,5 +43024,5 @@ files:
     vtable_symbol: ??_7CVPhys2World@@6B@
     vtable_va: '0x1803c57d0'
 game_version: '14174'
-last_publish_time: '2026-08-13T02:46:05Z'
+last_publish_time: '2026-08-13T03:31:50Z'
 schema_version: 5

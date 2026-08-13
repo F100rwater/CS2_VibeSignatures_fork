@@ -8473,6 +8473,12 @@ modules:
           - CEntityInstance_OnSetDormant.{platform}.yaml
         expected_input:
           - CCSPlayerPawnBase_OnSetDormant.{platform}.yaml
+      - name: find-CBaseEntity_OnSetDormant
+        expected_output:
+          - CBaseEntity_OnSetDormant.{platform}.yaml
+        expected_input:
+          - CBaseEntity_vtable.{platform}.yaml
+          - CEntityInstance_OnSetDormant.{platform}.yaml
       - name: find-CScriptedSequence_SynchronizeSequence
         expected_output:
           - CScriptedSequence_SynchronizeSequence.{platform}.yaml
@@ -10847,6 +10853,10 @@ modules:
         category: func
         alias:
           - CBaseEntity::ScriptGetAbsOrigin
+      - name: CBaseEntity_OnSetDormant
+        category: vfunc
+        alias:
+          - CBaseEntity::OnSetDormant
       - name: CBaseEntity_Precache
         category: vfunc
         alias:
