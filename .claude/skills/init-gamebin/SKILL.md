@@ -1,6 +1,7 @@
 ---
 name: init-gamebin
 description: Initialize this repository's local game binaries and per-binary BinSync auto-recovery sidecars for an exact GAMEVER from download.yaml or its latest entry, then delegate symbol YAML restoration to restore-from-snapshot. Use only when explicitly asked to initialize or restore gamebin/bin state for a CS2 game version.
+disable-model-invocation: true
 ---
 
 # Initialize Game Binaries
