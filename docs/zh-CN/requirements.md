@@ -11,7 +11,8 @@
 5. [ida-pro-mcp](https://github.com/mrexodia/ida-pro-mcp)
 6. [idalib](https://docs.hex-rays.com/user-guide/idalib)
 7. Clang/LLVM，并确保 `clang` 位于 `PATH` 中。推荐安装 [llvm-msvc](https://github.com/backengineering/llvm-msvc)
-8. [binsync](https://github.com/binsync/binsync)
+8. [GitHub CLI](https://cli.github.com/)
+9. [binsync](https://github.com/hzqst/binsync) （必须从我的fork使用源码安装）
 
 克隆仓库后安装 Python 依赖：
 
