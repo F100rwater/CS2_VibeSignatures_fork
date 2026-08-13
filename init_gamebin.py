@@ -453,9 +453,19 @@ def preflight_binsync(root: Path, gamever: str, config_path: Path, user: str | N
 
 
 def create_public_remote(root: Path, repo_name: str) -> None:
-    """Create one missing public GitHub repository."""
+    """Create one missing public GitHub repository via the REST API.
+
+    The REST `POST /orgs/{org}/repos` endpoint works with fine-grained PATs that
+    hold `Administration: Write` on the org, unlike `gh repo create` which uses the
+    GraphQL `createRepository` mutation and rejects fine-grained tokens.
+    """
     run_command(
-        ["gh", "repo", "create", f"{GITHUB_OWNER}/{repo_name}", "--public"],
+        [
+            "gh", "api", "--method", "POST",
+            f"orgs/{GITHUB_OWNER}/repos",
+            "-f", f"name={repo_name}",
+            "-f", "visibility=public",
+        ],
         root,
         capture=True,
         label=f"creating public GitHub repository {GITHUB_OWNER}/{repo_name}",
