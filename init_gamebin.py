@@ -546,15 +546,31 @@ def local_binsync_refs(repo_path: Path) -> list[str]:
 
 
 def push_local_binsync_history(repo_path: Path) -> None:
-    """Push every local binsync/* branch to an empty expected origin."""
+    """Push every local binsync/* branch to an empty expected origin.
+
+    The root branch is pushed first, on its own, so that an empty remote adopts it
+    as the default branch. GitHub names the default branch after the first branch
+    pushed to a repository with no commits; pushing every branch in one `--atomic`
+    push lets GitHub pick alphabetically, which prefers ``binsync/WindowsRunner``
+    over ``binsync/__root__``. Relying on ``gh repo edit --default-branch`` to undo
+    that is not reliable, so make the root branch land first instead.
+    """
     refs = local_binsync_refs(repo_path)
-    refspecs = [f"{ref}:{ref}" for ref in refs]
+    root_ref = f"refs/heads/{BINSYNC_ROOT_BRANCH}"
     run_command(
-        ["git", "push", "--atomic", "origin", *refspecs],
+        ["git", "push", "origin", f"{root_ref}:{root_ref}"],
         repo_path,
         capture=True,
-        label=f"restoring BinSync history from {repo_path}",
+        label=f"pushing {BINSYNC_ROOT_BRANCH} from {repo_path}",
     )
+    remaining_refspecs = [f"{ref}:{ref}" for ref in refs if ref != root_ref]
+    if remaining_refspecs:
+        run_command(
+            ["git", "push", "--atomic", "origin", *remaining_refspecs],
+            repo_path,
+            capture=True,
+            label=f"restoring remaining BinSync history from {repo_path}",
+        )
 
 
 def initialize_minimal_binsync_repo(repo_path: Path, binary_md5: str, repo_name: str, user: str) -> None:
